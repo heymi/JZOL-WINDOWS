@@ -17,12 +17,13 @@
             success: function (ret) {
                 var retObj = JSON.parse(ret);
                 $("#username").val(retObj.data.list.username);
-                $("#sex input[value=" + retObj.data.list.sex + "]").prop('checked', true);
+                $("#client_sex input[value=" + retObj.data.list.sex + "]").prop('checked', true);
                 $("#phone").val(retObj.data.list.phone);
                 $("#tell").val(retObj.data.list.tell);
                 $("#identity").val(retObj.data.list.identity);
                 $("#family").val(retObj.data.list.family);
-                $("#content").val(retObj.data.list.content);
+                $("#client_content").val(retObj.data.list.content);
+                $("#specfic_requirement").val(retObj.data.list.specfic_requirement);
                 $("#remark").val(retObj.data.list.remark);
                 $("#addr").val(retObj.data.list.addr);
             }
@@ -57,13 +58,16 @@
                                 <input type="text" class="form-control" id="username">
 
                             </div>
-                            <div class="form-group" id="sex">
+                            <div class="form-group" id="client_sex">
                                 <label class="text-indent">性别：</label>
                                 <label class="radio">
-                                    <input type="radio" name="sex" id="male" value="1"> 先生
+                                  <input type="radio" name="client_sex" value="1"> 先生
                                 </label>
                                 <label class="radio">
-                                    <input type="radio" name="sex" id="female" value="0"> 女士
+                                  <input type="radio" name="client_sex" value="2"> 女士
+                                </label>
+                                <label class="radio">
+                                  <input type="radio" name="client_sex" value="0"> 保密
                                 </label>
                             </div>
                             <div class="form-group">
@@ -101,22 +105,24 @@
                         </form>
                         <form class="form-inline">
                             <h5 class="form-title">工作内容</h5>
+                        <div class="form-group">
+                            <label for="">家庭情况：</label>
+                            <textarea class="form-control" id="family"></textarea>
 
+                          </div>
+                          <div class="form-group">
+                            <label for="">服务需求：</label>
+                            <textarea class="form-control" id="specfic_requirement"></textarea>
+                          </div>
                             <div class="form-group">
-                                <label for="family">家庭情况：</label>
-                                <textarea class="form-control" id="family"></textarea>
+                            <label for="">需求详情：</label>
+                            <textarea class="form-control" id="client_content"></textarea>
+                          </div>
+                          <div class="form-group">
+                            <label for="" class="text-indent">备注：</label>
+                            <textarea class="form-control" id="remark"></textarea>
 
-                            </div>
-                            <div class="form-group">
-                                <label for="content">需求描述：</label>
-                                <textarea class="form-control" id="content"></textarea>
-
-                            </div>
-                            <div class="form-group">
-                                <label for="remark" class="text-indent">备注：</label>
-                                <textarea class="form-control" id="remark"></textarea>
-
-                            </div>
+                          </div>
 
                         </form>
                     </div>
@@ -147,7 +153,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                            <button type="button" class="btn btn-primary">放弃</button>
+                            <button type="button" class="btn btn-primary" id="cancel_add">放弃</button>
                         </div>
                     </div>
                 </div>
@@ -176,9 +182,10 @@
         paramObj.addr = $("#addr").val();
         paramObj.specfic_requirement = $("#content").val();
         paramObj.phone = $("#phone").val();
-        paramObj.sex = $("#sex").val();
+        paramObj.sex = $("#client_sex input:checked").val();
+        paramObj.specfic_requirement = $("#specfic_requirement").val();
         paramObj.family = $("#family").val();
-        paramObj.content = $("#content").val();
+        paramObj.content = $("#client_content").val();
         paramObj.remark = $("#remark").val();
         paramObj.prov = "1"
         paramObj.city = "1"
@@ -211,6 +218,10 @@
     });
     $('#datetimepicker').datetimepicker({
         format: 'yyyy-mm-dd hh:ii'
+    });
+
+    $('#cancel_add').on('click', function(){
+        parent.document.getElementById("rightContent").setAttribute("src", "client.html");
     });
 </script>
 </html>
