@@ -1,0 +1,21 @@
+{
+  "name": "jiazhengol",
+  "version": "0.0.2",
+  "description": "",
+  "author": "ShangHai FuHui Ltd",
+  "license": "MIT",
+  "manifestUrl": "http://localhost:9080/autoUpdate/package.json",
+  "window": {
+    "toolbar": true,
+	"fullscreen" :false,
+	"width" : 1366,
+	"height" : 736
+  },
+  "main": "./login.html",
+  "dependencies": {
+    "ncp": "^0.5.1",
+    "request": "^2.36.0",
+    "del": "~0.1.2",
+    "semver": "^3.0.1"
+  }
+}

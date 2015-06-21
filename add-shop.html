@@ -1,0 +1,229 @@
+<html>
+<header>
+    <script src="js/allBiz.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+    <script src="js/bootstrap-datetimepicker.js"></script>
+</header>
+<body>
+
+<div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
+    <div class="content-wrapper">
+        <div class="content-header-inner">
+            <div class="bread-nav float-left">
+                <ol class="breadcrumb">
+                    <li><a href="shop.html">门店管理</a></li>
+                    <li class="active"><strong>新增门店</strong></li>
+                </ol>
+            </div>
+
+        </div>
+        <div class="form-dialog">
+            <div class="form-content clearfix">
+
+                <div class="form-body">
+                    <div class="modal-body-wrapper">
+                        <form class="form-inline">
+                            <h5 class="form-title">登录信息</h5>
+                            <div class="form-group">
+                                <label for="user_name">用户名：</label>
+                                <input type="text" class="form-control" id="user_name" name="user_name">
+                                <label for="password">密码：</label>
+                                <input type=" text" class="form-control" id="password" name="password">
+                            </div>
+                        </form>
+                        <form class="form-inline">
+
+                            <h5 class="form-title">门店资料</h5>
+
+                            <div class="form-group">
+                                <label for="name">门店名称：</label>
+                                <input type="text" class="form-control text-area" id="shop_name" name="name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">店长名称：</label>
+                                <input type="text" class="form-control" id="manager_name">
+                                <label for="">店长电话：</label>
+                                <input type="text" class="form-control" id="manager_phone">
+                                <!--<button class="btn-grey">增加一项</button>-->
+                            </div>
+
+                            <div class="form-group">
+                                <label for="" class="text-indent">地址：</label>
+                                <select class="form-control" name="city_id" id="city_id">
+                                    <option value="1">上海市</option>
+                                    <option value="1">北京市</option>
+                                </select>
+                                <select class="form-control" name="area_id" id="area_id">
+                                    <option value="1">徐汇区</option>
+                                    <option value="1">静安区</option>
+                                    <option value="1">普陀区</option>
+                                    <option value="1">浦东新区</option>
+                                    <option value="1">闸北区</option>
+                                    <option value="1">虹口区</option>
+                                    <option value="1">长宁区</option>
+                                    <option value="1">闵行区</option>
+                                    <option value="1">宝山区</option>
+                                    <option value="1">杨浦区</option>
+                                    <option value="1">嘉定区</option>
+                                    <option value="1">松江区</option>
+                                    <option value="1">青浦区</option>
+                                </select>
+                                <input type="text" class="form-control" id="address">
+                            </div>
+
+
+                        </form>
+                        <form class="form-inline">
+                            <h5 class="form-title">营业内容</h5>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">主营业务：</label>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1" class="text-indent">工种：</label>
+
+                                    <div class="add-list checkbox" id="business_range">
+                                        <label>
+                                            <input type="checkbox" value="月嫂"> 月嫂
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" value="钟点工"> 钟点工
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" value="保姆"> 保姆
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" value="育儿嫂"> 育儿嫂
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" value="疾病护理"> 疾病护理
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" value="老人护理"> 老人护理
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" value="催乳师"> 催乳师
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" value="早教"> 早教
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="text-indent">类型：</label>
+
+                                <div class="radio-group" id="shop_type">
+                                    <label class="radio">
+                                        <input type="radio" value="1">
+                                        连锁
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" value="2">
+                                        加盟
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="form-footer float-right">
+                    <button type="button" class="btn-none" data-toggle="modal" data-target=".bs-example-modal-sm">放弃</button>
+                    <button id="message_trigger_ok" type="button" class="btn-green-big">保存</button>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">放弃添加</h4>
+                        </div>
+                        <div class="modal-body">
+                            您确定放弃当前添加？
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary" id="cancel_add">放弃</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container end -->
+</div>
+</section>
+
+<script src="js/jquery-2.0.2.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/sco.message.js"></script>
+<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
+</body>
+<script type="text/javascript">
+    function pageScroll() {
+        parent.window.scrollBy(0, -100);
+        scrolldelay = setTimeout('pageScroll()', 100);
+        var sTop = parent.document.documentElement.scrollTop + parent.document.body.scrollTop;
+        if (sTop == 0) {
+            clearTimeout(scrolldelay);
+            window.setTimeout(function () {
+                parent.document.getElementById("rightContent").setAttribute("src", "shop.html")
+            }, 500);
+            ;
+        }
+        ;
+    }
+    $('#message_trigger_ok').on('click', function (e) {
+        e.preventDefault();
+        var paramData = {};
+        paramData.user_name = $.trim($('#user_name').val());
+        paramData.password = $.trim($('#password').val());
+        paramData.name = $('#shop_name').val();
+        paramData.city_id = $('#city_id').val();
+        paramData.area_id = $('#area_id').val();
+        paramData.address = $('#address').val();
+        paramData.manager_name = $('#manager_name').val();
+        paramData.manager_phone = $('#manager_phone').val();
+        paramData.type = $("#shop_type input:checked").val();
+        paramData.business = getMultiSelectValue('business_range');
+        $.ajax({
+            url: 'http://test.fuhui.com/Shop/add',
+            data: paramData,
+            method: 'POST',
+            success: function (ret) {
+                var retObj = JSON.parse(ret);
+                if (retObj.code == '0') {
+                    $.scojs_message('添加成功', $.scojs_message.TYPE_OK);
+                    setTimeout(function(){
+                      parent.document.getElementById("rightContent").setAttribute("src", "shop.html");
+                    },1e3);
+                }else{
+                    $.scojs_message(errorCode['code_' + retObj.code], $.scojs_message.TYPE_ERROR);
+                }
+            },
+            error: function (ret) {
+            }
+        })
+
+//        pageScroll();
+    });
+
+
+    $('#message_trigger_err').on('click', function (e) {
+        e.preventDefault();
+        $.scojs_message('添加失败', $.scojs_message.TYPE_ERROR);
+    });
+
+    $('#cancel_add').on('click', function(){
+        parent.document.getElementById("rightContent").setAttribute("src", "shop.html");
+    });
+</script>
+</html>

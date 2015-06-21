@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <script src="js/allBiz.js"></script>
+</header>
+<body>
+                <div class="container clearfix">
+                    <div class="content-wrapper">
+
+                        <!-- 面包屑导航样式开始 -->
+                        <div class="content-header-inner clearfix">
+                            <div class="bread-nav float-left">
+                                <ol class="breadcrumb">
+
+
+                                    <li class="active">全部消息</li>
+                                </ol>
+                            </div>
+                            <div class="header-tab fl">
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <ul>
+                                        <li role="presentation" class="first-child active"><a href="#unread-messages"
+                                                                                              aria-controls="unread-messages"
+                                                                                              role="tab"
+                                                                                              data-toggle="tab">未读消息</a>
+                                        </li>
+                                        <li role="presentation" class=""><a href="#list-messages"
+                                                                            aria-controls="list-messages" role="tab"
+                                                                            data-toggle="tab">订单消息</a></li>
+                                        <li role="presentation" class=""><a href="#platform-messages"
+                                                                            aria-controls="platform-messages" role="tab"
+                                                                            data-toggle="tab">系统消息</a></li>
+                                        <li role="presentation" class="last-child"><a href="#all-messages"
+                                                                                      aria-controls="all-messages"
+                                                                                      role="tab"
+                                                                                      data-toggle="tab">全部消息</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="tab-content clearfix">
+                            <div role="tabpanel" class="normal-table tab-pane active" id="unread-messages">
+                                <!-- 内容表格开始 -->
+                                <table class="table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th class="select-th"><input type="checkbox" value="1" name=""/></th>
+                                        <th class="shop-name-th">类别</th>
+                                        <th class="content-th">内容</th>
+
+                                        <th class="type-th">工种</th>
+                                        <th class="time-th">时间</th>
+                                        <th class="number-th">订单号</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td"><strong>沈洁 向您推荐一名月嫂。</strong></td>
+
+                                        <td>月嫂</td>
+                                        <td>2分钟前</td>
+                                        <td>302201978</td>
+                                        <td>
+                                            <button class="btn-blue-small" onClick="location.href='order-shared-select.html'">查看订单</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>系统</td>
+                                        <td class="address-td"><strong>黑米 更改了您的账号权限。</strong></td>
+
+                                        <td></td>
+                                        <td>12分钟前</td>
+                                        <td></td>
+                                        <td>
+                                            <button class="btn-blue-small" onClick="location.href='all-log.html'">查看详情</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td"><strong>月嫂 马婕 试工完毕，等待上传合同。</strong></td>
+
+                                        <td>保姆</td>
+                                        <td>今天14:22</td>
+                                        <td>302201978</td>
+                                        <td>
+                                            <button class="btn-green-small">上传合同</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</strong></td>
+                                        <td class="address-td"><strong>订单：杨浦区大学路122号月嫂服务完成。</strong></td>
+
+                                        <td>月嫂</td>
+                                        <td>今天10:03</td>
+                                        <td>302201978</td>
+                                        <td>
+                                            <button class="btn-blue-small">查看订单</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td"><strong>订单：杨浦区大学路122号月嫂服务完成。</strong></td>
+
+                                        <td>钟点工</td>
+                                        <td>昨天19:56</td>
+                                        <td>302201978</td>
+                                        <td>
+                                            <button class="btn-blue-small">查看订单</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td"><strong>订单：杨浦区大学路122号月嫂服务完成。</strong></td>
+
+                                        <td>月嫂</td>
+                                        <td>3月27日 12:00</td>
+                                        <td>302121978</td>
+                                        <td>
+                                            <button class="btn-blue-small">查看订单</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div style="display:inline">
+                                  <button id="gridRecDeleteBtn" type="button" class="btn-yellow" style="margin:20px 0;">标记为已读</button>
+                                  <button id="gridRecDeleteBtn" type="button" class="btn-grey-danger" style="margin:20px 0;">删除</button>
+                                </div>
+                                <div class="page">
+                                    <ul class="pagination">
+                                        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a>
+                                        </li>
+                                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <!-- 内容表格结束 -->
+                            <div role="tabpanel" class="normal-table tab-pane" id="list-messages">
+                                <!-- 内容表格开始 -->
+                                <table class="table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th class="select-th"><input type="checkbox" value="1" name=""/></th>
+                                        <th class="shop-name-th">类别</th>
+                                        <th class="content-th">内容</th>
+
+                                        <th class="type-th">工种</th>
+                                        <th class="time-th">时间</th>
+                                        <th class="number-th">订单号</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">李阿静 向您推荐一名保姆。</td>
+
+                                        <td>保姆</td>
+                                        <td>2分钟前</td>
+                                        <td>143320867</td>
+                                        <td>
+                                            <button class="btn-blue-small">查看订单</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">沈洁 向您推荐一名月嫂。</td>
+
+                                        <td>月嫂</td>
+                                        <td>9分钟前</td>
+                                        <td>143320867</td>
+                                        <td>
+                                            <button class="btn-blue-small">查看订单</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">月嫂 马婕 试工完毕，等待上传合同。</td>
+
+                                        <td>保姆</td>
+                                        <td>今天14:22</td>
+                                        <td>302201978</td>
+                                        <td>
+                                            <button class="btn-green-small">上传合同</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="read">
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">订单:杨浦区大学路122号月嫂服务完成。</td>
+
+                                        <td>月嫂</td>
+                                        <td>今天10:03</td>
+                                        <td>302201978</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="read">
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">上海市浦东新区罗山路汤臣别墅G18</td>
+
+                                        <td>钟点工</td>
+                                        <td>昨天19:56</td>
+                                        <td>302201978</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="read">
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">上海市长宁区虹桥路王子公寓2栋404</td>
+
+                                        <td>月嫂</td>
+                                        <td>3月27日 12:00</td>
+                                        <td>302121978</td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div style="display:inline">
+                                  <button id="gridRecDeleteBtn" type="button" class="btn-yellow" style="margin:20px 0;">标记为已读</button>
+                                  <button id="gridRecDeleteBtn" type="button" class="btn-grey-danger" style="margin:20px 0;">删除</button>
+                                </div>
+                                <div class="page">
+                                    <ul class="pagination">
+                                        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a>
+                                        </li>
+                                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <!-- 内容表格结束 -->
+                            <div role="tabpanel" class="normal-table tab-pane" id="platform-messages">
+                                <!-- 内容表格开始 -->
+                                <table class="table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th class="select-th"><input type="checkbox" value="1" name=""/></th>
+                                        <th class="shop-name-th">类别</th>
+                                        <th class="content-th">内容</th>
+
+                                        <th class="type-th">工种</th>
+                                        <th class="time-th">时间</th>
+                                        <th class="number-th">订单号</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">金锴 向您推荐一名保姆。</td>
+
+                                        <td>保姆</td>
+                                        <td>2分钟前</td>
+                                        <td>143320867</td>
+                                        <td>
+                                            <button class="btn-blue-small">查看订单</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">沈洁 向您推荐一名月嫂。</td>
+
+                                        <td>月嫂</td>
+                                        <td>9分钟前</td>
+                                        <td>143320867</td>
+                                        <td>
+                                            <button class="btn-blue-small">查看订单</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">月嫂 马婕 试工完毕，等待上传合同。</td>
+
+                                        <td>保姆</td>
+                                        <td>今天14:22</td>
+                                        <td>302201978</td>
+                                        <td>
+                                            <button class="btn-green-small">上传合同</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="read">
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">订单:杨浦区大学路122号月嫂服务完成。</td>
+
+                                        <td>月嫂</td>
+                                        <td>今天10:03</td>
+                                        <td>302201978</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="read">
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">上海市浦东新区罗山路汤臣别墅G18</td>
+
+                                        <td>钟点工</td>
+                                        <td>昨天19:56</td>
+                                        <td>302201978</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr class="read">
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>系统</td>
+                                        <td class="address-td">上海市长宁区虹桥路王子公寓2栋404</td>
+
+                                        <td>月嫂</td>
+                                        <td>3月27日 12:00</td>
+                                        <td>302121978</td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div style="display:inline">
+                                  <button id="gridRecDeleteBtn" type="button" class="btn-yellow" style="margin:20px 0;">标记为已读</button>
+                                  <button id="gridRecDeleteBtn" type="button" class="btn-grey-danger" style="margin:20px 0;">删除</button>
+                                </div>
+                                <div class="page">
+                                    <ul class="pagination">
+                                        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a>
+                                        </li>
+                                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <!-- 内容表格结束 -->
+                            <div role="tabpanel" class="normal-table tab-pane" id="all-messages">
+                                <!-- 内容表格开始 -->
+                                <table class="table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th class="select-th"><input type="checkbox" value="1" name=""/></th>
+                                        <th class="shop-name-th">类别</th>
+                                        <th class="content-th">内容</th>
+
+                                        <th class="type-th">工种</th>
+                                        <th class="time-th">时间</th>
+                                        <th class="number-th">订单号</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">金锴 向您推荐一名保姆。</td>
+
+                                        <td>保姆</td>
+                                        <td>2分钟前</td>
+                                        <td>143320867</td>
+                                        <td><span class="alert-success">审核通过</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">沈洁 向您推荐一名月嫂。</td>
+
+                                        <td>月嫂</td>
+                                        <td>9分钟前</td>
+                                        <td>143320867</td>
+                                        <td><span class="alert-success">审核通过</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">月嫂 马婕 试工完毕，等待上传合同。</td>
+
+                                        <td>保姆</td>
+                                        <td>今天14:22</td>
+                                        <td>302201978</td>
+                                        <td><span class="alert-warning">审核中</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">订单:杨浦区大学路122号月嫂服务完成。</td>
+
+                                        <td>月嫂</td>
+                                        <td>今天10:03</td>
+                                        <td>302201978</td>
+                                        <td><span class="alert-success">审核通过</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">订单:杨浦区大学路122号月嫂服务完成。</td>
+
+                                        <td>钟点工</td>
+                                        <td>昨天19:56</td>
+                                        <td>302201978</td>
+                                        <td><span class="alert-danger">申请删除中</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">订单:杨浦区大学路122号月嫂服务完成。</td>
+
+                                        <td>钟点工</td>
+                                        <td>昨天19:56</td>
+                                        <td>302201978</td>
+                                        <td><span class="alert-danger">申请删除中</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">订单:杨浦区大学路122号月嫂服务完成。</td>
+
+                                        <td>钟点工</td>
+                                        <td>昨天19:56</td>
+                                        <td>302201978</td>
+                                        <td><span class="alert-danger">申请删除中</span></td>
+                                    </tr>
+                                    <tr class="read">
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">订单:杨浦区大学路122号月嫂服务完成。</td>
+
+                                        <td>钟点工</td>
+                                        <td>昨天19:56</td>
+                                        <td>302201978</td>
+                                        <td><span class="alert-danger">申请删除中</span></td>
+                                    </tr>
+                                    <tr class="read">
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>订单</td>
+                                        <td class="address-td">订单:杨浦区大学路122号月嫂服务完成。</td>
+
+                                        <td>钟点工</td>
+                                        <td>昨天19:56</td>
+                                        <td>302201978</td>
+                                        <td><span class="alert-danger">申请删除中</span></td>
+                                    </tr>
+
+                                    <tr class="read">
+                                        <td><input type="checkbox" value="1" name=""/></td>
+                                        <td>系统</td>
+                                        <td class="address-td">订单:徐汇区徐家汇26弄302号保姆服务完成。</td>
+
+                                        <td>月嫂</td>
+                                        <td>3月27日 12:00</td>
+                                        <td>302121978</td>
+                                        <td><span class="alert-success">审核通过</span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div style="display:inline">
+                                  <button id="gridRecDeleteBtn" type="button" class="btn-yellow" style="margin:20px 0;">标记为已读</button>
+                                  <button id="gridRecDeleteBtn" type="button" class="btn-grey-danger" style="margin:20px 0;">删除</button>
+                                </div>
+                                <div class="page">
+                                    <ul class="pagination">
+                                        <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a>
+                                        </li>
+                                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            <!-- 内容表格结束 -->
+                        </div>
+                        <!-- end tab-centent -->
+
+                    </div>
+                    <!-- end shop -->
+                </div>
+    </div>
+
+
+
+</body>
+
+<script type="text/javascript">
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    });
+
+    $('#myTab a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+        e.stopPropagation();
+    })
+
+//    $(function () {
+//        $(".dropdown-menu").on("click", function (e) {
+//            e.stopPropagation();
+//        })
+//    })
+
+</script>
+</html>

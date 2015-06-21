@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <script src="js/allBiz.js"></script>
+</header>
+<script>
+	function firstPageHandler() {
+		$("#gridTable").children('tr').each(function () {
+			if ($(this).next().size() > 0) {
+				$(this).prev().before(this)
+			}
+		})
+		$(".active").removeClass("active");
+		$(".firstPage").addClass("active");
+	}
+	function secondPageHandler() {
+		$("#gridTable").children('tr').each(function () {
+			if ($(this).next().size() > 0) {
+				$(this).prev().before(this)
+			}
+		})
+		$(".active").removeClass("active");
+		$(".secondPage").addClass("active");
+	}
+
+
+	function thirdPageHandler() {
+		$("#gridTable").children('tr').each(function () {
+			if ($(this).next().size() > 0) {
+				$(this).prev().before(this)
+			}
+		})
+		$(".active").removeClass("active");
+		$(".thirdPage").addClass("active");
+	}
+</script>
+<body>
+			<div class="container"><!-- 右侧开始 -->
+
+					<div class="content-wrapper">
+						<!-- 面包屑导航样式开始 -->
+						<div class="content-header-inner clearfix">
+
+							<div class="bread-nav float-left">
+								<ol class="breadcrumb">
+									<li><a href="list-local.html">订单管理</a></li>
+									<li class="active"><strong>历史订单</strong></li>
+								</ol>
+							</div>
+
+							<div class="header-tab float-left">
+								<div class="btn-group" role="group" aria-label="...">
+									<ul>
+									<li role="presentation"><a href="list-local.html" class="first-child">本地订单</a></li>
+									<li role="presentation"><a href="list-shared.html">分享订单</a></li>
+									<li role="presentation" class="active"><a href="list-history.html" class="last-child">历史订单</a></li>
+									</ul>
+								</div>
+							</div>
+
+								<div class="header-action float-right">
+						<button type="button" class="btn-blue mgl7 fr" onClick="location.href='add-list.html'">新增订单</button>
+
+						    <div class="input-group float-right">
+						     <i class="fa fa-search"></i>
+						      <input type="text" class="search-from form-control" placeholder="搜索订单">
+						    </div>
+
+							</div>
+
+						</div>
+						<!-- 面包屑导航样式结束-->
+
+					<!-- 面包屑导航样式结束 -->
+					<div class="tab-content">
+
+
+  						<div class="match_table">
+
+				<table>
+				<thead>
+					<tr>
+						<th class="select-th"><input type="checkbox" value="1" name="" /></th>
+						<th class="number-th">订单编号</th>
+						<th>雇主</th>
+						<th>阿姨</th>
+						<th>联系电话</th>
+						<th>订单生成时间</th>
+						<th>服务类型</th>
+						<th>来源</th>
+						<th>状态</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="gridTable">
+					<tr class="gridDataToBeDeleted">
+						<td><input type="checkbox" value="1" name="" /></td>
+						<td>11530261</td>
+		            	<td>李阿静1</td>
+		            	<td>刘亦菲1</td>
+		            	<td>18254758860</td>
+			            <td>2015-03-26 14:22</td>
+			            <td>月嫂</td>
+
+			            <td>本地</td>
+			            <td>已完成</td>
+						<td><button class="btn-grey-small" onClick="location.href='order-finish.html'">查看详情</button></td>
+
+						</td>
+
+					</tr>
+					<tr>
+						<td><input type="checkbox" value="1" name="" /></td>
+						<td>11530262</td>
+		            	<td>李阿静2</td>
+		            	<td>刘亦菲2</td>
+		            	<td>18254758860</td>
+			            <td>2015-03-26 14:22</td>
+			            <td>月嫂</td>
+			            <td>本地</td>
+			            <td>已完成</td>
+						<td><button class="btn-grey-small" onClick="location.href='order-finish.html'">查看详情</button></td>
+</td>
+					</tr>
+					<tr class="gridDataToBeDeleted">
+						<td><input type="checkbox" value="1" name="" /></td>
+						<td>11530263</td>
+		            	<td>李阿静3</td>
+		            	<td>刘亦菲3</td>
+		            	<td>18254758860</td>
+			            <td>2015-03-26 14:22</td>
+			            <td>月嫂</td>
+			            <td>本地</td>
+			            <td>已完成</td>
+						<td><button class="btn-grey-small" onClick="location.href='order-finish.html'">查看详情</button></td>
+
+					<tr>
+						<td><input type="checkbox" value="1" name="" /></td>
+						<td>11530264</td>
+		            	<td>李阿静4</td>
+		            	<td>刘亦菲4</td>
+		            	<td>18254758860</td>
+			            <td>2015-03-26 14:22</td>
+			            <td>月嫂</td>
+			            <td>网络</td>
+			            <td>已完成</td>
+						<td><button class="btn-grey-small" onClick="location.href='order-finish.html'">查看详情</button></td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" value="1" name="" /></td>
+						<td>11530265</td>
+		            	<td>李阿静5</td>
+		            	<td>刘亦菲5</td>
+		            	<td>18254758860</td>
+			            <td>2015-03-26 14:22</td>
+			            <td>月嫂</td>
+			            <td>网络</td>
+			           <td>已完成</td>
+						<td><button class="btn-grey-small" onClick="location.href='order-finish.html'">查看详情</button></td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" value="1" name="" /></td>
+						<td>11530266</td>
+		            	<td>李阿静6</td>
+		            	<td>刘亦菲6</td>
+		            	<td>18254758860</td>
+			            <td>2015-03-26 14:22</td>
+			            <td>月嫂</td>
+			            <td>本地</td>
+			            <td>已完成</td>
+						<td><button class="btn-grey-small" onClick="location.href='order-finish.html'">查看详情</button></td>
+					</tr>
+
+
+				</tbody>
+
+				</table>
+					<div style="display:inline">
+						<button id="gridRecDeleteBtn" type="button" class="btn-grey-danger" style="margin:20px 0;" data-toggle="modal" data-target=".modal-del">删除</button>
+					</div>
+					<div class="page">
+							<ul class="pagination">
+							 	<li class="disabled"><a aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+							<li class="active firstPage"><a onclick="firstPageHandler()">1 <span class="sr-only">(current)</span></a></li>
+							<li class="secondPage"><a onclick="secondPageHandler()">2</a></li>
+							<li class="thirdPage"><a onclick="thirdPageHandler()">3</a></li>
+
+							<li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+							</ul>
+					</div>
+
+					</div><!-- 需求卡片结束 -->
+
+
+	  					<!-- Modal -->
+			<div class="modal fade" id="shareList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">分享设置</h4>
+			      </div>
+			      <div class="modal-body">
+      			    <div class="form-content">
+
+   							<div class="form-body">
+   								<div class="modal-body-wrapper">
+									<form class="form-inline">
+
+										<div class="form-group">
+										     <label for="">分享时间：</label>
+												<input type="text" class="form-control form-control-2x datetimepicker" value=""><span class="input-span">到</span>
+												<input type="text" class="form-control form-control-2x datetimepicker">
+
+										</div>
+
+									<div class="form-group">
+										    <label for="">分享范围：</label>
+										    <!-- Small button group -->
+												<select class="form-control form-control-1x
+												"><option value="">所有门店</option></select>
+
+										</div>
+
+										<div class="form-group">
+										     <label class="laber-pading">负责人：</label>
+												<input type="text" class="form-control form-control-2x" value="">
+
+
+										</div>
+
+										<div class="form-group">
+										     <label for="">联系电话：</label>
+												<input type="text" class="form-control form-control-2x" value="">
+
+
+										</div>
+
+									</form>
+
+
+
+						      </div>
+						     </div>
+						    </div>
+      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn-none" data-dismiss="modal">取消</button>
+					        <button type="button" class="btn-green" onClick="location.href='list-shared.html'">确认分享</button>
+					      </div>
+					    </div>
+					</div>
+					</div>
+					<!-- Modal -->
+							<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+							  <div class="modal-dialog modal-sm">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title" id="myModalLabel">放弃添加</h4>
+							      </div>
+							      <div class="modal-body">
+							        <div class="form-group">
+										    <label for="">放弃原因？</label>
+										    <!-- Small button group -->
+												<select class="form-control form-control-1x
+												"><option value="仅限友店">无合适阿姨</option><option value="公开">临时决定取消</option></select>
+
+										</div>
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+							        <button type="button" class="btn btn-primary">放弃</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+							<div class="modal fade modal-del" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+							  <div class="modal-dialog modal-sm">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title" id="myModalLabel">删除订单？</h4>
+							      </div>
+							      <div class="modal-body">
+							        您确定删除当前选择的订单？
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+							        <button type="button" class="btn btn-primary">删除</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+				</div><!-- content-wrapper over -->
+			</div><!-- 订单管理结束 -->
+
+
+</body>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$(".button-slide-menu").on("click", function (){
+				$(".slide-menu").toggleClass("slide-menu-show");
+				$(".fog-hover").toggleClass("fog");
+			});
+			$(".fog-hover").on("click", function (){
+				$(".slide-menu").toggleClass("slide-menu-show");
+				$(".fog-hover").toggleClass("fog");
+			});
+
+		   $('.datetimepicker').datetimepicker({
+				format: 'yyyy-mm-dd hh:ii'
+		   })
+
+			$('#gridRecDeleteBtn').click(function () {
+				$(".gridDataToBeDeleted").remove();
+			})
+
+		});
+	</script>
+</html>

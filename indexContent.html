@@ -1,0 +1,180 @@
+<html>
+<header>
+    <script src="js/allBiz.js"></script>
+    <script src="js/sco.message.js"></script>
+</header>
+<body>
+
+<div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
+    <div class="home content-wrapper"><!-- 首页开始 -->
+
+
+<div class="row clearfix">
+<div class="dash-box col-xs-6"><!-- 首页订单动态开始 -->
+    <h3 class="mgb15"><center><strong>订单动态</strong></center></h3>
+    <div class="table-responsive">
+                <table class="table table-hover">
+                   <thead>
+                <tr>
+                  <th>阿姨</th>
+                  <th>雇主</th>
+                  <th>服务类型</th>
+                  <th>状态</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>马秋菊</strong></td>
+                  <td>李楠</td>
+                  <td>营养师</td>
+                  <td>
+                      <button type="button" class="btn-red-small" onclick="location.href='add-contract.html'">签订合同</button>
+                  </td>
+
+                </tr>
+
+                   <tr>
+                  <td><strong>陈晓洁</strong></td>
+                  <td>王大宝</td>
+                  <td>月嫂</td>
+                  <td>
+                       <button type="button" class="btn-yellow-small" onclick="location.href='order-setup.html'">正在试工</button>
+                      </td>
+                </tr>
+
+                <tr>
+                  <td><strong>李阿静</strong></td>
+                  <td>毕飞</td>
+                  <td>保姆</td>
+                  <td>
+                       <button type="button" class="btn-green-small">服务中...</button>
+                      </td>
+                </tr>
+
+                     <tr>
+                  <td><strong>陈晓洁</strong></td>
+                  <td>王大宝</td>
+                  <td>月嫂</td>
+                  <td>
+                       <button type="button" class="btn-green-small">服务中...</button>
+                      </td>
+                </tr>
+
+             
+              
+                </tbody>
+                </table>
+                <div class="btn-more mgt15"><center><button type="button" class="btn btn-info" onClick="location.href='all-list.html'">查看更多...</button></center></div>
+              </div>
+  </div><!-- 首页订单动态结束 -->
+  <div class="dash-box col-xs-6"><!-- 首页公告牌开始 -->
+    <div class="board span12">
+<h3 class="mgb15"><center><strong>系统公告</strong></center></h3>                       
+                        <ol>
+                            <li><a href="board-inner.html">5月10日23:20-23:50服务器维护</a><span class="date">5-8 12:00</span></li>
+                            <li><a href="">新补贴计划<span class="badge">热门</span></a><span class="date">5-2 4:00</span></li>
+                            <li><a href="">四月优质家政服务门店评选</a><span class="date">5-1 13:00</span></li>
+                            <li><a href="">家政在线管理系统使用教程</a><span class="date">5-1 10:00</span></li>
+                            <li><a href="">家政在线管理系统</a><span class="date">5-1 10:00</span></li>
+                        </ol>
+                                        <div class="btn-more mgt15"><center><button type="button" class="btn btn-info" onClick="location.href='all-boards.html'">查看所有公告...</button></center></div>
+
+                    </div>
+  </div><!-- 首页公告牌结束 -->
+</div>
+
+<div class="row clearfix">
+    <div class="col-xs-6"><!-- 信息统计开始 -->
+        <div class="box-data">
+             <h3 class="mgb15"><center><strong>订单统计</strong></center></h3>
+            <dl class="order-hid-dl dl-horizontal  fl f16">
+                        <dt class="gray">今日新增：</dt>
+                        <dd><a href="#"> 10 单</a></dd>
+                        <dt class="gray">待处理：</dt>
+                        <dd><a href="#">4 单</a></dd>
+                        <dt class="gray">处理中：</dt>
+                        <dd><a href="#">5 单</a></dd>
+                        <dt class="gray">分享中：</dt>
+                        <dd><a href="#">12 单</a></dd>
+                        <dt class="gray">所有订单：</dt>
+                        <dd><a href="#">1345 单</a></dd>
+                    </dl>
+        
+            <div id="canvas-holder" class="data-charts fr">
+                <canvas id="chart-area" class="mgt5" style="width: 230px; height: 115px;">
+                </div>
+</div>
+    </div><!-- 信息统计结束 -->
+
+    <div class="col-xs-6">
+        <div class="box-history box-data">
+                     <h3 class="mgb15"><center><strong>帮助反馈</strong></center></h3>
+                    <ul>
+                      <li>门店区域负责人：李阿静</li>
+                      <li>负责人电话：12283947293</li>
+                      <li>客服电话：021-142544578</li>
+                      <li>QQ交流群：23554794</li>
+                      <button class="btn-white-small mgt20">提交反馈建议</button>
+                    </ul>
+        </div>
+    </div>
+</div>
+
+
+                    
+
+
+
+                </div><!-- 首页结束 -->
+</div>
+<!-- container end -->
+
+<script>
+
+
+    var pieData = [
+        {
+            value: 300,
+            color: "#F7464A",
+            highlight: "#FF5A5E",
+            label: "保姆"
+        },
+        {
+            value: 50,
+            color: "#46BFBD",
+            highlight: "#5AD3D1",
+            label: "月嫂"
+        },
+        {
+            value: 100,
+            color: "#FDB45C",
+            highlight: "#FFC870",
+            label: "奶妈"
+        },
+        {
+            value: 40,
+            color: "#949FB1",
+            highlight: "#A8B3C5",
+            label: "营养师"
+        },
+        {
+            value: 120,
+            color: "#4D5360",
+            highlight: "#616774",
+            label: "钟点工"
+        }
+
+    ];
+ window.onload = function(){
+        var ctx = document.getElementById("chart-area").getContext("2d");
+        window.myPie = new Chart(ctx).Pie(pieData);
+      };
+//    window.onload = function () {
+//        var ctx = document.getElementById("chart-area").getContext("2d");
+//        window.myPie = new Chart(ctx).Pie(pieData);
+//    };
+
+</script>
+  <script src="js/Chart.js"></script>
+</body>
+</html>

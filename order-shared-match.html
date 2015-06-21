@@ -1,0 +1,390 @@
+<html>
+<header>
+	<script src="js/allBiz.js"></script>
+	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+	<script src="js/bootstrap-datetimepicker.js"></script>
+</header>
+<body>
+
+				<!-- Modal recommend popover -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="popover-modal-content modal-content">
+
+	        <div class="popover-modal-header modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;	</span></button>
+		        <h4 class="pop-title modal-title" id="myModalLabel">阿姨推荐</h4>
+	        </div>
+
+		        <div class="modal-body clearfix">
+			        <dl class="popover-dl dl-horizontal f16">
+						<dt class="gray">推荐阿姨：</dt>
+						<dd>耿莉娟<span> <a href="#" title="查看详细资料" class="fontblue"><u>查看简历 &gt;</u></a></span></dd>
+						<dt class="gray">工种：</dt>
+						<dd ><span class="tag">月嫂</span><span class="tag">保姆</span><span class="tag">看护老人</span></dd>
+					</dl>
+					<dl class="popover-dl dl-horizontal f16">
+						<dt class="gray">推荐至：</dt>
+						<dd>虹桥家政 <span class="gray">地址：闵行区虹莘路 3333 弄</span></dd>
+						<dt class="gray">负责人：</dt>
+						<dd>李阿静</dd>
+						<dt class="gray">电话：</dt>
+						<dd>185 2837 8979</dd>
+					</dl>
+						<p class="pl10 gray">提醒：一个订单一次只能推荐一个阿姨，如需更换阿姨推荐，需等对方公司答复。</p>
+		        </div>
+
+	        <div class="popover-modal-footer modal-footer">
+		        <button type="button" class="btn-none btn btn-default" data-dismiss="modal">取消</button>
+		        <button id="confirmPromote" type="button" class="btn-blue btn btn-primary"><i class="fa fa-check-circle"></i> 确认推荐</button>
+	        </div>
+
+	    </div>
+	  </div>
+	</div>
+
+
+
+
+
+
+
+
+			<div class="container">
+				<div class="content-wrapper">
+
+					<!-- 面包屑导航样式开始 -->
+					<div class="content-header-inner clearfix">
+						<div class="bread-nav float-left">
+							<ol class="breadcrumb">
+								<li><a href="list-local.html">订单管理</a></li>
+		 						<li><a href="list-shared.html">分享的订单</a></li>
+		 						<li class="active"><strong>符合的阿姨</strong></li>
+							</ol>
+						</div>
+
+					<div class="header-action float-right">
+						<button type="button" class="btn-blue mgl7 fr" data-toggle="modal" data-target="#">全部阿姨</button>
+
+
+
+							</div>
+
+						</div>
+						<!-- 面包屑导航样式结束 -->
+		<!-- 匹配列表开始 -->
+	 	<div class="match_table">
+
+				<table>
+				<thead>
+					<tr>
+						<th>姓名</th>
+						<th>工种</th>
+						<th>状态</th>
+						<th>籍贯</th>
+						<th>学历</th>
+						<th>备注</th>
+						<th width="20%">操作</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><strong>刘亦菲</strong></td>
+						<td>保姆</td>
+						<td>在职</td>
+						<td>江苏</td>
+						<td>初中</td>
+						<td>会做菜</td>
+						<td>
+						<!-- 侧边页开始 -->
+						<div id="st-trigger-effects" class="column">
+							<button class="btn-white-small button-slide-menu" type="button">查看简历</button> <!-- 触发按钮 -->
+								<div class="slide-menu slide-menu-style">
+									<div class="item-container">
+
+<div class="cv-mini-summary cv-summary mgb40 clearfix "> <!-- 浮动清除 -->
+						<img src="img/avata.png" alt="avata" width="90" height="90" class="mgt5 fl">
+						<div class="fr cv-mini cv-descriptions mgt5 fl">
+							<h3>刘亦菲</h3>
+							<p class="gray f14">山东日照人，拥有 <mark>2 年月嫂从业经验</mark>，普通话标准、懂初级英语，擅长做东北菜。</p>
+						</div>
+
+					</div> <!-- cv-summary -->
+
+
+
+<div class="title-box clearfix"> <!-- 浮动清除 -->
+					<div class="line-mini line">
+						<h3 class="b titles titles-mini">基础简历</h3>
+					</div>
+							<dl class="dl-horizontal-mini dl-horizontal f16 fl">
+  								<dt class="gray">姓名：</dt>
+  								<dd>耿莉娟</dd>
+  								<dt class="gray">性别：</dt>
+  								<dd>女</dd>
+  								<dt class="gray">籍贯：</dt>
+  								<dd>山东烟台</dd>
+  								<dt class="gray">学历：</dt>
+  								<dd >大专</dd>
+							</dl>
+
+							<dl class="dl-horizontal-mini dl-horizontal f16 fl">
+  								<dt class="gray">年龄：</dt>
+  								<dd>40</dd>
+  								<dt class="gray">属相：</dt>
+  								<dd>猪</dd>
+  								<dt class="gray">星座：</dt>
+  								<dd>天秤座</dd>
+  								<dt class="gray">婚姻状况：</dt>
+  								<dd >已婚</dd>
+							</dl>
+
+							<dl class="dl-horizontal-mini dl-horizontal f16 fl">
+  								<dt class="gray">求职意向：</dt>
+  								<dd>月嫂/保姆</dd>
+  								<dt class="gray">期望薪水：</dt>
+  								<dd>7-8000/月</dd>
+  								<dt class="gray">任职日期：</dt>
+  								<dd>即日</dd>
+  								<p><a href="#" title="查看详细资料" class="fontblue"><u>查看详细资料 &gt;</u></a></p>
+							</dl>
+
+					</div><!-- title-box end -->
+
+								<!-- 从业经历开始 -->
+								<div class="title-box clearfix"> <!-- 浮动清除 -->
+									<div class="line-mini line">
+										<h3 class="b titles titles-mini">从业经历</h3>
+								</div>
+
+								<div class="timeline-mini timeline">
+								    	<div class="event-wrap-mini event-wrap">
+								      			<h3>老阿姨家政公司<img src="img/cp_logo_1.png" alt="avata" width="36" height="36"></h3>
+
+								      			<div class="event-box title-box clearfix"> <!-- 浮动清除 -->
+									<ul class="list-inline">
+								 						 <li>职务一：<span>老人看护</span></li>
+								 						 <li>服务地点：<span>静安区达安花园</span></li>
+								 						 <li>薪资：<span>3000元/月</span></li>
+													</ul>
+													<ul class="list-inline">
+								 						 <li>职务二：<span>月嫂</span></li>
+								 						 <li>服务地点：<span>长宁区心族公寓</span></li>
+								 						 <li>薪资：<span>4200元/月</span></li>
+													</ul>
+													</div><!-- event-box end -->
+								      	</div>  <!-- event-wrap end -->
+
+								    	<div class="event-wrap-mini event-wrap">
+								      			<h3>洁家家政公司<img src="img/cp_logo_2.png" alt="avata" width="36" height="36"></h3>
+
+								      			<div class="event-box title-box clearfix"> <!-- 浮动清除 -->
+													<ul class="list-inline">
+								 						 <li>职务一：<span>老人看护</span></li>
+								 						 <li>服务地点：<span>静安区达安花园</span></li>
+								 						 <li>薪资：<span>3000元/月</span></li>
+													</ul>
+												</div><!-- event-box end -->
+
+								      	</div>  <!-- event-wrap end -->
+
+								      	</div>
+
+								 </div>
+								 <!-- 从业经历结束 -->
+
+
+										<div class="b-group clearfix">
+
+										<button class="btn-white button-slide-menu fl"><i class="fa fa-refresh"></i> 重新选择</button>
+										<button type="button" class="btn-blue-big btn-position btn btn-primary btn-lg fl" data-toggle="modal" data-target="#myModal">
+										  <i class="fa fa-thumbs-o-up"></i> 推荐此阿姨
+										</button>
+
+										</div>
+									</div>
+								</div>
+							<div class="fog-hover"></div> <!-- 右侧页遮罩层 -->
+						</div>
+							<!-- 侧边页结束 -->
+						
+							<button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> 
+							</td>
+					</tr>
+					<tr class="odd">
+						<td><strong>杨幂</strong></td>
+						<td>保姆/月嫂</td>
+						<td>待岗</td>
+						<td>山东</td>
+						<td>高中</td>
+						<td>懂一点英语</td>
+						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
+					</tr>
+					<tr>
+						<td><strong>刘强东</strong></td>
+						<td>月嫂</td>
+						<td>待岗</td>
+						<td>山东</td>
+						<td>高中</td>
+						<td></td>
+						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
+					<tr class="odd">
+						<td><strong>刘亦菲</strong></td>
+						<td>保姆</td>
+						<td>在职</td>
+						<td>江苏</td>
+						<td>初中</td>
+						<td>会做菜</td>
+						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
+					</tr>
+					<tr>
+						<td><strong>杨幂</strong></td>
+						<td>保姆/月嫂</td>
+						<td>待岗</td>
+						<td>山东</td>
+						<td>高中</td>
+						<td>懂一点英语</td>
+						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
+					</tr>
+					<tr class="odd">
+						<td><strong>刘强东</strong></td>
+						<td>月嫂</td>
+						<td>待岗</td>
+						<td>山东</td>
+						<td>高中</td>
+						<td></td>
+						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
+					</tr>
+					<tr>
+						<td><strong>周杰伦</strong></td>
+						<td>月嫂</td>
+						<td>待岗</td>
+						<td>江苏</td>
+						<td>高中</td>
+						<td></td>
+						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
+					</tr>
+					<tr class="odd">
+						<td><strong>王尼玛</strong></td>
+						<td>月嫂</td>
+						<td>待岗</td>
+						<td>湖南</td>
+						<td>高中</td>
+						<td></td>
+						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
+					</tr>
+					<tr>
+						<td><strong>刘强东</strong></td>
+						<td>月嫂</td>
+						<td>待岗</td>
+						<td>山东</td>
+						<td>高中</td>
+						<td></td>
+						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
+					</tr>
+					<tr class="odd">
+						<td><strong>蔡康永</strong></td>
+						<td>月嫂</td>
+						<td>待岗</td>
+						<td>河南</td>
+						<td>高中</td>
+						<td></td>
+						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+		<!-- 匹配列表结束 -->
+		 					<!-- Modal -->
+			<div class="modal fade" id="shareList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">分享设置</h4>
+			      </div>
+			      <div class="modal-body">
+      			    <div class="form-content">
+
+   							<div class="form-body">
+   								<div class="modal-body-wrapper">
+									<form class="form-inline">
+
+										<div class="form-group">
+										     <label for="">分享时间：</label>
+												<input type="text" class="form-control form-control-2x datetimepicker" value=""><span class="input-span">到</span>
+												<input type="text" class="form-control form-control-2x datetimepicker">
+
+										</div>
+
+									<div class="form-group">
+										    <label for="">分享范围：</label>
+										    <!-- Small button group -->
+												<select class="form-control form-control-1x
+												"><option value="">所有门店</option></select>
+
+										</div>
+
+										<div class="form-group">
+										     <label class="laber-pading">负责人：</label>
+												<input type="text" class="form-control form-control-2x" value="">
+
+
+										</div>
+
+										<div class="form-group">
+										     <label for="">联系电话：</label>
+												<input type="text" class="form-control form-control-2x" value="">
+
+
+										</div>
+
+									</form>
+
+
+
+						      </div>
+						     </div>
+						    </div>
+      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn-none" data-dismiss="modal">取消</button>
+					        <button type="button" class="btn-green" onClick="location.href='list-shared.html'">确认分享</button>
+					      </div>
+					    </div>
+					</div>
+					</div>
+			</div>
+			<!-- content-wrapper over -->
+
+
+					</div>
+					<!-- 订单管理结束 -->
+
+
+
+
+
+
+
+
+</body>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	$(".button-slide-menu").on("click", function (){
+							$(".slide-menu").toggleClass("slide-menu-show");
+							$(".fog-hover").toggleClass("fog");
+		});
+	$(".fog-hover").on("click", function (){
+							$(".slide-menu").toggleClass("slide-menu-show");
+							$(".fog-hover").toggleClass("fog");
+	});
+	$("#confirmPromote").on("click", function() {
+		parent.document.getElementById("rightContent").setAttribute("src", "list-shared.html")
+	})
+});
+
+</script>
+</html>

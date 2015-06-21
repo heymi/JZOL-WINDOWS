@@ -1,0 +1,135 @@
+<html>
+<header>
+	<script src="js/allBiz.js"></script>
+	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+	<script src="js/bootstrap-datetimepicker.js"></script>
+</header>
+<body>
+
+<div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
+				<div class="content-wrapper">
+					<div class="content-header-inner">
+					<div class="bread-nav float-left">
+						<ol class="breadcrumb">
+							<li><a href="client.html">雇主管理</a></li>
+	 						<li class="active"><strong>合同详情</strong></li>
+						</ol>
+					</div>				
+				</div>
+					<div class="form-dialog">
+						<div class="form-content clearfix">     
+   							<div class="form-body">
+   								<div class="modal-body-wrapper">
+									<form class="form-inline">
+										
+										<div class="form-group">
+										    <label for="exampleInputEmail1">合同类型：</label>
+										    电子合同
+										</div>
+										<div class="form-group">
+										  <label for="">客户姓名：</label>
+										   李阿静
+										</div>
+										<div class="form-group">
+										  <label for="">阿姨姓名：</label>
+										   刘亦菲
+										</div>
+										<div class="form-group">
+										    <label for="">签订日期：</label>
+										    2015.03.26 14:22
+										</div>
+										<div class="form-group">
+										    <label for="">合同开始：</label>
+											2015.03.26 14:22	
+									    </div>
+									    <div class="form-group">
+										    <label for="">合同结束：</label>
+											2015.08.26 14:22
+									    </div>
+									 
+										<div class="form-group">
+										   
+										   <label for="exampleInputPassword1">合同工资：</label>
+										    4600<span class="input-span">元/月</span>
+										 </div>
+									 
+										<div class="form-group">   
+										    <label for="exampleInputPassword1">客户预付中介费：</label>
+										   880元</span>
+										</div>
+										<div class="form-group">
+										   
+										   <label for="exampleInputPassword1">阿姨中介费：</label>
+										    1060<span class="input-span">元</span>
+										    </div>
+									 
+										<div class="form-group">
+										    <label for="exampleInputPassword1">客户中介费：</label>
+										    480<span class="input-span">元</span>
+										</div>
+										
+									  
+								
+									
+									<div class="form-group">
+									    <label for="">备注：</label>
+									    雇主与阿姨有过一段浪漫感情史。
+									    
+									  </div>
+									  	</form>
+
+						      </div>
+						     </div>
+
+
+						      <div class="form-footer float-right">
+						      
+						      	<button type="button" class="btn-none" data-toggle="modal" data-target=".bs-example-modal-sm">修改</button>
+						       
+						       
+						      </div>
+						    </div>
+						    
+						<!-- Modal -->
+							<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+							  <div class="modal-dialog modal-sm">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title" id="myModalLabel">放弃添加</h4>
+							      </div>
+							      <div class="modal-body">
+							        您确定放弃当前添加？
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+							        <button type="button" class="btn btn-primary">放弃</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+					</div>	
+			</div><!-- container end -->
+		</div>
+	</section>
+
+	<script src="js/jquery-2.0.2.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-datetimepicker.js"></script>
+	<script src="js/sco.message.js"></script>
+	<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
+</body>
+<script type="text/javascript"> 
+	$('#message_trigger_ok').on('click', function(e) {
+    e.preventDefault();
+    $.scojs_message('添加成功', $.scojs_message.TYPE_OK);
+  });
+  $('#message_trigger_err').on('click', function(e) {
+    e.preventDefault();
+    $.scojs_message('添加失败', $.scojs_message.TYPE_ERROR);
+    });
+   $('.datetimepicker').datetimepicker({
+    format: 'yyyy-mm-dd hh:ii'
+});
+</script>  
+</html>

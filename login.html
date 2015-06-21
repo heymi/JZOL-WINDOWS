@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="initial-scale = 1, user-scalable = no">
+    <title>家政在线</title>
+    <script src="js/jquery-2.0.2.js"></script>
+    <link rel="stylesheet" href="./css/login.css">
+    <!--<script language="javascript" type="text/javascript" src="http://fw.qq.com/ipaddress">-->
+    <!--<script type="text/javascript" src="http://www.coding123.net/getip.ashx?js=1"></script>-->
+
+</head>
+<body>
+<div id="version"></div>
+<div id="loaded"></div>
+<script type="application/javascript" src="./js/autoUpdate.js"></script>
+<nav>
+    <div class="header-inner">
+        <div class="logo"><a href="index.html"><img src="img/logo.svg"></a><span>后台管理系统</span></div>
+    </div>
+</nav>
+<section>
+    <!--avoid using 'login' class because it's conflict with bootstrap class-->
+    <div class="login1">
+        <div class="switch">
+            <ul>
+                <li><a class="selected">登录</a></li>
+                <li><a href="＃">注册</a></li>
+            </ul>
+        </div>
+        <div class="inner1">
+            <form id="loginForm">
+                <!--<form id="loginForm" action="http://test.fuhui.com/user/add" method="post">-->
+                <input id="userName" type="text" name="userName" placeholder="输入账号（手机号）" autofocus="true" required>
+                <img src="img/icon_profile.svg"></br>
+                <input id="passWord" type="password" name="passWord" placeholder="输入密码" required></br>
+                <input id="saveCookie" type="checkbox" value=""/>
+                <span>保持登陆</span>
+                <button type="submit">登录</button>
+            </form>
+        </div>
+        <!-- end inner -->
+
+
+        <div class="more">
+            <ul>
+                <li><a class="forget_password" href="">忘记密码?</a></li>
+                <li><a href="">无法登陆账号</a></li>
+                <li><a href="">反馈建议</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- end login -->
+    <div class="banner"><h1>欢迎登录家政在线</h1></div>
+</section>
+<!-- end section -->
+</body>
+
+<script>
+    $('#loginForm').submit(function (e) {
+        var param = {};
+        param.userName = $('#userName').val();
+        param.passWord = $('#passWord').val();
+//        param.ip = ip.split('|')[0];
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: "http://test.fuhui.com/user/shopLogin",
+            data: param,
+//            data: $('#loginForm').serialize(),
+            async: false,
+            error: function (request) {
+//                location.href = 'index.html'
+                window.location.reload()
+            },
+            success: function (data, textStatus) {
+                var obj = JSON.parse(data)
+                if (obj.code == 0) {
+                    window.open('index.html', '_self')
+                } else {
+                    alert('用户名/密码错误！')
+                    window.location.reload()
+                }
+            }
+        });
+        e.preventDefault(); //STOP default action
+        e.unbind(); //unbind. to stop multiple form submit.
+    });
+</script>
+</html>

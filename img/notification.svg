@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="77px" height="76px" viewBox="0 0 77 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch Beta 3.3 (11920) - http://www.bohemiancoding.com/sketch -->
+    <title>notification</title>
+    <desc>Created with Sketch Beta.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="home" sketch:type="MSArtboardGroup" transform="translate(-779.000000, -218.000000)">
+            <g id="notification" sketch:type="MSLayerGroup" transform="translate(779.717723, 218.000000)">
+                <ellipse id="Path" fill="#DA453D" sketch:type="MSShapeGroup" cx="70.0779221" cy="13.1733333" rx="5.92207792" ry="6.08"></ellipse>
+                <g id="notifications-paused" transform="translate(0.214895, 0.000000)" fill="#F1F1F1" sketch:type="MSShapeGroup">
+                    <path d="M31.2777708,75.5572816 C35.3254823,75.5572816 38.6372462,72.1572039 38.6372462,68.0015534 L23.9182953,68.0015534 C23.9182953,72.1572039 27.2300593,75.5572816 31.2777708,75.5572816 L31.2777708,75.5572816 Z M55.1960661,52.8900971 L55.1960661,32.1118447 C55.1960661,20.400466 47.4686168,10.9558058 36.7973774,8.31130097 L36.7973774,5.66679612 C36.7973774,2.64450485 34.221561,0 31.2777708,0 C28.3339806,0 25.7581642,2.64450485 25.7581642,5.66679612 L25.7581642,8.31130097 C15.0869247,10.9558058 7.35947548,20.400466 7.35947548,32.1118447 L7.35947548,52.8900971 L0,60.4458252 L0,64.2236893 L62.5555415,64.2236893 L62.5555415,60.4458252 L55.1960661,52.8900971 L55.1960661,52.8900971 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

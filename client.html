@@ -1,0 +1,188 @@
+<html>
+<header>
+    <script src="js/allBiz.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+    <link href="js/bootgrid/jquery.bootgrid.css" rel="stylesheet"/>
+    <script src="js/bootstrap-datetimepicker.js"></script>
+    <script src="js/bootgrid/jquery.bootgrid.js"></script>
+    <script src="js/bootgrid/jquery.bootgrid.fa.js"></script>
+    <script src="js/moderniz.2.8.1.js"></script>
+</header>
+<body>
+
+<div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
+    <div class="content-wrapper">
+
+        <!-- 面包屑导航样式开始 -->
+        <div class="content-header-inner clearfix">
+            <div class="bread-nav float-left">
+                <ol class="breadcrumb">
+                    <li><a href="client.html">雇主管理</a></li>
+                    <li class="active"><strong>全部雇主</strong></li>
+                </ol>
+            </div>
+        </div>
+        <div class="tab-content clearfix">
+
+
+            <div class="normal-table">
+                <div class="normal-table">
+                    <!-- 内容表格开始 -->
+                    <table id="dataGrid" class="table table-condensed table-hover table-striped" data-selection="true"
+                           data-multi-select="true" data-row-select="true" data-keep-selection="true">
+                        <thead>
+                        <tr>
+                            <th data-column-id="id" data-identifier="true" data-width="0px">id</th>
+                            <th data-column-id="username" data-order="asc" data-align="center"
+                                data-header-align="center">姓名
+                            </th>
+                            <th data-column-id="phone">联系电话</th>
+                            <th data-column-id="addr">地址</th>
+                            <th data-column-id="source">来源</th>
+                            <th data-column-id="remark">备注</th>
+                            <th data-column-id="operations" class="action-th">操作</th>
+                        </tr>
+                        </thead>
+                    </table>
+                    <div style="display:inline">
+                        <button type="button" class="btn-grey-danger" style="margin:20px 0;" data-toggle="modal"
+                                data-target=".modal-del">删除
+                        </button>
+                    </div>
+
+                </div>
+                <!-- 内容表格结束 -->
+            </div>
+
+
+            <!-- 面包屑导航样式结束 -->
+
+
+        </div>
+        <!-- end tab-centent -->
+        <div id="confirmDeleteModal" class="modal fade modal-del" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">删除订单？</h4>
+                    </div>
+                    <div class="modal-body">
+                        您确定删除当前选择的订单？
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="confirmDelete">删除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end shop -->
+</div>
+</section>
+<script>
+    $(function () {
+                function init() {
+                    $("#dataGrid").bootgrid({
+                                ajax: true,
+                                ajaxSettings: {
+                                    method: "GET",
+                                    cache: false
+                                },
+                                url: function(){
+                                    var searchPhrase = $("#dataGrid").bootgrid("getSearchPhrase");
+                                    if(searchPhrase.length){
+                                        return "http://test.fuhui.com/employer/list";
+                                    }else{
+                                        return "http://test.fuhui.com/employer/list";
+                                    }
+                                },
+                                responseHandler: function (res) {
+                                    var retResult = {
+                                        "current": 1,
+                                        "rows": []
+                                    }
+                                    retResult["rows"] = res.data.list;
+                                    retResult["rowCount"] = res.data.list.length;
+                                    retResult["total"] = res.data.pager.count;
+                                    retResult["current"] = res.data.pager.page;
+                                    return retResult;
+                                },
+                                formatters: {
+                                    "operations": function (column, row) {
+//                                        return "<a href=\"client-info.html?clientId="+ row.id + "\">" +  + "</a>";
+                                        return "<button type=\"button\" class=\"btn-green-small\" onClick=\"location.href='client-info.html?employerId=" + row.id + "'\">查看资料</button>";
+                                    }
+                                },
+                                rowCount: [10, 12, 18],
+                                labels: {
+                                    infos: "",
+                                    search: "搜索雇主",
+                                    noResults: '没有记录'
+                                },
+                                padding: 100,
+                                templates: {
+                                    header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}} shopGridHeader\">" +
+                                    "<div class=\"row\">" +
+                                    "<div class=\"col-sm-12 actionBar shopActionBar\">" +
+                                    "<button type=\"button\" class=\"btn-blue mgl7 fr\" onClick=\"location.href='add-client.html'\">新增雇主</button>" +
+                                    "<p class=\"{{css.search}}\"></p>" +
+//                    "<p class=\"{{css.actions}}\"></p>" +
+                                    "</div>" +
+                                    "</div>" +
+                                    "</div>",
+                                    search: "<div class=\"{{css.search}}\">" +
+                                    "<div class=\"input-group\">" +
+                                    "<i class=\"fa fa-search\"></i> " +
+                                    "<input type=\"text\" class=\"{{css.searchField}} search-from\" placeholder=\"{{lbl.search}}\" />" +
+                                    "</div>" +
+                                    "</div>"
+                                },
+                                css: {
+                                    search: "shopSearchField search"
+//                    actions : "shopActionField"
+                                }
+                            }
+                    ).on("selected.rs.jquery.bootgrid", function (e) {
+                            });
+
+                }
+
+                init();
+
+                $("#confirmDelete").on("click", function () {
+                    var removdeIdsArr = $("#dataGrid").bootgrid("getSelectedRows");
+                    var removedIdsStr = '';
+                    if (!removdeIdsArr || removdeIdsArr.length == 0) {
+                        $('#confirmDeleteModal').modal('hide');
+                        return;
+                    }
+                    removedIdsStr = removdeIdsArr.join(',');
+                    $.ajax({
+                        url : 'http://test.fuhui.com/employer/del?isdel=1&eid=' + removedIdsStr,
+                        type : 'GET',
+//                        type : 'POST',
+                        data : {},
+                        success : function (ret) {
+                            $('#confirmDeleteModal').modal('hide');
+                            $("#dataGrid").bootgrid("remove");
+                        },
+                        error : function(ret) {
+                            alert('内部错误')
+                        }
+                    })
+
+                });
+            }
+    );
+</script>
+</body>
+<script type="text/javascript">
+
+    $('#myTab li:first').tab('show') // Select first tab
+
+</script>
+</html>

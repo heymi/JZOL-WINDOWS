@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20px" height="15px" viewBox="0 0 20 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch Beta 3.3 (11920) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_visibility</title>
+    <desc>Created with Sketch Beta.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="icon_visibility" sketch:type="MSLayerGroup" fill="#727272">
+            <path d="M10,0.533333333 C5.45454545,0.533333333 1.54545455,3.42666667 0,7.53333333 C1.54545455,11.64 5.45454545,14.5333333 10,14.5333333 C14.5454545,14.5333333 18.4545455,11.64 20,7.53333333 C18.4545455,3.42666667 14.5454545,0.533333333 10,0.533333333 L10,0.533333333 Z M10,12.2 C7.45454545,12.2 5.45454545,10.1466667 5.45454545,7.53333333 C5.45454545,4.92 7.45454545,2.86666667 10,2.86666667 C12.5454545,2.86666667 14.5454545,4.92 14.5454545,7.53333333 C14.5454545,10.1466667 12.5454545,12.2 10,12.2 L10,12.2 Z M10,4.73333333 C8.45454545,4.73333333 7.27272727,5.94666667 7.27272727,7.53333333 C7.27272727,9.12 8.45454545,10.3333333 10,10.3333333 C11.5454545,10.3333333 12.7272727,9.12 12.7272727,7.53333333 C12.7272727,5.94666667 11.5454545,4.73333333 10,4.73333333 L10,4.73333333 Z" id="Shape" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,141 @@
+<html>
+<header>
+	<script src="js/allBiz.js"></script>
+	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+	<script src="js/bootstrap-datetimepicker.js"></script>
+</header>
+<body>
+
+<div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
+				<div class="content-wrapper">
+					<div class="content-header-inner">
+					<div class="bread-nav float-left">
+						<ol class="breadcrumb">
+							<li><a href="account.html">账号管理</a></li>
+	 						<li class="active"><strong>新增账号</strong></li>
+						</ol>
+					</div>				
+				</div>
+					<div class="form-dialog">
+						<div class="form-content clearfix">     
+   							<div class="form-body">
+   								<div class="modal-body-wrapper">
+									<form class="form-inline">
+										<h5 class="form-title">基本信息</h5>
+										<div class="form-group">
+										    <label for="exampleInputEmail1">员工姓名：</label>
+										    <input type="text" class="form-control" id="InputName">
+										</div>
+										<div class="form-group">
+										   <label for="exampleInputPassword1" class="text-indent">性别：</label>
+										   <label class="radio">
+											  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 先生
+											</label>
+											<label class="radio">
+											  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 女士
+											</label>
+										</div>
+										<div class="form-group">
+										    <label for="">手机号码：</label>
+										    <input type="text" class="form-control" id="InputName">
+										   
+										</div>
+									
+										<div class="form-group">
+										    <label for="">家庭地址：</label>
+										   <select class="form-control"><option value="上海市">上海市</option><option value="北京市">北京市</option></select>
+										   <select class="form-control"><option value="静安区">静安区</option><option value="浦东新区">浦东新区</option><option value="徐汇区">徐汇区</option><option value="闸北区">闸北区</option><option value="长宁区">长宁区</option><option value="闵行区">闵行区</option><option value="杨浦区">杨浦区</option></select>
+										    <input type="text" class="form-control form-control-3x" id="InputName"> 
+										</div>
+										<div class="form-group">
+										    <label for="">身份证号：</label>
+										    <input type="text" class="form-control form-control-3x" id="InputName"> 
+										</div>
+									  
+									</form>
+									<form class="form-inline">
+										<h5 class="form-title">登录信息</h5>
+										<div class="form-group">
+										    <label for="exampleInputEmail1">登录账号：</label>
+										    <input type="text" class="form-control" id="InputName" placeholder="11 位手机号码">
+										</div>
+<fieldset disabled>
+	<div class="form-group">
+      <label for="disabledTextInput">默认密码：</label>
+      <input type="text" id="disabledTextInput" class="form-control" placeholder="123456">
+      <p class="light mgt15 pl10">* 请告知员工此默认密码，默认密码在第一次登录时会要求其进行修改</p>
+    </div>
+				</fieldset>					 
+</form>
+
+						<form class="form-inline">
+						<h5 class="form-title">用户组选择</h5>
+									  <div class="form-group">
+										   <label for="exampleInputPassword1" class="text-indent">级别：</label>
+										   <label class="radio">
+											  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 业务员
+											</label>
+											<label class="radio">
+											  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 店长
+											</label>
+										</div>
+
+								
+
+									</form>
+						      </div>
+						     </div>
+
+
+						      <div class="form-footer fr">
+						      
+						      	<button type="button" class="btn-none btn btn-default" data-toggle="modal" data-target=".bs-example-modal-sm">放弃</button>
+						        <button id="message_trigger_ok" type="button" class="btn-green-big">保存信息</button>
+						       
+						      </div>
+						    </div>
+						    
+						<!-- Modal -->
+							<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+							  <div class="modal-dialog modal-sm">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title" id="myModalLabel">放弃添加</h4>
+							      </div>
+							      <div class="modal-body">
+							        您确定放弃当前添加？
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+							        <button type="button" class="btn btn-primary">放弃</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+					</div>	
+			</div><!-- container end -->
+		</div>
+	</section>
+
+	<script src="js/jquery-2.0.2.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-datetimepicker.js"></script>
+	<script src="js/sco.message.js"></script>
+	<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
+</body>
+<script type="text/javascript"> 
+	$('#message_trigger_ok').on('click', function(e) {
+    e.preventDefault();
+    $.scojs_message('添加成功', $.scojs_message.TYPE_OK);
+		parent.document.getElementById("rightContent").setAttribute("src", "account.html");
+  });
+  $('#message_trigger_err').on('click', function(e) {
+    e.preventDefault();
+    $.scojs_message('添加失败', $.scojs_message.TYPE_ERROR);
+    });
+   $('#datetimepicker').datetimepicker({
+    format: 'yyyy-mm-dd hh:ii'
+});
+</script>  
+</html>

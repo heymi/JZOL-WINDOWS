@@ -1,0 +1,274 @@
+<html>
+<header>
+    <script src="js/allBiz.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+    <script src="js/bootstrap-datetimepicker.js"></script>
+    <script src="js/dropzone.js"></script>
+    <script src="js/jquery-validation/dist/jquery.validate.js"></script>
+</header>
+<body>
+<script>
+    var auntExists = false;
+    var auntId = '';
+    function checkAuntExists(rec) {
+        var param = {};
+        param.identity = rec.value;
+        $.ajax({
+            url: 'http://test.fuhui.com/employee/identity',
+            type: 'POST',
+            data: param,
+            success: function (returnData) {
+                var returnObj = parseJSON(returnData);
+                if (returnObj.code == '0') {
+                    auntExists = true;
+                    auntId = returnObj.data.id;
+                    $("#name").val(returnObj.data.name);
+                    $("#sex input[value=" + returnObj.data.sex + "]").prop('checked', true);
+//                    $("#qualification input[value="+ returnObj.data.qualification +"]").prop('checked', true);
+                    $("#phone").val(returnObj.data.phone);
+                    $("#age").val(returnObj.data.age);
+                    $("#nationality").val(returnObj.data.nationality);
+                    $("#stature").val(returnObj.data.stature);
+                    $("#body").val(returnObj.data.body);
+                    $("#qualification input[value=" + returnObj.data.qualification + "]").prop('checked', true);
+                    $("#age").val(returnObj.data.age);
+                } else {
+                    auntExists = false
+                    delete auntId;
+//                    $('#basicInfoForm')[0].reset();
+                }
+            },
+            error: function () {
+                auntExists = false
+                delete auntId;
+//                $('#basicInfoForm')[0].reset();
+            }
+        })
+    }
+</script>
+<div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
+    <div class="content-wrapper">
+        <div class="content-header-inner">
+            <div class="bread-nav float-left">
+                <ol class="breadcrumb">
+                    <li><a href="aunt.html">阿姨管理</a></li>
+                    <li class="active"><strong>新增阿姨</strong></li>
+                </ol>
+            </div>
+
+            <div class="header-action float-right">
+
+                <button type="button" class="btn-blue mgl7 fr">使用身份证阅读器录入</button>
+
+            </div>
+
+        </div>
+        <div class="form-dialog">
+            <div class="form-content clearfix">
+
+                <div class="form-body" id="basicInfo">
+                    <div class="modal-body-wrapper">
+                        <form class="form-inline" id="basicInfoForm"  role="form">
+                            <h5 class="form-title">基本资料</h5>
+
+                            <div class="form-group">
+                                <label id="" for="">身份证号：</label>
+                                <input type="text" class="form-control form-control-2x" id="identity"
+                                       onchange="checkAuntExists(this)" required>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">阿姨姓名：</label>
+                                <input type="text" class="form-control form-control-1x" id="name" required>
+
+                                <div class="form-group" id="sex" required="true">
+                                    <label>性别：</label>
+                                    <label class="radio">
+                                        <input type="radio" name="gender" id="male" value="1"> 男
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="gender" id="female" value="0" checked> 女
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!--<div class="form-group" id="status">-->
+                                <!--<label for="status">状态：</label>-->
+                                <!--<label class="radio">-->
+                                    <!--<input type="radio" name="status" id="available" value="0"> 待岗-->
+                                <!--</label>-->
+                                <!--<label class="radio">-->
+                                    <!--<input type="radio" name="status" id="onJob" value="1"> 在职-->
+                                <!--</label>-->
+                            <!--</div>-->
+                            <div class="form-group">
+                                <label for="">联系电话：</label>
+                                <input type="text" class="form-control form-control-2x" id="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="age">年龄：</label>
+                                <input type="text" class="form-control form-control-1x" id="age">
+                                <label for="native_prov">籍贯：</label>
+                                <select class="form-control" id="native_prov">
+                                    <option value="不限">江苏省</option>
+                                    <option value="江苏">浙江省</option>
+                                    <option value="不限">上海市</option>
+                                    <option value="江苏">北京市</option>
+                                </select>
+                                <select class="form-control" id="native_city">
+                                    <option value="不限">扬州市</option>
+                                    <option value="江苏">南京市</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="">期望薪资：</label>
+                                月薪：
+                                <input id="expected_salary" type="text" class="form-control">
+                                时薪：
+                                <input id="daily_salary" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+
+                                <label for="nationality">民族：</label>
+                                <input type="text" class="form-control form-control-1x" id="nationality">
+                                <label for="zodiac_sign">属相：</label>
+                                <select class="form-control" id="zodiac_sign">
+                                    <option value="不限">猴</option>
+                                    <option value="江苏">鸡</option>
+                                    <option value="不限">猪</option>
+                                    <option value="江苏">龙</option>
+                                    <option value="不限">马</option>
+                                    <option value="江苏">蛇</option>
+                                </select>
+                                <label for="exampleInputPassword1">星座：</label>
+                                <select class="form-control">
+                                    <option value="不限">狮子座</option>
+                                    <option value="江苏">处女座</option>
+                                    <option value="不限">双子座</option>
+                                    <option value="江苏">射手座</option>
+                                    <option value="不限">金牛座</option>
+                                    <option value="江苏">天蝎座</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="stature">身高：</label>
+                                <input type="text" class="form-control form-control-1x" id="stature"> cm
+                                <label for="body">体重：</label>
+                                <input type="text" class="form-control form-control-1x" id="body"> 斤
+                            </div>
+
+                            <div class="form-group">
+                                <label for="qualification">学历：</label>
+
+                                <div class="radio-group" id="qualification">
+                                    <label class="radio">
+                                        <input type="radio" name="inlineRadioOptions" value="1">
+                                        小学
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="inlineRadioOptions" value="2">
+                                        初中
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="inlineRadioOptions" value="3">
+                                        高中
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="inlineRadioOptions" value="4">
+                                        大专
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="inlineRadioOptions" value="5">
+                                        本科
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="inlineRadioOptions" value="6">
+                                        其他
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="form-footer float-right">
+                    <button type="button" class="btn-none" data-dismiss="modal">放弃</button>
+
+                    <button id="message_trigger_ok" type="button" class="btn-green-big">下一步</button>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container end -->
+</div>
+</section>
+
+<script src="js/jquery-2.0.2.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-datetimepicker.js"></script>
+<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
+</body>
+
+<script type="text/javascript">
+    $('#message_trigger_ok').on('click', function (e) {
+
+        e.preventDefault();
+
+        var paramObj = {};
+        paramObj.name = $("#name").val();
+        paramObj.sex = $("#sex input:checked").val();
+        paramObj.phone = $("#phone").val();
+        paramObj.identity = $("#identity").val();
+        paramObj.age = $("#age").val();
+        paramObj.native_prov = '1';
+        paramObj.native_city = '1';
+        paramObj.native_area = "1";
+        paramObj.native_address = "1";
+        paramObj.marriage = "1";
+        paramObj.nationality = '1';
+        paramObj.zodiac_sign = '1';
+        paramObj.body = $("#body").val();
+        paramObj.stature = $("#stature").val();
+        paramObj.qualification = $("#qualification input:checked").val();
+        paramObj.living_prov = "1";
+        paramObj.living_city = "1";
+        paramObj.living_area = "1";
+        paramObj.living_address = "1";
+        paramObj.expect_salary = $('#expect_salary').val();
+        paramObj.daily_salary = $('#daily_salary').val();
+
+
+        var postUrl = '';
+        if (auntExists) {
+            postUrl = "http://test.fuhui.com/employee/update";
+        } else {
+            postUrl = "http://test.fuhui.com/employee/add";
+        }
+        $.ajax({
+            url: postUrl,
+//            url: postUrl,
+            type: 'POST',
+            data: paramObj,
+            success: function (ret) {
+//                $.scojs_message('添加成功', $.scojs_message.TYPE_OK);
+                var retObj = JSON.parse(ret);
+                if (retObj.code == '0') {
+                    if (auntExists) {
+                        parent.document.getElementById("rightContent").setAttribute("src", "addAunt-JobDetail.html?employee_id=" + auntId);
+                    } else {
+                        parent.document.getElementById("rightContent").setAttribute("src", "addAunt-JobDetail.html?employee_id=" + retObj.data.id);
+                    }
+                }
+            },
+            error: function (ret) {
+                alert('error');
+            }
+        })
+
+    });
+    $('#datetimepicker').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii'
+    });
+</script>
+</html>

@@ -1,0 +1,135 @@
+<html>
+<header>
+	<script src="js/allBiz.js"></script>
+	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+	<script src="js/bootstrap-datetimepicker.js"></script>
+</header>
+<body>
+
+<div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
+				<div class="content-wrapper">
+					<div class="content-header-inner">
+					<div class="bread-nav float-left">
+						<ol class="breadcrumb">
+							<li><a href="client.html"></a>新增合同</li>
+						</ol>
+					</div>				
+				</div>
+					<div class="form-dialog">
+						<div class="form-content clearfix">     
+   							<div class="form-body">
+   								<div class="modal-body-wrapper">
+									<form class="form-inline">
+										
+										<div class="form-group">
+										    <label for="exampleInputEmail1">合同类型：</label>
+										    <select class="form-control"><option value="电子合同">电子合同</option><option value="纸质合同">纸质合同</option></select>
+										</div>
+										<div class="form-group">
+										  <label for="">客户姓名：</label>
+										    <input type="text" class="form-control" id="InputName">
+										</div>
+										<div class="form-group">
+										  <label for="">阿姨姓名：</label>
+										    <input type="text" class="form-control" id="InputName">
+										</div>
+										<div class="form-group">
+										    <label for="">签订日期：</label>
+										    <input type="text" class="form-control datetimepicker" value="">
+										</div>
+										<div class="form-group">
+										    <label for="">合同开始：</label>
+												<input type="text" class="form-control datetimepicker" value="">
+									    </div>
+									    <div class="form-group">
+										    <label for="">合同结束：</label>
+												<input type="text" class="form-control datetimepicker" value="">
+									    </div>
+									 
+										<div class="form-group">
+										   
+										   <label for="exampleInputPassword1">合同工资：</label>
+										    <input type="text" class="form-control" id="InputNumber"><span class="input-span">元/月</span>
+										 </div>
+									 
+										<div class="form-group">   
+										    <label for="exampleInputPassword1">客户预付中介费：</label>
+										    <input type="text" class="form-control" id="InputNumber"><span class="input-span">元</span>
+										</div>
+										<div class="form-group">
+										   
+										   <label for="exampleInputPassword1">阿姨中介费：</label>
+										    <input type="text" class="form-control" id="InputNumber"><span class="input-span">元</span>
+										    </div>
+									 
+										<div class="form-group">
+										    <label for="exampleInputPassword1">客户中介费：</label>
+										    <input type="text" class="form-control" id="InputNumber"><span class="input-span">元</span>
+										</div>
+										
+									  
+								
+									
+									<div class="form-group">
+									    <label for="">备注：</label>
+									    <textarea class="form-control"></textarea>
+									    
+									  </div>
+									  	</form>
+
+						      </div>
+						     </div>
+
+
+						      <div class="form-footer float-right">
+						      
+						      	<button type="button" class="btn-none" data-toggle="modal" data-target=".bs-example-modal-sm">放弃</button>
+						        <button id="message_trigger_ok" type="button" class="btn-green-big" onClick="location.href='order-service.html'">保存</button>
+						       
+						      </div>
+						    </div>
+						    
+						<!-- Modal -->
+							<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+							  <div class="modal-dialog modal-sm">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title" id="myModalLabel">放弃添加</h4>
+							      </div>
+							      <div class="modal-body">
+							        您确定放弃当前添加？
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-default" data-dismiss="modal" onClick="location.href='order-service.html'">取消</button>
+							        <button type="button" class="btn btn-primary">放弃</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+					</div>	
+			</div><!-- container end -->
+		</div>
+	</section>
+
+	<script src="js/jquery-2.0.2.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-datetimepicker.js"></script>
+	<script src="js/sco.message.js"></script>
+	<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
+</body>
+<script type="text/javascript"> 
+	$('#message_trigger_ok').on('click', function(e) {
+    e.preventDefault();
+    $.scojs_message('添加成功', $.scojs_message.TYPE_OK);
+	parent.document.getElementById("rightContent").setAttribute("src", "contract-info.html");
+  });
+  $('#message_trigger_err').on('click', function(e) {
+    e.preventDefault();
+    $.scojs_message('添加失败', $.scojs_message.TYPE_ERROR);
+    });
+   $('.datetimepicker').datetimepicker({
+    format: 'yyyy-mm-dd hh:ii'
+});
+</script>  
+</html>

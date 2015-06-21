@@ -1,0 +1,401 @@
+<html>
+<header>
+    <script src="js/allBiz.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+    <script src="js/bootstrap-datetimepicker.js"></script>
+</header>
+<body>
+
+<div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
+            <div class="content-wrapper">
+
+                <!-- 面包屑导航样式开始 -->
+                <div class="content-header-inner clearfix">
+                    <div class="bread-nav float-left">
+                        <ol class="breadcrumb">
+                            <li><a href="list-local.html">订单管理</a></li>
+                            <li><a href="list-shared.html">我分享的</a></li>
+                            <li class="active"><strong>推荐的阿姨</strong></li>
+                        </ol>
+                    </div>
+
+                    <div class="header-action float-right">
+                        <!--
+                        <button type="button" class="btn-blue mgl7 fr" data-toggle="modal" data-target="#myModal">新增订单</button>
+-->
+                        <div class="input-group float-right">
+                            <i class="fa fa-search"></i>
+                            <input type="text" class="search-from form-control" placeholder="搜索订单">
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- 面包屑导航样式结束 -->
+                <!-- 匹配列表开始 -->
+
+                <div class="match_table">
+
+                    <table>
+                        <thead>
+                        <tr>
+                            <th style="width:10%;">姓名</th>
+                            <th style="width:20%;">工种</th>
+                            <th style="width:8%;">状态</th>
+                            <th style="width:8%;">籍贯</th>
+                            <th style="width:8%;">学历</th>
+                            <th style="width:11%;">来自</th>
+                            <th style="width:15%;">备注</th>
+                            <th style="width:22%;">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong>刘亦菲</strong></td>
+                            <td>保姆</td>
+                            <td>在职</td>
+                            <td>江苏</td>
+                            <td>初中</td>
+                            <td><u>虹桥家政</u></td>
+                            <td>会做菜</td>
+                            <td>
+                                <!-- 侧边页开始 -->
+                                <div id="st-trigger-effects" class="column">
+                                    <button class="btn-grey-danger" data-toggle="tooltip" data-placement="top" title="点击会删除此阿姨的信息，并且对方公司可再次推荐其他阿姨">不合适</button>
+                                    <button class="btn-green button-slide-menu" type="button">简历</button>
+                                    <!-- 触发按钮 -->
+
+                                    <div class="slide-menu slide-menu-style">
+                                        <div class="item-container">
+
+                                            <div class="cv-mini-summary cv-summary mgb40 clearfix "> <!-- 浮动清除 -->
+                                                <img src="img/avata.png" alt="avata" width="90" height="90"
+                                                     class="mgt5 fl">
+
+                                                <div class="fr cv-mini cv-descriptions mgt5 fl">
+                                                    <h3>刘亦菲</h3>
+
+                                                    <p class="gray f14">山东日照人，拥有
+                                                        <mark>2 年月嫂从业经验</mark>
+                                                        ，普通话标准、懂初级英语，擅长做东北菜。
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                            <!-- cv-summary -->
+
+
+                                            <div class="title-box clearfix"> <!-- 浮动清除 -->
+                                                <div class="line-mini line">
+                                                    <h3 class="b titles titles-mini">基础简历</h3>
+                                                </div>
+                                                <dl class="dl-horizontal-mini dl-horizontal f16 fl">
+                                                    <dt class="gray">姓名：</dt>
+                                                    <dd>耿莉娟</dd>
+                                                    <dt class="gray">性别：</dt>
+                                                    <dd>女</dd>
+                                                    <dt class="gray">籍贯：</dt>
+                                                    <dd>山东烟台</dd>
+                                                    <dt class="gray">学历：</dt>
+                                                    <dd>大专</dd>
+                                                </dl>
+
+                                                <dl class="dl-horizontal-mini dl-horizontal f16 fl">
+                                                    <dt class="gray">年龄：</dt>
+                                                    <dd>40</dd>
+                                                    <dt class="gray">属相：</dt>
+                                                    <dd>猪</dd>
+                                                    <dt class="gray">星座：</dt>
+                                                    <dd>天秤座</dd>
+                                                    <dt class="gray">婚姻状况：</dt>
+                                                    <dd>已婚</dd>
+                                                </dl>
+
+                                                <dl class="dl-horizontal-mini dl-horizontal f16 fl">
+                                                    <dt class="gray">求职意向：</dt>
+                                                    <dd>月嫂/保姆</dd>
+                                                    <dt class="gray">期望薪水：</dt>
+                                                    <dd>7-8000/月</dd>
+                                                    <dt class="gray">任职日期：</dt>
+                                                    <dd>即日</dd>
+                                                </dl>
+
+                                            </div>
+                                            <!-- title-box end -->
+
+                                            <!-- 从业经历开始 -->
+                                            <div class="title-box clearfix"> <!-- 浮动清除 -->
+                                                <div class="line-mini line">
+                                                    <h3 class="b titles titles-mini">从业经历</h3>
+                                                </div>
+
+                                                <div class="timeline-mini timeline">
+                                                    <div class="event-wrap-mini event-wrap">
+                                                        <h3>老阿姨家政公司<img src="img/cp_logo_1.png" alt="avata" width="36"
+                                                                        height="36"></h3>
+
+                                                        <div class="event-box title-box clearfix"> <!-- 浮动清除 -->
+                                                            <ul class="list-inline">
+                                                                <li>职务一：<span>老人看护</span></li>
+                                                                <li>服务地点：<span>静安区达安花园</span></li>
+                                                                <li>薪资：<span>3000元/月</span></li>
+                                                            </ul>
+                                                            <ul class="list-inline">
+                                                                <li>职务二：<span>月嫂</span></li>
+                                                                <li>服务地点：<span>长宁区心族公寓</span></li>
+                                                                <li>薪资：<span>4200元/月</span></li>
+                                                            </ul>
+                                                        </div>
+                                                        <!-- event-box end -->
+                                                    </div>
+                                                    <!-- event-wrap end -->
+
+                                                    <div class="event-wrap-mini event-wrap">
+                                                        <h3>洁家家政公司<img src="img/cp_logo_2.png" alt="avata" width="36"
+                                                                       height="36"></h3>
+
+                                                        <div class="event-box title-box clearfix"> <!-- 浮动清除 -->
+                                                            <ul class="list-inline">
+                                                                <li>职务一：<span>老人看护</span></li>
+                                                                <li>服务地点：<span>静安区达安花园</span></li>
+                                                                <li>薪资：<span>3000元/月</span></li>
+                                                            </ul>
+                                                        </div>
+                                                        <!-- event-box end -->
+
+                                                    </div>
+                                                    <!-- event-wrap end -->
+
+                                                </div>
+
+                                            </div>
+                                            <!-- 从业经历结束 -->
+
+
+                                            <div class="b-group clearfix">
+
+                                                <button class="btn-white button-slide-menu fl"><i
+                                                        class="fa fa-refresh"></i> 重新选择
+                                                </button>
+                                                <button type="button"
+                                                        class="btn-blue-big btn-position btn btn-primary btn-lg fl"
+                                                        data-toggle="modal" data-target="#myModal">
+                                                    <i class="fa fa-check"></i> 查看联系方式
+                                                </button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="fog-hover"></div>
+                                    <!-- 右侧页遮罩层 -->
+                                </div>
+
+                                <!-- 侧边页结束 -->
+                            </td>
+                        </tr>
+                        <tr class="odd">
+                            <td><strong>杨幂</strong></td>
+                            <td>保姆/月嫂/营养</td>
+                            <td>待岗</td>
+                            <td>山东</td>
+                            <td>高中</td>
+                            <td><u>闵行家政</u></td>
+                            <td>懂一点英语</td>
+                            <td>
+                                 <button class="btn-grey-danger" data-toggle="tooltip" data-placement="top" title="点击会删除此阿姨的信息，并且对方公司可再次推荐其他阿姨">不合适</button>
+                                <button class="btn-green">简历</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td><strong>刘强东</strong></td>
+                            <td>月嫂</td>
+                            <td>待岗</td>
+                            <td>山东</td>
+                            <td>高中</td>
+                            <td><u>徐汇家政</u></td>
+                            <td></td>
+                            <td>
+                                 <button class="btn-grey-danger" data-toggle="tooltip" data-placement="top" title="点击会删除此阿姨的信息，并且对方公司可再次推荐其他阿姨">不合适</button>
+                                <button class="btn-green">简历</button>
+                            </td>
+
+                        <tr class="odd">
+                            <td><strong>刘亦菲</strong></td>
+                            <td>保姆</td>
+                            <td>在职</td>
+                            <td>江苏</td>
+                            <td>初中</td>
+                            <td><u>安亭家政</u></td>
+                            <td>会做菜</td>
+                            <td>
+                                <button class="btn-grey-danger" data-toggle="tooltip" data-placement="top" title="点击会删除此阿姨的信息，并且对方公司可再次推荐其他阿姨">不合适</button>
+                                <button class="btn-green">简历</button>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td><strong>杨幂</strong></td>
+                            <td>保姆/月嫂</td>
+                            <td>待岗</td>
+                            <td>山东</td>
+                            <td>高中</td>
+                            <td><u>好再来家政</u></td>
+                            <td>懂一点英语</td>
+                            <td>
+                                 <button class="btn-grey-danger" data-toggle="tooltip" data-placement="top" title="点击会删除此阿姨的信息，并且对方公司可再次推荐其他阿姨">不合适</button>
+                                <button class="btn-green">简历</button>
+                            </td>
+
+                        </tr>
+                        <tr class="odd">
+                            <td><strong>刘强东</strong></td>
+                            <td>月嫂</td>
+                            <td>待岗</td>
+                            <td>山东</td>
+                            <td>高中</td>
+                            <td><u>虹桥家政</u></td>
+                            <td></td>
+                            <td>
+                                 <button class="btn-grey-danger" data-toggle="tooltip" data-placement="top" title="点击会删除此阿姨的信息，并且对方公司可再次推荐其他阿姨">不合适</button>
+                                <button class="btn-green">简历</button>
+                            </td>
+
+                        </tr>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 匹配列表结束 -->
+            </div>
+            <!-- content-wrapper over -->
+
+
+        </div>
+        <!-- 订单管理结束 -->
+
+
+        <div class="content4 hide">
+
+        </div>
+    </div>
+    <!-- end container -->
+    </div><!-- end content-inner -->
+</section>
+
+<script src="js/jquery-2.0.2.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
+<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+
+<!-- Modal recommend popover -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="popover-modal-content modal-content">
+
+            <div class="popover-modal-header modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;	</span></button>
+                <h4 class="pop-title modal-title" id="myModalLabel">联系家政公司</h4>
+            </div>
+
+            <div class="modal-body clearfix">
+
+                <dl class="popover-dl dl-horizontal f16 fl">
+                    <dt class="gray">阿姨姓名：</dt>
+                    <dd>耿莉娟</dd>
+                    <dt class="gray">阿姨来自：</dt>
+                    <dd>虹桥家政 <span class="gray">地址：闵行区虹莘路 3333 弄</span></dd>
+                    <dt class="gray"> 推荐人：</dt>
+                    <dd>李阿静 <u>
+                        <mark>185 2837 8979</mark>
+                    </u></dd>
+
+                </dl>
+                <dl class="popover-dl dl-horizontal f16 fl">
+                    <dt class="gray">雇主需求：</dt>
+                    <textarea class="text-gray"> 每天 8：30-20：00，照看刚满月的男娃。要求人友善，会哄孩子，有带同龄宝宝丰富经验 有耐心，会做辅食，5000左右六休一，优秀者工资可谈。</textarea>
+                    <dt class="gray">薪水范围：</dt>
+                    <dd>6200 - 7000 元/月</dd>
+                    <dt class="gray">上门时间：</dt>
+                    <!-- datepicker -->
+                    <dd>
+
+                        <input size="16" type="text" value="2012-06-15 14:45" readonly class="form_datetime">
+
+                        <script type="text/javascript">
+                            $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+                        </script>
+
+                        <span> 试工 3 天，总工期 1 个月</span></dd>
+                </dl>
+            </div>
+
+            <div class="popover-modal-footer modal-footer">
+                <button type="button" class="btn-none btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn-blue btn btn-primary" onClick="location.href='order-setup.html'"><i
+                        class="fa fa-check-circle"></i> 已联系，确定上工
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+<script type="text/javascript">
+$(function () {
+$('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        $(".button-slide-menu").on("click", function () {
+            $(".slide-menu").toggleClass("slide-menu-show");
+            $(".fog-hover").toggleClass("fog");
+        });
+        $(".fog-hover").on("click", function () {
+            $(".slide-menu").toggleClass("slide-menu-show");
+            $(".fog-hover").toggleClass("fog");
+        });
+    });
+
+
+    $('.form_datetime').datetimepicker({
+        language: 'zh-CN',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1
+    });
+    $('.form_date').datetimepicker({
+        language: 'zh-CN',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+    $('.form_time').datetimepicker({
+        language: 'zh-CN',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 1,
+        minView: 0,
+        maxView: 1,
+        forceParse: 0
+    });
+
+</script>
+</html>

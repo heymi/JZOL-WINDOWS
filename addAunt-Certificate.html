@@ -1,0 +1,73 @@
+<html>
+<header>
+    <script src="js/allBiz.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+    <script src="js/bootstrap-datetimepicker.js"></script>
+    <script src="js/dropzone.js"></script>
+</header>
+<body>
+
+<script>
+    function uploadDaily () {
+        var paramObj = {};
+        paramObj.type = 'Health';
+        paramObj.employee_id = '31';
+        paramObj.upfile = $('#dailyLifePic').val();
+        $.ajax({
+            url :'http://test.fuhui.com/employee/upload',
+            type : 'POST',
+            data : paramObj,
+            success : function (ret) {
+                var aaa = 123;
+            },
+            error : function () {
+                var aaa = 123;
+            }
+        })
+
+    }
+</script>
+
+<div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
+    <div class="content-wrapper">
+        <h5 class="form-title">相关证件及证书</h5>
+
+
+        <div>
+            <form action="http://test.fuhui.com/employee/upload?type=identity&employee_id=63" class="dropzone dz-clickable" method="post"
+                  id="dailyLifePic"  enctype="multipart/form-data" paramName="upfile">
+                <h5 class="form-title">生活照</h5>
+                <input type="hidden" name="type" value="Health">
+                <input type="hidden" name="employee_id" value="67">
+                <div class="dz-message">
+                    点击上传或拖入图片<br>
+                    <span class="note">图片大小为900*600以内</span>
+                </div>
+                <input type="submit" value="上传"/>
+            </form>
+        </div>
+        <div>
+            <form action="http://www.torrentplease.com/dropzone.php" class="dropzone dz-clickable"
+                  id="certificate">
+                <h5 class="form-title">技能证书</h5>
+
+                <div class="dz-message">
+                    点击上传或拖入图片<br>
+                    <span class="note">图片大小为900*600以内</span>
+                </div>
+            </form>
+        </div>
+
+        <form action="http://test.fuhui.com/employee/upload" enctype="multipart/form-data"
+              method="post"
+              name="uploadfile">
+            <input type="hidden" name="type" value="Health">
+            <input type="hidden" name="employee_id" value="31">
+            <br/>上传文件：<input type="file" name="upfile"/><br>
+            <input type="submit" value="上传"/>
+        </form>
+
+    </div>
+</div>
+</body>
+</html>

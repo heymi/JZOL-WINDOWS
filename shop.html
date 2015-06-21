@@ -1,0 +1,211 @@
+<html>
+<header>
+    <script src="js/allBiz.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+    <link href="js/bootgrid/jquery.bootgrid.css" rel="stylesheet"/>
+    <script src="js/bootstrap-datetimepicker.js"></script>
+    <script src="js/bootgrid/jquery.bootgrid.js"></script>
+    <script src="js/bootgrid/jquery.bootgrid.fa.js"></script>
+    <script>
+        var shop_paramMap = {
+            type: {
+                1: '连锁',
+                2: '加盟'
+            },
+            status: {
+                0: '审核中',
+                1: '审核未通过',
+                2: '审核通过',
+                3: '申请删除中'
+            }
+        }
+    </script>
+</header>
+<body>
+
+<div class="container clearfix" style="background-color: #FFF"><!-- 右侧开始 -->
+    <div class="content-wrapper">
+
+        <!-- 面包屑导航样式开始 -->
+        <div class="content-header-inner clearfix">
+            <div class="bread-nav float-left">
+                <ol class="breadcrumb">
+                    <li><a href="shop.html">门店管理</a></li>
+                    <li class="active"><strong>门店列表</strong></li>
+                </ol>
+            </div>
+        </div>
+        <div class="tab-content clearfix">
+            <div class="normal-table">
+                <!-- 内容表格开始 -->
+                <table id="dataGrid" class="table table-condensed table-hover table-striped" data-selection="true"
+                       data-multi-select="true" data-row-select="true" data-keep-selection="true">
+                    <thead>
+                    <tr>
+                        <th data-column-id="id" data-identifier="true" data-width="0px"></th>
+                        <th data-column-id="name" data-identifier="true" data-order="asc" data-align="center"
+                            data-header-align="center" data-width="100px">名称
+                        </th>
+                        <th data-column-id="address" data-order="asc" data-align="center" data-header-align="center"
+                            data-width="80%" class="address-th">位置
+                        </th>
+                        <th data-column-id="business" data-order="asc" data-align="center" data-header-align="center"
+                            data-width="70%" class="sort-th">主营业务
+                        </th>
+                        <th data-column-id="type" data-order="asc" data-align="center" data-header-align="center"
+                            data-width="25%" class="type-th">类型
+                        </th>
+                        <th data-column-id="manager_name" data-order="asc" data-align="center"
+                            data-header-align="center"
+                            data-width="30%" class="name-th">店长
+                        </th>
+                        <th data-column-id="manager_phone" data-order="asc" data-align="center"
+                            data-header-align="center" data-width="50%" class="number-th">联系电话
+                        </th>
+                        <th data-column-id="status" data-order="asc" data-align="center" data-header-align="center"
+                            data-width="40%" class="number-th">状态
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div style="display:inline">
+                    <button id="removeSelected" type="button" class="btn btn-grey-danger" style="margin:20px 0;"
+                            data-toggle="modal" data-target=".modal-del">删除
+                    </button>
+                </div>
+            </div>
+            <!-- 内容表格结束 -->
+        </div>
+        <div class="modal fade modal-del" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+             aria-hidden="true" id="confirmDeleteModal">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">删除门店？</h4>
+                    </div>
+                    <div class="modal-body">
+                        您确定删除当前选择的门店？
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="confirmDelete">删除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 内容表格结束 -->
+</div>
+<!-- 面包屑导航样式结束 -->
+
+
+<script>
+    $(function () {
+                function init() {
+                    $("#dataGrid").bootgrid({
+                                ajax: true,
+//                post: function ()
+//                {
+//                    /* To accumulate custom parameter with the request object */
+//                    return {
+//                        id: "b0df282a-0d67-40e5-8558-c9e93b7befed"
+//                    };
+//                },
+                                url: function(){
+                                    var searchPhrase = $("#dataGrid").bootgrid("getSearchPhrase");
+                                    if(searchPhrase.length){
+                                        return "http://test.fuhui.com/Shop/list";
+                                    }else{
+                                        return "http://test.fuhui.com/Shop/list";
+                                    }
+                                },
+                                responseHandler: function (res) {
+                                    var retResult = {};
+                                    retResult["rows"] = res.data.list;
+                                    retResult["rowCount"] = res.data.list.length;
+                                    retResult["total"] = res.data.pager.count;
+                                    retResult["current"] = parseInt(res.data.pager.page);
+                                    return retResult;
+                                },
+                                formatters: {
+                                    "link": function (column, row) {
+                                        return "<a href=\"#\">" + column.id + ": " + row.id + "</a>";
+                                    },
+                                    "type": function (column, row) {
+                                        return shop_paramMap.type[row.status]
+                                    },
+                                    "status": function (column, row) {
+                                        return shop_paramMap.status[row.status]
+                                    }
+                                },
+                                rowCount: [10, 12, 18],
+                                labels: {
+                                    infos: "",
+                                    search: "搜索门店",
+                                    noResults: '没有记录'
+                                },
+                                padding: 100,
+                                templates: {
+                                    header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}} shopGridHeader\">" +
+                                    "<div class=\"row\">" +
+                                    "<div class=\"col-sm-12 actionBar shopActionBar\">" +
+                                    "<button type=\"button\" class=\"btn-blue mgl7 fr\" onClick=\"location.href='add-shop.html'\">新增门店</button>" +
+                                    "<p class=\"{{css.search}}\"></p>" +
+//                    "<p class=\"{{css.actions}}\"></p>" +
+                                    "</div>" +
+                                    "</div>" +
+                                    "</div>",
+                                    search: "<div class=\"{{css.search}}\">" +
+                                    "<div class=\"input-group\">" +
+                                    "<i class=\"fa fa-search\"></i> " +
+                                    "<input type=\"text\" class=\"{{css.searchField}} search-from\" placeholder=\"{{lbl.search}}\" />" +
+                                    "</div>" +
+                                    "</div>"
+                                },
+                                css: {
+                                    search: "shopSearchField search"
+//                    actions : "shopActionField"
+                                }
+                            }
+                    )
+                }
+
+                init();
+
+                $("#confirmDelete").on("click", function () {
+                    var removdeIdsArr = $("#dataGrid").bootgrid("getSelectedRows");
+                    alert(removdeIdsArr)
+
+                    var removedIdsStr = '';
+                    if (!removdeIdsArr || removdeIdsArr.length == 0) {
+                        return;
+                    }
+                    removedIdsStr = removdeIdsArr.join(',');
+                    $.ajax({
+                        url: 'http://test.fuhui.com/Shop/del',
+                        type: 'POST',
+                        data: {id : removedIdsStr},
+                        success: function (ret) {
+                            $('#confirmDeleteModal').modal('hide');
+                            $("#dataGrid").bootgrid("remove");
+                        },
+                        error: function (ret) {
+                            $('#confirmDeleteModal').modal('hide');
+                            alert('内部错误')
+                        }
+                    })
+
+                });
+            }
+    );
+</script>
+</body>
+
+<script type="text/javascript">
+    $('#myTab li:first').tab('show') // Select first tab
+</script>
+</html>

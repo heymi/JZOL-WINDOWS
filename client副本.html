@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+		<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
+		<title>家政在线</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">	
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/kit.css">	
+    <link rel="stylesheet" href="css/bootstrap-table.min.css">
+    <link rel="stylesheet" href="css/style.css" >	
+</head>
+<body>
+	<div class="red_nav navbar-fixed-top" role="navigation"><!-- 导航栏开始 -->
+		<div class="header-inner"><!-- 导航栏内容开始 -->
+			<div class="logo"><a href="index.html"><img src="img/logo.svg"></a></div>
+			<div class="search"><!-- 搜索开始 -->
+				 <form class="search navbar-form navbar-left" role="search">
+        			<div class="form-group">
+        			  <input type="text" class="form-control" placeholder="搜索订单和阿姨">
+        			  <img src="img/icon_search.svg">
+       				</div>
+        				<button type="submit" class="btn btn-default">搜索</button>
+     			 </form>
+     		</div><!-- 搜索结束 -->
+			<div class="navigation-bar"><!-- 导航栏右侧开始 -->
+				<ul> 
+					<li><a href=""><img src="img/icon_bell.svg"><span>通知</span></a></li>
+					
+					<li><a href=""><img src="img/icon_head.png"><span>老阿姨家政</span></a>
+						<ul>
+							<li><a href="＃"><span>个人资料</span></a></li>
+							<li><a href="＃"><span>设置中心</span></a></li>
+							<li><a href="#"><span>退出登录</span></a></li>
+						</ul>
+					</li>
+				</ul>
+			</div><!-- 导航栏右侧结束 -->
+		</div><!-- 导航栏内容结束 -->
+	</div><!-- 导航栏结束 -->
+	<section><!-- 主体开始 -->
+		<div class="content-inner"><!-- 主题内容开始 -->
+			<div class="menu"><!-- 菜单开始 -->
+				<ul><li><a href="index.html">首页</a></li>
+					<li class="shop">
+						<a href="shop.html"><img src="img/arrow.svg">门店管理</a>
+					</li>
+					<li class="list">
+						<a href="list-local.html"><img src="img/arrow.svg">订单管理</a>
+					</li>
+					<li class="aunt">
+						<a href="aunt.html"><img src="img/arrow.svg">阿姨管理</a>
+					</li>
+					<li class="client selected">
+						<a href="client.html"><img src="img/arrow.svg">雇主管理</a>
+					</li>
+					<!-- 第一期隐藏
+					<li class="data">
+						<a href="data.html"><img src="img/arrow.svg">数据管理</a>
+					</li>
+					<li class="communication">
+						<a href="communication.html"><img src="img/arrow.svg">内部管理</a>
+					</li>
+					-->
+					<li class="account">
+						<a href="account.html"><img src="img/arrow.svg">账号管理</a>
+					</li>
+				</ul>
+			</div><!-- 菜单结束 -->
+			<div class="container">
+				<div class="content-wrapper">
+					
+				<!-- 面包屑导航样式开始 -->			
+				<div class="content-header-inner">
+					<div class="bread-nav float-left">
+						<ol class="breadcrumb">
+							<li><a href="client.html">雇主管理</a></li>	
+	 						<li class="active"><strong>全部雇主</strong></li>
+						</ol>
+					</div>
+
+					
+
+					<div class="header-action float-right">
+								<button type="button" class="btn-blue mgl7 fr" onClick="location.href='add-client.html'">新增雇主</button>
+						    <div class="input-group float-right">
+						      <i class="fa fa-search"></i>
+						      <input type="text" class="search-from form-control" placeholder="搜索雇主">  
+						    </div> 
+					</div>
+				</div>
+				<div class="container">
+<div id="toolbar" class="fixed-table-toolbar" style="margin-bottom: -40px">
+    <button id="re_send_selected" class="btn btn-danger remove" disabled="">
+        重新发送选中邀请
+    </button>
+</div>
+<div class="bootstrap-table"><div class="fixed-table-toolbar"><div class="pull-right search"><input class="form-control" type="text" placeholder="搜索"></div></div><div class="fixed-table-container" style="height: 491px; padding-bottom: 37px;"><div class="fixed-table-header" style="margin-right: 0px;"><table class="table table-hover" style="width: 1138px;"><thead>
+
+    <tr><th class="bs-checkbox " style="width: 36px; "><div class="th-inner "><input name="btSelectAll" type="checkbox"></div><div class="fht-cell" style="width: 36px;"></div></th><th style=""><div class="th-inner ">ID</div><div class="fht-cell" style="width: 61px;"></div></th><th style=""><div class="th-inner ">受邀人名称</div><div class="fht-cell" style="width: 95px;"></div></th><th style=""><div class="th-inner ">受邀人手机</div><div class="fht-cell" style="width: 113px;"></div></th><th style=""><div class="th-inner ">受邀人邮箱</div><div class="fht-cell" style="width: 159px;"></div></th><th style=""><div class="th-inner ">邀请人名称</div><div class="fht-cell" style="width: 96px;"></div></th><th style=""><div class="th-inner ">邀请人部门</div><div class="fht-cell" style="width: 96px;"></div></th><th style=""><div class="th-inner ">邀请时间</div><div class="fht-cell" style="width: 126px;"></div></th><th style=""><div class="th-inner ">邀请状态</div><div class="fht-cell" style="width: 205px;"></div></th><th style=""><div class="th-inner ">操作</div><div class="fht-cell" style="width: 142px;"></div></th></tr>
+    </thead></table></div><div class="fixed-table-body"><div class="fixed-table-loading" style="top: 37px; display: none;">正在努力地加载数据中，请稍候……</div><table id="table" data-toggle="table" data-url="data/invited.json" data-click-to-select="true" data-row-style="rowStyle" data-query-params="queryParams" data-pagination="true" data-search="true" data-height="600" class="table table-hover" style="margin-top: -41px;">
+    <thead>
+
+    <tr><th class="bs-checkbox " style="width: 36px; "><div class="th-inner "><input name="btSelectAll" type="checkbox"></div><div class="fht-cell"></div></th><th style=""><div class="th-inner ">ID</div><div class="fht-cell"></div></th><th style=""><div class="th-inner ">受邀人名称</div><div class="fht-cell"></div></th><th style=""><div class="th-inner ">受邀人手机</div><div class="fht-cell"></div></th><th style=""><div class="th-inner ">受邀人邮箱</div><div class="fht-cell"></div></th><th style=""><div class="th-inner ">邀请人名称</div><div class="fht-cell"></div></th><th style=""><div class="th-inner ">邀请人部门</div><div class="fht-cell"></div></th><th style=""><div class="th-inner ">邀请时间</div><div class="fht-cell"></div></th><th style=""><div class="th-inner ">邀请状态</div><div class="fht-cell"></div></th><th style=""><div class="th-inner ">操作</div><div class="fht-cell"></div></th></tr>
+    </thead>
+<tbody><tr data-index="0" class=""><td class="bs-checkbox"><input data-index="0" name="btSelectItem" type="checkbox"></td><td style="">10001</td><td style="">张三</td><td style="">15018735211</td><td style="">zhangsan@163.com</td><td style="">李四</td><td style="">众包项目组</td><td style="">2015年3月26日</td><td style="">接受邀请</td><td style=""><button class="btn btn-primary resend">重新发送邀请</button></td></tr><tr class="warning" data-index="1"><td class="bs-checkbox"><input data-index="1" name="btSelectItem" type="checkbox"></td><td style="">10002</td><td style="">王五</td><td style="">15018735211</td><td style="">zhangsan@163.com</td><td style="">李四</td><td style="">众包项目组</td><td style="">2015年3月26日</td><td style="">未接受邀请</td><td style=""><button class="btn btn-primary resend">重新发送邀请</button></td></tr><tr class="danger" data-index="2"><td class="bs-checkbox"><input data-index="2" name="btSelectItem" type="checkbox"></td><td style="">10003</td><td style="">陆六</td><td style="">15018735211</td><td style="">zhangsan@163.com</td><td style="">李四</td><td style="">TSG</td><td style="">2015年3月26日</td><td style="">程序错误，发送邀请未成功</td><td style=""><button class="btn btn-primary resend">重新发送邀请</button></td></tr><tr data-index="3" class=""><td class="bs-checkbox"><input data-index="3" name="btSelectItem" type="checkbox"></td><td style="">10001</td><td style="">张三</td><td style="">15018735211</td><td style="">zhangsan@163.com</td><td style="">李四</td><td style="">众包项目组</td><td style="">2015年3月26日</td><td style="">接受邀请</td><td style=""><button class="btn btn-primary resend">重新发送邀请</button></td></tr><tr class="warning" data-index="4"><td class="bs-checkbox"><input data-index="4" name="btSelectItem" type="checkbox"></td><td style="">10002</td><td style="">王五</td><td style="">15018735211</td><td style="">zhangsan@163.com</td><td style="">李四</td><td style="">众包项目组</td><td style="">2015年3月26日</td><td style="">未接受邀请</td><td style=""><button class="btn btn-primary resend">重新发送邀请</button></td></tr><tr class="danger" data-index="5"><td class="bs-checkbox"><input data-index="5" name="btSelectItem" type="checkbox"></td><td style="">10003</td><td style="">陆六</td><td style="">15018735211</td><td style="">zhangsan@163.com</td><td style="">李四</td><td style="">TSG</td><td style="">2015年3月26日</td><td style="">程序错误，发送邀请未成功</td><td style=""><button class="btn btn-primary resend">重新发送邀请</button></td></tr><tr data-index="6" class=""><td class="bs-checkbox"><input data-index="6" name="btSelectItem" type="checkbox"></td><td style="">10001</td><td style="">张三</td><td style="">15018735211</td><td style="">zhangsan@163.com</td><td style="">李四</td><td style="">众包项目组</td><td style="">2015年3月26日</td><td style="">接受邀请</td><td style=""><button class="btn btn-primary resend">重新发送邀请</button></td></tr><tr class="warning" data-index="7"><td class="bs-checkbox"><input data-index="7" name="btSelectItem" type="checkbox"></td><td style="">10002</td><td style="">王五</td><td style="">15018735211</td><td style="">zhangsan@163.com</td><td style="">李四</td><td style="">众包项目组</td><td style="">2015年3月26日</td><td style="">未接受邀请</td><td style=""><button class="btn btn-primary resend">重新发送邀请</button></td></tr><tr class="danger" data-index="8"><td class="bs-checkbox"><input data-index="8" name="btSelectItem" type="checkbox"></td><td style="">10003</td><td style="">陆六</td><td style="">15018735211</td><td style="">zhangsan@163.com</td><td style="">李四</td><td style="">TSG</td><td style="">2015年3月26日</td><td style="">程序错误，发送邀请未成功</td><td style=""><button class="btn btn-primary resend">重新发送邀请</button></td></tr><tr data-index="9" class=""><td class="bs-checkbox"><input data-index="9" name="btSelectItem" type="checkbox"></td><td style="">10001</td><td style="">张三</td><td style="">15018735211</td><td style="">zhangsan@163.com</td><td style="">李四</td><td style="">众包项目组</td><td style="">2015年3月26日</td><td style="">接受邀请</td><td style=""><button class="btn btn-primary resend">重新发送邀请</button></td></tr></tbody></table></div><div class="fixed-table-footer" style="display: none;"><table><tbody><tr></tr></tbody></table></div><div class="fixed-table-pagination" style="display: block;"><div class="pull-left pagination-detail"><span class="pagination-info">显示第 1 到第 10 条记录，总共 15 条记录</span><span class="page-list">每页显示 <span class="btn-group dropup"><button type="button" class="btn btn-default  dropdown-toggle" data-toggle="dropdown"><span class="page-size">10</span> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li class="active"><a href="javascript:void(0)">10</a></li><li><a href="javascript:void(0)">25</a></li></ul></span> 条记录</span></div><div class="pull-right pagination"><ul class="pagination"><li class="page-first disabled"><a href="javascript:void(0)">&lt;&lt;</a></li><li class="page-pre disabled"><a href="javascript:void(0)">&lt;</a></li><li class="page-number active"><a href="javascript:void(0)">1</a></li><li class="page-number"><a href="javascript:void(0)">2</a></li><li class="page-next"><a href="javascript:void(0)">&gt;</a></li><li class="page-last"><a href="javascript:void(0)">&gt;&gt;</a></li></ul></div></div></div></div><div class="clearfix"></div>
+</div>
+			</div>	
+		</div>
+	</section>
+
+	<script src="js/jquery-2.0.2.js"></script>	
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-table.min.js"></script>
+	<script src="js/bootstrap-table-zh-CN.min.js"></script>
+	<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
+	
+</body>
+<script type="text/javascript">
+
+    function rowStyle(row, index) {
+        var classes = ['active', 'success', 'info', 'warning', 'danger'];
+
+        if (row.status == "未接受邀请") {
+            return {
+                classes: 'warning'
+            };
+        }
+
+        if (row.status == "程序错误，发送邀请未成功") {
+            return {
+                classes: 'danger'
+            };
+        }
+        return {};
+    }
+    function queryParams() {
+        return {
+            type: 'owner',
+            sort: 'updated',
+            direction: 'desc',
+            per_page: 100,
+            page: 1
+        };
+    }
+
+    var $table = $('#table'), $remove = $('#re_send_selected');
+
+    $(function () {
+        $table.on('check.bs.table uncheck.bs.table check-all.bs.table uncheck-all.bs.table', function () {
+            $remove.prop('disabled', !$table.bootstrapTable('getSelections').length);
+        });
+        $remove.click(function () {
+            var ids = $.map($table.bootstrapTable('getSelections'), function (row) {
+                return row.id
+            });
+            alert('重新发送选中邀请, rows: ' + ids);
+            $remove.prop('disabled', true);
+        });
+    });
+
+
+    function actionFormatter(value, row, index) {
+        return [
+            '<button class="btn btn-primary resend">重新发送邀请</button>'
+        ].join('');
+    }
+
+    window.actionEvents = {
+        'click .resend': function (e, value, row, index) {
+            alert('重新发送该邀请, row: ' + JSON.stringify(row));
+            console.log(value, row, index);
+        }
+    };
+
+
+$('#myTab li:first').tab('show') // Select first tab
+
+</script>
+</html>
