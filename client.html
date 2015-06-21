@@ -7,6 +7,16 @@
     <script src="js/bootgrid/jquery.bootgrid.js"></script>
     <script src="js/bootgrid/jquery.bootgrid.fa.js"></script>
     <script src="js/moderniz.2.8.1.js"></script>
+    <script>
+        var client_paramMap = {
+            source: {
+                0: '未选择',
+                1: '本地',
+                2: '网络',
+                3: '家政在线'
+            }
+        }
+    </script>
 </header>
 <body>
 
@@ -115,6 +125,9 @@
                                     "operations": function (column, row) {
 //                                        return "<a href=\"client-info.html?clientId="+ row.id + "\">" +  + "</a>";
                                         return "<button type=\"button\" class=\"btn-green-small\" onClick=\"location.href='client-info.html?employerId=" + row.id + "'\">查看资料</button>";
+                                    },
+                                    "source": function (column, row) {
+                                        return client_paramMap.source[row.source]
                                     }
                                 },
                                 rowCount: [10, 12, 18],
