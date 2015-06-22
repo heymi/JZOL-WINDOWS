@@ -50,3 +50,14 @@ function setMultiSelectValue(eleId, values) {
         $("#" + eleId + " input[value=" + rec + "]").prop('checked', true);
     })
 }
+
+function getMultiValue(type,data,dataMap){
+    var str = '';
+    var valArr = data.split(',');
+    _.each(valArr, function (rec) {
+        str += dataMap[type][rec] + ','
+    });
+    var reg=/,$/gi;
+    str = str.replace(reg,"");
+    return str;
+}

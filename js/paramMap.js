@@ -35,6 +35,12 @@ var paramMap = {
         9: '催乳师'
     },
 
+    marriage: {
+      '-1':'离异',
+      0:'未婚',
+      1:'已婚'
+    },
+
 
     getCodeValue: function (paramType, codes) {
         var returnValue = '';
