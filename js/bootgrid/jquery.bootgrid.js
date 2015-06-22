@@ -607,11 +607,11 @@
                     }
                 }
 
-                var status = row.status != null && that.options.statusMapping[row.status];
-                if (status)
-                {
-                    rowCss += status;
-                }
+                //var status = row.status != null && that.options.statusMapping[row.status];
+                //if (status)
+                //{
+                //    rowCss += status;
+                //}
 
                 $.each(that.columns, function (j, column)
                 {
