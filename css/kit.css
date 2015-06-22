@@ -162,10 +162,10 @@ a{
 	margin: 0;
 	padding: 0;
 }
-.dropdown-menu{
-	width: 316px;
-	left: -120px;
-}
+/*.dropdown-menu{*/
+	/*width: 316px;*/
+	/*left: -120px;*/
+/*}*/
 .arrow-up {
     position:absolute;
     left:45%;
@@ -591,9 +591,9 @@ td{
 tr.read{
 	opacity: 0.3;
 }
-tbody tr:hover{
-	background-color: #EEE;
-}
+/*tbody tr:hover{*/
+	/*background-color: #EEE;*/
+/*}*/
 
 table .btn-green-small{
 	margin: 0;
@@ -1300,3 +1300,7 @@ span.badge {
 
 #preview{width:260px;height:190px;border:1px solid #000;overflow:hidden;}
 #imghead {filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);}
+
+.bootgrid-table td{
+	padding: 8px;
+}

@@ -22,6 +22,7 @@ document.write('<script src="js/sco.message.js"></script>');
 document.write('<script src="js/commonUtils.js"></script>');
 document.write('<script src="js/errorCode.js"></script>');
 document.write('<script src="js/utils/provinceCity.js"></script>');
+document.write('<script src="js/date.format.js"></script>');
 
 //date picker
 document.write('<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">');

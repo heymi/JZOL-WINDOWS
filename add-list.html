@@ -1,6 +1,7 @@
 <html>
 <header>
 	<script src="js/allBiz.js"></script>
+	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
 	<script src="js/bootstrap-datetimepicker.js"></script>
 </header>
@@ -29,38 +30,37 @@
 									<form class="form-inline">
 										<h5 class="form-title">雇主资料</h5>
 										<div class="form-group">
-										    <label for="exampleInputEmail1">雇主姓名：</label>
-										    <input type="text" class="form-control" id="InputName">
-										 
+										    <label for="employer_name">雇主姓名：</label>
+										    <input type="text" class="form-control" id="employer_name">
 										</div>
 										<div class="form-group">
-										   <label for="exampleInputPassword1" class="text-indent">性别：</label>
+										    <label for="employer_identity" class="text-indent-1">身份证：</label>
+										    <input type="text" class="form-control" id="employer_identity">
+										</div>
+										<div class="form-group" id="employer_sex">
+										   <label for="employer_sex" class="text-indent">性别：</label>
 										   <label class="radio">
-											  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 先生
+											  <input type="radio" name="employer_sex" value="1"> 先生
 											</label>
 											<label class="radio">
-											  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 女士
+											  <input type="radio" name="employer_sex" value="0"> 女士
 											</label>
 										</div>
 										<div class="form-group">
-										    <label for="">手机号码：</label>
-										    <input type="text" class="form-control" id="InputName">
+										    <label for="employer_phone">手机号码：</label>
+										    <input type="text" class="form-control" id="employer_phone">
 										   
 										</div>
-										<div class="form-group">
-										   
-										   <label for="exampleInputPassword1">固定电话：</label>
-										    <input type="text" class="form-control" id="InputNumber">
-										</div>
+
 										<div class="form-group">
 										    <label for="">服务地址：</label>
 										   <select class="form-control"><option value="不限">不限</option><option value="江苏">静安区</option><option value="江苏">浦东新区</option><option value="江苏">徐汇区</option><option value="江苏">闸北区</option><option value="江苏">长宁区</option><option value="江苏">闵行区</option><option value="江苏">杨浦区</option></select>
-										    <input type="text" class="form-control" id="InputName"> 
+										    <input type="text" class="form-control" id="service_address">
 										</div>
 									
 									  <div class="form-group">
-									    <label for="">家庭情况：</label>
-									    <textarea class="form-control"></textarea>
+									    <label for="remark" class="text-indent">备注：</label>
+									    <textarea class="form-control" id="remark"></textarea>
 									    
 									  </div>
 									</form>
@@ -68,134 +68,135 @@
 										<h5 class="form-title">工作内容</h5>
 										<div class="form-group">
 										    <label for="exampleInputEmail1" class="text-indent">工种：</label>
-										    <div class="add-list checkbox">
-										    <label>
-											    <input type="checkbox" > 月嫂
-											</label>
-											<label>
-											    <input type="checkbox"> 钟点工
-											</label>
-											<label>
-											    <input type="checkbox"> 保姆
-											</label>
-											<label>
-											    <input type="checkbox"> 育儿嫂
-											</label>
-											<label>
-											    <input type="checkbox"> 疾病护理
-											</label>
-											<label>
-											    <input type="checkbox"> 老人护理
-											</label>
-											<label>
-											    <input type="checkbox"> 催乳师
-											</label>
-											<label>
-											    <input type="checkbox"> 早教
-											</label>
+										    <div class="add-list checkbox" id="type">
+												<label>
+													<input type="checkbox" value="1"> 临时工
+												</label>
+												<label>
+													<input type="checkbox" value="2"> 长期工
+												</label>
+												<label>
+													<input type="checkbox" value="3"> 保姆
+												</label>
+												<label>
+													<input type="checkbox" value="4"> 育儿嫂
+												</label>
+												<label>
+													<input type="checkbox" value="5"> 疾病护理
+												</label>
+												<label>
+													<input type="checkbox" value="6"> 老人护理
+												</label>
+												<label>
+													<input type="checkbox" value="7"> 月嫂
+												</label>
+												<label>
+													<input type="checkbox" value="8"> 早教
+												</label>
+												<label>
+													<input type="checkbox" value="9"> 催乳师
+												</label>
 											</div>
 										</div>
 										<div class="form-group">
 										    <label for="" class="text-indent">类别：</label>
-										    <div class="radio-group">
-										    <label class="radio">
-											    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option8"> 住家
-											</label>
-											<label class="radio">
-											    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option8"> 不住家
-											</label>
+										    <div class="radio-group" id="in_home">
+												<label class="radio">
+													<input type="radio" name="name_in_home" value="1"> 住家
+												</label>
+												<label class="radio">
+													<input type="radio" name="name_in_home" value="0"> 不住家
+												</label>
 											</div>
 										</div>
 										
 									
 									    <div class="form-group">
-										    <label for="">试工时间：</label>
-												<input type="text" class="form-control datetimepicker" value="">
+										    <label for="trial_time">试工时间：</label>
+												<input type="text" class="form-control datetimepicker" value="" id="trial_time">
 									    </div>
 									    
 									    <div class="form-group">
-										    <label for="" class="text-indent-1">工作日：</label>
-										    <div class="add-list checkbox">
-										    <label>
-											    <input type="checkbox" > 周一
-											</label>
-											<label>
-											    <input type="checkbox"> 周二
-											</label>
-											<label>
-											    <input type="checkbox"> 周三
-											</label>
-											<label>
-											    <input type="checkbox"> 周四
-											</label>
-											<label>
-											    <input type="checkbox"> 周五
-											</label>
-											<label>
-											    <input type="checkbox"> 周六
-											</label>
-											<label>
-											    <input type="checkbox"> 周日
-											</label>
-											
+										    <label for="working_day" class="text-indent-1">工作日：</label>
+										    <div class="add-list checkbox" id="working_day">
+												<label>
+													<input type="checkbox" value="1"> 周一
+												</label>
+												<label>
+													<input type="checkbox" value="2"> 周二
+												</label>
+												<label>
+													<input type="checkbox" value="3"> 周三
+												</label>
+												<label>
+													<input type="checkbox" value="4"> 周四
+												</label>
+												<label>
+													<input type="checkbox" value="5"> 周五
+												</label>
+												<label>
+													<input type="checkbox" value="6"> 周六
+												</label>
+												<label>
+													<input type="checkbox" value="0"> 周日
+												</label>
 											</div>
 										</div>
-										<label for="">详细说明：</label>
-									    <textarea class="form-control"></textarea>
 									</form>
 									<form class="form-inline">
 										<h5 class="form-title">阿姨要求</h5>
 										<div class="form-group">
 										    <label for="exampleInputEmail1" class="text-indent">年龄：</label>
-										    <input type="text" class="form-control input-small" id="InputName"><span class="input-span">到</span>
-										    <input type="text" class="form-control input-small" id="InputName"><span class="input-span">岁</span>
+										    <input type="text" class="form-control input-small" id="employee_age_lower"><span class="input-span">到</span>
+										    <input type="text" class="form-control input-small" id="employee_age_upper"><span class="input-span">岁</span>
 										
 										</div>
 										<div class="form-group">
 										    
 										 <label for="" class="text-indent">经验：</label>
-										    <input type="text" class="form-control input-small" id="InputName">年
+										    <input type="text" class="form-control input-small" id="employee_experience">年
 										</div>
 										 <div class="form-group">
 										    <label for="" class="text-indent">学历：</label>
-										    <div class="radio-group">
-										    <label class="radio">
-											    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option8"> 小学
-											</label>
-											<label class="radio">
-											    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option8"> 初中
-											</label>
-											<label class="radio">
-											    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option8"> 高中
-											</label>
-											<label class="radio">
-											    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option8"> 大专
-											</label>
-											<label class="radio">
-											    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option8"> 本科
-											</label>
-											<label class="radio">
-											    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option8"> 其他
-											</label>
+										    <div class="radio-group" id="employee_education">
+												<label class="radio">
+													<input type="radio" name="employee_education" value="1">
+													小学
+												</label>
+												<label class="radio">
+													<input type="radio" name="employee_education" value="2">
+													初中
+												</label>
+												<label class="radio">
+													<input type="radio" name="employee_education" value="3">
+													高中
+												</label>
+												<label class="radio">
+													<input type="radio" name="employee_education" value="4">
+													大专
+												</label>
+												<label class="radio">
+													<input type="radio" name="employee_education" value="5">
+													本科
+												</label>
+												<label class="radio">
+													<input type="radio" name="employee_education" value="6">
+													其他
+												</label>
 											</div>
 										</div>
-										<div class="form-group">
-										    <label for="" class="text-indent">籍贯：</label>
-										    <select class="form-control"><option value="不限">不限</option><option value="江苏">江苏</option><option value="江苏">浙江</option><option value="江苏">安徽</option><option value="江苏">广东</option></select>
-										   
-										</div>
+
 										<div class="form-group">
 										    
 										    <label for="" class="text-indent">薪资：</label>
-										   <input type="text" class="form-control input-small" id="InputName"><span class="input-span">到</span>
-										    <input type="text" class="form-control input-small" id="InputName"><span class="input-span">元</span>
-										    <select class="form-control" placehold="年"><option value="月">月</option><option value="年">年</option></select>
+										   <input type="text" class="form-control input-small" id="employee_pay_lower"><span class="input-span">到</span>
+										    <input type="text" class="form-control input-small" id="employee_pay_upper"><span class="input-span">元</span>
+										    <select class="form-control" placehold="年" id="employee_pay_types"><option value="0">月</option><option value="1">小时</option></select>
 										</div>
 									
 									  <div class="form-group">
-									    <label for="">特殊要求：</label>
-									   <textarea class="form-control"></textarea>
-									    
+									    <label for="">阿姨详细要求：</label>
+									   <textarea class="form-control" id="requirements"></textarea>
 									  </div>
 									</form>
 						      </div>
@@ -239,17 +240,53 @@
 	<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
 </body>
 <script type="text/javascript">
-$('#message_trigger_ok').on('click', function(e) {
-    e.preventDefault();
-    $.scojs_message('添加成功', $.scojs_message.TYPE_OK);
-	parent.document.getElementById("rightContent").setAttribute("src", "list-local.html");
-  });
-  $('#message_trigger_err').on('click', function(e) {
-    e.preventDefault();
-    $.scojs_message('添加失败', $.scojs_message.TYPE_ERROR);
+	$('#message_trigger_ok').on('click', function (e) {
+        e.preventDefault();
+        var paramData = {};
+        paramData.source = 1;
+        paramData.phone = $('#employer_phone').val();
+        paramData.name = $('#employer_name').val();
+        paramData.identity = $('#employer_identity').val();
+        paramData.sex = $('#employer_sex input:checked').val();
+        paramData.service_prov = 1;
+        paramData.service_city = 1;
+        paramData.service_area = 1;
+        paramData.service_address = $('#service_address').val();
+		paramData.remark = $('#remark').val();
+		paramData.type = getMultiSelectValue('type');
+		paramData.in_home = $('#in_home input:checked').val();
+		paramData.trial_time = $('#trial_time').val() ? new Date($('#trial_time').val()).getTime()/1000 : 0;
+		paramData.working_day = getMultiSelectValue('working_day');
+		paramData.employee_age_lower = $('#employee_age_lower').val();
+		paramData.employee_age_upper = $('#employee_age_upper').val();
+		paramData.employee_experience = $('#employee_experience').val();
+		paramData.employee_education = getMultiSelectValue('employee_education');
+		paramData.employee_pay_lower = $('#employee_pay_lower').val();
+		paramData.employee_pay_upper = $('#employee_pay_upper').val();
+		paramData.employee_pay_types = $('#employee_pay_types').val();
+		paramData.requirements = $('#requirements').val();
+        $.ajax({
+            url: 'http://test.fuhui.com/demands/add',
+            data: paramData,
+            method: 'POST',
+            success: function (ret) {
+                var retObj = JSON.parse(ret);
+                if (retObj.code == '0') {
+                    $.scojs_message('添加成功', $.scojs_message.TYPE_OK);
+                    setTimeout(function(){
+                      parent.document.getElementById("rightContent").setAttribute("src", "list-local.html");
+                    },1e3);
+                }else{
+                    $.scojs_message(errorCode['code_' + retObj.code], $.scojs_message.TYPE_ERROR);
+                }
+            },
+            error: function (ret) {
+				$.scojs_message('添加失败', $.scojs_message.TYPE_ERROR);
+            }
+        })
     });
    $('.datetimepicker').datetimepicker({
-    format: 'yyyy-mm-dd hh:ii'
+    format: 'yyyy/mm/dd hh:ii'
 });
 </script>  
 </html>
