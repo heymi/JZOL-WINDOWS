@@ -1,8 +1,8 @@
 <html>
 <header>
-    <script src="js/allBiz.js"></script>
-    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
-    <script src="js/bootstrap-datetimepicker.js"></script>
+	<script src="js/allBiz.js"></script>
+	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+	<script src="js/bootstrap-datetimepicker.js"></script>
 </header>
 <body>
 
@@ -16,212 +16,125 @@
             data: paramData,
             success: function (ret) {
                 var retObj = JSON.parse(ret);
-                $("#username").val(retObj.data.list.username);
-                $("#client_sex input[value=" + retObj.data.list.sex + "]").prop('checked', true);
-                $("#phone").val(retObj.data.list.phone);
-                $("#tell").val(retObj.data.list.tell);
-                $("#identity").val(retObj.data.list.identity);
-                $("#family").val(retObj.data.list.family);
-                $("#client_content").val(retObj.data.list.content);
-                $("#specfic_requirement").val(retObj.data.list.specfic_requirement);
-                $("#remark").val(retObj.data.list.remark);
-                $("#addr").val(retObj.data.list.addr);
+                $("#username").text(retObj.data.list.username);
+                $("#client_sex").text(retObj.data.list.sex === '0' ? '保密' : retObj.data.list.sex === '1' ? '先生' : '女士');
+                $("#phone").text(retObj.data.list.phone);
+                $("#tell").text(retObj.data.list.tell);
+                $("#identity").text(retObj.data.list.identity);
+                $("#family").text(retObj.data.list.family || "暂无");
+                $("#client_content").text(retObj.data.list.content || "暂无");
+                $("#specfic_requirement").text(retObj.data.list.specfic_requirement || "暂无");
+                $("#remark").text(retObj.data.list.remark || "暂无");
+                $("#addr").text(retObj.data.list.addr);
             }
         })
     })
 </script>
 
 <div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
-    <div class="content-wrapper">
-        <div class="content-header-inner">
-            <div class="bread-nav float-left">
-                <ol class="breadcrumb">
-                    <li><a href="client.html">雇主管理</a></li>
-                    <li class="active"><strong>雇主详情</strong></li>
-                </ol>
-            </div>
-            <div class="header-action float-right">
-
-                <!--<button type="button" class="btn-blue mgl7 fr">使用身份证阅读器录入</button>-->
-
-            </div>
-        </div>
-        <div class="form-dialog">
-            <div class="form-content clearfix">
-                <div class="form-body">
-                    <div class="modal-body-wrapper">
-                        <form class="form-inline">
-                            <h5 class="form-title">雇主资料</h5>
-
-                            <div class="form-group">
-                                <label for="username">雇主姓名：</label>
-                                <input type="text" class="form-control" id="username">
-
-                            </div>
-                            <div class="form-group" id="client_sex">
-                                <label class="text-indent">性别：</label>
-                                <label class="radio">
-                                  <input type="radio" name="client_sex" value="1"> 先生
-                                </label>
-                                <label class="radio">
-                                  <input type="radio" name="client_sex" value="2"> 女士
-                                </label>
-                                <label class="radio">
-                                  <input type="radio" name="client_sex" value="0"> 保密
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">手机号码：</label>
-                                <input type="text" class="form-control" id="phone">
-
-                            </div>
-                            <div class="form-group">
-
-                                <label for="tell">固定电话：</label>
-                                <input type="text" class="form-control" id="tell">
-                            </div>
-                            <div class="form-group">
-                                <label for="">服务地址：</label>
-                                <select class="form-control">
-                                    <option value="上海市">上海市</option>
-                                    <option value="北京市">北京市</option>
-                                </select>
-                                <select class="form-control">
-                                    <option value="静安区">静安区</option>
-                                    <option value="浦东新区">浦东新区</option>
-                                    <option value="徐汇区">徐汇区</option>
-                                    <option value="闸北区">闸北区</option>
-                                    <option value="长宁区">长宁区</option>
-                                    <option value="闵行区">闵行区</option>
-                                    <option value="杨浦区">杨浦区</option>
-                                </select>
-                                <input type="text" class="form-control" id="addr">
-                            </div>
-                            <div class="form-group">
-                                <label for="identity">身份证号：</label>
-                                <input type="text" class="form-control form-control-3x" id="identity">
-                            </div>
-
-                        </form>
-                        <form class="form-inline">
-                            <h5 class="form-title">工作内容</h5>
-                        <div class="form-group">
-                            <label for="">家庭情况：</label>
-                            <textarea class="form-control" id="family"></textarea>
-
-                          </div>
-                          <div class="form-group">
-                            <label for="">服务需求：</label>
-                            <textarea class="form-control" id="specfic_requirement"></textarea>
-                          </div>
-                            <div class="form-group">
-                            <label for="">需求详情：</label>
-                            <textarea class="form-control" id="client_content"></textarea>
-                          </div>
-                          <div class="form-group">
-                            <label for="" class="text-indent">备注：</label>
-                            <textarea class="form-control" id="remark"></textarea>
-
-                          </div>
-
-                        </form>
-                    </div>
-                </div>
+				<div class="content-wrapper">
+					<div class="content-header-inner">
+					<div class="bread-nav float-left">
+						<ol class="breadcrumb">
+							<li><a href="client.html">雇主管理</a></li>
+	 						<li class="active"><strong>雇主详情</strong></li>
+						</ol>
+					</div>				
+				</div>
+					<div class="form-dialog">
+						<div class="form-content clearfix">     
+   							<div class="form-body">
+   								<div class="modal-body-wrapper">
+									<form class="form-inline">
+										<h5 class="form-title">雇主资料</h5>
+										<div class="form-group">
+										    <label for="exampleInputEmail1">雇主姓名：</label>
+										    <span id="username">李阿静</span>
+										 
+										</div>
+										<div class="form-group">
+										   <label for="exampleInputPassword1" class="text-indent">性别：</label>
+										   <span id="client_sex"></span>
+										</div>
+										<div class="form-group">
+										    <label for="">手机号码：</label>
+										    <span id="phone"></span>
+										   
+										</div>
+										<div class="form-group">
+										   
+										   <label for="exampleInputPassword1">固定电话：</label>
+										    <span id="tell"></span>
+										</div>
+										<div class="form-group">
+										    <label for="">服务地址：</label>
+										  <span id="addr"></span>
+										</div>
+										<div class="form-group">
+										    <label for="">身份证号：</label>
+										    <span id="identity"></span>
+										</div>
+									  
+									</form>
+									<form class="form-inline">
+										<h5 class="form-title">工作内容</h5>
+									<div class="form-group">
+									    <label for="">家庭情况：</label>
+									    <span id="family"></span>
+									  </div>
+										<div class="form-group">
+									    <label for="">服务需求：</label>
+									    <span id="specfic_requirement"></span>
+									  </div>
+										<div class="form-group">
+									    <label for="">需求详情：</label>
+									    <span id="client_content"></span>
+									  </div>
+										<div class="form-group">
+									    <label for="">备注：</label>
+									    <span id="remark"></span>
+									  </div>
 
 
-                <div class="form-footer float-right">
+									</form>
+						      </div>
+						     </div>
 
-                    <button type="button" class="btn-none" data-toggle="modal" data-target=".bs-example-modal-sm">放弃
-                    </button>
-                    <button id="message_trigger_ok" type="button" class="btn-green-big">保存</button>
 
-                </div>
-            </div>
+						      <div class="form-footer float-right">
+						      
+						      	<button type="button" class="btn-none client-edit">修改</button>
+						        
+						       
+						      </div>
+						    </div>
+						    
+						<!-- Modal -->
+					</div>	
+			</div><!-- container end -->
+		</div>
+	</section>
 
-            <!-- Modal -->
-            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">放弃添加</h4>
-                        </div>
-                        <div class="modal-body">
-                            您确定放弃当前添加？
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                            <button type="button" class="btn btn-primary" id="cancel_add">放弃</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- container end -->
-</div>
-</section>
-
-<script src="js/jquery-2.0.2.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-datetimepicker.js"></script>
-<script src="js/sco.message.js"></script>
-<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
+	<script src="js/jquery-2.0.2.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/bootstrap-datetimepicker.js"></script>
+	<script src="js/sco.message.js"></script>
+	<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
 </body>
-<script type="text/javascript">
-    $('#message_trigger_ok').on('click', function (e) {
-
-        e.preventDefault();
-        var paramObj = {};
-        var employerId = getQueryString('employerId');
-        paramObj.identity = $("#identity").val();
-        paramObj.username = $("#username").val();
-        paramObj.tell = $("#tellphone").val();
-        paramObj.addr = $("#addr").val();
-        paramObj.specfic_requirement = $("#content").val();
-        paramObj.phone = $("#phone").val();
-        paramObj.sex = $("#client_sex input:checked").val();
-        paramObj.specfic_requirement = $("#specfic_requirement").val();
-        paramObj.family = $("#family").val();
-        paramObj.content = $("#client_content").val();
-        paramObj.remark = $("#remark").val();
-        paramObj.prov = "1"
-        paramObj.city = "1"
-        paramObj.area = "1"
-        $.ajax({
-            url: "http://test.fuhui.com/employer/update?eid=" + employerId,
-            type: 'POST',
-            data: paramObj,
-            success: function (ret) {
-                var retObj = JSON.parse(ret);
-                if (retObj.code == '0') {
-                    $.scojs_message('添加成功', $.scojs_message.TYPE_OK);
-
-
-                    parent.document.getElementById("rightContent").setAttribute("src", "client.html");
-                } else {
-                    alert('修改失败')
-                }
-            },
-            error: function (ret) {
-                alert('error')
-            }
-        })
-//        parent.document.getElementById("rightContent").setAttribute("src", "client.html");
+<script type="text/javascript"> 
+	$('#message_trigger_ok').on('click', function(e) {
+    e.preventDefault();
+    $.scojs_message('添加成功', $.scojs_message.TYPE_OK);
+  });
+  $('#message_trigger_err').on('click', function(e) {
+    e.preventDefault();
+    $.scojs_message('添加失败', $.scojs_message.TYPE_ERROR);
     });
+   $('#datetimepicker').datetimepicker({
+    format: 'yyyy-mm-dd hh:ii'
+});
 
-    $('#message_trigger_err').on('click', function (e) {
-        e.preventDefault();
-        $.scojs_message('添加失败', $.scojs_message.TYPE_ERROR);
-    });
-    $('#datetimepicker').datetimepicker({
-        format: 'yyyy-mm-dd hh:ii'
-    });
-
-    $('#cancel_add').on('click', function(){
-        parent.document.getElementById("rightContent").setAttribute("src", "client.html");
-    });
-</script>
+	var employerId = getQueryString('employerId');
+	$('.client-edit').attr('onclick','window.location.href="client-edit.html?employerId='+employerId+'"');
+</script>  
 </html>
