@@ -18,14 +18,14 @@
                 var retObj = JSON.parse(ret);
                 $("#username").text(retObj.data.list.username);
                 $("#client_sex").text(retObj.data.list.sex === '0' ? '保密' : retObj.data.list.sex === '1' ? '先生' : '女士');
-                $("#phone").text(retObj.data.list.phone);
-                $("#tell").text(retObj.data.list.tell);
-                $("#identity").text(retObj.data.list.identity);
+                $("#phone").text(retObj.data.list.phone || "暂无");
+                $("#tell").text(retObj.data.list.tell || "暂无");
+                $("#identity").text(retObj.data.list.identity || "暂无");
                 $("#family").text(retObj.data.list.family || "暂无");
                 $("#client_content").text(retObj.data.list.content || "暂无");
                 $("#specfic_requirement").text(retObj.data.list.specfic_requirement || "暂无");
                 $("#remark").text(retObj.data.list.remark || "暂无");
-                $("#addr").text(retObj.data.list.addr);
+                $("#addr").text(retObj.data.list.addr || "暂无");
             }
         })
     })
@@ -49,7 +49,7 @@
 										<h5 class="form-title">雇主资料</h5>
 										<div class="form-group">
 										    <label for="exampleInputEmail1">雇主姓名：</label>
-										    <span id="username">李阿静</span>
+										    <span id="username"></span>
 										 
 										</div>
 										<div class="form-group">
@@ -91,7 +91,7 @@
 									    <span id="client_content"></span>
 									  </div>
 										<div class="form-group">
-									    <label for="">备注：</label>
+									    <label for="remark" class="text-indent">备注：</label>
 									    <span id="remark"></span>
 									  </div>
 
