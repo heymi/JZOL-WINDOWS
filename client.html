@@ -43,6 +43,7 @@
                         <thead>
                         <tr>
                             <th data-column-id="id" data-identifier="true" data-width="0px">id</th>
+                            <th data-column-id="eid" data-identifier="true" data-width="0px">eid</th>
                             <th data-column-id="username" data-order="asc" data-align="center"
                                 data-header-align="center">姓名
                             </th>
@@ -124,7 +125,7 @@
                                 formatters: {
                                     "operations": function (column, row) {
 //                                        return "<a href=\"client-info.html?clientId="+ row.id + "\">" +  + "</a>";
-                                        return "<button type=\"button\" class=\"btn-green-small\" onClick=\"location.href='client-info.html?employerId=" + row.id + "'\">查看资料</button>";
+                                        return "<button type=\"button\" class=\"btn-green-small\" onClick=\"location.href='client-info.html?employerId=" + row.eid + "'\">查看资料</button>";
                                     },
                                     "source": function (column, row) {
                                         return client_paramMap.source[row.source]
