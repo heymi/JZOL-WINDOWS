@@ -416,7 +416,7 @@
                 if (retObj.code == '0') {
                     $.scojs_message('派送成功', $.scojs_message.TYPE_OK);
                     setTimeout(function(){
-//                      parent.document.getElementById("rightContent").setAttribute("src", "list-local.html");
+                      parent.document.getElementById("rightContent").setAttribute("src", "order-setup.html?orderId="+getQueryString('demandId'));
 						$('#sendingAunt').modal('hide');
                     },1e3);
                 } else{
@@ -427,7 +427,6 @@
                 $.scojs_message('派送失败', $.scojs_message.TYPE_ERROR)
             }
         });
-//		window.location.href = 'order-wait-setup.html';
 	})
 </script>
 </body>
