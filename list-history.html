@@ -2,6 +2,39 @@
 <html>
 <header>
     <script src="js/allBiz.js"></script>
+	<link href="js/bootgrid/jquery.bootgrid.css" rel="stylesheet"/>
+    <script src="js/bootgrid/jquery.bootgrid.js"></script>
+    <script src="js/bootgrid/jquery.bootgrid.fa.js"></script>
+    <script>
+        var list_paramMap = {
+            source: {
+                0: '未选择',
+                1: '本地',
+                2: '网络',
+                3: '家政在线'
+            },
+            type: {
+                1: '临时钟点工',
+                2: '长期钟点工',
+                3: '保姆',
+                4: '育儿嫂',
+                5: '疾病护理',
+                6: '老人护理',
+                7: '月嫂',
+                8: '早教',
+                9: '催乳师'
+            },
+            status: {
+                0: '待处理',
+                1: '已匹配',
+                2: '试工中',
+                3: '服务中',
+                4: '已完成',
+                5: '已取消',
+                6: '已结束'
+            }
+        }
+    </script>
 </header>
 <script>
 	function firstPageHandler() {
@@ -58,7 +91,7 @@
 								</div>
 							</div>
 
-								<div class="header-action float-right">
+								<div class="header-action float-right" style="display: none">
 						<button type="button" class="btn-blue mgl7 fr" onClick="location.href='add-list.html'">新增订单</button>
 
 						    <div class="input-group float-right">
@@ -75,121 +108,35 @@
 					<div class="tab-content">
 
 
-  						<div class="match_table">
+  						<div class="normal-table">
+                <div class="normal-table">
+                    <!-- 内容表格开始 -->
+                    <table id="dataGrid" class="table table-condensed table-hover table-striped" data-selection="true"
+                           data-multi-select="true" data-row-select="true" data-keep-selection="true">
+                        <thead>
+                        <tr>
+                            <th data-column-id="id" data-identifier="true" data-width="0px"></th>
+                            <th data-column-id="bill_status" data-identifier="true" data-width="0px"></th>
+                            <th data-column-id="employer_name" data-identifier="true">雇主</th>
+                            <th data-column-id="employee_name" data-identifier="true">阿姨</th>
+                            <th data-column-id="employee_phone" data-identifier="true">联系电话</th>
+                            <th data-column-id="create_at" data-width="15%">订单生成时间</th>
+                            <th data-column-id="type">服务类型</th>
+                            <th data-column-id="source">来源</th>
+                            <th data-column-id="status">状态</th>
+                            <th data-column-id="operations" class="action-th">操作</th>
+                        </tr>
+                        </thead>
+                    </table>
+                    <!--<div style="display:inline">-->
+                        <!--<button type="button" class="btn-grey-danger" style="margin:20px 0;" data-toggle="modal"-->
+                                <!--data-target=".modal-del">删除-->
+                        <!--</button>-->
+                    <!--</div>-->
 
-				<table>
-				<thead>
-					<tr>
-						<th class="select-th"><input type="checkbox" value="1" name="" /></th>
-						<th class="number-th">订单编号</th>
-						<th>雇主</th>
-						<th>阿姨</th>
-						<th>联系电话</th>
-						<th>订单生成时间</th>
-						<th>服务类型</th>
-						<th>来源</th>
-						<th>状态</th>
-						<th>操作</th>
-					</tr>
-				</thead>
-				<tbody id="gridTable">
-					<tr class="gridDataToBeDeleted">
-						<td><input type="checkbox" value="1" name="" /></td>
-						<td>11530261</td>
-		            	<td>李阿静1</td>
-		            	<td>刘亦菲1</td>
-		            	<td>18254758860</td>
-			            <td>2015-03-26 14:22</td>
-			            <td>月嫂</td>
-
-			            <td>本地</td>
-			            <td>已完成</td>
-						<td><button class="btn-grey-small" onClick="location.href='order-finish.html'">查看详情</button></td>
-
-						</td>
-
-					</tr>
-					<tr>
-						<td><input type="checkbox" value="1" name="" /></td>
-						<td>11530262</td>
-		            	<td>李阿静2</td>
-		            	<td>刘亦菲2</td>
-		            	<td>18254758860</td>
-			            <td>2015-03-26 14:22</td>
-			            <td>月嫂</td>
-			            <td>本地</td>
-			            <td>已完成</td>
-						<td><button class="btn-grey-small" onClick="location.href='order-finish.html'">查看详情</button></td>
-</td>
-					</tr>
-					<tr class="gridDataToBeDeleted">
-						<td><input type="checkbox" value="1" name="" /></td>
-						<td>11530263</td>
-		            	<td>李阿静3</td>
-		            	<td>刘亦菲3</td>
-		            	<td>18254758860</td>
-			            <td>2015-03-26 14:22</td>
-			            <td>月嫂</td>
-			            <td>本地</td>
-			            <td>已完成</td>
-						<td><button class="btn-grey-small" onClick="location.href='order-finish.html'">查看详情</button></td>
-
-					<tr>
-						<td><input type="checkbox" value="1" name="" /></td>
-						<td>11530264</td>
-		            	<td>李阿静4</td>
-		            	<td>刘亦菲4</td>
-		            	<td>18254758860</td>
-			            <td>2015-03-26 14:22</td>
-			            <td>月嫂</td>
-			            <td>网络</td>
-			            <td>已完成</td>
-						<td><button class="btn-grey-small" onClick="location.href='order-finish.html'">查看详情</button></td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" value="1" name="" /></td>
-						<td>11530265</td>
-		            	<td>李阿静5</td>
-		            	<td>刘亦菲5</td>
-		            	<td>18254758860</td>
-			            <td>2015-03-26 14:22</td>
-			            <td>月嫂</td>
-			            <td>网络</td>
-			           <td>已完成</td>
-						<td><button class="btn-grey-small" onClick="location.href='order-finish.html'">查看详情</button></td>
-					</tr>
-					<tr>
-						<td><input type="checkbox" value="1" name="" /></td>
-						<td>11530266</td>
-		            	<td>李阿静6</td>
-		            	<td>刘亦菲6</td>
-		            	<td>18254758860</td>
-			            <td>2015-03-26 14:22</td>
-			            <td>月嫂</td>
-			            <td>本地</td>
-			            <td>已完成</td>
-						<td><button class="btn-grey-small" onClick="location.href='order-finish.html'">查看详情</button></td>
-					</tr>
-
-
-				</tbody>
-
-				</table>
-					<div style="display:inline">
-						<button id="gridRecDeleteBtn" type="button" class="btn-grey-danger" style="margin:20px 0;" data-toggle="modal" data-target=".modal-del">删除</button>
-					</div>
-					<div class="page">
-							<ul class="pagination">
-							 	<li class="disabled"><a aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-							<li class="active firstPage"><a onclick="firstPageHandler()">1 <span class="sr-only">(current)</span></a></li>
-							<li class="secondPage"><a onclick="secondPageHandler()">2</a></li>
-							<li class="thirdPage"><a onclick="thirdPageHandler()">3</a></li>
-
-							<li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-							</ul>
-					</div>
-
-					</div><!-- 需求卡片结束 -->
+                </div>
+                <!-- 内容表格结束 -->
+            </div><!-- 需求卡片结束 -->
 
 
 	  					<!-- Modal -->
@@ -295,7 +242,122 @@
 				</div><!-- content-wrapper over -->
 			</div><!-- 订单管理结束 -->
 
+<script>
+    $(function () {
+                function init() {
+                    $("#dataGrid").bootgrid({
+                                ajax: true,
+								post: {
+									status: '4,5,6'
+								},
+                                url: function(){
+                                    var searchPhrase = $("#dataGrid").bootgrid("getSearchPhrase");
+                                    if(searchPhrase.length){
+                                        return "http://test.fuhui.com/demands/list";
+                                    }else{
+                                        return "http://test.fuhui.com/demands/list";
+                                    }
+                                },
+                                responseHandler: function (res) {
+                                    var retResult = {
+                                        "current": 1,
+                                        "rows": []
+                                    }
+                                    retResult["rows"] = res.data.list;
+                                    retResult["rowCount"] = res.data.list.length;
+                                    retResult["total"] = res.data.pager.count;
+                                    retResult["current"] = res.data.pager.page;
+                                    return retResult;
+                                },
+                                formatters: {
+                                    "operations": function (column, row) {
+                                        var status = row.bill_status || row.status;
+                                        switch (status){
+                                            case 0:
+                                                return "<button type=\"button\" class=\"btn-yellow-small\" onClick=\"location.href='order-wait.html?orderId=" + row.id + "'\">匹配阿姨</button>";
+                                            case 1:
+                                                return "<button type=\"button\" class=\"btn-blue-small\" onClick=\"location.href='order-setup.html?orderId=" + row.id + "'\">查看详情</button>";
+                                            case 5:
+                                                return "<button type=\"button\" class=\"btn-grey-small\" onClick=\"location.href='order-canceled.html?orderId=" + row.id + "'\">查看详情</button>";
+                                            default :
+                                                return "<button type=\"button\" class=\"btn-green-small\" onClick=\"location.href='order-service.html?orderId=" + row.id + "'\">查看详情</button>";
+                                        }
+                                    },
+                                    "employee_name": function(column, row){
+                                      if(row.employee_name){
+                                          return row.employee_name
+                                      }else{
+                                          return "未指派"
+                                      }
+                                    },
+                                    "employee_phone": function(column, row){
+                                      if(row.employee_phone){
+                                          return row.employee_phone
+                                      }else{
+                                          return "无"
+                                      }
+                                    },
+                                    "create_at": function(column, row){
+                                        return new Date(row.create_at*1000).format('yyyy-mm-dd HH:MM');
+                                    },
+                                    "type": function (column, row) {
+                                        return list_paramMap.type[row.type]
+                                    },
+                                    "status": function (column, row) {
+                                        var status = row.bill_status || row.status;
+                                        switch (status){
+                                            case 0:
+                                                return '<span class="fontyellow">' + list_paramMap.status[status] + '</span>';
+                                            case 1:
+                                            case 2:
+                                                return '<span class="fontblue">' + list_paramMap.status[status] + '</span>';
+                                            case 3:
+                                                return '<span class="fontgreen">' + list_paramMap.status[status] + '</span>';
+                                            default :
+                                                return list_paramMap.status[status];
+                                        }
+                                    },
+                                    "source": function (column, row) {
+                                        return list_paramMap.source[row.source]
+                                    }
+                                },
+                                rowCount: [10, 12, 18],
+                                labels: {
+                                    infos: "",
+                                    search: "搜索订单",
+                                    noResults: '没有记录'
+                                },
+                                padding: 100,
+                                templates: {
+                                    header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}} shopGridHeader\">" +
+                                    "<div class=\"row\">" +
+                                    "<div class=\"col-sm-12 actionBar shopActionBar\">" +
+                                    "<button type=\"button\" class=\"btn-blue mgl7 fr\" onClick=\"location.href='add-list.html'\">新增订单</button>" +
+                                    "<p class=\"{{css.search}}\"></p>" +
+//                    "<p class=\"{{css.actions}}\"></p>" +
+                                    "</div>" +
+                                    "</div>" +
+                                    "</div>",
+                                    search: "<div class=\"{{css.search}}\">" +
+                                    "<div class=\"input-group\">" +
+                                    "<i class=\"fa fa-search\"></i> " +
+                                    "<input type=\"text\" class=\"{{css.searchField}} search-from\" placeholder=\"{{lbl.search}}\" />" +
+                                    "</div>" +
+                                    "</div>"
+                                },
+                                css: {
+                                    search: "shopSearchField search"
+                                }
+                            }
+                    ).on("selected.rs.jquery.bootgrid", function (e) {
+                            });
 
+                }
+
+                init();
+            }
+    );
+</script>
 </body>
 	<script type="text/javascript">
 		$(document).ready(function(){
