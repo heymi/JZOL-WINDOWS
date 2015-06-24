@@ -3,9 +3,32 @@
 	<script src="js/allBiz.js"></script>
 	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
 	<script src="js/bootstrap-datetimepicker.js"></script>
+	<script src="js/paramMap.js"></script>
 </header>
 <body>
-
+<script>
+    $(function () {
+        var cid = getQueryString('cid');
+        $.ajax({
+            url: 'http://test.fuhui.com/contracts/detail?cid=' + cid,
+            type: 'GET',
+            success: function (ret) {
+                var retObj = JSON.parse(ret).data.list;
+				$('#type').text(paramMap.service_range[retObj.type]);
+				$('#userName').text(retObj.userName);
+				$('#eename').text(retObj.eename);
+				$('#create').text(retObj.create);
+				$('#start').text(retObj.start);
+				$('#end').text(retObj.end);
+				$('#payMoney').text(retObj.payMoney);
+				$('#payType').text(retObj.payType === 0 ? '月' : '小时');
+				$('#ePay').text(retObj.ePay);
+				$('#eePay').text(retObj.eePay);
+				$('#remark').text(retObj.remark);
+            }
+        })
+    })
+</script>
 <div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
 				<div class="content-wrapper">
 					<div class="content-header-inner">
@@ -24,56 +47,52 @@
 										
 										<div class="form-group">
 										    <label for="exampleInputEmail1">合同类型：</label>
-										    电子合同
+										    <span id="type"></span>
 										</div>
 										<div class="form-group">
 										  <label for="">客户姓名：</label>
-										   李阿静
+										   <span id="userName"></span>
 										</div>
 										<div class="form-group">
 										  <label for="">阿姨姓名：</label>
-										   刘亦菲
+										   <span id="eename"></span>
 										</div>
 										<div class="form-group">
 										    <label for="">签订日期：</label>
-										    2015.03.26 14:22
+										    <span id="create"></span>
 										</div>
 										<div class="form-group">
 										    <label for="">合同开始：</label>
-											2015.03.26 14:22	
+											<span id="start"></span>
 									    </div>
 									    <div class="form-group">
 										    <label for="">合同结束：</label>
-											2015.08.26 14:22
+											<span id="end"></span>
 									    </div>
 									 
 										<div class="form-group">
 										   
 										   <label for="exampleInputPassword1">合同工资：</label>
-										    4600<span class="input-span">元/月</span>
+										    <span id="payMoney"></span><span class="input-span">元/<span id="payType"></span></span>
 										 </div>
 									 
 										<div class="form-group">   
-										    <label for="exampleInputPassword1">客户预付中介费：</label>
-										   880元</span>
+										    <label for="exampleInputPassword1">客户中介费：</label>
+										   <span id="ePay"></span>元</span>
 										</div>
 										<div class="form-group">
 										   
 										   <label for="exampleInputPassword1">阿姨中介费：</label>
-										    1060<span class="input-span">元</span>
+										    <span id="eePay"></span><span class="input-span">元</span>
 										    </div>
-									 
-										<div class="form-group">
-										    <label for="exampleInputPassword1">客户中介费：</label>
-										    480<span class="input-span">元</span>
-										</div>
+
 										
 									  
 								
 									
 									<div class="form-group">
 									    <label for="">备注：</label>
-									    雇主与阿姨有过一段浪漫感情史。
+									    <span id="remark"></span>
 									    
 									  </div>
 									  	</form>
@@ -82,12 +101,12 @@
 						     </div>
 
 
-						      <div class="form-footer float-right">
-						      
-						      	<button type="button" class="btn-none" data-toggle="modal" data-target=".bs-example-modal-sm">修改</button>
-						       
-						       
-						      </div>
+						      <!--<div class="form-footer float-right">-->
+						      <!---->
+						      	<!--<button type="button" class="btn-none" data-toggle="modal" data-target=".bs-example-modal-sm">修改</button>-->
+						       <!---->
+						       <!---->
+						      <!--</div>-->
 						    </div>
 						    
 						<!-- Modal -->
