@@ -23,7 +23,9 @@ document.write('<script src="js/commonUtils.js"></script>');
 document.write('<script src="js/errorCode.js"></script>');
 document.write('<script src="js/utils/provinceCity.js"></script>');
 document.write('<script src="js/date.format.js"></script>');
+document.write('<script src="js/store.js"></script>');
+document.write('<script src="js/init.js"></script>');
 
 //date picker
 document.write('<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">');
-document.write('<script src="js/bootstrap-datetimepicker.js"></script>')
+document.write('<script src="js/bootstrap-datetimepicker.js"></script>');

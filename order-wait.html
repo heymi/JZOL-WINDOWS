@@ -33,6 +33,13 @@
 				$('#employee_experience').text(demands_info.employee_experience);
 				$('#requirements').text(demands_info.requirements);
 				$('#employee_education').text(paramMap.qualification[demands_info.employee_education]);
+
+				// 把查询条件存储到 localstorage
+				var postData = {};
+				postData.service = demands_info.type;
+				postData.qualification = demands_info.employee_education;
+				store('match_aunt', postData);
+				$('#to_dispath').attr('onclick',"location.href='order-match.html?demandId="+demands_info.id+"'");
             }
         })
     })
@@ -136,7 +143,7 @@
  <button type="button" class="btn-none fl
  " data-toggle="modal" data-target=".bs-example-modal-sm"> 放弃订单 </button>
 		       <button class="btn-yellow-big" type="button" data-toggle="modal" data-target="#shareList"> 分享订单 </button>
-		        <button type="button" class="btn-blue-big btn btn-primary fr mgl10" onclick="location.href='order-match.html'"> 匹配阿姨 </button>
+		        <button type="button" class="btn-blue-big btn btn-primary fr mgl10" id="to_dispath" onclick="location.href='order-match.html'"> 匹配阿姨 </button>
 		        
 	        </div>
 
