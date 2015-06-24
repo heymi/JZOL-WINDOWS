@@ -26,12 +26,12 @@
             },
             status: {
                 0: '待处理',
-                1: '已匹配',
-                2: '试工中',
-                3: '服务中',
-                4: '已完成',
-                5: '已取消',
-                6: '已结束'
+                1: '试工中',
+                2: '服务中',
+                3: '已完成',
+                4: '试工失败',
+                5: '需求终止',
+                6: '已取消'
             }
         }
     </script>
@@ -290,10 +290,12 @@
                                                 return "<button type=\"button\" class=\"btn-yellow-small\" onClick=\"location.href='order-wait.html?orderId=" + row.id + "'\">匹配阿姨</button>";
                                             case 1:
                                                 return "<button type=\"button\" class=\"btn-blue-small\" onClick=\"location.href='order-setup.html?orderId=" + row.id + "'\">查看详情</button>";
+                                            case 3:
+                                                return "<button type=\"button\" class=\"btn-blue-small\" onClick=\"location.href='order-finish.html?orderId=" + row.id + "'\">查看详情</button>";
                                             case 5:
-                                                return "<button type=\"button\" class=\"btn-grey-small\" onClick=\"location.href='order-canceled.html?orderId=" + row.id + "'\">查看详情</button>";
+                                                return "<button type=\"button\" class=\"btn-grey-small\" onClick=\"location.href='order-abend.html?orderId=" + row.id + "'\">查看详情</button>";
                                             case 6:
-                                                return "<button type=\"button\" class=\"btn-grey-small\" onClick=\"location.href='order-finish.html?orderId=" + row.id + "'\">查看详情</button>";
+                                                return "<button type=\"button\" class=\"btn-grey-small\" onClick=\"location.href='order-canceled.html?orderId=" + row.id + "'\">查看详情</button>";
                                             default :
                                                 return "<button type=\"button\" class=\"btn-green-small\" onClick=\"location.href='order-service.html?orderId=" + row.id + "'\">查看详情</button>";
                                         }
