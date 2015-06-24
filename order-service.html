@@ -2,9 +2,62 @@
 <html>
 <header>
     <script src="js/allBiz.js"></script>
+	<script src="js/paramMap.js"></script>
 </header>
 <body>
+<script>
+    $(function () {
+        var orderId = getQueryString('orderId');
+        var paramData = {id: orderId};
+        $.ajax({
+            url: 'http://test.fuhui.com/demands/detail',
+            type: 'POST',
+            data: paramData,
+            success: function (ret) {
+                var retObj = JSON.parse(ret);
+				var demands_info = retObj.data.demands_info;
+				var bill_id = JSON.parse(demands_info.bill_id);
+				bill_id = bill_id[bill_id.length - 1];
+				var bill_info = retObj.data.bill_info[bill_id];
+				console.log(bill_info)
+				$('#order_id').text(demands_info.id);
+				$('.order-type').text(paramMap['service_range'][demands_info.type]);
+				$('#work_time').text(new Date(demands_info.work_start_time*1000).format('yyyy.mm.dd') + ' - ' + new Date(demands_info.work_end_time*1000).format('yyyy.mm.dd'));
+				$('#employer_name').text(demands_info.employer_name);
+				$('#employer_phone').text(demands_info.employer_phone);
+				$('#remark').text(demands_info.remark || '暂无');
+				$('#employee_pay_lower').text(demands_info.employee_pay_lower);
+				$('#employee_pay_upper').text(demands_info.employee_pay_upper);
+				$('#employee_pay_types').text(demands_info.employee_pay_types === 1 ? '小时' : '月');
+				$('#trial_time').text(new Date(demands_info.trial_time*1000).format('yyyy.mm.dd HH:MM'));
+				$('#service_address').text(demands_info.service_address || '无');
+				$('#employee_age_lower').text(demands_info.employee_age_lower);
+				$('#employee_age_upper').text(demands_info.employee_age_upper);
+				$('#employee_experience').text(demands_info.employee_experience);
+				$('#requirements').text(demands_info.requirements);
+				$('#employee_education').text(paramMap.qualification[demands_info.employee_education]);
 
+				if(bill_info){
+					$('#visit_time').text(new Date(bill_info.trial_time*1000).format('yyyy.mm.dd HH:MM'));
+					$('#trial_day').text(bill_info.trial_day);
+					$('#employer_money').text(bill_info.employer_money);
+					$('#employee_money').text(bill_info.employee_money);
+					$('#employee_end_pay_money').text(bill_info.employee_end_pay_money);
+					$('#employee_end_pay_types').text(bill_info.employee_end_pay_types === '0' ? '月' : '小时');
+				}else{
+					$('#bill_info').hide();
+				}
+
+				// 把查询条件存储到 localstorage
+				var postData = {};
+				postData.service = demands_info.type;
+				postData.qualification = demands_info.employee_education;
+				store('match_aunt', postData);
+				$('#to_dispath').attr('onclick',"location.href='order-match.html?demandId="+demands_info.id+"'");
+            }
+        })
+    })
+</script>
 <div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
 				<div class="content-wrapper">
 
@@ -51,47 +104,39 @@
     	<p class="dark pro-done fr">服务完成</p>
     </div>
 
-<div class="order-info-detail mgt60 clearfix">
-	<dl class="oder-dl dl-horizontal-mini dl-horizontal mgt20 f16 fl">
+<div class="order-info-detail mgt60 clearfix"><dl class="oder-dl dl-horizontal-mini dl-horizontal mgt20 f16 fl">
   								<dt class="gray">订单编号：</dt>
-  								<dd>79802876582</dd>
+  								<dd id="order_id"></dd>
   								<dt class="gray">服务种类：</dt>
-  								<dd>营养师</dd>
+  								<dd id="type" class="order-type"></dd>
   								<dt class="gray">服务时间：</dt>
-  								<dd>2015.05.12 － 2015.06.12</dd>
-  								<dt class="gray">服务价格：</dt>
-  								<dd ><span class="fontred">5000</span> 元/月</dd>
+  								<dd id="work_time"></dd>
 							</dl>
 
 							<dl class="oder-dl dl-horizontal-mini dl-horizontal mgt20 f16 fr">
   								<dt class="gray">雇主信息：</dt>
-  								<dd><a href="#" title="查看雇主信息">李楠</a></dd>
+  								<dd><a href="#" title="查看雇主信息" id="employer_name"></a></dd>
   								<dt class="gray">电话：</dt>
-  								<dd><ins>183 2719 3012</ins></dd>
-  								<dt class="gray">阿姨信息：</dt>
-  								<dd><a href="#" title="查看阿姨信息">秋菊</a></dd>
-  								<dt class="gray">电话：</dt>
-  								<dd><ins>159 2839 9910</ins></dd>
+  								<dd><ins id="employer_phone"></ins></dd>
+
 							</dl>
-
-
 </div>
-<div class="order-hid-dl clearfix border">  <h4>试工信息</h4>
+<div class="order-hid-dl clearfix border" id="bill_info">  <h4>试工信息</h4>
 	<dl class="oder-dl dl-horizontal-mini dl-horizontal mgt20 f16 fl">
 
                   <dt class="gray">上门时间：</dt>
-                  <dd> 2015.03.25 12:20</dd>
+                  <dd id="visit_time"></dd>
                   <dt class="gray">试工天数：</dt>
-                  <dd>10天</dd>
+                  <dd id="trial_day"></dd>
 							</dl>
 
 							<dl class="oder-dl dl-horizontal-mini dl-horizontal mgt20 f16 fr">
                 <dt class="gray">雇主中介费：</dt>
-                <dd>1100元</dd>
+                <dd><span id="employer_money"></span>元</dd>
                 <dt class="gray">阿姨中介费：</dt>
-                <dd>1260元</dd>
+                <dd><span id="employee_money"></span>元</dd>
                 <dt class="gray">阿姨薪资：</dt>
-                <dd>5400元/月</dd>
+                <dd><span id="employee_end_pay_money"></span>元/<span id="employee_end_pay_types"></span></dd>
 							</dl>
 
 
@@ -101,27 +146,24 @@
         <dl class="order-hid-dl dl-horizontal f16">
         				<h4>详细需求</h4>
 						<dt class="gray">工作内容：</dt>
-						<dd> 每天 8：30-20：00，照看刚满月的男娃。要求人友善，会哄孩子，有带同龄宝宝丰富经验 有耐心，会做辅食，5000左右六休一。需住家。</dd>
+						<dd id="remark"></dd>
 						<dt class="gray">薪水范围：</dt>
-						<dd>6200 - 7000 元/月</dd>
-						<dt class="gray">上门时间：</dt>
-						<dd>2015.05.12 17:30</dd>
+						<dd><span id="employee_pay_lower"></span> - <span id="employee_pay_upper"></span> 元/<span id="employee_pay_types"></span></dd>
+						<dt class="gray">试工时间：</dt>
+						<dd id="trial_time"></dd>
 						<dt class="gray">上门地址：</dt>
-						<dd>上海市杨浦区大学路 33 弄</dd>
+						<dd id="service_address"></dd>
 						<h4>阿姨要求</h4>
 						<dt class="gray">年龄：</dt>
-						<dd>30 岁 - 50岁</dd>
+						<dd><span id="employee_age_lower"></span>岁 - <span id="employee_age_upper"></span>岁</dd>
 						<dt class="gray">学历：</dt>
-						<dd>初中以上</dd>
+						<dd id="employee_education"></dd>
 						<dt class="gray">工作经验：</dt>
-						<dd>2 年以上</dd>
+						<dd><span id="employee_experience"></span> 年以上</dd>
 						<dt class="gray">特殊要求：</dt>
-						<dd>必须有健康证，普通话必须标准，话不多，做事认真，懂礼貌。</dd>
-						<h4>备注信息</h4>
-						<textarea class="text-gray"> 这个阿姨层级有吸毒史 </textarea>
-
-
-
+						<dd id="requirements"></dd>
+						<!--<h4>备注信息</h4>-->
+						<!--<textarea class="text-gray"> 这个阿姨层级有吸毒史 </textarea>-->
 					</dl>
     </div>
 
