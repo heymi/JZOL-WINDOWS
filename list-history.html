@@ -26,12 +26,12 @@
             },
             status: {
                 0: '待处理',
-                1: '已匹配',
-                2: '试工中',
-                3: '服务中',
-                4: '已完成',
-                5: '已取消',
-                6: '已结束'
+                1: '试工中',
+                2: '服务中',
+                3: '已完成',
+                4: '试工失败',
+                5: '需求终止',
+                6: '已取消'
             }
         }
     </script>
@@ -116,11 +116,12 @@
                         <thead>
                         <tr>
                             <th data-column-id="id" data-identifier="true" data-width="0px"></th>
+                            <th data-column-id="demands_id" data-identifier="true" data-width="0px"></th>
                             <th data-column-id="bill_status" data-identifier="true" data-width="0px"></th>
                             <th data-column-id="employer_name" data-identifier="true">雇主</th>
                             <th data-column-id="employee_name" data-identifier="true">阿姨</th>
                             <th data-column-id="employee_phone" data-identifier="true">联系电话</th>
-                            <th data-column-id="create_at" data-width="15%">订单生成时间</th>
+                            <th data-column-id="order_at" data-width="15%">订单生成时间</th>
                             <th data-column-id="type">服务类型</th>
                             <th data-column-id="source">来源</th>
                             <th data-column-id="status">状态</th>
@@ -248,14 +249,14 @@
                     $("#dataGrid").bootgrid({
                                 ajax: true,
 								post: {
-									status: '4'
+									type: 2
 								},
                                 url: function(){
                                     var searchPhrase = $("#dataGrid").bootgrid("getSearchPhrase");
                                     if(searchPhrase.length){
-                                        return "http://test.fuhui.com/demands/list";
+                                        return "http://test.fuhui.com/bill/list";
                                     }else{
-                                        return "http://test.fuhui.com/demands/list";
+                                        return "http://test.fuhui.com/bill/list";
                                     }
                                 },
                                 responseHandler: function (res) {
@@ -274,13 +275,17 @@
                                         var status = row.bill_status || row.status;
                                         switch (status){
                                             case 0:
-                                                return "<button type=\"button\" class=\"btn-yellow-small\" onClick=\"location.href='order-wait.html?orderId=" + row.id + "'\">匹配阿姨</button>";
+                                                return "<button type=\"button\" class=\"btn-yellow-small\" onClick=\"location.href='order-wait.html?orderId=" + row.demands_id + "'\">匹配阿姨</button>";
                                             case 1:
-                                                return "<button type=\"button\" class=\"btn-blue-small\" onClick=\"location.href='order-setup.html?orderId=" + row.id + "'\">查看详情</button>";
+                                                return "<button type=\"button\" class=\"btn-blue-small\" onClick=\"location.href='order-setup.html?orderId=" + row.demands_id + "'\">查看详情</button>";
+											case 3:
+                                                return "<button type=\"button\" class=\"btn-blue-small\" onClick=\"location.href='order-finish.html?orderId=" + row.demands_id + "'\">查看详情</button>";
                                             case 5:
-                                                return "<button type=\"button\" class=\"btn-grey-small\" onClick=\"location.href='order-canceled.html?orderId=" + row.id + "'\">查看详情</button>";
+                                                return "<button type=\"button\" class=\"btn-grey-small\" onClick=\"location.href='order-abend.html?orderId=" + row.demands_id + "'\">查看详情</button>";
+                                            case 6:
+                                                return "<button type=\"button\" class=\"btn-grey-small\" onClick=\"location.href='order-canceled.html?orderId=" + row.demands_id + "'\">查看详情</button>";
                                             default :
-                                                return "<button type=\"button\" class=\"btn-green-small\" onClick=\"location.href='order-service.html?orderId=" + row.id + "'\">查看详情</button>";
+                                                return "<button type=\"button\" class=\"btn-green-small\" onClick=\"location.href='order-service.html?orderId=" + row.demands_id + "'\">查看详情</button>";
                                         }
                                     },
                                     "employee_name": function(column, row){
