@@ -170,7 +170,7 @@
 
  <div class="popover-modal-footer order-footer modal-footer mgt40 clearfix">
    <button type="button" class="btn-blue fl" onclick="location.href='contract-info.html'"> 查看合同 </button>
-		       <button type="button" class="btn-none " onclick="location.href='order-match.html'"> 更换阿姨 </button>
+		       <button type="button" class="btn-none "  id="to_dispath" onclick="location.href='order-match.html'">更换阿姨</button>
 		        <button type="button" class="btn-grey-danger btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" > 提前终止服务 </button>
 	        </div>
 </div>
@@ -250,13 +250,13 @@
 							        <div class="form-group">
 										    <label for="">放弃原因？</label>
 										    <!-- Small button group -->
-											<input type="text" class="form-control" id="InputName">
+											<textarea class="form-control" id="drop_order_remark"></textarea>
 
 										</div>
 							      </div>
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-							        <button type="button" class="btn btn-primary" onclick="location.href='list-local.html'">放弃</button>
+							        <button type="button" class="btn btn-primary" id="drop_order">放弃</button>
 							      </div>
 							    </div>
 							  </div>
@@ -273,6 +273,34 @@ jQuery(document).ready(function(){
 	$(".fog-hover").on("click", function (){
 							$(".slide-menu").toggleClass("slide-menu-show");
 							$(".fog-hover").toggleClass("fog");
+	});
+
+	$('#drop_order').on('click', function () {
+		var paramObj = {};
+		var order_id = getQueryString('orderId');
+		var remark = $('#drop_order_remark').val();
+		paramObj.id = order_id;
+		paramObj.remark = remark;
+		$.ajax({
+            url: "http://test.fuhui.com/demands/over",
+            type: 'POST',
+            data: paramObj,
+            success: function (ret) {
+                var retObj = JSON.parse(ret);
+                if (retObj.code == '0') {
+                    $.scojs_message('取消成功', $.scojs_message.TYPE_OK);
+                    setTimeout(function(){
+                      parent.document.getElementById("rightContent").setAttribute("src", "list-local.html");
+						$('#sendingAunt').modal('hide');
+                    },1e3);
+                } else{
+					$.scojs_message(errorCode['code_' + retObj.code], $.scojs_message.TYPE_ERROR);
+				}
+            },
+            error: function (ret) {
+                $.scojs_message('取消失败', $.scojs_message.TYPE_ERROR)
+            }
+        });
 	});
 });
 
