@@ -19,7 +19,6 @@
 				var bill_id = JSON.parse(demands_info.bill_id);
 				bill_id = bill_id[bill_id.length - 1];
 				var bill_info = retObj.data.bill_info[bill_id];
-				console.log(bill_info)
 				$('#order_id').text(demands_info.id);
 				$('.order-type').text(paramMap['service_range'][demands_info.type]);
 				$('#work_time').text(new Date(demands_info.work_start_time*1000).format('yyyy.mm.dd') + ' - ' + new Date(demands_info.work_end_time*1000).format('yyyy.mm.dd'));
@@ -50,6 +49,13 @@
 				postData.qualification = demands_info.employee_education;
 				store('match_aunt', postData);
 				$('#to_dispath').attr('onclick',"location.href='order-match.html?demandId="+demands_info.id+"'");
+
+				var contractNeededData = {};
+				contractNeededData.userName = demands_info.employer_name;
+				contractNeededData.eename = bill_info.employee_name;
+				contractNeededData.type = paramMap['service_range'][demands_info.type];
+				store('contract_needed_data', contractNeededData);
+				$('#add_contract').attr('onclick',"location.href='add-contract.html?oid="+bill_id+"&eeid="+bill_info.employee_id+"&eid="+demands_info.employer_id+"&status="+bill_info.bill_status+"&type="+demands_info.type+"&did="+demands_info.id+"'");
             }
         })
     })
@@ -168,7 +174,7 @@
 
  <div class="popover-modal-footer order-footer modal-footer mgt40 clearfix">
 		       <button type="button" class="btn-none" id="to_dispath" onclick="location.href='order-match.html'">更换阿姨 </button>
-		        <button type="button" class="btn-blue-big btn btn-primary" onclick="location.href='add-contract.html'"> <i class="fa fa-pencil pl19"></i> 填写合同细节 </button>
+		        <button type="button" class="btn-blue-big btn btn-primary" id="add_contract" onclick="location.href='add-contract.html'"> <i class="fa fa-pencil pl19"></i> 填写合同细节 </button>
 	        </div>
 
 </div>
