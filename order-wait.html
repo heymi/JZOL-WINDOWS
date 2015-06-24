@@ -141,7 +141,7 @@
 
  <div class="popover-modal-footer order-footer modal-footer mgt40 clearfix">
  <button type="button" class="btn-none fl
- " data-toggle="modal" data-target=".bs-example-modal-sm"> 放弃订单 </button>
+ " data-toggle="modal" data-target=".drop-order"> 放弃订单 </button>
 		       <button class="btn-yellow-big" type="button" data-toggle="modal" data-target="#shareList"> 分享订单 </button>
 		        <button type="button" class="btn-blue-big btn btn-primary fr mgl10" id="to_dispath" onclick="location.href='order-match.html'">匹配阿姨</button>
 		        
@@ -274,7 +274,7 @@
 					</div>
 					</div>
 	<!-- Modal -->
-							<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+							<div class="modal fade drop-order" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 							  <div class="modal-dialog modal-sm">
 							    <div class="modal-content">
 							      <div class="modal-header">
@@ -285,14 +285,13 @@
 							        <div class="form-group">
 										    <label for="">放弃原因？</label>
 										    <!-- Small button group -->
-												<select class="form-control form-control-1x
-												"><option value="仅限友店">无合适阿姨</option><option value="公开">临时决定取消</option></select>
+												<textarea class="form-control" id="drop_order_remark"></textarea>
   
 										</div>			
 							      </div>
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-							        <button type="button" class="btn btn-primary" onClick="location.href='list-local.html'">放弃</button>
+							        <button type="button" class="btn btn-primary" id="drop_order">放弃</button>
 							      </div>
 							    </div>
 							  </div>
@@ -308,6 +307,34 @@ jQuery(document).ready(function(){
 	$(".fog-hover").on("click", function (){
 							$(".slide-menu").toggleClass("slide-menu-show");
 							$(".fog-hover").toggleClass("fog");
+	});
+
+	$('#drop_order').on('click', function () {
+		var paramObj = {};
+		var order_id = getQueryString('orderId');
+		var remark = $('#drop_order_remark').val();
+		paramObj.id = order_id;
+		paramObj.remark = remark;
+		$.ajax({
+            url: "http://test.fuhui.com/demands/over",
+            type: 'POST',
+            data: paramObj,
+            success: function (ret) {
+                var retObj = JSON.parse(ret);
+                if (retObj.code == '0') {
+                    $.scojs_message('取消成功', $.scojs_message.TYPE_OK);
+                    setTimeout(function(){
+                      parent.document.getElementById("rightContent").setAttribute("src", "list-local.html");
+						$('#sendingAunt').modal('hide');
+                    },1e3);
+                } else{
+					$.scojs_message(errorCode['code_' + retObj.code], $.scojs_message.TYPE_ERROR);
+				}
+            },
+            error: function (ret) {
+                $.scojs_message('取消失败', $.scojs_message.TYPE_ERROR)
+            }
+        });
 	});
 });
 

@@ -596,3 +596,6 @@ section{width: 100%;min-width: 980px;padding-top: 80px;}
 .tab-content{
 	z-index: 90;
 }
+.modal-sm textarea{
+	width: 100% !important;
+}
