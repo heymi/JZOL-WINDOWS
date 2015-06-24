@@ -230,30 +230,23 @@
 									<form class="form-inline">
 									
 										<div class="form-group">
-										     <label for="">分享时间：</label>
-												<input type="text" class="form-control form-control-2x datetimepicker" value=""><span class="input-span">到</span>
-												<input type="text" class="form-control form-control-2x datetimepicker">
-										 
+										     <label for="public_time">分享时间：</label>
+												<input type="text" class="form-control form-control-2x datetimepicker" id="public_time" value="">
 										</div>
 										
 									<div class="form-group">
-										    <label for="">分享范围：</label>
-										    <!-- Small button group -->
-												<select class="form-control form-control-1x
-												"><option value="">所有门店</option></select>
-
+										    <label for="public_demand">分享要求：</label>
+										    <textarea class="form-control" id="public_demand"></textarea>
 										</div>		
 
 										<div class="form-group">
-										     <label class="laber-pading">负责人：</label>
-												<input type="text" class="form-control form-control-2x" value="">
-												
-										 
+										     <label for="public_phone">联系手机：</label>
+												<input type="text" id="public_phone" class="form-control form-control-2x" value="">
 										</div>
 
 										<div class="form-group">
-										     <label for="">联系电话：</label>
-												<input type="text" class="form-control form-control-2x" value="">
+										     <label for="public_tel">联系电话：</label>
+												<input type="text" id="public_tel" class="form-control form-control-2x" value="">
 												
 										 
 										</div>					
@@ -268,7 +261,7 @@
       </div>
 					      <div class="modal-footer">
 					        <button type="button" class="btn-none" data-dismiss="modal">取消</button>
-					        <button type="button" class="btn-green" onClick="location.href='list-shared.html'">确认分享</button>
+					        <button type="button" class="btn-green"  id="share_order">确认分享</button>
 					      </div>
 					    </div>
 					</div>
@@ -338,37 +331,36 @@ jQuery(document).ready(function(){
 	});
 });
 
-
- $('.form_datetime').datetimepicker({
-        language:  'zh-CN',
-        weekStart: 1,
-        todayBtn:  1,
-		autoclose: 1,
-		todayHighlight: 1,
-		startView: 2,
-		forceParse: 0,
-        showMeridian: 1
-    });
-	$('.form_date').datetimepicker({
-        language:  'zh-CN',
-        weekStart: 1,
-        todayBtn:  1,
-		autoclose: 1,
-		todayHighlight: 1,
-		startView: 2,
-		minView: 2,
-		forceParse: 0
-    });
-	$('.form_time').datetimepicker({
-        language:  'zh-CN',
-        weekStart: 1,
-        todayBtn:  1,
-		autoclose: 1,
-		todayHighlight: 1,
-		startView: 1,
-		minView: 0,
-		maxView: 1,
-		forceParse: 0
-    });
+	$('.datetimepicker').datetimepicker({
+		   autoclose: true,
+			format: 'yyyy/mm/dd hh:ii'
+	});
+	$('#share_order').on('click', function () {
+		var paramObj = {};
+		paramObj.id = getQueryString('orderId');
+		paramObj.public_demand = $('#public_demand').val();
+		paramObj.public_time = $('#public_time').val() ? new Date($('#public_time').val()).getTime()/1000 : 0;
+		paramObj.public_phone = $('#public_phone').val();
+		paramObj.public_tel = $('#public_tel').val();
+		$.ajax({
+			url: "http://test.fuhui.com/demands/shareDemands",
+			type: 'POST',
+			data: paramObj,
+			success: function (ret) {
+				var retObj = JSON.parse(ret);
+				if (retObj.code == '0') {
+					$.scojs_message('分享订单成功', $.scojs_message.TYPE_OK);
+					setTimeout(function(){
+						parent.document.getElementById("rightContent").setAttribute("src", "list-shared.html");
+					},1e3);
+				} else{
+					$.scojs_message(errorCode['code_' + retObj.code], $.scojs_message.TYPE_ERROR);
+				}
+			},
+			error: function (ret) {
+				$.scojs_message('合同签订失败', $.scojs_message.TYPE_ERROR)
+			}
+		});
+	});
 </script>
 </html>
