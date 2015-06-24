@@ -101,8 +101,8 @@
 							        您确定放弃当前添加？
 							      </div>
 							      <div class="modal-footer">
-							        <button type="button" class="btn btn-default" data-dismiss="modal" onClick="location.href='order-service.html'">取消</button>
-							        <button type="button" class="btn btn-primary">放弃</button>
+							        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+							        <button type="button" class="btn btn-primary" id="cancel_add_contract">放弃</button>
 							      </div>
 							    </div>
 							  </div>
@@ -177,6 +177,9 @@
 				}
 			});
 		});
+	});
+	$('#cancel_add_contract').on('click', function(){
+		window.location.href = "order-setup.html?orderId=" + getQueryString('did');
 	});
    $('.datetimepicker').datetimepicker({
 	   autoclose: true,
