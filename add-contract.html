@@ -150,9 +150,24 @@
 					var retObj = JSON.parse(ret);
 					if (retObj.code == '0') {
 						$.scojs_message('合同签订成功', $.scojs_message.TYPE_OK);
-						setTimeout(function(){
-						  parent.document.getElementById("rightContent").setAttribute("src", "order-service.html?orderId=" + getQueryString('did'));
-						},1e3);
+						$.ajax({
+							url: "http://test.fuhui.com/bill/update",
+							type: 'POST',
+							data: {
+								id: retObj.data.order_id,
+								cid: retObj.data.cid
+							},
+							success: function (ret) {
+								var retObj = JSON.parse(ret);
+								if (retObj.code == '0') {
+									setTimeout(function(){
+									  parent.document.getElementById("rightContent").setAttribute("src", "order-service.html?orderId=" + getQueryString('did'));
+									},1e3);
+								} else{
+									window.location.reload();
+								}
+							}
+						});
 					} else{
 						$.scojs_message(errorCode['code_' + retObj.code], $.scojs_message.TYPE_ERROR);
 					}

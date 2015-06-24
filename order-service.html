@@ -19,7 +19,6 @@
 				var bill_id = JSON.parse(demands_info.bill_id);
 				bill_id = bill_id[bill_id.length - 1];
 				var bill_info = retObj.data.bill_info[bill_id];
-				console.log(bill_info)
 				$('#order_id').text(demands_info.id);
 				$('.order-type').text(paramMap['service_range'][demands_info.type]);
 				$('#work_time').text(new Date(demands_info.work_start_time*1000).format('yyyy.mm.dd') + ' - ' + new Date(demands_info.work_end_time*1000).format('yyyy.mm.dd'));
@@ -54,6 +53,8 @@
 				postData.qualification = demands_info.employee_education;
 				store('match_aunt', postData);
 				$('#to_dispath').attr('onclick',"location.href='order-match.html?demandId="+demands_info.id+"'");
+				var cid = bill_info.certificate_id;
+				$('#view_c').attr('onclick',"location.href='contract-info.html?cid="+cid+"'");
             }
         })
     })
@@ -169,7 +170,7 @@
 
 
  <div class="popover-modal-footer order-footer modal-footer mgt40 clearfix">
-   <button type="button" class="btn-blue fl" onclick="location.href='contract-info.html'"> 查看合同 </button>
+   <button type="button" class="btn-blue fl" id="view_c" onclick="location.href='contract-info.html'"> 查看合同 </button>
 		       <button type="button" class="btn-none "  id="to_dispath" onclick="location.href='order-match.html'">更换阿姨</button>
 		        <button type="button" class="btn-grey-danger btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" > 提前终止服务 </button>
 	        </div>
