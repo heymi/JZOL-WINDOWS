@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <script src="js/allBiz.js"></script>
+	<script src="js/paramMap.js"></script>
+</header>
+<body>
+<script>
+    $(function () {
+        var orderId = getQueryString('orderId');
+        var paramData = {id: orderId};
+        $.ajax({
+            url: 'http://test.fuhui.com/demands/detail',
+            type: 'POST',
+            data: paramData,
+            success: function (ret) {
+                var retObj = JSON.parse(ret);
+				var demands_info = retObj.data.demands_info;
+				var bill_id = JSON.parse(demands_info.bill_id);
+				bill_id = bill_id[bill_id.length - 1];
+				var bill_info = retObj.data.bill_info[bill_id];
+				console.log(bill_info)
+				$('#order_id').text(demands_info.id);
+				$('.order-type').text(paramMap['service_range'][demands_info.type]);
+				$('#work_time').text(new Date(demands_info.work_start_time*1000).format('yyyy.mm.dd') + ' - ' + new Date(demands_info.work_end_time*1000).format('yyyy.mm.dd'));
+				$('#employer_name').text(demands_info.employer_name);
+				$('#employer_phone').text(demands_info.employer_phone);
+				$('#remark').text(demands_info.remark || '暂无');
+				$('#employee_pay_lower').text(demands_info.employee_pay_lower);
+				$('#employee_pay_upper').text(demands_info.employee_pay_upper);
+				$('#employee_pay_types').text(demands_info.employee_pay_types === 1 ? '小时' : '月');
+				$('#trial_time').text(new Date(demands_info.trial_time*1000).format('yyyy.mm.dd HH:MM'));
+				$('#service_address').text(demands_info.service_address || '无');
+				$('#employee_age_lower').text(demands_info.employee_age_lower);
+				$('#employee_age_upper').text(demands_info.employee_age_upper);
+				$('#employee_experience').text(demands_info.employee_experience);
+				$('#requirements').text(demands_info.requirements);
+				$('#employee_education').text(paramMap.qualification[demands_info.employee_education]);
+
+				if(bill_info){
+					$('#visit_time').text(new Date(bill_info.trial_time*1000).format('yyyy.mm.dd HH:MM'));
+					$('#trial_day').text(bill_info.trial_day);
+					$('#employer_money').text(bill_info.employer_money);
+					$('#employee_money').text(bill_info.employee_money);
+					$('#employee_end_pay_money').text(bill_info.employee_end_pay_money);
+					$('#employee_end_pay_types').text(bill_info.employee_end_pay_types === '0' ? '月' : '小时');
+				}else{
+					$('#bill_info').hide();
+				}
+
+				// 把查询条件存储到 localstorage
+				var postData = {};
+				postData.service = demands_info.type;
+				postData.qualification = demands_info.employee_education;
+				store('match_aunt', postData);
+				$('#to_dispath').attr('onclick',"location.href='order-match.html?demandId="+demands_info.id+"'");
+            }
+        })
+    })
+</script>
+<div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
+				<div class="content-wrapper">
+
+					<!-- 面包屑导航样式开始 -->
+					<div class="content-header-inner clearfix">
+						<div class="bread-nav float-left">
+							<ol class="breadcrumb">
+								<li><a href="list-local.html">订单管理</a></li>
+		 						<li><a href="list-local.html">本地订单</a></li>
+		 						<li class="active"><strong>服务中</strong></li>
+							</ol>
+						</div>
+
+					<div class="mgt20 fr">
+					<span class="gray">订单工种：</span><span class="tag">营养师</span>
+					</div>
+
+						</div>
+						<!-- 面包屑导航样式结束 -->
+		<!-- 匹配列表开始 -->
+
+	<div class="match_table">
+
+<div class="order-detail-wrap">
+
+<!-- <h4 class="gray mgb20"><center><strong>等待试工</strong></center></h4> -->
+<!--<h4 class="fontyellow mgb20"><center><strong>试工中</strong></center></h4>-->
+<!-- <h4 class="fontred mgb20"><center><strong>签订合同</strong></center></h4> -->
+ <!-- <h4 class="fontgreen mgb20"><center><strong>服务中</strong></center></h4>  -->
+ <h4 class="fontgreen mgb20"><center><strong>服务取消</strong></center></h4>
+<div class="progress-style progress">
+<!--
+  <div class="progress-gray progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 1%;">
+    <span class="sr-only">1% Complete</span>
+  </div>
+-->
+    <div class="progress-blue progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+  </div>
+</div>
+
+<div class="progress-text celarfix">
+    	<p class="dark pro-start  fl">开始试工</p>
+    	<p class="dark pro-contract fl">合同未签</p>
+    	<p class="dark pro-done fontgreen fr">服务取消</p>
+    </div>
+
+<div class="order-info-detail mgt60 clearfix"><dl class="oder-dl dl-horizontal-mini dl-horizontal mgt20 f16 fl">
+  								<dt class="gray">订单编号：</dt>
+  								<dd id="order_id"></dd>
+  								<dt class="gray">服务种类：</dt>
+  								<dd id="type" class="order-type"></dd>
+  								<dt class="gray">服务时间：</dt>
+  								<dd id="work_time"></dd>
+							</dl>
+
+							<dl class="oder-dl dl-horizontal-mini dl-horizontal mgt20 f16 fr">
+  								<dt class="gray">雇主信息：</dt>
+  								<dd><a href="#" title="查看雇主信息" id="employer_name"></a></dd>
+  								<dt class="gray">电话：</dt>
+  								<dd><ins id="employer_phone"></ins></dd>
+
+							</dl>
+</div>
+<div class="order-hid-dl clearfix border" id="bill_info">  <h4>试工信息</h4>
+	<dl class="oder-dl dl-horizontal-mini dl-horizontal mgt20 f16 fl">
+
+                  <dt class="gray">上门时间：</dt>
+                  <dd id="visit_time"></dd>
+                  <dt class="gray">试工天数：</dt>
+                  <dd id="trial_day"></dd>
+							</dl>
+
+							<dl class="oder-dl dl-horizontal-mini dl-horizontal mgt20 f16 fr">
+                <dt class="gray">雇主中介费：</dt>
+                <dd><span id="employer_money"></span>元</dd>
+                <dt class="gray">阿姨中介费：</dt>
+                <dd><span id="employee_money"></span>元</dd>
+                <dt class="gray">阿姨薪资：</dt>
+                <dd><span id="employee_end_pay_money"></span>元/<span id="employee_end_pay_types"></span></dd>
+							</dl>
+
+
+</div>
+ <div class="clearfix">
+
+        <dl class="order-hid-dl dl-horizontal f16">
+        				<h4>详细需求</h4>
+						<dt class="gray">工作内容：</dt>
+						<dd id="remark"></dd>
+						<dt class="gray">薪水范围：</dt>
+						<dd><span id="employee_pay_lower"></span> - <span id="employee_pay_upper"></span> 元/<span id="employee_pay_types"></span></dd>
+						<dt class="gray">试工时间：</dt>
+						<dd id="trial_time"></dd>
+						<dt class="gray">上门地址：</dt>
+						<dd id="service_address"></dd>
+						<h4>阿姨要求</h4>
+						<dt class="gray">年龄：</dt>
+						<dd><span id="employee_age_lower"></span>岁 - <span id="employee_age_upper"></span>岁</dd>
+						<dt class="gray">学历：</dt>
+						<dd id="employee_education"></dd>
+						<dt class="gray">工作经验：</dt>
+						<dd><span id="employee_experience"></span> 年以上</dd>
+						<dt class="gray">特殊要求：</dt>
+						<dd id="requirements"></dd>
+						<!--<h4>备注信息</h4>-->
+						<!--<textarea class="text-gray"> 这个阿姨层级有吸毒史 </textarea>-->
+					</dl>
+    </div>
+
+
+
+
+ <div class="popover-modal-footer order-footer modal-footer clearfix">
+
+
+	        </div>
+
+</div>
+		</div>
+		<!-- 匹配列表结束 -->
+			</div>
+			<!-- content-wrapper over -->
+
+
+					</div>
+					<!-- 订单管理结束 -->
+
+
+
+
+			</div><!-- end container -->
+		</div><!-- end content-inner -->
+	</section>
+
+
+	<!-- Modal recommend popover -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="popover-modal-content modal-content">
+
+				<div class="popover-modal-header modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;	</span></button>
+					<h4 class="pop-title modal-title" id="myModalLabel">联系家政公司</h4>
+				</div>
+
+				<div class="modal-body clearfix">
+
+					<dl class="popover-dl dl-horizontal f16 fl">
+						<dt class="gray">阿姨姓名：</dt>
+						<dd>耿莉娟</dd>
+						<dt class="gray">阿姨来自：</dt>
+						<dd>虹桥家政 <span class="gray">地址：闵行区虹莘路 3333 弄</span></dd>
+						<dt class="gray"> 推荐人：</dt>
+						<dd>李阿静 <u><mark>185 2837 8979</mark></u></dd>
+
+					</dl>
+					<dl class="popover-dl dl-horizontal f16 fl">
+						<dt class="gray">雇主需求：</dt>
+						<textarea class="text-gray"> 每天 8：30-20：00，照看刚满月的男娃。要求人友善，会哄孩子，有带同龄宝宝丰富经验 有耐心，会做辅食，5000左右六休一，优秀者工资可谈。</textarea>
+						<dt class="gray">薪水范围：</dt>
+						<dd>6200 - 7000 元/月</dd>
+						<dt class="gray">上门时间：</dt>
+						<!-- datepicker -->		<dd>
+
+						<input size="16" type="text" value="2012-06-15 14:45" readonly class="form_datetime">
+
+						<script type="text/javascript">
+							$(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+						</script>
+
+						<span> 试工 3 天，总工期 1 个月</span></dd>
+					</dl>
+				</div>
+
+				<div class="popover-modal-footer modal-footer">
+					<button type="button" class="btn-none btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn-blue btn btn-primary"><i class="fa fa-check-circle"></i> 已联系，确定上工</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	$(".button-slide-menu").on("click", function (){
+							$(".slide-menu").toggleClass("slide-menu-show");
+							$(".fog-hover").toggleClass("fog");
+		});
+	$(".fog-hover").on("click", function (){
+							$(".slide-menu").toggleClass("slide-menu-show");
+							$(".fog-hover").toggleClass("fog");
+	});
+});
+
+
+ $('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 0,
+        showMeridian: 1
+    });
+	$('.form_date').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+	$('.form_time').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 1,
+		minView: 0,
+		maxView: 1,
+		forceParse: 0
+    });
+</script>
+</html>
