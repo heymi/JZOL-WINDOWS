@@ -75,9 +75,9 @@
                     <div class="sec_nav clearfix">
 						<div class="mgt15 f16 fl list-shared-nav">
 							<ul class="nav nav-pills">
-									<li role="presentation" class="active"><a href="list-shared.html">所有的</a></li>
+									<li role="presentation"><a href="list-shared.html">所有的</a></li>
 									<li role="presentation"><a href="list-shared-share.html">我分享的</a></li>
-									<li role="presentation"><a href="list-shared-recommend.html">我推荐的</a></li>
+									<li role="presentation" class="active"><a href="list-shared-recommend.html">我推荐的</a></li>
 							</ul>
 						</div>
 					</div>
@@ -233,9 +233,9 @@
                                 url: function(){
                                     var searchPhrase = $("#dataGrid").bootgrid("getSearchPhrase");
                                     if(searchPhrase.length){
-                                        return "http://test.fuhui.com/demands/list";
+                                        return "http://test.fuhui.com/DemandsBiddings/myRecommend";
                                     }else{
-                                        return "http://test.fuhui.com/demands/list";
+                                        return "http://test.fuhui.com/DemandsBiddings/myRecommend";
                                     }
                                 },
                                 post: {

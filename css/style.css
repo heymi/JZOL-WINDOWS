@@ -599,3 +599,7 @@ section{width: 100%;min-width: 980px;padding-top: 80px;}
 .modal-sm textarea{
 	width: 100% !important;
 }
+.list-shared-nav{
+	position: relative;
+	z-index: 10;
+}
