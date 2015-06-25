@@ -95,14 +95,15 @@
                             <th data-column-id="id" data-identifier="true" data-width="0px"></th>
                             <th data-column-id="demands_id" data-identifier="true" data-width="0px"></th>
                             <th data-column-id="bill_status" data-identifier="true" data-width="0px"></th>
+                            <th data-column-id="bidding" data-identifier="true" data-width="0px"></th>
                             <th data-column-id="employer_name" data-identifier="true">雇主</th>
                             <th data-column-id="employee_name" data-identifier="true">阿姨</th>
                             <th data-column-id="employee_phone" data-identifier="true">联系电话</th>
-                            <th data-column-id="order_at" data-width="15%">订单生成时间</th>
+                            <th data-column-id="create_at" data-width="15%">订单生成时间</th>
                             <th data-column-id="type">服务类型</th>
                             <th data-column-id="source">来源</th>
                             <th data-column-id="status">状态</th>
-                            <th data-column-id="operations" class="action-th">操作</th>
+                            <th data-column-id="operations" class="action-th" data-width="150px">操作</th>
                         </tr>
                         </thead>
                     </table>
@@ -257,7 +258,11 @@
                                         var status = row.bill_status || row.status;
                                         switch (status){
                                             case 0:
-                                                return "<button type=\"button\" class=\"btn-yellow-small\" onClick=\"location.href='order-wait.html?orderId=" + row.id + "'\">匹配阿姨</button>";
+                                            if(parseInt(row.bidding,10)){
+                                                return "<button type=\"button\" class=\"btn-yellow-small\" onClick=\"location.href='order-shared-select.html?orderId=" + row.id + "'\">"+row.bidding+"名阿姨等待选择</button>";
+                                            }else{
+                                                return "等待匹配";
+                                            }
                                             case 1:
                                                 return "<button type=\"button\" class=\"btn-blue-small\" onClick=\"location.href='order-setup.html?orderId=" + row.id + "'\">查看详情</button>";
                                             case 5:
@@ -283,7 +288,7 @@
                                       }
                                     },
                                     "create_at": function(column, row){
-                                        return new Date(row.order_at*1000).format('yyyy-mm-dd HH:MM');
+                                        return new Date(row.create_at*1000).format('yyyy-mm-dd HH:MM');
                                     },
                                     "type": function (column, row) {
                                         return list_paramMap.type[row.type]
