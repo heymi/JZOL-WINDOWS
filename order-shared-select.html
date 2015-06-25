@@ -2,7 +2,40 @@
 <header>
     <script src="js/allBiz.js"></script>
     <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
-    <script src="js/bootstrap-datetimepicker.js"></script>
+    <link href="js/bootgrid/jquery.bootgrid.css" rel="stylesheet"/>
+	<script src="js/bootstrap-datetimepicker.js"></script>
+	<script src="js/bootgrid/jquery.bootgrid.js"></script>
+    <script src="js/bootgrid/jquery.bootgrid.fa.js"></script>
+	<script src="js/paramMap.js"></script>
+    <script>
+        var auntData = {};
+		function getBiddingDetail(id,callback){
+			$.ajax({
+				url: 'http://test.fuhui.com/DemandsBiddings/detail',
+				type: 'POST',
+				data: {
+                    id: id
+                },
+				success: function (ret) {
+					var retObj = JSON.parse(ret);
+					return callback(retObj.data);
+				}
+			})
+		}
+        function getAuntDetail(id,callback){
+			var paramData = {employee_id: id};
+
+			$.ajax({
+				url: 'http://test.fuhui.com/employee/detail',
+				type: 'POST',
+				data: paramData,
+				success: function (ret) {
+					var retObj = JSON.parse(ret);
+					return callback(retObj.data.static);
+				}
+			})
+		}
+	</script>
 </header>
 <body>
 
@@ -34,239 +67,31 @@
                 <!-- 面包屑导航样式结束 -->
                 <!-- 匹配列表开始 -->
 
-                <div class="match_table">
-
-                    <table>
-                        <thead>
-                        <tr>
-                            <th style="width:10%;">姓名</th>
-                            <th style="width:20%;">工种</th>
-                            <th style="width:8%;">状态</th>
-                            <th style="width:8%;">籍贯</th>
-                            <th style="width:8%;">学历</th>
-                            <th style="width:11%;">来自</th>
-                            <th style="width:15%;">备注</th>
-                            <th style="width:22%;">操作</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><strong>刘亦菲</strong></td>
-                            <td>保姆</td>
-                            <td>在职</td>
-                            <td>江苏</td>
-                            <td>初中</td>
-                            <td><u>虹桥家政</u></td>
-                            <td>会做菜</td>
-                            <td>
-                                <!-- 侧边页开始 -->
-                                <div id="st-trigger-effects" class="column">
-                                    <button class="btn-grey-danger" data-toggle="tooltip" data-placement="top" title="点击会删除此阿姨的信息，并且对方公司可再次推荐其他阿姨">不合适</button>
-                                    <button class="btn-green button-slide-menu" type="button">简历</button>
-                                    <!-- 触发按钮 -->
-
-                                    <div class="slide-menu slide-menu-style">
-                                        <div class="item-container">
-
-                                            <div class="cv-mini-summary cv-summary mgb40 clearfix "> <!-- 浮动清除 -->
-                                                <img src="img/avata.png" alt="avata" width="90" height="90"
-                                                     class="mgt5 fl">
-
-                                                <div class="fr cv-mini cv-descriptions mgt5 fl">
-                                                    <h3>刘亦菲</h3>
-
-                                                    <p class="gray f14">山东日照人，拥有
-                                                        <mark>2 年月嫂从业经验</mark>
-                                                        ，普通话标准、懂初级英语，擅长做东北菜。
-                                                    </p>
-                                                </div>
-
-                                            </div>
-                                            <!-- cv-summary -->
-
-
-                                            <div class="title-box clearfix"> <!-- 浮动清除 -->
-                                                <div class="line-mini line">
-                                                    <h3 class="b titles titles-mini">基础简历</h3>
-                                                </div>
-                                                <dl class="dl-horizontal-mini dl-horizontal f16 fl">
-                                                    <dt class="gray">姓名：</dt>
-                                                    <dd>耿莉娟</dd>
-                                                    <dt class="gray">性别：</dt>
-                                                    <dd>女</dd>
-                                                    <dt class="gray">籍贯：</dt>
-                                                    <dd>山东烟台</dd>
-                                                    <dt class="gray">学历：</dt>
-                                                    <dd>大专</dd>
-                                                </dl>
-
-                                                <dl class="dl-horizontal-mini dl-horizontal f16 fl">
-                                                    <dt class="gray">年龄：</dt>
-                                                    <dd>40</dd>
-                                                    <dt class="gray">属相：</dt>
-                                                    <dd>猪</dd>
-                                                    <dt class="gray">星座：</dt>
-                                                    <dd>天秤座</dd>
-                                                    <dt class="gray">婚姻状况：</dt>
-                                                    <dd>已婚</dd>
-                                                </dl>
-
-                                                <dl class="dl-horizontal-mini dl-horizontal f16 fl">
-                                                    <dt class="gray">求职意向：</dt>
-                                                    <dd>月嫂/保姆</dd>
-                                                    <dt class="gray">期望薪水：</dt>
-                                                    <dd>7-8000/月</dd>
-                                                    <dt class="gray">任职日期：</dt>
-                                                    <dd>即日</dd>
-                                                </dl>
-
-                                            </div>
-                                            <!-- title-box end -->
-
-                                            <!-- 从业经历开始 -->
-                                            <div class="title-box clearfix"> <!-- 浮动清除 -->
-                                                <div class="line-mini line">
-                                                    <h3 class="b titles titles-mini">从业经历</h3>
-                                                </div>
-
-                                                <div class="timeline-mini timeline">
-                                                    <div class="event-wrap-mini event-wrap">
-                                                        <h3>老阿姨家政公司<img src="img/cp_logo_1.png" alt="avata" width="36"
-                                                                        height="36"></h3>
-
-                                                        <div class="event-box title-box clearfix"> <!-- 浮动清除 -->
-                                                            <ul class="list-inline">
-                                                                <li>职务一：<span>老人看护</span></li>
-                                                                <li>服务地点：<span>静安区达安花园</span></li>
-                                                                <li>薪资：<span>3000元/月</span></li>
-                                                            </ul>
-                                                            <ul class="list-inline">
-                                                                <li>职务二：<span>月嫂</span></li>
-                                                                <li>服务地点：<span>长宁区心族公寓</span></li>
-                                                                <li>薪资：<span>4200元/月</span></li>
-                                                            </ul>
-                                                        </div>
-                                                        <!-- event-box end -->
-                                                    </div>
-                                                    <!-- event-wrap end -->
-
-                                                    <div class="event-wrap-mini event-wrap">
-                                                        <h3>洁家家政公司<img src="img/cp_logo_2.png" alt="avata" width="36"
-                                                                       height="36"></h3>
-
-                                                        <div class="event-box title-box clearfix"> <!-- 浮动清除 -->
-                                                            <ul class="list-inline">
-                                                                <li>职务一：<span>老人看护</span></li>
-                                                                <li>服务地点：<span>静安区达安花园</span></li>
-                                                                <li>薪资：<span>3000元/月</span></li>
-                                                            </ul>
-                                                        </div>
-                                                        <!-- event-box end -->
-
-                                                    </div>
-                                                    <!-- event-wrap end -->
-
-                                                </div>
-
-                                            </div>
-                                            <!-- 从业经历结束 -->
-
-
-                                            <div class="b-group clearfix">
-
-                                                <button class="btn-white button-slide-menu fl"><i
-                                                        class="fa fa-refresh"></i> 重新选择
-                                                </button>
-                                                <button type="button"
-                                                        class="btn-blue-big btn-position btn btn-primary btn-lg fl"
-                                                        data-toggle="modal" data-target="#myModal">
-                                                    <i class="fa fa-check"></i> 查看联系方式
-                                                </button>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="fog-hover"></div>
-                                    <!-- 右侧页遮罩层 -->
-                                </div>
-
-                                <!-- 侧边页结束 -->
-                            </td>
-                        </tr>
-                        <tr class="odd">
-                            <td><strong>杨幂</strong></td>
-                            <td>保姆/月嫂/营养</td>
-                            <td>待岗</td>
-                            <td>山东</td>
-                            <td>高中</td>
-                            <td><u>闵行家政</u></td>
-                            <td>懂一点英语</td>
-                            <td>
-                                 <button class="btn-grey-danger" data-toggle="tooltip" data-placement="top" title="点击会删除此阿姨的信息，并且对方公司可再次推荐其他阿姨">不合适</button>
-                                <button class="btn-green">简历</button>
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td><strong>刘强东</strong></td>
-                            <td>月嫂</td>
-                            <td>待岗</td>
-                            <td>山东</td>
-                            <td>高中</td>
-                            <td><u>徐汇家政</u></td>
-                            <td></td>
-                            <td>
-                                 <button class="btn-grey-danger" data-toggle="tooltip" data-placement="top" title="点击会删除此阿姨的信息，并且对方公司可再次推荐其他阿姨">不合适</button>
-                                <button class="btn-green">简历</button>
-                            </td>
-
-                        <tr class="odd">
-                            <td><strong>刘亦菲</strong></td>
-                            <td>保姆</td>
-                            <td>在职</td>
-                            <td>江苏</td>
-                            <td>初中</td>
-                            <td><u>安亭家政</u></td>
-                            <td>会做菜</td>
-                            <td>
-                                <button class="btn-grey-danger" data-toggle="tooltip" data-placement="top" title="点击会删除此阿姨的信息，并且对方公司可再次推荐其他阿姨">不合适</button>
-                                <button class="btn-green">简历</button>
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td><strong>杨幂</strong></td>
-                            <td>保姆/月嫂</td>
-                            <td>待岗</td>
-                            <td>山东</td>
-                            <td>高中</td>
-                            <td><u>好再来家政</u></td>
-                            <td>懂一点英语</td>
-                            <td>
-                                 <button class="btn-grey-danger" data-toggle="tooltip" data-placement="top" title="点击会删除此阿姨的信息，并且对方公司可再次推荐其他阿姨">不合适</button>
-                                <button class="btn-green">简历</button>
-                            </td>
-
-                        </tr>
-                        <tr class="odd">
-                            <td><strong>刘强东</strong></td>
-                            <td>月嫂</td>
-                            <td>待岗</td>
-                            <td>山东</td>
-                            <td>高中</td>
-                            <td><u>虹桥家政</u></td>
-                            <td></td>
-                            <td>
-                                 <button class="btn-grey-danger" data-toggle="tooltip" data-placement="top" title="点击会删除此阿姨的信息，并且对方公司可再次推荐其他阿姨">不合适</button>
-                                <button class="btn-green">简历</button>
-                            </td>
-
-                        </tr>
-
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <div class="tab-content">
+			<div class="normal-table match_table">
+			<table id="dataGrid" class="table table-condensed table-hover table-striped" data-selection="true"
+                       data-multi-select="true" data-row-select="true" data-keep-selection="true">
+                    <thead>
+                    <tr>
+                        <th data-column-id="id" data-identifier="true" data-width="0px"></th>
+                        <th data-column-id="employee_name" data-order="asc" data-align="center"
+                            data-header-align="center" data-width="100px">姓名
+                        </th>
+                        <th data-column-id="employee_service_range" class="sort-th" data-width="150px" data-align="left"
+                            headerAlign="center">工种
+                        </th>
+                        <th data-column-id="status" data-width="80px">状态</th>
+                        <th data-column-id="employee_native_prov">籍贯</th>
+                        <th data-column-id="employee_qualification">学历</th>
+                        <th data-column-id="remark">备注</th>
+                        <th data-column-id="operations" data-width="180px">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+				</div>
+		</div>
                 <!-- 匹配列表结束 -->
             </div>
             <!-- content-wrapper over -->
@@ -284,14 +109,66 @@
     </div><!-- end content-inner -->
 </section>
 
-<script src="js/jquery-2.0.2.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
-<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-<script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<div class="modal fade" id="sendingAunt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content clearfix">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">派工</h4>
+			      </div>
+			      <div class="modal-body">
+      			    <div class="form-content sendingform">
 
+
+									<form class="form-inline">
+
+										<div class="form-group">
+										     <label for="">试工时间：</label>
+												<input id="trial_time" type="text" class="form-control form-control-2x datetimepicker" value="">
+
+										</div>
+										<div class="form-group">
+
+											<label for="">试工几天：</label>
+												<input id="trial_day" type="text" class="form-control form-control-2x" value="" >
+									    </div>
+										<div class="form-group">
+
+											<label for="">阿姨姓名：</label>
+												<input id="employee_id" type="hidden">
+												<span id="employee_name"></span>
+									    </div>
+									  <div class="form-group">
+											<label for="">联系电话：</label>
+                                            <input id="employee_tel" type="text" class="form-control form-control-2x" value="" >
+									    </div>
+										 <div class="form-group">
+											<label for="">雇主中介费：</label>
+												<input id="employer_money" type="text" class="form-control form-control-2x " value="" > 元
+									    </div>
+									     <div class="form-group">
+											<label for="">阿姨中介费：</label>
+												<input id="employee_money" type="text" class="form-control form-control-2x " value="" > 元
+									    </div>
+									     <div class="form-group">
+											<label for="">阿姨薪资：</label>
+												<input id="employee_end_pay_money" type="text" class="form-control form-control-2x " value="" > 元
+												<select id="employee_end_pay_types" class="form-control"><option value="0">月</option><option value="1">小时</option></select>
+									    </div>
+																				</form>
+
+						      </div>
+						     </div>
+
+					      <div class="modal-footer clearfix">
+					        <button type="button" class="btn-none" data-dismiss="modal">取消</button>
+					        <button type="button" class="btn-green" id="dispath_aunt">确认</button>
+					      </div>
+					    </div>
+					</div>
+					</div>
 <!-- Modal recommend popover -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="contactAunt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="popover-modal-content modal-content">
 
@@ -305,37 +182,23 @@
 
                 <dl class="popover-dl dl-horizontal f16 fl">
                     <dt class="gray">阿姨姓名：</dt>
-                    <dd>耿莉娟</dd>
+                    <dd id="contact_employee_name"></dd>
                     <dt class="gray">阿姨来自：</dt>
-                    <dd>虹桥家政 <span class="gray">地址：闵行区虹莘路 3333 弄</span></dd>
+                    <dd><span id="contact_proposer_name"></span></dd>
+                    <dt class="gray">阿姨地址：</dt>
+                    <dd><span class="gray" id="contact_employee_native_address"></span></dd>
                     <dt class="gray"> 推荐人：</dt>
-                    <dd>李阿静 <u>
-                        <mark>185 2837 8979</mark>
+                    <dd><span id="contact_bidder_name"></span> <u>
+                        <mark id="contact_bidder_phone"></mark>
                     </u></dd>
-
-                </dl>
-                <dl class="popover-dl dl-horizontal f16 fl">
-                    <dt class="gray">雇主需求：</dt>
-                    <textarea class="text-gray"> 每天 8：30-20：00，照看刚满月的男娃。要求人友善，会哄孩子，有带同龄宝宝丰富经验 有耐心，会做辅食，5000左右六休一，优秀者工资可谈。</textarea>
-                    <dt class="gray">薪水范围：</dt>
-                    <dd>6200 - 7000 元/月</dd>
-                    <dt class="gray">上门时间：</dt>
-                    <!-- datepicker -->
-                    <dd>
-
-                        <input size="16" type="text" value="2012-06-15 14:45" readonly class="form_datetime">
-
-                        <script type="text/javascript">
-                            $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
-                        </script>
-
-                        <span> 试工 3 天，总工期 1 个月</span></dd>
+                    <dt class="gray">工作内容：</dt>
+                    <dd><span id="contact_content"></span></dd>
                 </dl>
             </div>
 
             <div class="popover-modal-footer modal-footer">
                 <button type="button" class="btn-none btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn-blue btn btn-primary" onClick="location.href='order-setup.html'"><i
+                <button type="button" class="btn-blue btn btn-primary" id="go_to_work"><i
                         class="fa fa-check-circle"></i> 已联系，确定上工
                 </button>
             </div>
@@ -343,17 +206,129 @@
         </div>
     </div>
 </div>
+<script>
+	$(function () {
+				function init() {
+					var demand_id = getQueryString('orderId');
+					$("#dataGrid").bootgrid({
+								ajax: true,
+								post: {
+                                    demand_id: demand_id
+                                },
+								url: "http://test.fuhui.com/DemandsBiddings/list",
+								responseHandler: function (res) {
+									var retResult = {};
+									retResult["rows"] = res.data.list;
+									retResult["rowCount"] = res.data.list.length;
+									retResult["total"] = res.data.pager.count;
+									retResult["current"] = parseInt(res.data.pager.page);
+									return retResult;
+								},
+								formatters: {
+									"status": function (column, row) {
+										return paramMap.status[row.status]
+									},
+									"employee_qualification": function (column, row) {
+										return paramMap.qualification[row.employee_qualification]
+									},
+									"employee_service_range": function (column, row) {
+										return paramMap.getCodeValue('service_range', row.employee_service_range)
+									},
+									"operations": function (column, row) {
+										return "<button class=\"btn-grey-danger\" id='no_suit' data-id=\""+row.id+"\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"点击会删除此阿姨的信息，并且对方公司可再次推荐其他阿姨\">不合适</button><!--<button class=\"btn-white-small button-slide-menu\" type=\"button\">查看简历</button>--><button class=\"btn-green-small open-modal\" type=\"button\" data-toggle=\"modal\" data-id=\""+row.id+"\" data-target=\"#contactAunt\">联系</button>";
+									},
+									"update_time": function (column, row) {
+										return getLocalTime(row.update_time)
+									},
+                                    "remark": function(column, row){
+                                        return "<span title='"+row.remark+"'>"+row.remark+"</span>";
+                                    }
+								},
+								rowCount: [10, 12, 18],
+								labels: {
+									infos: "",
+									search: "搜索阿姨",
+									noResults: '没有记录'
+								},
+								padding: 100,
+								templates: {
+									header: "",
+									search: ""
+								},
+								css: {
+									search: "shopSearchField search"
+								}
+							}
+					).on("loaded.rs.jquery.bootgrid", function (e) {
+                                $('[data-toggle="tooltip"]').tooltip({
+                                    container: 'body'
+                                });
+						$('.button-slide-menu').on("click", function () {
+							$(".slide-menu").toggleClass("slide-menu-show");
+							$(".fog-hover").toggleClass("fog");
+							$('.slide-menu iframe').attr('src','aunt-resume.html?employeeId=56');
+						});
+						$(".fog-hover").on("click", function () {
+							$(".slide-menu").toggleClass("slide-menu-show");
+							$(".fog-hover").toggleClass("fog");
+						});
+						$('.open-modal').on('click', function (e) {
+							e.preventDefault();
+							getBiddingDetail($(this).attr('data-id'),function(data){
+                                auntData.id = data.employee_id;
+                                auntData.name = data.employee_name;
 
-</body>
-<script type="text/javascript">
-$(function () {
-$('[data-toggle="tooltip"]').tooltip()
-})
+								$('#contact_employee_name').text(data.employee_name);
+								$('#contact_proposer_name').text(data.proposer_name);
+								$('#contact_employee_native_address').text(data.employee_native_address);
+								$('#contact_bidder_name').text(data.bidder_name);
+								$('#contact_bidder_phone').text(data.bidder_phone);
+								$('#contact_content').text(data.content);
+                                $('#go_to_work').attr('data-id',data.id);
+                                $('#go_to_work').attr('data-eid',data.employee_id);
+								$('#contactAunt').modal('show');
+							});
+							return false;
+						});
+                        $('#no_suit').on('click', function(e){
+                            e.preventDefault();
+                            var id = $(this).attr('data-id');
+                            $.ajax({
+                                url: "http://test.fuhui.com/DemandsBiddings/nosuit",
+                                type: 'POST',
+                                data: {
+                                    id: id
+                                },
+                                success: function (ret) {
+                                    var retObj = JSON.parse(ret);
+                                    if (retObj.code == '0') {
+                                        $.scojs_message('操作成功', $.scojs_message.TYPE_OK);
+                                        setTimeout(function(){
+                                          window.location.reload();
+                                        },1e3);
+                                    } else{
+                                        $.scojs_message(errorCode['code_' + retObj.code], $.scojs_message.TYPE_ERROR);
+                                    }
+                                },
+                                error: function (ret) {
+                                    $.scojs_message('操作失败', $.scojs_message.TYPE_ERROR)
+                                }
+                            });
+                            return false;
+                        });
+					});
+				}
+
+				init();
+			}
+	);
 </script>
+</body>
 
 
 <script type="text/javascript">
     jQuery(document).ready(function () {
+
         $(".button-slide-menu").on("click", function () {
             $(".slide-menu").toggleClass("slide-menu-show");
             $(".fog-hover").toggleClass("fog");
@@ -364,38 +339,73 @@ $('[data-toggle="tooltip"]').tooltip()
         });
     });
 
+    $('#go_to_work').on('click', function(e){
+        e.preventDefault();
+		var id = $(this).attr('data-id');
+		var eid = $(this).attr('data-eid');
+		$.ajax({
+            url: "http://test.fuhui.com/DemandsBiddings/suit",
+            type: 'POST',
+            data: {
+                id: id
+            },
+            success: function (ret) {
+                var retObj = JSON.parse(ret);
+                if (retObj.code == '0') {
+                    $.scojs_message('操作成功', $.scojs_message.TYPE_OK);
+                    $('#contactAunt').modal('hide');
+                    $('#employee_id').val(auntData.id);
+                    $('#employee_name').text(auntData.name);
+                    $('#sendingAunt').modal('show');
+                } else{
+					$.scojs_message(errorCode['code_' + retObj.code], $.scojs_message.TYPE_ERROR);
+				}
+            },
+            error: function (ret) {
+                $.scojs_message('操作失败', $.scojs_message.TYPE_ERROR);
+            }
+        });
+    });
+    $('#dispath_aunt').on('click', function(e){
+		e.preventDefault();
+		var paramObj = {};
+		paramObj.id = getQueryString('orderId');
+		paramObj.employee_id = $('#employee_id').val();
+		paramObj.employee_name = $('#employee_name').text();
+		paramObj.employee_tel = $('#employee_tel').val();
+		paramObj.employee_money = $('#employee_money').val();
+		paramObj.employer_money = $('#employer_money').val();
+		paramObj.employee_end_pay_money = $('#employee_end_pay_money').val();
+		paramObj.employee_end_pay_types = $('#employee_end_pay_types').val();
+		paramObj.trial_time = $('#trial_time').val() ? new Date($('#trial_time').val()).getTime()/1000 : 0;
+		paramObj.trial_day = $('#trial_day').val();
+		$.ajax({
+            url: "http://test.fuhui.com/demands/dispath",
+            type: 'POST',
+            data: paramObj,
+            success: function (ret) {
+                var retObj = JSON.parse(ret);
+                if (retObj.code == '0') {
+                    $.scojs_message('派送成功', $.scojs_message.TYPE_OK);
+                    setTimeout(function(){
+                      parent.document.getElementById("rightContent").setAttribute("src", "order-setup.html?orderId="+getQueryString('orderId'));
+						$('#sendingAunt').modal('hide');
+                    },1e3);
+                } else{
+					$.scojs_message(errorCode['code_' + retObj.code], $.scojs_message.TYPE_ERROR);
+				}
+            },
+            error: function (ret) {
+                $.scojs_message('派送失败', $.scojs_message.TYPE_ERROR)
+            }
+        });
+	});
 
-    $('.form_datetime').datetimepicker({
-        language: 'zh-CN',
-        weekStart: 1,
-        todayBtn: 1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        forceParse: 0,
-        showMeridian: 1
-    });
-    $('.form_date').datetimepicker({
-        language: 'zh-CN',
-        weekStart: 1,
-        todayBtn: 1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        minView: 2,
-        forceParse: 0
-    });
-    $('.form_time').datetimepicker({
-        language: 'zh-CN',
-        weekStart: 1,
-        todayBtn: 1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 1,
-        minView: 0,
-        maxView: 1,
-        forceParse: 0
-    });
+    $('.datetimepicker').datetimepicker({
+			autoclose: true,
+            format: 'yyyy/mm/dd hh:ii'
+        });
+
 
 </script>
 </html>

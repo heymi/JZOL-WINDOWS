@@ -1,0 +1,267 @@
+<html>
+<header>
+    <script src="js/allBiz.js"></script>
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+    <script src="js/bootstrap-datetimepicker.js"></script>
+</header>
+<body>
+
+<div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
+            <div class="content-wrapper">
+
+                <!-- 面包屑导航样式开始 -->
+                <div class="content-header-inner clearfix">
+                    <div class="bread-nav float-left">
+                        <ol class="breadcrumb">
+                            <li><a href="list-local.html">订单管理</a></li>
+                            <li><a href="list-shared.html">我分享的</a></li>
+                            <li class="active"><strong>推荐的阿姨</strong></li>
+                        </ol>
+                    </div>
+
+                    <div class="header-action float-right">
+                        <!--
+                        <button type="button" class="btn-blue mgl7 fr" data-toggle="modal" data-target="#myModal">新增订单</button>
+-->
+                        <div class="input-group float-right">
+                            <i class="fa fa-search"></i>
+                            <input type="text" class="search-from form-control" placeholder="搜索订单">
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- 面包屑导航样式结束 -->
+                <!-- 匹配列表开始 -->
+
+                <div class="tab-content">
+			<div class="normal-table match_table">
+			<table id="dataGrid" class="table table-condensed table-hover table-striped" data-selection="true"
+                       data-multi-select="true" data-row-select="true" data-keep-selection="true">
+                    <thead>
+                    <tr>
+                        <th data-column-id="id" data-identifier="true" data-width="0px"></th>
+                        <th data-column-id="employee_name" data-order="asc" data-align="center"
+                            data-header-align="center" data-width="100px">姓名
+                        </th>
+                        <th data-column-id="employee_service_range" class="sort-th" data-width="150px" data-align="left"
+                            headerAlign="center">工种
+                        </th>
+                        <th data-column-id="status" data-width="80px">状态</th>
+                        <th data-column-id="employee_native_prov">籍贯</th>
+                        <th data-column-id="employee_qualification">学历</th>
+                        <th data-column-id="remark">备注</th>
+                        <th data-column-id="operations" data-width="180px">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+				</div>
+		</div>
+                <!-- 匹配列表结束 -->
+            </div>
+            <!-- content-wrapper over -->
+
+
+        </div>
+        <!-- 订单管理结束 -->
+
+
+        <div class="content4 hide">
+
+        </div>
+    </div>
+    <!-- end container -->
+    </div><!-- end content-inner -->
+</section>
+
+
+<!-- Modal recommend popover -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="popover-modal-content modal-content">
+
+            <div class="popover-modal-header modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;	</span></button>
+                <h4 class="pop-title modal-title" id="myModalLabel">联系家政公司</h4>
+            </div>
+
+            <div class="modal-body clearfix">
+
+                <dl class="popover-dl dl-horizontal f16 fl">
+                    <dt class="gray">阿姨姓名：</dt>
+                    <dd>耿莉娟</dd>
+                    <dt class="gray">阿姨来自：</dt>
+                    <dd>虹桥家政 <span class="gray">地址：闵行区虹莘路 3333 弄</span></dd>
+                    <dt class="gray"> 推荐人：</dt>
+                    <dd>李阿静 <u>
+                        <mark>185 2837 8979</mark>
+                    </u></dd>
+
+                </dl>
+                <dl class="popover-dl dl-horizontal f16 fl">
+                    <dt class="gray">雇主需求：</dt>
+                    <textarea class="text-gray"> 每天 8：30-20：00，照看刚满月的男娃。要求人友善，会哄孩子，有带同龄宝宝丰富经验 有耐心，会做辅食，5000左右六休一，优秀者工资可谈。</textarea>
+                    <dt class="gray">薪水范围：</dt>
+                    <dd>6200 - 7000 元/月</dd>
+                    <dt class="gray">上门时间：</dt>
+                    <!-- datepicker -->
+                    <dd>
+
+                        <input size="16" type="text" value="2012-06-15 14:45" readonly class="form_datetime">
+
+                        <script type="text/javascript">
+                            $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+                        </script>
+
+                        <span> 试工 3 天，总工期 1 个月</span></dd>
+                </dl>
+            </div>
+
+            <div class="popover-modal-footer modal-footer">
+                <button type="button" class="btn-none btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn-blue btn btn-primary" onClick="location.href='order-setup.html'"><i
+                        class="fa fa-check-circle"></i> 已联系，确定上工
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+	$(function () {
+				function init() {
+					var demand_id = getQueryString('orderId');
+					$("#dataGrid").bootgrid({
+								ajax: true,
+								post: {
+                                    demand_id: demand_id
+                                },
+								url: "http://test.fuhui.com/DemandsBiddings/list",
+								responseHandler: function (res) {
+									var retResult = {};
+									retResult["rows"] = res.data.list;
+									retResult["rowCount"] = res.data.list.length;
+									retResult["total"] = res.data.pager.count;
+									retResult["current"] = parseInt(res.data.pager.page);
+									return retResult;
+								},
+								formatters: {
+									"status": function (column, row) {
+										return paramMap.status[row.status]
+									},
+									"employee_qualification": function (column, row) {
+										return paramMap.qualification[row.employee_qualification]
+									},
+									"employee_service_range": function (column, row) {
+										return paramMap.getCodeValue('service_range', row.employee_service_range)
+									},
+									"operations": function (column, row) {
+										return "<button class=\"btn-grey-danger\" data-toggle=\"tooltip\" data-placement=\"top\" data-original-title=\"点击会删除此阿姨的信息，并且对方公司可再次推荐其他阿姨\">不合适</button><!--<button class=\"btn-white-small button-slide-menu\" type=\"button\">查看简历</button>--><button class=\"btn-green-small open-modal\" type=\"button\" data-toggle=\"modal\" data-id=\""+row.id+"\" data-target=\"#sendingAunt\">联系</button>";
+									},
+									"update_time": function (column, row) {
+										return getLocalTime(row.update_time)
+									},
+                                    "remark": function(column, row){
+                                        return "<span title='"+row.remark+"'>"+row.remark+"</span>";
+                                    }
+								},
+								rowCount: [10, 12, 18],
+								labels: {
+									infos: "",
+									search: "搜索阿姨",
+									noResults: '没有记录'
+								},
+								padding: 100,
+								templates: {
+									header: "",
+									search: ""
+								},
+								css: {
+									search: "shopSearchField search"
+								}
+							}
+					).on("loaded.rs.jquery.bootgrid", function (e) {
+						$('.button-slide-menu').on("click", function () {
+							$(".slide-menu").toggleClass("slide-menu-show");
+							$(".fog-hover").toggleClass("fog");
+							$('.slide-menu iframe').attr('src','aunt-resume.html?employeeId=56');
+						});
+						$(".fog-hover").on("click", function () {
+							$(".slide-menu").toggleClass("slide-menu-show");
+							$(".fog-hover").toggleClass("fog");
+						});
+						$('.open-modal').on('click', function (e) {
+							e.preventDefault();
+							getAuntDetail($(this).attr('data-id'),function(data){
+								$('#employee_id').val(data.id);
+								$('#employee_tel').text(data.phone);
+								$('#employee_name').text(data.name);
+								$('#sendingAunt').modal('show');
+							});
+							return false;
+						});
+					});
+				}
+
+				init();
+			}
+	);
+</script>
+</body>
+<script type="text/javascript">
+$(function () {
+$('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        $(".button-slide-menu").on("click", function () {
+            $(".slide-menu").toggleClass("slide-menu-show");
+            $(".fog-hover").toggleClass("fog");
+        });
+        $(".fog-hover").on("click", function () {
+            $(".slide-menu").toggleClass("slide-menu-show");
+            $(".fog-hover").toggleClass("fog");
+        });
+    });
+
+
+    $('.form_datetime').datetimepicker({
+        language: 'zh-CN',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        forceParse: 0,
+        showMeridian: 1
+    });
+    $('.form_date').datetimepicker({
+        language: 'zh-CN',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+    $('.form_time').datetimepicker({
+        language: 'zh-CN',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 1,
+        minView: 0,
+        maxView: 1,
+        forceParse: 0
+    });
+
+</script>
+</html>
