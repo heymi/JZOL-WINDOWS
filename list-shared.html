@@ -98,7 +98,7 @@
                             <th data-column-id="employer_name" data-identifier="true">雇主</th>
                             <th data-column-id="employee_name" data-identifier="true">阿姨</th>
                             <th data-column-id="employee_phone" data-identifier="true">联系电话</th>
-                            <th data-column-id="order_at" data-width="15%">订单生成时间</th>
+                            <th data-column-id="create_at" data-width="15%">订单生成时间</th>
                             <th data-column-id="type">服务类型</th>
                             <th data-column-id="source">来源</th>
                             <th data-column-id="status">状态</th>
@@ -257,7 +257,7 @@
                                         var status = row.bill_status || row.status;
                                         switch (status){
                                             case 0:
-                                                return "<button type=\"button\" class=\"btn-yellow-small\" onClick=\"location.href='order-wait.html?orderId=" + row.id + "'\">匹配阿姨</button>";
+                                                return "<button type=\"button\" class=\"btn-yellow-small\" onClick=\"location.href='order-shared-match.html?orderId=" + row.id + "'\">匹配阿姨</button>";
                                             case 1:
                                                 return "<button type=\"button\" class=\"btn-blue-small\" onClick=\"location.href='order-setup.html?orderId=" + row.id + "'\">查看详情</button>";
                                             case 5:
@@ -283,7 +283,7 @@
                                       }
                                     },
                                     "create_at": function(column, row){
-                                        return new Date(row.order_at*1000).format('yyyy-mm-dd HH:MM');
+                                        return new Date(row.create_at*1000).format('yyyy-mm-dd HH:MM');
                                     },
                                     "type": function (column, row) {
                                         return list_paramMap.type[row.type]
