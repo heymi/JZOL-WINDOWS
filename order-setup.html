@@ -25,6 +25,7 @@
 				$('#employer_name').text(demands_info.employer_name);
 				$('#employer_phone').text(demands_info.employer_phone);
 				$('#remark').text(demands_info.remark || '暂无');
+				$('#content').text(demands_info.content || '暂无');
 				$('#employee_pay_lower').text(demands_info.employee_pay_lower);
 				$('#employee_pay_upper').text(demands_info.employee_pay_upper);
 				$('#employee_pay_types').text(demands_info.employee_pay_types === 1 ? '小时' : '月');
@@ -120,7 +121,8 @@
   								<dd><a href="#" title="查看雇主信息" id="employer_name"></a></dd>
   								<dt class="gray">电话：</dt>
   								<dd><ins id="employer_phone"></ins></dd>
-
+								<dt class="gray">备注：</dt>
+								<dd id="remark"></dd>
 							</dl>
 </div>
 <div class="order-hid-dl clearfix border">  <h4>试工信息</h4>
@@ -148,7 +150,7 @@
         <dl class="order-hid-dl dl-horizontal f16">
         				<h4>详细需求</h4>
 						<dt class="gray">工作内容：</dt>
-						<dd id="remark"></dd>
+						<dd id="content"></dd>
 						<dt class="gray">薪水范围：</dt>
 						<dd><span id="employee_pay_lower"></span> - <span id="employee_pay_upper"></span> 元/<span id="employee_pay_types"></span></dd>
 						<dt class="gray">试工时间：</dt>
