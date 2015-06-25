@@ -2,12 +2,166 @@
 <header>
 	<script src="js/allBiz.js"></script>
 	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+	<link href="js/bootgrid/jquery.bootgrid.css" rel="stylesheet"/>
 	<script src="js/bootstrap-datetimepicker.js"></script>
+	<script src="js/bootgrid/jquery.bootgrid.js"></script>
+    <script src="js/bootgrid/jquery.bootgrid.fa.js"></script>
+	<script src="js/paramMap.js"></script>
 </header>
 <body>
+<script>
+	//定义一个全局变量用于存放推荐阿姨的 post 数据
+	var postAuntData = {};
+    $(function () {
+		function getDemandDetail(callback){
+			var orderId = getQueryString('orderId');
+			var paramData = {id: orderId};
+			$.ajax({
+				url: 'http://test.fuhui.com/demands/detail',
+				type: 'POST',
+				data: paramData,
+				success: function (ret) {
+					var retObj = JSON.parse(ret).data;
+					return callback(retObj);
+				}
+			})
+		}
+		function getShopDetail(id,callback){
+			var paramData = {id: id};
+			$.ajax({
+				url: 'http://test.fuhui.com/Shop/detail',
+				type: 'POST',
+				data: paramData,
+				success: function (ret) {
+					var retObj = JSON.parse(ret).data;
+					return callback(retObj);
+				}
+			})
+		}
+		function getAuntDetail(id,callback){
+			var paramData = {employee_id: id};
 
+			$.ajax({
+				url: 'http://test.fuhui.com/employee/detail',
+				type: 'POST',
+				data: paramData,
+				success: function (ret) {
+					var retObj = JSON.parse(ret);
+					return callback(retObj.data);
+				}
+			})
+		}
+		function init(match_aunt) {
+			$("#dataGrid").bootgrid({
+						ajax: true,
+						post: match_aunt,
+						url: "http://test.fuhui.com/employee/list",
+						responseHandler: function (res) {
+							var retResult = {};
+							retResult["rows"] = res.data.list;
+							retResult["rowCount"] = res.data.list.length;
+							retResult["total"] = res.data.pager.count;
+							retResult["current"] = parseInt(res.data.pager.page);
+							return retResult;
+						},
+						formatters: {
+							"status": function (column, row) {
+								return paramMap.status[row.status]
+							},
+							"qualification": function (column, row) {
+								return paramMap.qualification[row.qualification]
+							},
+							"service_range": function (column, row) {
+								return paramMap.getCodeValue('service_range', row.service_range)
+							},
+							"operations": function (column, row) {
+								return "<!--<button class=\"btn-white-small button-slide-menu\" type=\"button\">查看简历</button>--><button class=\"btn-green-small open-modal\" type=\"button\" data-toggle=\"modal\" data-id=\"" + row.id + "\" data-target=\"#sendingAunt\">推荐</button>";
+							},
+							"update_time": function (column, row) {
+								return getLocalTime(row.update_time)
+							}
+						},
+						rowCount: [10, 12, 18],
+						labels: {
+							infos: "",
+							search: "搜索阿姨",
+							noResults: '没有记录'
+						},
+						padding: 100,
+						templates: {
+							header: "",
+							search: ""
+						},
+						css: {
+							search: "shopSearchField search"
+						}
+					}
+			).on("loaded.rs.jquery.bootgrid", function (e) {
+//						$('.button-slide-menu').on("click", function () {
+//							$(".slide-menu").toggleClass("slide-menu-show");
+//							$(".fog-hover").toggleClass("fog");
+//							$('.slide-menu iframe').attr('src', 'aunt-resume.html?employeeId=56');
+//						});
+//						$(".fog-hover").on("click", function () {
+//							$(".slide-menu").toggleClass("slide-menu-show");
+//							$(".fog-hover").toggleClass("fog");
+//						});
+						$('.open-modal').on('click', function (e) {
+							e.preventDefault();
+							getAuntDetail($(this).attr('data-id'),function(auntdata){
+								postAuntData.employee_id = auntdata.static.id;
+								postAuntData.employee_shop_status = auntdata.dynamic.status;
+								postAuntData.employee_native_prov = auntdata.static.living_prov;
+								postAuntData.employee_native_city = auntdata.static.living_city;
+								postAuntData.employee_native_area = auntdata.static.living_area;
+								postAuntData.employee_native_address = auntdata.static.living_address;
+								postAuntData.employee_qualification = auntdata.static.qualification;
+								getShopDetail(postAuntData.proposer_id, function(data){
+									$('#proposer_name').text(data.name);
+									$('#manager_name').text(data.manager_name);
+									$('#manager_phone').text(data.manager_phone);
+									$('#suggest_aunt').modal('show');
+									$('#employee_name').text(auntdata.static.name);
+									$('#employee_service_range').text(getMultiValue('service_range',auntdata.dynamic.service_range,paramMap));
+									$('#proposer_addr').text(data.address);
+								});
+							});
+//							getAuntDetail($(this).attr('data-id'),function(data){
+//								$('#contact_employee_name').text(data.employee_name);
+//								$('#contact_proposer_name').text(data.proposer_name);
+//								$('#contact_employee_native_address').text(data.employee_native_address);
+//								$('#contact_bidder_name').text(data.bidder_name);
+//								$('#contact_bidder_phone').text(data.bidder_phone);
+//								$('#contact_content').text(data.content);
+//                                $('#go_to_work').attr('data-id',data.id);
+//                                $('#no_suit').attr('data-id',data.id);
+//								$('#contactAunt').modal('show');
+//							});
+							return false;
+						});
+					});
+		}
+        getDemandDetail(function(data){
+			var demands_info = data.demands_info;
+
+			postAuntData.demand_id = demands_info.id;
+			postAuntData.proposer_id = getQueryString('proposerId');
+			postAuntData.employer_id = demands_info.employer_id;
+			postAuntData.employee_service_range = demands_info.type;
+			postAuntData.content = demands_info.content;
+			postAuntData.requirement = demands_info.requirements;
+			postAuntData.remark = demands_info.remark;
+
+			// 把查询条件存储到 localstorage
+			var match_aunt = {};
+			match_aunt.service = demands_info.type;
+			match_aunt.qualification = demands_info.employee_education;
+			init(match_aunt);
+		});
+    })
+</script>
 				<!-- Modal recommend popover -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="suggest_aunt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="popover-modal-content modal-content">
 
@@ -19,18 +173,28 @@
 		        <div class="modal-body clearfix">
 			        <dl class="popover-dl dl-horizontal f16">
 						<dt class="gray">推荐阿姨：</dt>
-						<dd>耿莉娟<span> <a href="#" title="查看详细资料" class="fontblue"><u>查看简历 &gt;</u></a></span></dd>
+						<dd id="employee_name"></dd>
 						<dt class="gray">工种：</dt>
-						<dd ><span class="tag">月嫂</span><span class="tag">保姆</span><span class="tag">看护老人</span></dd>
+						<dd id="employee_service_range"></dd>
 					</dl>
 					<dl class="popover-dl dl-horizontal f16">
 						<dt class="gray">推荐至：</dt>
-						<dd>虹桥家政 <span class="gray">地址：闵行区虹莘路 3333 弄</span></dd>
+						<dd><span id="proposer_name"></span> <span class="gray">地址：</span><span id="proposer_addr"></span></dd>
 						<dt class="gray">负责人：</dt>
-						<dd>李阿静</dd>
+						<dd id="manager_name"></dd>
 						<dt class="gray">电话：</dt>
-						<dd>185 2837 8979</dd>
+						<dd id="manager_phone"></dd>
 					</dl>
+					<form class="">
+						<div class="form-group">
+							 <label for="bidder_phone">推荐人手机：</label>
+								<input id="bidder_phone" type="text" class="form-control form-control-2x" value="">
+						</div>
+						<div class="form-group">
+							 <label for="bidder_tel">推荐人电话：</label>
+								<input type="text" id="bidder_tel" class="form-control form-control-2x" value="">
+						</div>
+					</form>
 						<p class="pl10 gray">提醒：一个订单一次只能推荐一个阿姨，如需更换阿姨推荐，需等对方公司答复。</p>
 		        </div>
 
@@ -73,289 +237,35 @@
 						</div>
 						<!-- 面包屑导航样式结束 -->
 		<!-- 匹配列表开始 -->
-	 	<div class="match_table">
-
-				<table>
-				<thead>
-					<tr>
-						<th>姓名</th>
-						<th>工种</th>
-						<th>状态</th>
-						<th>籍贯</th>
-						<th>学历</th>
-						<th>备注</th>
-						<th width="20%">操作</th>
-						
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><strong>刘亦菲</strong></td>
-						<td>保姆</td>
-						<td>在职</td>
-						<td>江苏</td>
-						<td>初中</td>
-						<td>会做菜</td>
-						<td>
-						<!-- 侧边页开始 -->
-						<div id="st-trigger-effects" class="column">
-							<button class="btn-white-small button-slide-menu" type="button">查看简历</button> <!-- 触发按钮 -->
-								<div class="slide-menu slide-menu-style">
-									<div class="item-container">
-
-<div class="cv-mini-summary cv-summary mgb40 clearfix "> <!-- 浮动清除 -->
-						<img src="img/avata.png" alt="avata" width="90" height="90" class="mgt5 fl">
-						<div class="fr cv-mini cv-descriptions mgt5 fl">
-							<h3>刘亦菲</h3>
-							<p class="gray f14">山东日照人，拥有 <mark>2 年月嫂从业经验</mark>，普通话标准、懂初级英语，擅长做东北菜。</p>
-						</div>
-
-					</div> <!-- cv-summary -->
-
-
-
-<div class="title-box clearfix"> <!-- 浮动清除 -->
-					<div class="line-mini line">
-						<h3 class="b titles titles-mini">基础简历</h3>
-					</div>
-							<dl class="dl-horizontal-mini dl-horizontal f16 fl">
-  								<dt class="gray">姓名：</dt>
-  								<dd>耿莉娟</dd>
-  								<dt class="gray">性别：</dt>
-  								<dd>女</dd>
-  								<dt class="gray">籍贯：</dt>
-  								<dd>山东烟台</dd>
-  								<dt class="gray">学历：</dt>
-  								<dd >大专</dd>
-							</dl>
-
-							<dl class="dl-horizontal-mini dl-horizontal f16 fl">
-  								<dt class="gray">年龄：</dt>
-  								<dd>40</dd>
-  								<dt class="gray">属相：</dt>
-  								<dd>猪</dd>
-  								<dt class="gray">星座：</dt>
-  								<dd>天秤座</dd>
-  								<dt class="gray">婚姻状况：</dt>
-  								<dd >已婚</dd>
-							</dl>
-
-							<dl class="dl-horizontal-mini dl-horizontal f16 fl">
-  								<dt class="gray">求职意向：</dt>
-  								<dd>月嫂/保姆</dd>
-  								<dt class="gray">期望薪水：</dt>
-  								<dd>7-8000/月</dd>
-  								<dt class="gray">任职日期：</dt>
-  								<dd>即日</dd>
-  								<p><a href="#" title="查看详细资料" class="fontblue"><u>查看详细资料 &gt;</u></a></p>
-							</dl>
-
-					</div><!-- title-box end -->
-
-								<!-- 从业经历开始 -->
-								<div class="title-box clearfix"> <!-- 浮动清除 -->
-									<div class="line-mini line">
-										<h3 class="b titles titles-mini">从业经历</h3>
-								</div>
-
-								<div class="timeline-mini timeline">
-								    	<div class="event-wrap-mini event-wrap">
-								      			<h3>老阿姨家政公司<img src="img/cp_logo_1.png" alt="avata" width="36" height="36"></h3>
-
-								      			<div class="event-box title-box clearfix"> <!-- 浮动清除 -->
-									<ul class="list-inline">
-								 						 <li>职务一：<span>老人看护</span></li>
-								 						 <li>服务地点：<span>静安区达安花园</span></li>
-								 						 <li>薪资：<span>3000元/月</span></li>
-													</ul>
-													<ul class="list-inline">
-								 						 <li>职务二：<span>月嫂</span></li>
-								 						 <li>服务地点：<span>长宁区心族公寓</span></li>
-								 						 <li>薪资：<span>4200元/月</span></li>
-													</ul>
-													</div><!-- event-box end -->
-								      	</div>  <!-- event-wrap end -->
-
-								    	<div class="event-wrap-mini event-wrap">
-								      			<h3>洁家家政公司<img src="img/cp_logo_2.png" alt="avata" width="36" height="36"></h3>
-
-								      			<div class="event-box title-box clearfix"> <!-- 浮动清除 -->
-													<ul class="list-inline">
-								 						 <li>职务一：<span>老人看护</span></li>
-								 						 <li>服务地点：<span>静安区达安花园</span></li>
-								 						 <li>薪资：<span>3000元/月</span></li>
-													</ul>
-												</div><!-- event-box end -->
-
-								      	</div>  <!-- event-wrap end -->
-
-								      	</div>
-
-								 </div>
-								 <!-- 从业经历结束 -->
-
-
-										<div class="b-group clearfix">
-
-										<button class="btn-white button-slide-menu fl"><i class="fa fa-refresh"></i> 重新选择</button>
-										<button type="button" class="btn-blue-big btn-position btn btn-primary btn-lg fl" data-toggle="modal" data-target="#myModal">
-										  <i class="fa fa-thumbs-o-up"></i> 推荐此阿姨
-										</button>
-
-										</div>
-									</div>
-								</div>
-							<div class="fog-hover"></div> <!-- 右侧页遮罩层 -->
-						</div>
-							<!-- 侧边页结束 -->
-						
-							<button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> 
-							</td>
-					</tr>
-					<tr class="odd">
-						<td><strong>杨幂</strong></td>
-						<td>保姆/月嫂</td>
-						<td>待岗</td>
-						<td>山东</td>
-						<td>高中</td>
-						<td>懂一点英语</td>
-						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
-					</tr>
-					<tr>
-						<td><strong>刘强东</strong></td>
-						<td>月嫂</td>
-						<td>待岗</td>
-						<td>山东</td>
-						<td>高中</td>
-						<td></td>
-						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
-					<tr class="odd">
-						<td><strong>刘亦菲</strong></td>
-						<td>保姆</td>
-						<td>在职</td>
-						<td>江苏</td>
-						<td>初中</td>
-						<td>会做菜</td>
-						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
-					</tr>
-					<tr>
-						<td><strong>杨幂</strong></td>
-						<td>保姆/月嫂</td>
-						<td>待岗</td>
-						<td>山东</td>
-						<td>高中</td>
-						<td>懂一点英语</td>
-						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
-					</tr>
-					<tr class="odd">
-						<td><strong>刘强东</strong></td>
-						<td>月嫂</td>
-						<td>待岗</td>
-						<td>山东</td>
-						<td>高中</td>
-						<td></td>
-						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
-					</tr>
-					<tr>
-						<td><strong>周杰伦</strong></td>
-						<td>月嫂</td>
-						<td>待岗</td>
-						<td>江苏</td>
-						<td>高中</td>
-						<td></td>
-						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
-					</tr>
-					<tr class="odd">
-						<td><strong>王尼玛</strong></td>
-						<td>月嫂</td>
-						<td>待岗</td>
-						<td>湖南</td>
-						<td>高中</td>
-						<td></td>
-						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
-					</tr>
-					<tr>
-						<td><strong>刘强东</strong></td>
-						<td>月嫂</td>
-						<td>待岗</td>
-						<td>山东</td>
-						<td>高中</td>
-						<td></td>
-						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
-					</tr>
-					<tr class="odd">
-						<td><strong>蔡康永</strong></td>
-						<td>月嫂</td>
-						<td>待岗</td>
-						<td>河南</td>
-						<td>高中</td>
-						<td></td>
-						<td><button class="btn-white-small">查看简历</button><button class="btn-green-small" type="button" data-toggle="modal" data-target="#myModal">推荐</button> </td>
-					</tr>
-				</tbody>
-			</table>
-
+	 	<div class="tab-content">
+			<div class="normal-table match_table">
+			<table id="dataGrid" class="table table-condensed table-hover table-striped" data-selection="true"
+                       data-multi-select="true" data-row-select="true" data-keep-selection="true">
+                    <thead>
+                    <tr>
+                        <th data-column-id="id" data-identifier="true" data-width="0px"></th>
+                        <th data-column-id="esid" data-identifier="true" data-width="0px"></th>
+                        <th data-column-id="name" data-order="asc" data-align="center"
+                            data-header-align="center" data-width="100px">姓名
+                        </th>
+                        <th data-column-id="service_range" class="sort-th" data-width="150px" data-align="left"
+                            headerAlign="center">工种
+                        </th>
+                        <th data-column-id="status" data-width="80px">状态</th>
+                        <th data-column-id="native_prov">籍贯</th>
+                        <th data-column-id="qualification">学历</th>
+                        <th data-column-id="remark">备注</th>
+                        <th data-column-id="operations" data-width="180px">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+				</div>
 		</div>
 		<!-- 匹配列表结束 -->
 		 					<!-- Modal -->
-			<div class="modal fade" id="shareList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			  <div class="modal-dialog">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title" id="myModalLabel">分享设置</h4>
-			      </div>
-			      <div class="modal-body">
-      			    <div class="form-content">
 
-   							<div class="form-body">
-   								<div class="modal-body-wrapper">
-									<form class="form-inline">
-
-										<div class="form-group">
-										     <label for="">分享时间：</label>
-												<input type="text" class="form-control form-control-2x datetimepicker" value=""><span class="input-span">到</span>
-												<input type="text" class="form-control form-control-2x datetimepicker">
-
-										</div>
-
-									<div class="form-group">
-										    <label for="">分享范围：</label>
-										    <!-- Small button group -->
-												<select class="form-control form-control-1x
-												"><option value="">所有门店</option></select>
-
-										</div>
-
-										<div class="form-group">
-										     <label class="laber-pading">负责人：</label>
-												<input type="text" class="form-control form-control-2x" value="">
-
-
-										</div>
-
-										<div class="form-group">
-										     <label for="">联系电话：</label>
-												<input type="text" class="form-control form-control-2x" value="">
-
-
-										</div>
-
-									</form>
-
-
-
-						      </div>
-						     </div>
-						    </div>
-      </div>
-					      <div class="modal-footer">
-					        <button type="button" class="btn-none" data-dismiss="modal">取消</button>
-					        <button type="button" class="btn-green" onClick="location.href='list-shared.html'">确认分享</button>
-					      </div>
-					    </div>
-					</div>
-					</div>
 			</div>
 			<!-- content-wrapper over -->
 
@@ -381,8 +291,32 @@ jQuery(document).ready(function(){
 							$(".slide-menu").toggleClass("slide-menu-show");
 							$(".fog-hover").toggleClass("fog");
 	});
-	$("#confirmPromote").on("click", function() {
-		parent.document.getElementById("rightContent").setAttribute("src", "list-shared.html")
+	$("#confirmPromote").on("click", function(e) {
+		e.preventDefault();
+		postAuntData.bidder_phone = $('#bidder_phone').val();
+		postAuntData.bidder_tel = $('#bidder_tel').val();
+		console.log(postAuntData)
+		$.ajax({
+            url: "http://test.fuhui.com/DemandsBiddings/add",
+            type: 'POST',
+            data: postAuntData,
+            success: function (ret) {
+                var retObj = JSON.parse(ret);
+                if (retObj.code == '0') {
+                    $.scojs_message('推荐成功', $.scojs_message.TYPE_OK);
+					$('#suggest_aunt').modal('hide');
+                    setTimeout(function(){
+                      parent.document.getElementById("rightContent").setAttribute("src", "list-shared.html");
+                    },1e3);
+                } else{
+					$.scojs_message(errorCode['code_' + retObj.code], $.scojs_message.TYPE_ERROR);
+				}
+            },
+            error: function (ret) {
+                $.scojs_message('推荐失败', $.scojs_message.TYPE_ERROR)
+            }
+        });
+//		parent.document.getElementById("rightContent").setAttribute("src", "list-shared.html")
 	})
 });
 
