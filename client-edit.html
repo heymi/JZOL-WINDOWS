@@ -170,9 +170,9 @@
         paramObj.family = $("#family").val();
         paramObj.content = $("#client_content").val();
         paramObj.remark = $("#remark").val();
-        paramObj.prov = "1"
-        paramObj.city = "1"
-        paramObj.area = "1"
+        paramObj.prov= $('.prov-select').val();
+        paramObj.city= $('.city-select').val();
+        paramObj.area= $('.area-select').val();
         $.ajax({
             url: "http://test.fuhui.com/employer/update?eid=" + employerId,
             type: 'POST',
