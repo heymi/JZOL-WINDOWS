@@ -603,3 +603,10 @@ section{width: 100%;min-width: 980px;padding-top: 80px;}
 	position: relative;
 	z-index: 10;
 }
+
+.prov-city-area{
+	display: inline;
+}
+.prov-city-area select{
+	margin-right: 10px;
+}

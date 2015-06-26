@@ -23,6 +23,7 @@ document.write('<script src="js/commonUtils.js"></script>');
 document.write('<script src="js/errorCode.js"></script>');
 document.write('<script src="js/utils/provinceCity.js"></script>');
 document.write('<script src="js/date.format.js"></script>');
+document.write('<script src="js/prov_city_area.js"></script>');
 document.write('<script src="js/store.js"></script>');
 document.write('<script src="js/init.js"></script>');
 
