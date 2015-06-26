@@ -42,10 +42,10 @@ function getLocalTime(nS) {
 }
 
 function setMultiSelectValue(eleId, values) {
-    if (!values || typeof values !== 'string') {
+    if (typeof values !== 'string' && typeof values !== 'number') {
         return;
     }
-    var valArr = values.split(',');
+    var valArr = values.toString().split(',');
     _.each(valArr, function (rec) {
         $("#" + eleId + " input[value=" + rec + "]").prop('checked', true);
     })

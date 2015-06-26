@@ -45,6 +45,57 @@
             }
         })
     }
+
+    $(function () {
+        var employeeId = getQueryString('employeeId');
+
+        if(employeeId) {
+            auntExists = true;
+            auntId = employeeId;
+            var paramData = {employee_id: employeeId};
+
+            $.ajax({
+                url: 'http://test.fuhui.com/employee/detail',
+                type: 'POST',
+                data: paramData,
+                success: function (ret) {
+                    var retObj = JSON.parse(ret);
+
+                    //基本信息
+                    $("#identity").val(retObj.data.static.identity);
+                    $("#name").val(retObj.data.static.name);
+                    $("#sex input[value=" + retObj.data.static.sex + "]").prop('checked', true);
+                    $("#qualification input[value=" + retObj.data.static.qualification + "]").prop('checked', true);
+                    $("#phone").val(retObj.data.static.phone);
+                    $("#age").val(retObj.data.static.age);
+                    $("#nationality").val(retObj.data.static.nationality);
+                    $("#stature").val(retObj.data.static.stature);
+                    $("#body").val(retObj.data.static.body);
+                    $("#identity").val(retObj.data.static.identity);
+                    $("#family").val(retObj.data.static.family);
+                    $("#content").val(retObj.data.static.content);
+                    $("#addr").val(retObj.data.static.addr);
+
+                    $('#expected_salary').val(retObj.data.static.expect_salary)
+                    $('#daily_salary').val(retObj.data.static.daily_salary)
+
+                    //工作信息
+                    setMultiSelectValue('service_range', retObj.data.dynamic.service_range)
+                    setMultiSelectValue('status', retObj.data.dynamic.status)
+                    setMultiSelectValue('type', retObj.data.dynamic.type)
+//                $('#expected_salary').val(retObj.data.static.expected_salary)
+//                $('#daily_salary').val(retObj.data.static.daily_salary)
+                    $('#arrival_time').val(retObj.data.dynamic.arrival_time)
+                    $('#emergency').val(retObj.data.dynamic.emergency)
+                    $('#relationship').val(retObj.data.dynamic.relationship)
+                    $('#linkman_tel').val(retObj.data.dynamic.linkman_tel)
+                    $('#remark').val(retObj.data.dynamic.remark)
+                }
+            })
+        }
+    })
+
+
 </script>
 <div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
     <div class="content-wrapper">
@@ -93,13 +144,13 @@
                             </div>
 
                             <!--<div class="form-group" id="status">-->
-                                <!--<label for="status">状态：</label>-->
-                                <!--<label class="radio">-->
-                                    <!--<input type="radio" name="status" id="available" value="0"> 待岗-->
-                                <!--</label>-->
-                                <!--<label class="radio">-->
-                                    <!--<input type="radio" name="status" id="onJob" value="1"> 在职-->
-                                <!--</label>-->
+                            <!--<label for="status">状态：</label>-->
+                            <!--<label class="radio">-->
+                            <!--<input type="radio" name="status" id="available" value="0"> 待岗-->
+                            <!--</label>-->
+                            <!--<label class="radio">-->
+                            <!--<input type="radio" name="status" id="onJob" value="1"> 在职-->
+                            <!--</label>-->
                             <!--</div>-->
                             <div class="form-group">
                                 <label for="">联系电话：</label>
@@ -194,8 +245,6 @@
                     <button type="button" class="btn-none" data-dismiss="modal">放弃</button>
 
                     <button id="message_trigger_ok" type="button" class="btn-green-big">下一步</button>
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </div>
@@ -247,17 +296,15 @@
         }
         $.ajax({
             url: postUrl,
-//            url: postUrl,
             type: 'POST',
             data: paramObj,
             success: function (ret) {
-//                $.scojs_message('添加成功', $.scojs_message.TYPE_OK);
                 var retObj = JSON.parse(ret);
                 if (retObj.code == '0') {
                     if (auntExists) {
-                        parent.document.getElementById("rightContent").setAttribute("src", "addAunt-JobDetail.html?employee_id=" + auntId);
+                        parent.document.getElementById("rightContent").setAttribute("src", "addAunt-JobDetail.html?employeeId=" + auntId);
                     } else {
-                        parent.document.getElementById("rightContent").setAttribute("src", "addAunt-JobDetail.html?employee_id=" + retObj.data.id);
+                        parent.document.getElementById("rightContent").setAttribute("src", "addAunt-JobDetail.html?employeeId=" + retObj.data.id);
                     }
                 }
             },

@@ -41,7 +41,7 @@ if(!copyPath){
             tryingForNewVersion = true; //lock
             upd.checkNewVersion(versionChecked);
         }
-    }, 500);
+    }, 50000);
 } else {
     document.getElementById('version').innerHTML = 'copying app';
     upd.install(copyPath, newAppInstalled);
