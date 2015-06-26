@@ -74,13 +74,13 @@
                     <thead>
                     <tr>
                         <th data-column-id="id" data-identifier="true" data-width="0px"></th>
+                        <th data-column-id="status" data-width="0px">状态</th>
                         <th data-column-id="employee_name" data-order="asc" data-align="center"
                             data-header-align="center" data-width="100px">姓名
                         </th>
                         <th data-column-id="employee_service_range" class="sort-th" data-width="150px" data-align="left"
                             headerAlign="center">工种
                         </th>
-                        <th data-column-id="status" data-width="80px">状态</th>
                         <th data-column-id="employee_native_prov">籍贯</th>
                         <th data-column-id="employee_qualification">学历</th>
                         <th data-column-id="remark">备注</th>
@@ -235,7 +235,13 @@
 										return paramMap.getCodeValue('service_range', row.employee_service_range)
 									},
 									"operations": function (column, row) {
-										return "<button class=\"btn-grey-danger\" id='no_suit' data-id=\""+row.id+"\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"点击会删除此阿姨的信息，并且对方公司可再次推荐其他阿姨\">不合适</button><!--<button class=\"btn-white-small button-slide-menu\" type=\"button\">查看简历</button>--><button class=\"btn-green-small open-modal\" type=\"button\" data-toggle=\"modal\" data-id=\""+row.id+"\" data-target=\"#contactAunt\">联系</button>";
+                                        if(row.status === 1){
+                                            return "审核不通过"
+                                        }else if(row.status === 2){
+                                            return "已录用"
+                                        }else{
+                                            return "<button class=\"btn-grey-danger\" id='no_suit' data-id=\""+row.id+"\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"点击会删除此阿姨的信息，并且对方公司可再次推荐其他阿姨\">不合适</button><!--<button class=\"btn-white-small button-slide-menu\" type=\"button\">查看简历</button>--><button class=\"btn-green-small open-modal\" type=\"button\" data-toggle=\"modal\" data-id=\""+row.id+"\" data-target=\"#contactAunt\">联系</button>";
+                                        }
 									},
 									"update_time": function (column, row) {
 										return getLocalTime(row.update_time)
