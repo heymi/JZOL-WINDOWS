@@ -233,25 +233,4 @@
         $.scojs_message('添加失败', $.scojs_message.TYPE_ERROR);
     });
 </script>
-
-<script type="text/javascript">
-    $(function () {
-        $("#address").province_city_county();
-    });
-
-    $(function () {
-        if(!window.provinceCity) {
-            $.ajax({
-                url: 'http://test.fuhui.com/user/getFiles',
-                type: 'POST',
-                success : function (ret) {
-                    window.provinceCity = JSON.parse(ret)
-                },
-                error : function () {
-
-                }
-            })
-        }
-    })
-</script>
 </html>
