@@ -58,8 +58,7 @@
 										</div>
 										<div class="form-group">
 										    <label for="">服务地址：</label>
-										   <select class="form-control"><option value="上海市">上海市</option><option value="北京市">北京市</option></select>
-										   <select class="form-control"><option value="静安区">静安区</option><option value="浦东新区">浦东新区</option><option value="徐汇区">徐汇区</option><option value="闸北区">闸北区</option><option value="长宁区">长宁区</option><option value="闵行区">闵行区</option><option value="杨浦区">杨浦区</option></select>
+										   <div class="prov-city-area"></div>
 										    <input type="text" class="form-control" id="addr">
 										</div>
 										<div class="form-group">
@@ -124,12 +123,6 @@
 			</div><!-- container end -->
 		</div>
 	</section>
-
-	<script src="js/jquery-2.0.2.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/bootstrap-datetimepicker.js"></script>
-	<script src="js/sco.message.js"></script>
-	<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
 </body>
 <script type="text/javascript">
 	$('#message_trigger_ok').on('click', function(e) {
@@ -143,9 +136,9 @@
  		paramObj.specfic_requirement=$("#specfic_requirement").val();
  		paramObj.phone= parseInt($("#phone").val(),10);
  		paramObj.sex= $("#client_sex input:checked").val();
- 		paramObj.prov= 1;
- 		paramObj.city= 1;
- 		paramObj.area= 1;
+ 		paramObj.prov= $('.prov-select').val();
+ 		paramObj.city= $('.city-select').val();
+ 		paramObj.area= $('.area-select').val();
  		paramObj.family=$("#family").val();
  		paramObj.content= $('#client_content').val();
  		paramObj.remark=$("#remark").val();
@@ -180,5 +173,6 @@
 	$('#cancel_add').on('click', function(){
         parent.document.getElementById("rightContent").setAttribute("src", "client.html");
     });
+    $('.prov-city-area').province_city_area();
 </script>
 </html>

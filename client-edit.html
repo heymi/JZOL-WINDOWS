@@ -26,6 +26,7 @@
                 $("#specfic_requirement").val(retObj.data.list.specfic_requirement);
                 $("#remark").val(retObj.data.list.remark);
                 $("#addr").val(retObj.data.list.addr);
+                $('.prov-city-area').province_city_area(retObj.data.list.prov,retObj.data.list.city,retObj.data.list.area);
             }
         })
     })
@@ -82,19 +83,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">服务地址：</label>
-                                <select class="form-control">
-                                    <option value="上海市">上海市</option>
-                                    <option value="北京市">北京市</option>
-                                </select>
-                                <select class="form-control">
-                                    <option value="静安区">静安区</option>
-                                    <option value="浦东新区">浦东新区</option>
-                                    <option value="徐汇区">徐汇区</option>
-                                    <option value="闸北区">闸北区</option>
-                                    <option value="长宁区">长宁区</option>
-                                    <option value="闵行区">闵行区</option>
-                                    <option value="杨浦区">杨浦区</option>
-                                </select>
+                                <div class="prov-city-area"></div>
                                 <input type="text" class="form-control" id="addr">
                             </div>
                             <div class="form-group">
@@ -163,12 +152,6 @@
     <!-- container end -->
 </div>
 </section>
-
-<script src="js/jquery-2.0.2.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/bootstrap-datetimepicker.js"></script>
-<script src="js/sco.message.js"></script>
-<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
 </body>
 <script type="text/javascript">
     $('#message_trigger_ok').on('click', function (e) {
