@@ -54,7 +54,7 @@
 
 										<div class="form-group">
 										    <label for="">服务地址：</label>
-										   <select class="form-control"><option value="不限">不限</option><option value="江苏">静安区</option><option value="江苏">浦东新区</option><option value="江苏">徐汇区</option><option value="江苏">闸北区</option><option value="江苏">长宁区</option><option value="江苏">闵行区</option><option value="江苏">杨浦区</option></select>
+										   <div class="prov-city-area"></div>
 										    <input type="text" class="form-control" id="service_address">
 										</div>
 									
@@ -244,11 +244,7 @@
 		</div>
 	</section>
 
-	<script src="js/jquery-2.0.2.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/bootstrap-datetimepicker.js"></script>
-	<script src="js/sco.message.js"></script>
-	<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
+
 </body>
 <script type="text/javascript">
 	$('#message_trigger_ok').on('click', function (e) {
@@ -259,9 +255,9 @@
         paramData.name = $('#employer_name').val();
         paramData.identity = $('#employer_identity').val();
         paramData.sex = $('#employer_sex input:checked').val();
-        paramData.service_prov = 1;
-        paramData.service_city = 1;
-        paramData.service_area = 1;
+        paramData.service_prov = $('.prov-select').val();
+        paramData.service_city = $('.city-select').val();
+        paramData.service_area = $('.area-select').val();
         paramData.service_address = $('#service_address').val();
 		paramData.remark = $('#remark').val();
 		paramData.content = $('#content').val();
@@ -308,5 +304,6 @@
 	    autoclose: true,
 		minView: 2
 	});
+	$('.prov-city-area').province_city_area();
 </script>  
 </html>
