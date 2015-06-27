@@ -74,7 +74,12 @@
                     $("#identity").val(retObj.data.static.identity);
                     $("#family").val(retObj.data.static.family);
                     $("#content").val(retObj.data.static.content);
-                    $("#addr").val(retObj.data.static.addr);
+//                    $("#addr").val(retObj.data.static.addr);
+
+                    $('#native_provcityarea').province_city_area(retObj.data.static.native_prov,retObj.data.static.native_city,retObj.data.static.native_area);
+                $('#native_addr').val(retObj.data.static.native_address);
+                $('#living_provcityarea').province_city_area(retObj.data.static.living_prov,retObj.data.static.living_city,retObj.data.static.living_area);
+                $('#living_addr').val(retObj.data.static.living_address);
 
                     $('#expected_salary').val(retObj.data.static.expect_salary)
                     $('#daily_salary').val(retObj.data.static.daily_salary)

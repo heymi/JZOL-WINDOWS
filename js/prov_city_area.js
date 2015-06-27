@@ -42,8 +42,8 @@ $.fn.province_city_area = function (_province,_city,_area) {
             prov_option_html += '<option value="'+prov.id+'">'+prov.name+'</option>';
           });
           $prov_select.html(prov_option_html);
-          $elem.append($prov_select.clone()).append($city_select.clone()).append($area_select.clone());
-          $elem.delegate('select', 'change', function(){
+          $elem.empty().append($prov_select.clone()).append($city_select.clone()).append($area_select.clone());
+          $elem.undelegate().delegate('select', 'change', function(){
             var select_type = $(this).attr('data-type');
             if(select_type === 'prov'){
               var _prov_value = parseInt($(this).val(),10);
