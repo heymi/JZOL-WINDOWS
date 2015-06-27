@@ -60,6 +60,7 @@
                 data: paramData,
                 success: function (ret) {
                     var retObj = JSON.parse(ret);
+                    $('#native_section').hide();
 
                     //基本信息
                     $("#identity").val(retObj.data.static.identity);
@@ -76,8 +77,8 @@
                     $("#content").val(retObj.data.static.content);
 //                    $("#addr").val(retObj.data.static.addr);
 
-                    $('#native_provcityarea').province_city_area(retObj.data.static.native_prov,retObj.data.static.native_city,retObj.data.static.native_area);
-                $('#native_addr').val(retObj.data.static.native_address);
+//                    $('#native_provcityarea').province_city_area(retObj.data.static.native_prov,retObj.data.static.native_city,retObj.data.static.native_area);
+//                $('#native_addr').val(retObj.data.static.native_address);
                 $('#living_provcityarea').province_city_area(retObj.data.static.living_prov,retObj.data.static.living_city,retObj.data.static.living_area);
                 $('#living_addr').val(retObj.data.static.living_address);
 
@@ -164,7 +165,7 @@
                                 <label for="age"><span class="enter-need">*</span>年龄：</label>
                                 <input type="text" class="form-control form-control-1x" id="age">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" id="native_section">
                                 <label for="native_prov"><span class="enter-need">*</span>籍贯：</label>
                                 <div class="prov-city-area" id="native_provcityarea"></div>
                                 <input type="text" class="form-control" id="native_addr">
@@ -279,10 +280,12 @@
         paramObj.phone = $("#phone").val();
         paramObj.identity = $("#identity").val();
         paramObj.age = $("#age").val();
-        paramObj.native_prov= $('#native_provcityarea .prov-select').val();
- 		paramObj.native_city= $('#native_provcityarea .city-select').val();
- 		paramObj.native_area= $('#native_provcityarea .area-select').val();
-        paramObj.native_address = $('#native_addr').val();
+        if(!auntExists){
+            paramObj.native_prov= $('#native_provcityarea .prov-select').val();
+            paramObj.native_city= $('#native_provcityarea .city-select').val();
+            paramObj.native_area= $('#native_provcityarea .area-select').val();
+            paramObj.native_address = $('#native_addr').val();
+        }
         paramObj.marriage = "1";
         if($('#nationality').val()){
             paramObj.nationality = $('#nationality').val();
