@@ -257,14 +257,18 @@
                                         var status = row.bill_status || row.status;
                                         switch (status){
                                             case 0:
+                                            case '0':
                                                 return "<button type=\"button\" class=\"btn-yellow-small\" onClick=\"location.href='order-wait.html?orderId=" + row.id + "'\">匹配阿姨</button>";
                                             case 1:
+                                            case '1':
                                                 return "<button type=\"button\" class=\"btn-blue-small\" onClick=\"location.href='order-setup.html?orderId=" + row.id + "'\">查看详情</button>";
                                             case 5:
+                                            case '5':
                                                 return "<button type=\"button\" class=\"btn-grey-small\" onClick=\"location.href='order-canceled.html?orderId=" + row.id + "'\">查看详情</button>";
                                             case 6:
+                                            case '6':
                                                 return "<button type=\"button\" class=\"btn-grey-small\" onClick=\"location.href='order-finish.html?orderId=" + row.id + "'\">查看详情</button>";
-                                            default :
+                                            default:
                                                 return "<button type=\"button\" class=\"btn-green-small\" onClick=\"location.href='order-service.html?orderId=" + row.id + "'\">查看详情</button>";
                                         }
                                     },
