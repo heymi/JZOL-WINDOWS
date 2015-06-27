@@ -27,6 +27,9 @@ document.write('<script src="js/prov_city_area.js"></script>');
 document.write('<script src="js/store.js"></script>');
 document.write('<script src="js/init.js"></script>');
 
+
+document.write('<script src="js/paramMap.js"></script>');
+
 //date picker
 document.write('<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">');
 document.write('<script src="js/bootstrap-datetimepicker.js"></script>');

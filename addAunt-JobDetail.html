@@ -10,6 +10,7 @@
 
 <script>
     var auntExists = false;
+    var isUpdate = getQueryString("isUpdate");
     $(function () {
         var employeeId = getQueryString('employeeId');
         if(employeeId) {
@@ -200,7 +201,7 @@
 
 
         var postUrl = '';
-        if (auntExists) {
+        if (isUpdate == 'true') {
             postUrl = "http://test.fuhui.com/employeeShop/update";
         } else {
             postUrl = "http://test.fuhui.com/employeeShop/add";

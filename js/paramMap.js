@@ -41,6 +41,22 @@ var paramMap = {
       1:'已婚'
     },
 
+    certificateType : {
+        Healthy : '健康证',
+        eniorCare : '老人护理',
+        domestic : '家政上岗证',
+        nurseryTeacher : '育婴师',
+        lactagogue : '母婴护理',
+        montessori : '催乳',
+        education : '早教',
+        pediatricMassage : '小儿推拿',
+        maternalSweating : '产妇发汗',
+        monthOfMeals : '月子餐',
+        postpartumSlimming : '产后纤体',
+        dietitians : '营养师',
+        nurse : '保育员'
+    },
+
 
     getCodeValue: function (paramType, codes) {
         var returnValue = '';

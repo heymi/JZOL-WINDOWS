@@ -49,7 +49,7 @@
     $(function () {
         var employeeId = getQueryString('employeeId');
 
-        if(employeeId) {
+        if (employeeId) {
             auntExists = true;
             auntId = employeeId;
             var paramData = {employee_id: employeeId};
@@ -124,13 +124,14 @@
 
                 <div class="form-body" id="basicInfo">
                     <div class="modal-body-wrapper">
-                        <form class="form-inline" id="basicInfoForm"  role="form">
+                        <form class="form-inline" id="basicInfoForm" role="form">
                             <h5 class="form-title">基本资料</h5>
 
                             <div class="form-group">
                                 <label id="" for="">身份证号：</label>
                                 <input type="text" class="form-control form-control-2x" id="identity"
                                        onchange="checkAuntExists(this)" required>
+
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
@@ -306,9 +307,9 @@
                 var retObj = JSON.parse(ret);
                 if (retObj.code == '0') {
                     if (auntExists) {
-                        parent.document.getElementById("rightContent").setAttribute("src", "addAunt-JobDetail.html?employeeId=" + auntId);
+                        parent.document.getElementById("rightContent").setAttribute("src", "addAunt-JobDetail.html?employeeId=" + auntId + "&isUpdate=" + auntExists);
                     } else {
-                        parent.document.getElementById("rightContent").setAttribute("src", "addAunt-JobDetail.html?employeeId=" + retObj.data.id);
+                        parent.document.getElementById("rightContent").setAttribute("src", "addAunt-JobDetail.html?employeeId=" + retObj.data.id + "&isUpdate=" + auntExists);
                     }
                 }
             },

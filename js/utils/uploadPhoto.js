@@ -15,6 +15,10 @@ function zswFun() {
     }
 }
 
+function UploadFiles(paramArr) {
+
+}
+
 function UploadFile(param) {
 
     var FileController = "http://test.fuhui.com/employee/upload";
@@ -40,8 +44,32 @@ function UploadFile(param) {
 
 function createPhotoDiv(eleName) {
 
-    var template = '<div class="fl" identify="' + eleName + '" id="' + eleName + '"><div id="' + eleName + 'ImgDiv"><img id="' + eleName + 'Img" width=100 height=100 border=0 src="img/jiazhengol.jpg"></div>' +
+    var template = '<div class="fl" identify="' + eleName + '" id="' + eleName + '"><div id="' + eleName + 'ImgDiv">' +
+        '<img id="' + eleName + 'Img" width=260 height=180 border=0 src="img/jiazhengol.jpg"></div>' +
+        '<br/><center>' + paramMap['certificateType'][eleName] + '</center>' +
         '<br/>上传文件： <input type="file" onchange="previewImage(this)" value="上传" id="' + eleName + 'Input"/></div>';
+
+    return template;
+
+}
+
+function createPhotoDisplayDiv4Cert(eleName, imgSrc) {
+
+    var template = '<div class="fl" identify="' + eleName + '" id="' + eleName + '"><div id="' + eleName + 'ImgDiv">' +
+        '<img id="' + eleName + 'Img" width=260 height=180 border=0 src="' + imgSrc + '"></div>' +
+        '<br/><center>' + paramMap['certificateType'][eleName] + '</center>' +
+        '<br/>上传文件： <input type="file" onchange="previewImage(this)" value="上传" id="' + eleName + 'Input"/></div>';
+
+    return template;
+
+}
+
+function createPhotoDisplayDiv4Resume(eleName, imgSrc) {
+
+    var template = '<div class="fl col-xs-6 col-md-3" identify="' + eleName + '" id="' + eleName + '"><div id="' + eleName + 'ImgDiv">' +
+        '<img id="' + eleName + 'Img" width=260 height=180 border=0 src="' + imgSrc + '">' +
+        '<br/><center>' + paramMap['certificateType'][eleName] + '</center>'
+        '</div>';
 
     return template;
 
