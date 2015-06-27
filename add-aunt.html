@@ -128,18 +128,18 @@
                             <h5 class="form-title">基本资料</h5>
 
                             <div class="form-group">
-                                <label id="" for="">身份证号：</label>
+                                <label id="" for=""><span class="enter-need">*</span>身份证号：</label>
                                 <input type="text" class="form-control form-control-2x" id="identity"
                                        onchange="checkAuntExists(this)" required>
 
                                 <div class="help-block with-errors"></div>
                             </div>
                             <div class="form-group">
-                                <label for="name">阿姨姓名：</label>
+                                <label for="name"><span class="enter-need">*</span>阿姨姓名：</label>
                                 <input type="text" class="form-control form-control-1x" id="name" required>
 
                                 <div class="form-group" id="sex" required="true">
-                                    <label>性别：</label>
+                                    <label><span class="enter-need">*</span>性别：</label>
                                     <label class="radio">
                                         <input type="radio" name="gender" id="male" value="1"> 男
                                     </label>
@@ -159,18 +159,18 @@
                             <!--</label>-->
                             <!--</div>-->
                             <div class="form-group">
-                                <label for="">联系电话：</label>
+                                <label for=""><span class="enter-need">*</span>联系电话：</label>
                                 <input type="text" class="form-control form-control-2x" id="phone">
-                                <label for="age">年龄：</label>
+                                <label for="age"><span class="enter-need">*</span>年龄：</label>
                                 <input type="text" class="form-control form-control-1x" id="age">
                             </div>
                             <div class="form-group">
-                                <label for="native_prov">籍贯：</label>
+                                <label for="native_prov"><span class="enter-need">*</span>籍贯：</label>
                                 <div class="prov-city-area" id="native_provcityarea"></div>
                                 <input type="text" class="form-control" id="native_addr">
                             </div>
                             <div class="form-group">
-                                <label for="native_prov">现居地址：</label>
+                                <label for="native_prov"><span class="enter-need">*</span>现居地址：</label>
                                 <div class="prov-city-area" id="living_provcityarea"></div>
                                 <input type="text" class="form-control" id="living_addr">
                             </div>
@@ -250,6 +250,10 @@
                         </form>
                     </div>
                 </div>
+                <div class="form-info fl">
+						      		<p>注：<span class="enter-need">*</span>为必填项</p>
+
+						      </div>
                 <div class="form-footer float-right">
                     <button type="button" class="btn-none" data-dismiss="modal">放弃</button>
 
@@ -280,17 +284,25 @@
  		paramObj.native_area= $('#native_provcityarea .area-select').val();
         paramObj.native_address = $('#native_addr').val();
         paramObj.marriage = "1";
-        paramObj.nationality = '1';
-        paramObj.zodiac_sign = '1';
-        paramObj.body = $("#body").val();
-        paramObj.stature = $("#stature").val();
+        if($('#nationality').val()){
+            paramObj.nationality = $('#nationality').val();
+        }
+//        paramObj.zodiac_sign = '1';
+        if($("#body").val()){
+            paramObj.body = $("#body").val();
+        }
+        if($("#stature").val()){
+            paramObj.stature = $("#stature").val();
+        }
         paramObj.qualification = $("#qualification input:checked").val();
         paramObj.living_prov= $('#living_provcityarea .prov-select').val();
  		paramObj.living_city= $('#living_provcityarea .city-select').val();
  		paramObj.living_area= $('#living_provcityarea .area-select').val();
         paramObj.living_address = $('#living_addr').val();
         paramObj.expect_salary = $('#expect_salary').val();
-        paramObj.daily_salary = $('#daily_salary').val();
+        if($('#daily_salary').val()){
+            paramObj.daily_salary = $('#daily_salary').val();
+        }
 
 
         var postUrl = '';
