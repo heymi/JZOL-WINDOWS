@@ -81,9 +81,9 @@ $.province_city_area = function(_province,_city,_area,_address){
   var DATA_PROV = PROVCITYAREA.province;
   var DATA_CITY = PROVCITYAREA.cityData;
   var DATA_AREA = PROVCITYAREA.areaData;
-  var prov_str = DATA_PROV[_province - 1].name + '省' || '';
-  var city_str = DATA_CITY[_city - 1].name || '';
-  var area_str = DATA_AREA[_area - 1].name || '';
+  var prov_str = _province !== 0 ? DATA_PROV[_province - 1].name + '省' || '' : '';
+  var city_str = _city !== 0 ? DATA_CITY[_city - 1].name || '' : '';
+  var area_str = _area !== 0 ? DATA_AREA[_area - 1].name || '' : '';
   var address = _address || '';
   return prov_str + city_str + area_str + address;
 };
