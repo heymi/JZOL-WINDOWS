@@ -30,12 +30,12 @@
 									<form class="form-inline">
 										<h5 class="form-title">雇主资料</h5>
 										<div class="form-group">
-										    <label for="exampleInputEmail1">雇主姓名：</label>
+										    <label for="exampleInputEmail1"><span class="enter-need">*</span>雇主姓名：</label>
 										    <input type="text" class="form-control" autofocus="true" id="username">
 
 										</div>
 										<div class="form-group" id="client_sex">
-										   <label for="exampleInputPassword1" class="text-indent">性别：</label>
+										   <label for="exampleInputPassword1" class="text-indent"><span class="enter-need">*</span>性别：</label>
 										   <label class="radio">
 											  <input type="radio" name="client_sex" value="1"> 先生
 											</label>
@@ -43,11 +43,11 @@
 											  <input type="radio" name="client_sex" value="2"> 女士
 											</label>
 											<label class="radio">
-											  <input type="radio" name="client_sex" value="0"> 保密
+											  <input type="radio" name="client_sex" checked value="0"> 保密
 											</label>
 										</div>
 										<div class="form-group">
-										    <label for="">手机号码：</label>
+										    <label for=""><span class="enter-need">*</span>手机号码：</label>
 										    <input type="text" class="form-control" id="phone">
 
 										</div>
@@ -57,12 +57,12 @@
 										    <input type="text" class="form-control" id="tellphone">
 										</div>
 										<div class="form-group">
-										    <label for="">服务地址：</label>
+										    <label for=""><span class="enter-need">*</span>服务地址：</label>
 										   <div class="prov-city-area"></div>
 										    <input type="text" class="form-control" id="addr">
 										</div>
 										<div class="form-group">
-										    <label for="">身份证号：</label>
+										    <label for=""><span class="enter-need">*</span>身份证号：</label>
 										    <input type="text" class="form-control form-control-3x" id="identity">
 										</div>
 
@@ -92,7 +92,10 @@
 						      </div>
 						     </div>
 
+<div class="form-info fl">
+						      		<p>注：<span class="enter-need">*</span>为必填项</p>
 
+						      </div>
 						      <div class="form-footer float-right">
 
 						      	<button type="button" class="btn-none" data-toggle="modal" data-target=".bs-example-modal-sm">放弃</button>
