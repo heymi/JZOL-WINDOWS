@@ -50,25 +50,7 @@
 
                             <div class="form-group">
                                 <label for="" class="text-indent">地址：</label>
-                                <select class="form-control" name="city_id" id="city_id">
-                                    <option value="1">上海市</option>
-                                    <option value="1">北京市</option>
-                                </select>
-                                <select class="form-control" name="area_id" id="area_id">
-                                    <option value="1">徐汇区</option>
-                                    <option value="1">静安区</option>
-                                    <option value="1">普陀区</option>
-                                    <option value="1">浦东新区</option>
-                                    <option value="1">闸北区</option>
-                                    <option value="1">虹口区</option>
-                                    <option value="1">长宁区</option>
-                                    <option value="1">闵行区</option>
-                                    <option value="1">宝山区</option>
-                                    <option value="1">杨浦区</option>
-                                    <option value="1">嘉定区</option>
-                                    <option value="1">松江区</option>
-                                    <option value="1">青浦区</option>
-                                </select>
+                                <div class="prov-city-area"></div>
                                 <input type="text" class="form-control" id="address">
                             </div>
 
@@ -162,10 +144,6 @@
 </div>
 </section>
 
-<script src="js/jquery-2.0.2.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/sco.message.js"></script>
-<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
 </body>
 <script type="text/javascript">
     function pageScroll() {
@@ -187,8 +165,9 @@
         paramData.user_name = $.trim($('#user_name').val());
         paramData.password = $.trim($('#password').val());
         paramData.name = $('#shop_name').val();
-        paramData.city_id = $('#city_id').val();
-        paramData.area_id = $('#area_id').val();
+        paramData.city_id = $('.city-select').val();
+        paramData.area_id = $('.area-select').val();
+        paramData.prov_id = $('.prov-select').val();
         paramData.address = $('#address').val();
         paramData.manager_name = $('#manager_name').val();
         paramData.manager_phone = $('#manager_phone').val();
@@ -224,6 +203,9 @@
 
     $('#cancel_add').on('click', function(){
         parent.document.getElementById("rightContent").setAttribute("src", "shop.html");
+    });
+    $(function(){
+        $('.prov-city-area').province_city_area();
     });
 </script>
 </html>
