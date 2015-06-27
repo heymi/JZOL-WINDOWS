@@ -4,7 +4,7 @@
 
 $.fn.province_city_area = function (_province,_city,_area) {
       function getProvCityAreaData(callback){
-        var PROVCITYAREA = window.PROVCITYAREA;
+        var PROVCITYAREA = parent.window.PROVCITYAREA || window.PROVCITYAREA;
         if(PROVCITYAREA){
           callback(PROVCITYAREA);
         }else{
@@ -13,6 +13,7 @@ $.fn.province_city_area = function (_province,_city,_area) {
               type: 'POST',
               success : function (ret) {
                 var data = JSON.parse(ret).data;
+                window.PROVCITYAREA = data;
                 callback(data);
               }
           });

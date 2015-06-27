@@ -309,18 +309,15 @@
     }
 </script>
 <script>
-//    $(function () {
-//        $.ajax({
-//            url: 'http://test.fuhui.com/user/getFiles',
-//            type: 'POST',
-//            success : function (ret) {
-//                window.PROVCITYAREA = JSON.parse(ret).data;
-//            },
-//            error : function () {
-//
-//            }
-//        });
-//    });
+    $(function () {
+        $.ajax({
+            url: 'http://test.fuhui.com/user/getFiles',
+            type: 'POST',
+            success : function (ret) {
+                window.PROVCITYAREA = JSON.parse(ret).data;
+            }
+        });
+    });
 </script>
 </body>
 </html>
