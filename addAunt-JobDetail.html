@@ -165,10 +165,6 @@
 </div>
 </section>
 
-<script src="js/jquery-2.0.2.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/sco.message.js"></script>
-<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
 </body>
 <script type="text/javascript">
     function pageScroll() {
@@ -228,6 +224,11 @@
         })
     });
 
+    $('#arrival_time').datetimepicker({
+        format: 'yyyy/mm/dd',
+	    autoclose: true,
+		minView: 2
+	});
 
     $('#message_trigger_err').on('click', function (e) {
         e.preventDefault();
