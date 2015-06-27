@@ -16,6 +16,7 @@
             data: paramData,
             success: function (ret) {
                 var retObj = JSON.parse(ret);
+				var data = retObj.data.list;
                 $("#username").text(retObj.data.list.username);
                 $("#client_sex").text(retObj.data.list.sex === '0' ? '保密' : retObj.data.list.sex === '1' ? '先生' : '女士');
                 $("#phone").text(retObj.data.list.phone || "暂无");
@@ -25,7 +26,7 @@
                 $("#client_content").text(retObj.data.list.content || "暂无");
                 $("#specfic_requirement").text(retObj.data.list.specfic_requirement || "暂无");
                 $("#remark").text(retObj.data.list.remark || "暂无");
-                $("#addr").text(retObj.data.list.addr || "暂无");
+                $("#addr").text($.province_city_area(data.prov,data.city,data.area,data.addr) || "暂无");
             }
         })
     })
@@ -115,11 +116,6 @@
 		</div>
 	</section>
 
-	<script src="js/jquery-2.0.2.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/bootstrap-datetimepicker.js"></script>
-	<script src="js/sco.message.js"></script>
-	<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
 </body>
 <script type="text/javascript"> 
 	$('#message_trigger_ok').on('click', function(e) {

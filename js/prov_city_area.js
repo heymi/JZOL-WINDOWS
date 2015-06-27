@@ -1,5 +1,9 @@
-/**
- * Created by Leeiio on 15/6/26.
+/*!
+ * Province City Area Chosen
+ * Version: 1.0
+ *
+ * Copyright 2015 Leeiio
+ * Released under the MIT license
  */
 
 $.fn.province_city_area = function (_province,_city,_area) {
