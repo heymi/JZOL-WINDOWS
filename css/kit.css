@@ -2,7 +2,7 @@ body{
 	padding: 0;
 	margin:0;
 	font-size: 15px;
-	background-color: #F2F2F2;
+	background-color: #fff;
 	font-family: Helvetica Neue, Tahoma, Arial, "Hiragino Sans GB", STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", SimSun, "宋体", Heiti, "黑体", sans-serif;
 }
 
@@ -265,7 +265,7 @@ a{
 
 /*菜单开始*/
 .menu{
-	width:18%;
+	width:220px;
 	background-color: #fff;
 	height: 322px;
 	float: left;
