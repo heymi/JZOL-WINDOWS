@@ -6,20 +6,29 @@
 
 var xhr;
 
-function zswFun() {
+function zswFun(callback) {
     var $btn = $('#message_trigger_ok');
     if (xhr.readyState == 4 && xhr.status == 200) {
         var retObj = JSON.parse(xhr.responseText);
         if (retObj.code != "0") {
-            $.scojs_message(errorCode["code_" + retObj.code], $.scojs_message.TYPE_ERROR);
-            $btn.button('reset');
+            setTimeout(function(){
+                $.scojs_message(errorCode["code_" + retObj.code], $.scojs_message.TYPE_ERROR);
+                callback && callback();
+            },1e3);
+            //$btn.button('reset');
         }else{
-            $.scojs_message('上传成功', $.scojs_message.TYPE_OK);
-            $btn.button('reset');
+            setTimeout(function(){
+                $.scojs_message('上传成功', $.scojs_message.TYPE_OK);
+                callback && callback();
+            },1e3);
+            //$btn.button('reset');
         }
     }else if(xhr.readyState == 4 && xhr.status != 200){
-        $.scojs_message('服务器异常错误', $.scojs_message.TYPE_ERROR);
-        $btn.button('reset');
+        setTimeout(function(){
+            $.scojs_message('服务器异常错误', $.scojs_message.TYPE_ERROR);
+            callback && callback();
+        },1e3);
+        //$btn.button('reset');
     }
 }
 
@@ -27,7 +36,7 @@ function UploadFiles(paramArr) {
 
 }
 
-function UploadFile(param) {
+function UploadFile(param,callback) {
 
     var FileController = "http://test.fuhui.com/employee/upload";
 
@@ -44,7 +53,9 @@ function UploadFile(param) {
 
     xhr.open("post", FileController, true);
 
-    xhr.onreadystatechange = zswFun;
+    xhr.onreadystatechange = function(){
+        zswFun(callback)
+    };
 
     xhr.send(form);
 
@@ -120,11 +131,16 @@ function previewImage(file) {
     // 预览后上传
     var $btn = $('#message_trigger_ok').button('loading');
     var paramObj = {};
-    var fileId = $(file).parents('[identify]')[0].id;
+    var $identify = $(file).parents('[identify]');
+    $identify.find('.progress').show();
+    var fileId = $identify[0].id;
     paramObj.type = fileId;
     paramObj.employee_id = employeeId;
     paramObj.upfile = $('#' + fileId + 'Input')[0].files[0];
-    UploadFile(paramObj);
+    UploadFile(paramObj,function(){
+        $identify.find('.progress').hide();
+        $btn.button('reset');
+    });
 }
 function clacImgZoomParam(maxWidth, maxHeight, width, height) {
     var param = {top: 0, left: 0, width: width, height: height};
