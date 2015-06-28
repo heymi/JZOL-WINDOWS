@@ -61,6 +61,7 @@
                 success: function (ret) {
                     var retObj = JSON.parse(ret);
                     $('#native_section').hide();
+                    $('#add_or_edit').text('编辑阿姨');
 
                     //基本信息
                     $("#identity").val(retObj.data.static.identity);
@@ -70,8 +71,8 @@
                     $("#phone").val(retObj.data.static.phone);
                     $("#age").val(retObj.data.static.age);
                     $("#nationality").val(retObj.data.static.nationality);
-                    $("#stature").val(retObj.data.static.stature);
-                    $("#body").val(retObj.data.static.body);
+                    $("#stature").val(retObj.data.static.stature || '');
+                    $("#body").val(retObj.data.static.body || '');
                     $("#identity").val(retObj.data.static.identity);
                     $("#family").val(retObj.data.static.family);
                     $("#content").val(retObj.data.static.content);
@@ -82,8 +83,8 @@
                 $('#living_provcityarea').province_city_area(retObj.data.static.living_prov,retObj.data.static.living_city,retObj.data.static.living_area);
                 $('#living_addr').val(retObj.data.static.living_address);
 
-                    $('#expected_salary').val(retObj.data.static.expect_salary)
-                    $('#daily_salary').val(retObj.data.static.daily_salary)
+                    $('#expected_salary').val(retObj.data.static.expect_salary || '')
+                    $('#daily_salary').val(retObj.data.static.daily_salary || '')
 
                     //工作信息
                     setMultiSelectValue('service_range', retObj.data.dynamic.service_range)
@@ -109,7 +110,7 @@
             <div class="bread-nav float-left">
                 <ol class="breadcrumb">
                     <li><a href="aunt.html">阿姨管理</a></li>
-                    <li class="active"><strong>新增阿姨</strong></li>
+                    <li class="active"><strong id="add_or_edit">新增阿姨</strong></li>
                 </ol>
             </div>
 

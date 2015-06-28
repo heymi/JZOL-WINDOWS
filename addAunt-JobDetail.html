@@ -30,7 +30,7 @@
                     $("#name").val(retObj.data.static.name);
                     $("#sex input[value=" + retObj.data.static.sex + "]").prop('checked', true);
                     $("#qualification input[value=" + retObj.data.static.qualification + "]").prop('checked', true);
-                    $("#phone").val(retObj.data.static.phone);
+                    $("#phone").val(retObj.data.static.phone || '');
                     $("#age").val(retObj.data.static.age);
                     $("#nationality").val(retObj.data.static.nationality);
                     $("#stature").val(retObj.data.static.stature);
@@ -52,7 +52,7 @@
                     $('#arrival_time').val(retObj.data.dynamic.arrival_time)
                     $('#emergency').val(retObj.data.dynamic.emergency)
                     $('#relationship').val(retObj.data.dynamic.relationship)
-                    $('#linkman_tel').val(retObj.data.dynamic.linkman_tel)
+                    $('#linkman_tel').val(retObj.data.dynamic.linkman_tel || '')
                     $('#remark').val(retObj.data.dynamic.remark)
                 }
             })
