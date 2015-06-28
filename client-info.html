@@ -22,10 +22,10 @@
                 $("#phone").text(retObj.data.list.phone || "暂无");
                 $("#tell").text(retObj.data.list.tell || "暂无");
                 $("#identity").text(retObj.data.list.identity || "暂无");
-                $("#family").text(retObj.data.list.family || "暂无");
-                $("#client_content").text(retObj.data.list.content || "暂无");
-                $("#specfic_requirement").text(retObj.data.list.specfic_requirement || "暂无");
-                $("#remark").text(retObj.data.list.remark || "暂无");
+                $("#family").text(retObj.data.list.family == '0' ? "暂无" : retObj.data.list.family);
+                $("#client_content").text(retObj.data.list.content == '0' ? "暂无" : retObj.data.list.content);
+                $("#specfic_requirement").text(retObj.data.list.specfic_requirement == '0' ? "暂无" : retObj.data.list.specfic_requirement);
+                $("#remark").text(retObj.data.list.remark == '0' ? "暂无" : retObj.data.list.remark);
                 $("#addr").text($.province_city_area(data.prov,data.city,data.area,data.addr) || "暂无");
             }
         })
