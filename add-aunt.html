@@ -326,7 +326,9 @@
                     } else {
                         parent.document.getElementById("rightContent").setAttribute("src", "addAunt-JobDetail.html?employeeId=" + retObj.data.id + "&isUpdate=" + auntExists);
                     }
-                }
+                }else{
+					$.scojs_message(errorCode["code_" + retObj.code], $.scojs_message.TYPE_ERROR)
+				}
             },
             error: function (ret) {
                 alert('error');
