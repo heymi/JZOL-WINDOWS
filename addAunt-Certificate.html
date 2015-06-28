@@ -41,33 +41,37 @@
                 }
             })
         }
-    })
-    function submitToServer() {
-        var paramObj = {};
-        paramObj.type = 'identity';
-        paramObj.employee_id = employeeId;
-        paramObj.upfile = $('#identityInput')[0].files[0];
-        UploadFile(paramObj)
 
+        $('#message_trigger_ok').on('click', function(){
+            var employeeId = getQueryString("employee_id");
+            window.location.href = "aunt-resume.html?employeeId=" + employeeId;
+//            var $btn = $(this).button('loading')
+//            var paramObj = {};
+//            paramObj.type = 'identity';
+//            paramObj.employee_id = employeeId;
+//            paramObj.upfile = $('#identityInput')[0].files[0];
+//            UploadFile(paramObj)
+//
+//
+//            var paramObj2 = {};
+//            paramObj2.type = 'identityHander';
+//            paramObj2.employee_id = employeeId;
+//            paramObj2.upfile = $('#identityHanderInput')[0].files[0];
+//            UploadFile(paramObj2)
 
-        var paramObj2 = {};
-        paramObj2.type = 'identityHander';
-        paramObj2.employee_id = employeeId;
-        paramObj2.upfile = $('#identityHanderInput')[0].files[0];
-        UploadFile(paramObj2)
+//            _.each($('[identify]'), function (rec) {
+//                var paramObj = {};
+//                paramObj.type = rec.id;
+//                paramObj.employee_id = employeeId;
+//                paramObj.upfile = $('#' + rec.id + 'Input')[0].files[0];
+//                UploadFile(paramObj)
+//            })
 
-        _.each($('#certFormId [identify]'), function (rec) {
-            var paramObj = {};
-            paramObj.type = rec.id;
-            paramObj.employee_id = employeeId;
-            paramObj.upfile = $('#' + rec.id + 'Input')[0].files[0];
-            UploadFile(paramObj)
-        })
-
-        window.setTimeout(function () {
-            alert('保存成功！')
-        }, 500);
-    }
+//            window.setTimeout(function () {
+//                alert('保存成功！')
+//            }, 500);
+        });
+    });
 
 
     function certificateChange(ele) {
@@ -108,7 +112,7 @@
                 <input type="hidden" name="type" value="Health">
                 <input type="hidden" name="employee_id" value="31">
 
-                <div class="fl" id="identity">
+                <div class="fl" identify="identity" id="identity">
                     <div id="identityImgDiv">
                         <img id="'identityImg" width=100 height=100 border=0 src='img/jiazhengol.jpg'>
                     </div>
@@ -195,7 +199,7 @@
                 <input type="hidden" name="type" value="Health">
                 <input type="hidden" name="employee_id" value="31">
 
-                <div class="fl" id="identityHander">
+                <div class="fl" identify="identityHander" id="identityHander">
                     <div id="identityHanderImgDiv">
                         <img id="identityHanderImg" width=100 height=100 border=0 src='img/jiazhengol.jpg'>
                     </div>
@@ -208,7 +212,7 @@
 
 						      </div>
         <div class="form-footer float-right">
-            <button id="message_trigger_ok" type="button" class="btn-green-big" onclick="submitToServer()">保存</button>
+            <button id="message_trigger_ok" type="button" class="btn-green-big" data-loading-text="上传图片中，请稍候...">保存</button>
         </div>
     </div>
 </div>

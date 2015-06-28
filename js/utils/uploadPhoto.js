@@ -7,11 +7,19 @@
 var xhr;
 
 function zswFun() {
+    var $btn = $('#message_trigger_ok');
     if (xhr.readyState == 4 && xhr.status == 200) {
         var retObj = JSON.parse(xhr.responseText);
         if (retObj.code != "0") {
-            alert("保存失败！");
+            $.scojs_message(errorCode["code_" + retObj.code], $.scojs_message.TYPE_ERROR);
+            $btn.button('reset');
+        }else{
+            $.scojs_message('上传成功', $.scojs_message.TYPE_OK);
+            $btn.button('reset');
         }
+    }else if(xhr.readyState == 4 && xhr.status != 200){
+        $.scojs_message('服务器异常错误', $.scojs_message.TYPE_ERROR);
+        $btn.button('reset');
     }
 }
 
@@ -45,7 +53,7 @@ function UploadFile(param) {
 function createPhotoDiv(eleName) {
 
     var template = '<div class="fl" identify="' + eleName + '" id="' + eleName + '"><div id="' + eleName + 'ImgDiv">' +
-        '<img id="' + eleName + 'Img" width=260 height=180 border=0 src="img/jiazhengol.jpg"></div>' +
+        '<img id="' + eleName + 'Img" width=180 height=180 border=0 src="img/jiazhengol.jpg"></div>' +
         '<br/><center>' + paramMap['certificateType'][eleName] + '</center>' +
         '<br/>上传文件： <input type="file" onchange="previewImage(this)" value="上传" id="' + eleName + 'Input"/></div>';
 
@@ -56,7 +64,7 @@ function createPhotoDiv(eleName) {
 function createPhotoDisplayDiv4Cert(eleName, imgSrc) {
 
     var template = '<div class="fl" identify="' + eleName + '" id="' + eleName + '"><div id="' + eleName + 'ImgDiv">' +
-        '<img id="' + eleName + 'Img" width=260 height=180 border=0 src="' + imgSrc + '"></div>' +
+        '<img id="' + eleName + 'Img" width=180 height=180 border=0 src="' + imgSrc + '"></div>' +
         '<br/><center>' + paramMap['certificateType'][eleName] + '</center>' +
         '<br/>上传文件： <input type="file" onchange="previewImage(this)" value="上传" id="' + eleName + 'Input"/></div>';
 
@@ -67,7 +75,7 @@ function createPhotoDisplayDiv4Cert(eleName, imgSrc) {
 function createPhotoDisplayDiv4Resume(eleName, imgSrc) {
 
     var template = '<div class="fl col-xs-6 col-md-3" identify="' + eleName + '" id="' + eleName + '"><div id="' + eleName + 'ImgDiv">' +
-        '<img id="' + eleName + 'Img" width=260 height=180 border=0 src="' + imgSrc + '">' +
+        '<img id="' + eleName + 'Img" width=180 height=180 border=0 src="' + imgSrc + '">' +
         '<br/><center>' + paramMap['certificateType'][eleName] + '</center>'
         '</div>';
 
@@ -108,6 +116,15 @@ function previewImage(file) {
         status = ('rect:' + rect.top + ',' + rect.left + ',' + rect.width + ',' + rect.height);
         div.innerHTML = "<div id=divhead style='width:" + rect.width + "px;height:" + rect.height + "px;margin-top:" + rect.top + "px;" + sFilter + src + "\"'></div>";
     }
+
+    // 预览后上传
+    var $btn = $('#message_trigger_ok').button('loading');
+    var paramObj = {};
+    var fileId = $(file).parents('[identify]')[0].id;
+    paramObj.type = fileId;
+    paramObj.employee_id = employeeId;
+    paramObj.upfile = $('#' + fileId + 'Input')[0].files[0];
+    UploadFile(paramObj);
 }
 function clacImgZoomParam(maxWidth, maxHeight, width, height) {
     var param = {top: 0, left: 0, width: width, height: height};
