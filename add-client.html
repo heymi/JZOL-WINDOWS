@@ -133,18 +133,29 @@
         var paramObj = {};
         paramObj.identity = $("#identity").val();
  		paramObj.username = $("#username").val();
- 		paramObj.tell = $("#tellphone").val();
+		if($("#tellphone").val()){
+			paramObj.tell = $("#tellphone").val();
+		}
+
  		paramObj.addr= $("#addr").val();
  		paramObj.source= 1;
- 		paramObj.specfic_requirement=$("#specfic_requirement").val();
+		if($("#specfic_requirement").val()){
+			paramObj.specfic_requirement=$("#specfic_requirement").val();
+		}
  		paramObj.phone= parseInt($("#phone").val(),10);
  		paramObj.sex= $("#client_sex input:checked").val();
  		paramObj.prov= $('.prov-select').val();
  		paramObj.city= $('.city-select').val();
  		paramObj.area= $('.area-select').val();
- 		paramObj.family=$("#family").val();
- 		paramObj.content= $('#client_content').val();
- 		paramObj.remark=$("#remark").val();
+		if($("#family").val()){
+			paramObj.family=$("#family").val();
+		}
+ 		if($('#client_content').val()){
+			paramObj.content= $('#client_content').val();
+		}
+ 		if($("#remark").val()){
+			paramObj.remark=$("#remark").val();
+		}
         $.ajax({
             url: "http://test.fuhui.com/employer/add",
             type: 'POST',
