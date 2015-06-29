@@ -194,7 +194,7 @@
                 </li>
                 <li><a id="shop_detail"><!-- <img src="img/icon_head.png">--><span>虹桥家政 | 张富贵</span></a>
                 </li>
-                <li><a href="login.html"><span>退出</span></a>
+                <li><a id="logout" href="javascript:;"><span>退出</span></a>
                 <!--<li onclick="testEmployerDel()">Test</li>-->
                 </li>
             </ul>
@@ -328,6 +328,17 @@
 
         $('#shop_detail').on('click', function(){
             $("#rightContent").attr("src", "./profile.html");
+        });
+
+        //登出
+        $('#logout').on('click', function(){
+            $.ajax({
+                url: 'http://test.fuhui.com/user/loginOut',
+                type: 'POST',
+                success: function (ret) {
+                    window.location.href = "login.html";
+                }
+            });
         });
     });
 </script>
