@@ -11,7 +11,7 @@
 
 
 <div class="row clearfix">
-<div class="dash-box col-xs-6"><!-- 首页订单动态开始 -->
+<div class="dash-box col-xs-6" id="order_list"><!-- 首页订单动态开始 -->
     <h3 class="mgb15"><center><strong>订单动态</strong></center></h3>
     <div class="table-responsive">
                 <table class="table table-hover">
@@ -176,17 +176,44 @@
             var str = ''
             $.each(listdata, function(index, value){
                 if(index > 3) return false;
+                var status = value.bill_status || value.status;
+                var link_button;
+                switch (status){
+                    case 0:
+                        link_button =  "order-wait.html?orderId=" + value.id;
+                        break;
+                    case 1:
+                        link_button =  "order-setup.html?orderId=" + value.id;
+                        break;
+                    case 3:
+                        link_button =  "order-finish.html?orderId=" + value.id;
+                        break;
+                    case 5:
+                        link_button =  "order-abend.html?orderId=" + value.id;
+                        break;
+                    case 6:
+                        link_button =  "order-canceled.html?orderId=" + value.id;
+                        break;
+                    default :
+                        link_button =  "order-service.html?orderId=" + value.id;
+                }
                 str += "<tr>\
                   <td><strong>" + (value.employee_name || '未指派') + "</strong></td>\
                   <td>" + value.employer_name + "</td>\
                   <td>" + paramMap.service_range[value.type] + "</td>\
-                  <td><button type=\"button\" class=\"btn-green-small\">" + list_paramMap.status[value.status] + "</button></td>\
+                  <td><button data-url='"+link_button+"' type=\"button\" class=\"btn-green-small click-button\">" + list_paramMap.status[value.status] + "</button></td>\
                 </tr>";
             });
             $('#order_list').html(str);
         });
         $('#click_for_more').on('click', function(){
            window.location.href = 'list-local.html';
+            $(parent.document).find("#menuUl .selected").removeClass("selected");
+            $(parent.document).find("#menuUl li").eq(2).addClass("selected");
+        });
+        $('#order_list').delegate('.click-button','click', function(){
+            var url = $(this).attr('data-url');
+            window.location.href = url;
             $(parent.document).find("#menuUl .selected").removeClass("selected");
             $(parent.document).find("#menuUl li").eq(2).addClass("selected");
         });
