@@ -11,7 +11,19 @@
     <script src="js/sco.message.js"></script>
     <!--<script language="javascript" type="text/javascript" src="http://fw.qq.com/ipaddress">-->
     <!--<script type="text/javascript" src="http://www.coding123.net/getip.ashx?js=1"></script>-->
+    <script>
+        var gui = require('nw.gui');
 
+        // Setup and hide extraneous menu items for Mac Menu
+        if (process.platform === "darwin") {
+            var mb = new gui.Menu({type: 'menubar'});
+            mb.createMacBuiltin('FuHui', {
+                hideEdit: false,
+                hideWindow: false
+            });
+            gui.Window.get().menu = mb;
+        }
+    </script>
 </head>
 <body>
 <div id="version"></div>
