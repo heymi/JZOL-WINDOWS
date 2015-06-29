@@ -255,7 +255,7 @@
                                 },
                                 formatters: {
                                     "operations": function (column, row) {
-                                        var status = row.demands_bidding_status || row.status;
+                                        var status = row.bill_status || row.status;
                                         switch (status){
                                             case 0:
                                             case '0':
