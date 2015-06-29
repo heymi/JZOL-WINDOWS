@@ -148,9 +148,9 @@
 			postAuntData.proposer_id = getQueryString('proposerId');
 			postAuntData.employer_id = demands_info.employer_id;
 			postAuntData.employee_service_range = demands_info.type;
-			postAuntData.content = demands_info.content;
+			postAuntData.content = demands_info.content || "暂无";
 			postAuntData.requirement = demands_info.requirements;
-			postAuntData.remark = demands_info.remark;
+			postAuntData.remark = demands_info.remark || "暂无";
 
 			// 把查询条件存储到 localstorage
 			var match_aunt = {};
