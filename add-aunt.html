@@ -76,6 +76,7 @@
                     $("#identity").val(retObj.data.static.identity);
                     $("#family").val(retObj.data.static.family);
                     $("#content").val(retObj.data.static.content);
+                    $('#career').val(retObj.data.static.career);
 //                    $("#addr").val(retObj.data.static.addr);
 
 //                    $('#native_provcityarea').province_city_area(retObj.data.static.native_prov,retObj.data.static.native_city,retObj.data.static.native_area);
@@ -176,7 +177,11 @@
                                 <div class="prov-city-area" id="living_provcityarea"></div>
                                 <input type="text" class="form-control" id="living_addr">
                             </div>
-                            <div>
+                            <div class="form-group">
+                                <label for="">工作经验：</label>
+                                <input id="career" type="text" class="form-control"> 年
+                            </div>
+                            <div class="form-group">
                                 <label for="">期望薪资：</label>
                                 月薪：
                                 <input id="expected_salary" type="text" class="form-control">
@@ -303,7 +308,12 @@
  		paramObj.living_city= $('#living_provcityarea .city-select').val();
  		paramObj.living_area= $('#living_provcityarea .area-select').val();
         paramObj.living_address = $('#living_addr').val();
-        paramObj.expect_salary = $('#expected_salary').val();
+        if($('#career').val()){
+            paramObj.career = $('#career').val();
+        }
+        if($('#expected_salary').val()){
+            paramObj.expect_salary = $('#expected_salary').val();
+        }
         if($('#daily_salary').val()){
             paramObj.daily_salary = $('#daily_salary').val();
         }

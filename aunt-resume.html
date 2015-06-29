@@ -24,8 +24,16 @@
                 var dataDynamic = retObj.data.dynamic;
 
                 //基本信息
-                $('#header-desc').text($.province_city_area(retObj.data.static.native_prov,retObj.data.static.native_city,retObj.data.static.native_area) + '人。' + retObj.data.static.career + '年工作经验。' );
-                $('#career').text(retObj.data.static.career + '年');
+                var header_desc_str = $.province_city_area(retObj.data.static.native_prov,retObj.data.static.native_city,retObj.data.static.native_area) + '人。';
+                if(retObj.data.static.career){
+                    header_desc_str += '年工作经验。';
+                }
+                $('#header-desc').text(header_desc_str);
+                if(retObj.data.static.career){
+                    $('#career').text(retObj.data.static.career + '年');
+                }else{
+                    $('#career').hide().prev().hide();
+                }
                 $('#aunt_native').text($.province_city_area(retObj.data.static.native_prov,retObj.data.static.native_city,retObj.data.static.native_area));
                 $('#aunt_living').text($.province_city_area(retObj.data.static.living_prov,retObj.data.static.living_city,retObj.data.static.living_area,retObj.data.static.living_address));
                 $("#identity").text(retObj.data.static.identity);
