@@ -22,6 +22,7 @@
             success: function (ret) {
                 var retObj = JSON.parse(ret);
                 var dataDynamic = retObj.data.dynamic;
+                var dataStatic = retObj.data.static;
 
                 //基本信息
                 var header_desc_str = $.province_city_area(retObj.data.static.native_prov,retObj.data.static.native_city,retObj.data.static.native_area) + '人。';
@@ -48,6 +49,8 @@
                 $('#addr').attr('href','http://map.baidu.com/?l=&s=s%26wd%3D'+ aunt_addr).text(aunt_addr);
                 $('#expected_salary').text(retObj.data.static.expect_salary ? retObj.data.static.expect_salary + '/月' : '无');
                 $('#arrival_time').text(dataDynamic.arrival_time);
+                $('#zodiac_sign').text(paramMap.zodiac_sign[dataStatic.zodiac_sign]);
+                $('#constellation').text(paramMap.constellation[dataStatic.constellation]);
 
                 if(dataDynamic.service_prov && dataDynamic.service_city){
                     $('#service_addr').text($.province_city_area(dataDynamic.service_prov, dataDynamic.service_city));
@@ -136,8 +139,10 @@
                         <dd id="age"></dd>
                         <dt class="gray">婚姻状况：</dt>
                         <dd id="marriage"></dd>
-                        <dt class="gray">现居地址：</dt>
-                        <dd id="aunt_living"></dd>
+                        <dt class="gray">星座：</dt>
+                        <dd id="constellation"></dd>
+                        <dt class="gray">属相：</dt>
+                        <dd id="zodiac_sign"></dd>
                     </dl>
 
                     <dl class="aunt-dl dl-horizontal f16 fl">
@@ -145,6 +150,8 @@
                         <dd id="career"></dd>
                         <dt class="gray">身份证号：</dt>
                         <dd id="identity"></dd>
+                        <dt class="gray">现居地址：</dt>
+                        <dd id="aunt_living"></dd>
                     </dl>
 
                 </div>
