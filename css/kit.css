@@ -1308,3 +1308,10 @@ span.badge {
 .progress{
 	margin-bottom:0;
 }
+
+.no-padding{
+padding: 0;
+}
+.no-padding ul{
+	  padding-left: 35px;
+}
