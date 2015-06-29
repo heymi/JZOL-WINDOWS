@@ -272,6 +272,9 @@
                                     }
                                 },
                                 responseHandler: function (res) {
+                                    if(res.code === -1){
+                                        $.scojs_message('登录失效，请退出后请重新登录！', $.scojs_message.TYPE_ERROR);
+                                      }
                                     var retResult = {
                                         "current": 1,
                                         "rows": []
