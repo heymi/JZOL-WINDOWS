@@ -50,7 +50,9 @@
                 $('#arrival_time').text(dataDynamic.arrival_time);
 
                 $('#service_addr').text($.province_city_area(dataDynamic.service_prov, dataDynamic.service_city));
-                $('#aunt_avatar').attr('src', imgUrl + retObj.data.upload[1].dir_name  + '/' + retObj.data.upload[1].image_l);
+                if(retObj.data.upload[1]){
+                    $('#aunt_avatar').attr('src', imgUrl + retObj.data.upload[1].dir_name  + '/' + retObj.data.upload[1].image_l);
+                }
                 _.each(retObj.data.upload, function (rec) {
                     if (rec.type == 'identity' || rec.type == 'identityHander') {
                         document.getElementById(rec.type + "ImgDiv").innerHTML = '<img id="' + rec.type + 'Img" src="' + imgUrl + rec.dir_name + '/' + rec.image_l + '">';
@@ -237,15 +239,15 @@
                         <h4 class="b resume-title titles">相关证件证书</h4>
                     </div>
 
-                    <div class="row" id="certFormId">
+                    <div class="row aunt-photo-section" id="certFormId">
                         <div class="fl col-xs-6 col-md-3" id="identityDiv">
-                            <div id="identityImgDiv">
+                            <div id="identityImgDiv" class="img-wrap">
                                 <img id="'identityImg" width=100 height=100 border=0 src='img/jiazhengol.jpg' alt="身份证">
                             </div>
                             <center>身份证</center>
                         </div>
                         <div class="fl col-xs-6 col-md-3" id="identityHanderDiv">
-                            <div id="identityHanderImgDiv">
+                            <div id="identityHanderImgDiv" class="img-wrap">
                                 <img id="'identityHanderImg" width=100 height=100 border=0 src='img/jiazhengol.jpg' align="生活照">
                             </div>
                             <center>生活照</center>

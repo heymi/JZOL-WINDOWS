@@ -611,3 +611,12 @@ section{width: 100%;min-width: 980px;padding-top: 80px;}
 .prov-city-area select{
 	margin-right: 10px;
 }
+.aunt-photo-section{
+	padding-top: 20px;
+}
+.aunt-photo-section .img-wrap{
+	text-align: center;
+}
+.aunt-photo-section center{
+	padding: 10px 0;
+}
