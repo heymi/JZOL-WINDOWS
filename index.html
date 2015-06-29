@@ -192,7 +192,7 @@
                     <!-- end tabpanel -->
 
                 </li>
-                <li><a href="profile.html"><!-- <img src="img/icon_head.png">--><span>虹桥家政 | 张富贵</span></a>
+                <li><a id="shop_detail"><!-- <img src="img/icon_head.png">--><span>虹桥家政 | 张富贵</span></a>
                 </li>
                 <li><a href="login.html"><span>退出</span></a>
                 <!--<li onclick="testEmployerDel()">Test</li>-->
@@ -324,6 +324,10 @@
             var windowHeight = $(window).height();
             var headerHeight = $('#header').height();
            $('#rightContent').height(windowHeight - headerHeight - 48);
+        });
+
+        $('#shop_detail').on('click', function(){
+            $("#rightContent").attr("src", "./profile.html");
         });
     });
 </script>
