@@ -11,7 +11,7 @@
         var auntData = {};
 		function getBiddingDetail(id,callback){
 			$.ajax({
-				url: 'http://test.fuhui.com/DemandsBiddings/detail',
+				url: 'http://api.fuhui.com/DemandsBiddings/detail',
 				type: 'POST',
 				data: {
                     id: id
@@ -26,7 +26,7 @@
 			var paramData = {employee_id: id};
 
 			$.ajax({
-				url: 'http://test.fuhui.com/employee/detail',
+				url: 'http://api.fuhui.com/employee/detail',
 				type: 'POST',
 				data: paramData,
 				success: function (ret) {
@@ -215,7 +215,7 @@
 								post: {
                                     demand_id: demand_id
                                 },
-								url: "http://test.fuhui.com/DemandsBiddings/list",
+								url: "http://api.fuhui.com/DemandsBiddings/list",
 								responseHandler: function (res) {
 									var retResult = {};
 									retResult["rows"] = res.data.list;
@@ -300,7 +300,7 @@
                             e.preventDefault();
                             var id = $(this).attr('data-id');
                             $.ajax({
-                                url: "http://test.fuhui.com/DemandsBiddings/nosuit",
+                                url: "http://api.fuhui.com/DemandsBiddings/nosuit",
                                 type: 'POST',
                                 data: {
                                     id: id
@@ -350,7 +350,7 @@
 		var id = $(this).attr('data-id');
 		var eid = $(this).attr('data-eid');
 		$.ajax({
-            url: "http://test.fuhui.com/DemandsBiddings/suit",
+            url: "http://api.fuhui.com/DemandsBiddings/suit",
             type: 'POST',
             data: {
                 id: id
@@ -386,7 +386,7 @@
 		paramObj.trial_time = $('#trial_time').val() ? new Date($('#trial_time').val()).getTime()/1000 : 0;
 		paramObj.trial_day = $('#trial_day').val();
 		$.ajax({
-            url: "http://test.fuhui.com/demands/dispath",
+            url: "http://api.fuhui.com/demands/dispath",
             type: 'POST',
             data: paramObj,
             success: function (ret) {

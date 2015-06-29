@@ -19,7 +19,7 @@
             var paramData = {employee_id: employeeId};
 
             $.ajax({
-                url: 'http://test.fuhui.com/employee/detail',
+                url: 'http://api.fuhui.com/employee/detail',
                 type: 'POST',
                 data: paramData,
                 success: function (ret) {
@@ -209,9 +209,9 @@
 
         var postUrl = '';
         if (isUpdate == 'true') {
-            postUrl = "http://test.fuhui.com/employeeShop/update";
+            postUrl = "http://api.fuhui.com/employeeShop/update";
         } else {
-            postUrl = "http://test.fuhui.com/employeeShop/add";
+            postUrl = "http://api.fuhui.com/employeeShop/add";
         }
         $.ajax({
             url: postUrl,

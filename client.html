@@ -105,9 +105,9 @@
                                 url: function(){
                                     var searchPhrase = $("#dataGrid").bootgrid("getSearchPhrase");
                                     if(searchPhrase.length){
-                                        return "http://test.fuhui.com/employer/list";
+                                        return "http://api.fuhui.com/employer/list";
                                     }else{
-                                        return "http://test.fuhui.com/employer/list";
+                                        return "http://api.fuhui.com/employer/list";
                                     }
                                 },
                                 responseHandler: function (res) {
@@ -173,7 +173,7 @@
                     }
                     removedIdsStr = removdeIdsArr.join(',');
                     $.ajax({
-                        url : 'http://test.fuhui.com/employer/del?isdel=1&eid=' + removedIdsStr,
+                        url : 'http://api.fuhui.com/employer/del?isdel=1&eid=' + removedIdsStr,
                         type : 'GET',
 //                        type : 'POST',
                         data : {},

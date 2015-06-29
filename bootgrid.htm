@@ -27,7 +27,7 @@
             <div class="normal-table">
                 <!-- 内容表格开始 -->
                 <table id="dataGrid" class="table table-condensed table-hover table-striped" data-selection="true"
-                       data-multi-select="true" data-row-select="true" data-keep-selection="true"  data-ajax="true" data-url="http://test.fuhui.com/employee/list">
+                       data-multi-select="true" data-row-select="true" data-keep-selection="true"  data-ajax="true" data-url="http://api.fuhui.com/employee/list">
                     <thead>
                     <tr>
                         <th data-column-id="id" data-identifier="true" data-width="0px"></th>
@@ -115,7 +115,7 @@
                 function init() {
                     $("#dataGrid").bootgrid({
 //                                ajax: true,
-//                                url: "http://test.fuhui.com/employee/list",
+//                                url: "http://api.fuhui.com/employee/list",
                                 responseHandler: function (res) {
                                     var retResult = {};
                                     retResult["rows"] = res.data.list;
@@ -186,7 +186,7 @@
                     }
                     removedIdsStr = removdeIdsArr.join(',');
                     $.ajax({
-                        url: 'http://test.fuhui.com/employeeShop/del',
+                        url: 'http://api.fuhui.com/employeeShop/del',
                         type: 'POST',
                         data: {employee_id : removedIdsStr},
                         success: function (ret) {

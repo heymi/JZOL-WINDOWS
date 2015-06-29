@@ -10,7 +10,7 @@
         var orderId = getQueryString('orderId');
         var paramData = {id: orderId};
         $.ajax({
-            url: 'http://test.fuhui.com/demands/detail',
+            url: 'http://api.fuhui.com/demands/detail',
             type: 'POST',
             data: paramData,
             success: function (ret) {
@@ -285,7 +285,7 @@ jQuery(document).ready(function(){
 		paramObj.id = order_id;
 		paramObj.remark = remark;
 		$.ajax({
-            url: "http://test.fuhui.com/demands/over",
+            url: "http://api.fuhui.com/demands/over",
             type: 'POST',
             data: paramObj,
             success: function (ret) {

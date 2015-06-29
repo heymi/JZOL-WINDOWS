@@ -14,7 +14,7 @@
         var param = {};
         param.identity = rec.value;
         $.ajax({
-            url: 'http://test.fuhui.com/employee/identity',
+            url: 'http://api.fuhui.com/employee/identity',
             type: 'POST',
             data: param,
             success: function (returnData) {
@@ -55,7 +55,7 @@
             var paramData = {employee_id: employeeId};
 
             $.ajax({
-                url: 'http://test.fuhui.com/employee/detail',
+                url: 'http://api.fuhui.com/employee/detail',
                 type: 'POST',
                 data: paramData,
                 success: function (ret) {
@@ -321,9 +321,9 @@
 
         var postUrl = '';
         if (auntExists) {
-            postUrl = "http://test.fuhui.com/employee/update";
+            postUrl = "http://api.fuhui.com/employee/update";
         } else {
-            postUrl = "http://test.fuhui.com/employee/add";
+            postUrl = "http://api.fuhui.com/employee/add";
         }
         $.ajax({
             url: postUrl,

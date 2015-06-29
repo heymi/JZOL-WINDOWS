@@ -118,9 +118,9 @@
                                 url: function(){
                                     var searchPhrase = $("#dataGrid").bootgrid("getSearchPhrase");
                                     if(searchPhrase.length){
-                                        return "http://test.fuhui.com/Shop/list";
+                                        return "http://api.fuhui.com/Shop/list";
                                     }else{
-                                        return "http://test.fuhui.com/Shop/list";
+                                        return "http://api.fuhui.com/Shop/list";
                                     }
                                 },
                                 responseHandler: function (res) {
@@ -175,7 +175,7 @@
                     }
                     removedIdsStr = removdeIdsArr.join(',');
                     $.ajax({
-                        url: 'http://test.fuhui.com/Shop/del',
+                        url: 'http://api.fuhui.com/Shop/del',
                         type: 'POST',
                         data: {id : removedIdsStr},
                         success: function (ret) {

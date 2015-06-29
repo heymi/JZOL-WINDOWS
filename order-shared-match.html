@@ -17,7 +17,7 @@
 			var orderId = getQueryString('orderId');
 			var paramData = {id: orderId};
 			$.ajax({
-				url: 'http://test.fuhui.com/demands/detail',
+				url: 'http://api.fuhui.com/demands/detail',
 				type: 'POST',
 				data: paramData,
 				success: function (ret) {
@@ -29,7 +29,7 @@
 		function getShopDetail(id,callback){
 			var paramData = {id: id};
 			$.ajax({
-				url: 'http://test.fuhui.com/Shop/detail',
+				url: 'http://api.fuhui.com/Shop/detail',
 				type: 'POST',
 				data: paramData,
 				success: function (ret) {
@@ -42,7 +42,7 @@
 			var paramData = {employee_id: id};
 
 			$.ajax({
-				url: 'http://test.fuhui.com/employee/detail',
+				url: 'http://api.fuhui.com/employee/detail',
 				type: 'POST',
 				data: paramData,
 				success: function (ret) {
@@ -55,7 +55,7 @@
 			$("#dataGrid").bootgrid({
 						ajax: true,
 						post: match_aunt,
-						url: "http://test.fuhui.com/employee/list",
+						url: "http://api.fuhui.com/employee/list",
 						responseHandler: function (res) {
 							var retResult = {};
 							retResult["rows"] = res.data.list;
@@ -297,7 +297,7 @@ jQuery(document).ready(function(){
 		postAuntData.bidder_tel = $('#bidder_tel').val();
 		console.log(postAuntData)
 		$.ajax({
-            url: "http://test.fuhui.com/DemandsBiddings/add",
+            url: "http://api.fuhui.com/DemandsBiddings/add",
             type: 'POST',
             data: postAuntData,
             success: function (ret) {

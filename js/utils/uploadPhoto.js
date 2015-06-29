@@ -38,7 +38,7 @@ function UploadFiles(paramArr) {
 
 function UploadFile(param,callback) {
 
-    var FileController = "http://test.fuhui.com/employee/upload";
+    var FileController = "http://api.fuhui.com/employee/upload";
 
     var form = new FormData();
 
