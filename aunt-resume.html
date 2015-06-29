@@ -49,7 +49,9 @@
                 $('#expected_salary').text(retObj.data.static.expect_salary ? retObj.data.static.expect_salary + '/月' : '无');
                 $('#arrival_time').text(dataDynamic.arrival_time);
 
-                $('#service_addr').text($.province_city_area(dataDynamic.service_prov, dataDynamic.service_city));
+                if(dataDynamic.service_prov && dataDynamic.service_city){
+                    $('#service_addr').text($.province_city_area(dataDynamic.service_prov, dataDynamic.service_city));
+                }
                 if(retObj.data.upload[1]){
                     $('#aunt_avatar').attr('src', imgUrl + retObj.data.upload[1].dir_name  + '/' + retObj.data.upload[1].image_l);
                 }
@@ -155,13 +157,13 @@
                     </div>
                     <dl class="dl-horizontal f16 mgt5 fl">
                         <dt class="gray">求职意向：</dt>
-                        <dd id="service_range"></dd>
+                        <dd id="service_range">暂无</dd>
                         <dt class="gray">服务区域：</dt>
-                        <dd id="service_addr"></dd>
+                        <dd id="service_addr">暂无</dd>
                         <dt class="gray">期望薪水：</dt>
-                        <dd id="expected_salary"></dd>
+                        <dd id="expected_salary">暂无</dd>
                         <dt class="gray">到岗时间：</dt>
-                        <dd id="arrival_time"></dd>
+                        <dd id="arrival_time">暂无</dd>
                     </dl>
 
                     <div class="skill-box fl" style="display: none">
