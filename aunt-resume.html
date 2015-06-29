@@ -39,6 +39,7 @@
                 var aunt_addr = retObj.data.static.living_address;
                 $('#addr').attr('href','http://map.baidu.com/?l=&s=s%26wd%3D'+ aunt_addr).text(aunt_addr);
                 $('#expected_salary').text(retObj.data.static.expect_salary ? retObj.data.static.expect_salary + '/月' : '无');
+                $('#arrival_time').text(dataDynamic.arrival_time);
 
                 $('#service_addr').text($.province_city_area(dataDynamic.service_prov, dataDynamic.service_city));
                 $('#aunt_avatar').attr('src', imgUrl + retObj.data.upload[1].dir_name  + '/' + retObj.data.upload[1].image_l);
@@ -149,10 +150,8 @@
                         <dd id="service_addr"></dd>
                         <dt class="gray">期望薪水：</dt>
                         <dd id="expected_salary"></dd>
-                        <dt class="gray">工作时间：</dt>
-                        <dd></dd>
-                        <dt class="gray">任职日期：</dt>
-                        <dd></dd>
+                        <dt class="gray">到岗时间：</dt>
+                        <dd id="arrival_time"></dd>
                     </dl>
 
                     <div class="skill-box fl" style="display: none">
