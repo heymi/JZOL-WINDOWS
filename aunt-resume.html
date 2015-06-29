@@ -41,7 +41,7 @@
                 $('#expected_salary').text(retObj.data.static.expect_salary ? retObj.data.static.expect_salary + '/月' : '无');
 
                 $('#service_addr').text($.province_city_area(dataDynamic.service_prov, dataDynamic.service_city));
-
+                $('#aunt_avatar').attr('src', imgUrl + retObj.data.upload[1].dir_name  + '/' + retObj.data.upload[1].image_l);
                 _.each(retObj.data.upload, function (rec) {
                     if (rec.type == 'identity' || rec.type == 'identityHander') {
                         document.getElementById(rec.type + "ImgDiv").innerHTML = '<img id="' + rec.type + 'Img" src="' + imgUrl + rec.dir_name + '/' + rec.image_l + '">';
@@ -81,7 +81,7 @@
         <div class="aunt-content ">
             <div class="personal-cv">
                 <div class="cv-summary mgb40 clearfix "> <!-- 浮动清除 -->
-                    <img src="img/avatar.jpg" alt="avata" width="90" height="90" class="mgt5 fl">
+                    <img src="img/avatar.jpg" id="aunt_avatar" alt="avata" width="90" height="90" class="mgt5 fl">
 
                     <div class="fr cv-descriptions mgt5 fl">
                         <p class="gray f14" id="header-desc">山东日照人，拥有
