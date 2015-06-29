@@ -21,6 +21,7 @@
             data: paramData,
             success: function (ret) {
                 var retObj = JSON.parse(ret);
+                var dataDynamic = retObj.data.dynamic;
 
                 //基本信息
                 $('#header-desc').text($.province_city_area(retObj.data.static.native_prov,retObj.data.static.native_city,retObj.data.static.native_area) + '人。' + retObj.data.static.career + '年工作经验。' );
@@ -37,7 +38,10 @@
                 $('#marriage').text(paramMap.marriage[retObj.data.static.marriage])
                 var aunt_addr = retObj.data.static.living_address;
                 $('#addr').attr('href','http://map.baidu.com/?l=&s=s%26wd%3D'+ aunt_addr).text(aunt_addr);
-                $('#expected_salary').text(retObj.data.static.expect_salary ? retObj.data.static.expect_salary + '/月' : '无')
+                $('#expected_salary').text(retObj.data.static.expect_salary ? retObj.data.static.expect_salary + '/月' : '无');
+
+                $('#service_addr').text($.province_city_area(dataDynamic.service_prov, dataDynamic.service_city));
+
                 _.each(retObj.data.upload, function (rec) {
                     if (rec.type == 'identity' || rec.type == 'identityHander') {
                         document.getElementById(rec.type + "ImgDiv").innerHTML = '<img id="' + rec.type + 'Img" src="' + imgUrl + rec.dir_name + '/' + rec.image_l + '">';
@@ -142,7 +146,7 @@
                         <dt class="gray">求职意向：</dt>
                         <dd id="service_range"></dd>
                         <dt class="gray">服务区域：</dt>
-                        <dd></dd>
+                        <dd id="service_addr"></dd>
                         <dt class="gray">期望薪水：</dt>
                         <dd id="expected_salary"></dd>
                         <dt class="gray">工作时间：</dt>
