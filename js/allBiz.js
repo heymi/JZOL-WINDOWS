@@ -26,6 +26,7 @@ document.write('<script src="js/date.format.js"></script>');
 document.write('<script src="js/prov_city_area.js"></script>');
 document.write('<script src="js/store.js"></script>');
 document.write('<script src="js/init.js"></script>');
+document.write('<script src="js/autoUpdate.js"></script>');
 
 
 document.write('<script src="js/paramMap.js"></script>');
