@@ -8,6 +8,7 @@
     <title>家政在线</title>
     <script src="js/jquery-2.0.2.js"></script>
     <link rel="stylesheet" href="./css/login.css">
+    <script src="js/sco.message.js"></script>
     <!--<script language="javascript" type="text/javascript" src="http://fw.qq.com/ipaddress">-->
     <!--<script type="text/javascript" src="http://www.coding123.net/getip.ashx?js=1"></script>-->
 
@@ -57,7 +58,22 @@
 </section>
 <!-- end section -->
 </body>
-
+<script>
+    $(function () {
+        $.ajax({
+            url: 'http://test.fuhui.com/user/getFiles',
+            type: 'POST',
+            success : function (ret) {
+                var retObj = JSON.parse(ret);
+                if (retObj.code == '0') {
+                    window.PROVCITYAREA = JSON.parse(ret).data;
+                    alert('检测到您已经登录，正在为您跳转到首页...');
+                    window.location.href = "index.html";
+                }
+            }
+        });
+    });
+</script>
 <script>
     $('#loginForm').submit(function (e) {
         var param = {};
