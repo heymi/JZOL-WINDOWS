@@ -11,7 +11,7 @@
         var paramData = {employee_id: employeeId};
 
         $.ajax({
-            url: 'http://api.fuhui.com/employee/detail',
+            url: 'http://api.jiazhengol.com/employee/detail',
             type: 'POST',
             data: paramData,
             success: function (ret) {
@@ -438,7 +438,7 @@
 
         $.when(
                 $.ajax({
-                    url: 'http://api.fuhui.com/employee/update',
+                    url: 'http://api.jiazhengol.com/employee/update',
                     type: 'POST',
                     data: paramObj,
                     success: function (ret) {
@@ -446,7 +446,7 @@
                     }
                 }),
                 $.ajax({
-                    url: 'http://api.fuhui.com/employeeShop/update',
+                    url: 'http://api.jiazhengol.com/employeeShop/update',
                     type: 'POST',
                     data: paramObj,
                     success: function (ret) {

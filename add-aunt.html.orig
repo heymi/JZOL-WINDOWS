@@ -305,7 +305,7 @@
         paramObj.living_area = "1";
         paramObj.living_address = "1";
         $.ajax({
-            url: "http://api.fuhui.com/employee/add",
+            url: "http://api.jiazhengol.com/employee/add",
             type: 'POST',
             data: paramObj,
             success: function (ret) {

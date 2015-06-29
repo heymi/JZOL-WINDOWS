@@ -10,7 +10,7 @@
     $(function () {
         var cid = getQueryString('cid');
         $.ajax({
-            url: 'http://api.fuhui.com/contracts/detail?cid=' + cid,
+            url: 'http://api.jiazhengol.com/contracts/detail?cid=' + cid,
             type: 'GET',
             success: function (ret) {
                 var retObj = JSON.parse(ret).data.list;

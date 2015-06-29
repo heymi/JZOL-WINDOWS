@@ -10,7 +10,7 @@
         var orderId = getQueryString('orderId');
         var paramData = {id: orderId};
         $.ajax({
-            url: 'http://api.fuhui.com/demands/detail',
+            url: 'http://api.jiazhengol.com/demands/detail',
             type: 'POST',
             data: paramData,
             success: function (ret) {
@@ -311,7 +311,7 @@ jQuery(document).ready(function(){
 		paramObj.id = order_id;
 		paramObj.remark = remark;
 		$.ajax({
-            url: "http://api.fuhui.com/demands/over",
+            url: "http://api.jiazhengol.com/demands/over",
             type: 'POST',
             data: paramObj,
             success: function (ret) {
@@ -345,7 +345,7 @@ jQuery(document).ready(function(){
 		paramObj.public_phone = $('#public_phone').val();
 		paramObj.public_tel = $('#public_tel').val();
 		$.ajax({
-			url: "http://api.fuhui.com/demands/shareDemands",
+			url: "http://api.jiazhengol.com/demands/shareDemands",
 			type: 'POST',
 			data: paramObj,
 			success: function (ret) {

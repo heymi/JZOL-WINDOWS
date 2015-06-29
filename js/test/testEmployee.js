@@ -2,7 +2,7 @@
  * Created by samsung on 2015/6/12.
  */
 
-var domainId = "http://api.fuhui.com/"
+var domainId = "http://api.jiazhengol.com/"
 
 
 function testAddEmployee() {

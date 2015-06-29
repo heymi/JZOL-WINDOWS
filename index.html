@@ -192,7 +192,7 @@
 <script>
     $(function () {
         $.ajax({
-            url: 'http://api.fuhui.com/user/getFiles',
+            url: 'http://api.jiazhengol.com/user/getFiles',
             type: 'POST',
             success : function (ret) {
                 window.PROVCITYAREA = JSON.parse(ret).data;
@@ -214,7 +214,7 @@
         //登出
         $('#logout').on('click', function(){
             $.ajax({
-                url: 'http://api.fuhui.com/user/loginOut',
+                url: 'http://api.jiazhengol.com/user/loginOut',
                 type: 'POST',
                 success: function (ret) {
                     window.location.href = "login.html";

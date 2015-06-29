@@ -105,7 +105,7 @@
 //                        id: "b0df282a-0d67-40e5-8558-c9e93b7befed"
 //                    };
 //                },
-                                url: "http://api.fuhui.com/employee/list",
+                                url: "http://api.jiazhengol.com/employee/list",
                                 responseHandler: function (res) {
                                     if(res.code === -1){
                                         $.scojs_message('登录失效，请退出后请重新登录！', $.scojs_message.TYPE_ERROR);
@@ -178,7 +178,7 @@
                     }
                     removedIdsStr = removdeIdsArr.join(',');
                     $.ajax({
-                        url: 'http://api.fuhui.com/employeeShop/del',
+                        url: 'http://api.jiazhengol.com/employeeShop/del',
                         type: 'POST',
                         data: {employee_id : removedIdsStr},
                         success: function (ret) {

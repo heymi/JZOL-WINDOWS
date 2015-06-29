@@ -13,7 +13,7 @@ $.fn.province_city_area = function (_province,_city,_area) {
           callback(PROVCITYAREA);
         }else{
           $.ajax({
-              url: 'http://api.fuhui.com/user/getFiles',
+              url: 'http://api.jiazhengol.com/user/getFiles',
               type: 'POST',
               success : function (ret) {
                 var data = JSON.parse(ret).data;

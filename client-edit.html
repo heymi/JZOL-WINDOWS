@@ -11,7 +11,7 @@
         var employerId = getQueryString('employerId');
         var paramData = {eid: employerId};
         $.ajax({
-            url: 'http://api.fuhui.com/employer/detail',
+            url: 'http://api.jiazhengol.com/employer/detail',
             type: 'GET',
             data: paramData,
             success: function (ret) {
@@ -174,7 +174,7 @@
         paramObj.city= $('.city-select').val();
         paramObj.area= $('.area-select').val();
         $.ajax({
-            url: "http://api.fuhui.com/employer/update?eid=" + employerId,
+            url: "http://api.jiazhengol.com/employer/update?eid=" + employerId,
             type: 'POST',
             data: paramObj,
             success: function (ret) {

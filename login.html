@@ -45,7 +45,7 @@
         </div>
         <div class="inner1">
             <form id="loginForm">
-                <!--<form id="loginForm" action="http://api.fuhui.com/user/add" method="post">-->
+                <!--<form id="loginForm" action="http://api.jiazhengol.com/user/add" method="post">-->
                 <input id="userName" type="text" name="userName" placeholder="输入账号（手机号）" autofocus="true" required>
                 <img src="img/icon_profile.svg"></br>
                 <input id="passWord" type="password" name="passWord" placeholder="输入密码" required></br>
@@ -73,7 +73,7 @@
 <script>
     $(function () {
         $.ajax({
-            url: 'http://api.fuhui.com/user/getFiles',
+            url: 'http://api.jiazhengol.com/user/getFiles',
             type: 'POST',
             success : function (ret) {
                 var retObj = JSON.parse(ret);
@@ -95,7 +95,7 @@
         $.ajax({
             cache: true,
             type: "POST",
-            url: "http://api.fuhui.com/user/shopLogin",
+            url: "http://api.jiazhengol.com/user/shopLogin",
             data: param,
 //            data: $('#loginForm').serialize(),
             async: false,

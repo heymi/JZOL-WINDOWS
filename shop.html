@@ -118,9 +118,9 @@
                                 url: function(){
                                     var searchPhrase = $("#dataGrid").bootgrid("getSearchPhrase");
                                     if(searchPhrase.length){
-                                        return "http://api.fuhui.com/Shop/list";
+                                        return "http://api.jiazhengol.com/Shop/list";
                                     }else{
-                                        return "http://api.fuhui.com/Shop/list";
+                                        return "http://api.jiazhengol.com/Shop/list";
                                     }
                                 },
                                 responseHandler: function (res) {
@@ -175,7 +175,7 @@
                     }
                     removedIdsStr = removdeIdsArr.join(',');
                     $.ajax({
-                        url: 'http://api.fuhui.com/Shop/del',
+                        url: 'http://api.jiazhengol.com/Shop/del',
                         type: 'POST',
                         data: {id : removedIdsStr},
                         success: function (ret) {

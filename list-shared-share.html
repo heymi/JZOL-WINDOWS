@@ -235,9 +235,9 @@
                                 url: function(){
                                     var searchPhrase = $("#dataGrid").bootgrid("getSearchPhrase");
                                     if(searchPhrase.length){
-                                        return "http://api.fuhui.com/demands/list";
+                                        return "http://api.jiazhengol.com/demands/list";
                                     }else{
-                                        return "http://api.fuhui.com/demands/list";
+                                        return "http://api.jiazhengol.com/demands/list";
                                     }
                                 },
                                 post: {
@@ -352,7 +352,7 @@
                     }
                     removedIdsStr = removdeIdsArr.join(',');
                     $.ajax({
-                        url : 'http://api.fuhui.com/employer/del?isdel=1&eid=' + removedIdsStr,
+                        url : 'http://api.jiazhengol.com/employer/del?isdel=1&eid=' + removedIdsStr,
                         type : 'GET',
 //                        type : 'POST',
                         data : {},

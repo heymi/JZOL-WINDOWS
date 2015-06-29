@@ -143,7 +143,7 @@
 			paramObj.eePay = $('#eePay').val();
 			paramObj.remark = $('#remark').val();
 			$.ajax({
-				url: "http://api.fuhui.com/contracts/add",
+				url: "http://api.jiazhengol.com/contracts/add",
 				type: 'POST',
 				data: paramObj,
 				success: function (ret) {
@@ -151,7 +151,7 @@
 					if (retObj.code == '0') {
 						$.scojs_message('合同签订成功', $.scojs_message.TYPE_OK);
 						$.ajax({
-							url: "http://api.fuhui.com/bill/update",
+							url: "http://api.jiazhengol.com/bill/update",
 							type: 'POST',
 							data: {
 								id: retObj.data.order_id,
