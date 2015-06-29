@@ -4,9 +4,9 @@
   "description": "",
   "author": "ShangHai FuHui Ltd",
   "license": "MIT",
-  "manifestUrl": "http://localhost:9080/autoUpdate/package.json",
+  "manifestUrl": "http://download.jiazhengol.com/package.json",
   "window": {
-    "toolbar": true,
+    "toolbar": false,
 	"fullscreen" :false,
 	"width" : 1366,
 	"height" : 736
