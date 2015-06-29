@@ -11,7 +11,7 @@
 
 
 <div class="row clearfix">
-<div class="dash-box col-xs-6" id="order_list"><!-- 首页订单动态开始 -->
+<div class="dash-box col-xs-6" id="order_list_wrap"><!-- 首页订单动态开始 -->
     <h3 class="mgb15"><center><strong>订单动态</strong></center></h3>
     <div class="table-responsive">
                 <table class="table table-hover">
@@ -211,7 +211,7 @@
             $(parent.document).find("#menuUl .selected").removeClass("selected");
             $(parent.document).find("#menuUl li").eq(2).addClass("selected");
         });
-        $('#order_list').delegate('.click-button','click', function(){
+        $('#order_list_wrap').delegate('.click-button','click', function(){
             var url = $(this).attr('data-url');
             window.location.href = url;
             $(parent.document).find("#menuUl .selected").removeClass("selected");
