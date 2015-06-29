@@ -356,7 +356,12 @@
                                     "</div>" +
                                     "</div>" +
                                     "</div>",
-                                    search: ""
+                                    search: "<div class=\"{{css.search}}\">" +
+                                    "<div class=\"input-group\">" +
+                                    "<i class=\"fa fa-search\"></i> " +
+                                    "<input type=\"text\" class=\"{{css.searchField}} search-from\" placeholder=\"{{lbl.search}}\" />" +
+                                    "</div>" +
+                                    "</div>"
                                 },
                                 css: {
                                     search: "shopSearchField search"

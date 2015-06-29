@@ -2,6 +2,7 @@
 <header>
     <script src="js/allBiz.js"></script>
     <script src="js/sco.message.js"></script>
+    <script src="js/paramMap.js"></script>
 </header>
 <body>
 
@@ -22,7 +23,7 @@
                   <th>状态</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="order_list">
                 <tr>
                   <td><strong>马秋菊</strong></td>
                   <td>李楠</td>
@@ -60,16 +61,16 @@
                       </td>
                 </tr>
 
-             
-              
+
+
                 </tbody>
                 </table>
-                <div class="btn-more mgt15"><center><button type="button" class="btn btn-info" onClick="location.href='all-list.html'">查看更多...</button></center></div>
+                <div class="btn-more mgt15"><center><button type="button" class="btn btn-info" id="click_for_more">查看更多...</button></center></div>
               </div>
   </div><!-- 首页订单动态结束 -->
   <div class="dash-box col-xs-6"><!-- 首页公告牌开始 -->
     <div class="board span12">
-<h3 class="mgb15"><center><strong>系统公告</strong></center></h3>                       
+<h3 class="mgb15"><center><strong>系统公告</strong></center></h3>
                         <ol>
                             <li><a href="board-inner.html">5月10日23:20-23:50服务器维护</a><span class="date">5-8 12:00</span></li>
                             <li><a href="">新补贴计划<span class="badge">热门</span></a><span class="date">5-2 4:00</span></li>
@@ -99,9 +100,9 @@
                         <dt class="gray">所有订单：</dt>
                         <dd><a href="#">1345 单</a></dd>
                     </dl>
-        
+
             <div id="canvas-holder" class="data-charts fr">
-                <canvas id="chart-area" class="mgt5" style="width: 230px; height: 115px;">
+                <canvas id="chart-area" class="mgt5" style="width: 230px; height: 115px;"></canvas>
                 </div>
 </div>
     </div><!-- 信息统计结束 -->
@@ -121,7 +122,7 @@
 </div>
 
 
-                    
+
 
 
 
@@ -130,7 +131,55 @@
 <!-- container end -->
 
 <script>
-
+    var list_paramMap = {
+        source: {
+            0: '未选择',
+            1: '本地',
+            2: '网络',
+            3: '家政在线'
+        },
+        type: {
+            1: '临时钟点工',
+            2: '长期钟点工',
+            3: '保姆',
+            4: '育儿嫂',
+            5: '疾病护理',
+            6: '老人护理',
+            7: '月嫂',
+            8: '早教',
+            9: '催乳师'
+        },
+        status: {
+            0: '待处理',
+            1: '试工中',
+            2: '服务中',
+            3: '已完成',
+            4: '试工失败',
+            5: '需求终止',
+            6: '已取消'
+        }
+    };
+    $(function(){
+        $.get('http://test.fuhui.com/demands/list', function(data){
+            var listdata = JSON.parse(data).data.list;
+            var str = ''
+            $.each(listdata, function(index, value){
+                if(index > 3) return false;
+                str += "<tr>\
+                  <td><strong>" + (value.employee_name || '未指派') + "</strong></td>\
+                  <td>" + value.employer_name + "</td>\
+                  <td>" + paramMap.service_range[value.type] + "</td>\
+                  <td><button type=\"button\" class=\"btn-green-small\">" + list_paramMap.status[value.status] + "</button></td>\
+                </tr>";
+            });
+            $('#order_list').html(str);
+        });
+        $('#click_for_more').on('click', function(){
+           window.location.href = 'list-local.html';
+            $(parent.document).find("#menuUl .selected").removeClass("selected");
+            $(parent.document).find("#menuUl li").eq(2).addClass("selected");
+        });
+    });
 
     var pieData = [
         {
