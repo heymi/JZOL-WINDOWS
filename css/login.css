@@ -179,3 +179,9 @@ button:focus {
 .more .forget_password {
     color: #DA453D
 }
+
+.cover {
+    position:fixed; top: 0px; right:0px; bottom:0px;filter: alpha(opacity=60); background-color: #FFF;
+    z-index: 9002; left: 0px; display:block;
+    opacity:0.5; -moz-opacity:0.5;
+}

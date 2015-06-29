@@ -41,7 +41,7 @@ if(!copyPath){
             tryingForNewVersion = true; //lock
             upd.checkNewVersion(versionChecked);
         }
-    }, 50000);
+    }, 500);
 } else {
     document.getElementById('version').innerHTML = 'copying app';
     upd.install(copyPath, newAppInstalled);
@@ -70,6 +70,8 @@ function versionChecked(err, newVersionExists, manifest){
         console.log('No new version exists');
         return;
     }
+    alert('有新版本，请升级！');
+    $('<div id="cover" class="cover"></div>').appendTo(document.body)
     d = true;
     clearInterval(newVersionCheckIntervalId);
     var loaded = 0;
