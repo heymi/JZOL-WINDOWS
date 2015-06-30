@@ -302,8 +302,8 @@
                                           return "无"
                                       }
                                     },
-                                    "create_at": function(column, row){
-                                        return new Date(row.create_at*1000).format('yyyy-mm-dd HH:MM');
+                                    "order_at": function(column, row){
+                                        return new Date(row.order_at*1000).format('yy-mm-dd HH:MM');
                                     },
                                     "type": function (column, row) {
                                         return list_paramMap.type[row.type]
