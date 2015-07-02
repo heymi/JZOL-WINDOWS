@@ -73,7 +73,8 @@
 <h3 class="mgb15"><center><strong>系统公告</strong></center></h3>
                         <ol>
                             <li><a href="http://www.jiazhengol.com/#section-wrapper" target="_blank">家政在线新版网站上线</a><span class="date">6-29 12:00</span></li>
-                            <li><a href="http://www.jiazhengol.com/download/%E4%BA%A7%E5%93%81%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E-%E5%85%AC%E6%B5%8B%E7%89%88.zip" target="_blank">全新家政在线管理系统使用说明 <span class="badge">热门</span></a><span class="date">6-29 15:00</span></li>
+                            <li><a target="_blank" id="testLi">家政在线管理系统使用说明下载</a><span class="date">6-29 15:00</span></li>
+                            <!--<li><a href="http://www.jiazhengol.com/download/%E4%BA%A7%E5%93%81%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E-%E5%85%AC%E6%B5%8B%E7%89%88.rar" target="_blank" id="testLi">家政在线管理系统使用说明下载</a><span class="date">6-29 15:00</span></li>-->
                         </ol>
                                         <div style="display: none" class="btn-more mgt15"><center><button type="button" class="btn btn-info" onClick="location.href='all-boards.html'">查看所有公告...</button></center></div>
 
@@ -260,6 +261,12 @@
 //        var ctx = document.getElementById("chart-area").getContext("2d");
 //        window.myPie = new Chart(ctx).Pie(pieData);
 //    };
+
+    $(function () {
+        $('#testLi').click(function() {
+            window.location.href = "http://www.jiazhengol.com/download/%E4%BA%A7%E5%93%81%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E-%E5%85%AC%E6%B5%8B%E7%89%88.rar";
+        })
+    })
 
 </script>
   <script src="js/Chart.js"></script>

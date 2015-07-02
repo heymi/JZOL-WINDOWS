@@ -143,6 +143,9 @@
                                     },
                                     "status": function (column, row) {
                                         return shop_paramMap.status[row.status]
+                                    },
+                                    "business" : function (column, row) {
+                                        return paramMap.service_range[row.status]
                                     }
                                 },
                                 rowCount: [10, 12, 18],
