@@ -201,7 +201,9 @@
 						<input size="16" type="text" value="2012-06-15 14:45" readonly class="form_datetime">
 
 						<script type="text/javascript">
-							$(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+							$(".form_datetime").datetimepicker({format: 'yyyy/mm/dd',
+	    autoclose: true,
+		minView: 2});
 						</script>
 
 						<span> 试工 3 天，总工期 1 个月</span></dd>
@@ -334,8 +336,9 @@ jQuery(document).ready(function(){
 });
 
 	$('.datetimepicker').datetimepicker({
-		   autoclose: true,
-			format: 'yyyy/mm/dd hh:ii'
+		  format: 'yyyy/mm/dd',
+	    autoclose: true,
+		minView: 2
 	});
 	$('#share_order').on('click', function () {
 		var paramObj = {};

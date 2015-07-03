@@ -394,8 +394,9 @@
 			}
 	);
 	$('.datetimepicker').datetimepicker({
-			autoclose: true,
-            format: 'yyyy/mm/dd hh:ii'
+			format: 'yyyy/mm/dd',
+	    autoclose: true,
+		minView: 2
         });
 	$('#dispath_aunt').on('click', function(e){
 		e.preventDefault();
