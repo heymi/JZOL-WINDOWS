@@ -33,7 +33,7 @@
 										    <label for="employer_name"><span class="enter-need">*</span>雇主姓名：</label>
 										    <input type="text" class="form-control" id="employer_name">
 										</div>
-										<div class="form-group">
+										<div class="form-group" style="display:none">
 										    <label for="employer_identity" class="text-indent-1"><span class="enter-need">*</span>身份证：</label>
 										    <input type="text" class="form-control" id="employer_identity">
 										</div>
@@ -256,7 +256,7 @@
         paramData.source = 1;
         paramData.phone = $('#employer_phone').val();
         paramData.name = $('#employer_name').val();
-        paramData.identity = $('#employer_identity').val();
+        // paramData.identity = $('#employer_identity').val();
         paramData.sex = $('#employer_sex input:checked').val();
         paramData.service_prov = $('.prov-select').val();
         paramData.service_city = $('.city-select').val();
