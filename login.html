@@ -73,12 +73,11 @@
 <script>
     $(function () {
         $.ajax({
-            url: 'http://api.jiazhengol.com/user/getFiles',
+            url: 'http://api.jiazhengol.com/Shop/list',
             type: 'POST',
             success : function (ret) {
                 var retObj = JSON.parse(ret);
                 if (retObj.code == '0') {
-                    window.PROVCITYAREA = JSON.parse(ret).data;
                     alert('检测到您已经登录，正在为您跳转到首页...');
                     window.location.href = "index.html";
                 }
