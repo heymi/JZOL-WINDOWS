@@ -699,7 +699,7 @@ table .btn-green-small{
 }
 .bread-nav{
 	height: 38px;
-	width: 30%;
+	min-width: 30%;
 	margin-top: 10px;
 	border-radius: 4px;
 	background-color: #fff;
