@@ -248,6 +248,9 @@
 									},
                                     "remark": function(column, row){
                                         return "<span title='"+row.remark+"'>"+row.remark+"</span>";
+                                    },
+                                    "employee_native_prov": function(column, row){
+                                        return $.province_city_area(row.employee_native_prov);
                                     }
 								},
 								rowCount: [10, 12, 18],
