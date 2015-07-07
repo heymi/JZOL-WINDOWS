@@ -79,6 +79,9 @@
 							},
 							"update_time": function (column, row) {
 								return getLocalTime(row.update_time)
+							},
+							"native_prov": function(column, row){
+								return $.province_city_area(row.native_prov);
 							}
 						},
 						rowCount: [10, 12, 18],
