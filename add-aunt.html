@@ -5,6 +5,7 @@
     <script src="js/bootstrap-datetimepicker.js"></script>
     <script src="js/dropzone.js"></script>
     <script src="js/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="js/data/areas.js"></script>
 </header>
 <body>
 <script>
@@ -60,7 +61,7 @@
                 data: paramData,
                 success: function (ret) {
                     var retObj = JSON.parse(ret);
-                    $('#native_section').hide();
+//                    $('#native_section').hide();
                     $('#add_or_edit').text('编辑阿姨');
 
                     //基本信息
@@ -80,8 +81,10 @@
                     $('#career').val(retObj.data.static.career);
 //                    $("#addr").val(retObj.data.static.addr);
 
-//                    $('#native_provcityarea').province_city_area(retObj.data.static.native_prov,retObj.data.static.native_city,retObj.data.static.native_area);
-//                $('#native_addr').val(retObj.data.static.native_address);
+                    $('#native_provcityarea').province_city_area(retObj.data.static.native_prov,retObj.data.static.native_city,retObj.data.static.native_area);
+                $('#native_addr').val(retObj.data.static.native_address);
+                    $('#native_provcityarea select').prop('disabled', 'disabled');
+                    $('#native_addr').prop('disabled', 'disabled');
                 $('#living_provcityarea').province_city_area(retObj.data.static.living_prov,retObj.data.static.living_city,retObj.data.static.living_area);
                 $('#living_addr').val(retObj.data.static.living_address);
 
@@ -323,6 +326,22 @@
             age++;
         }
         $('#age').val(age);
+        //获取籍贯
+        var nativeNo = identity.substr(0, 6)
+        var areaName = _.find(districtData.district, function(district) {
+            return district.id == nativeNo;
+        });
+        var area = _.find(parent.window.PROVCITYAREA.areaData, function(area) {
+            return area.name == areaName.text;
+        });
+        var area_id = area.id;
+        var city_id = area.city_id;
+        var provData = _.find(parent.window.PROVCITYAREA.cityData, function(province) {
+            return province.id == area.city_id;
+        });
+        var province_id = provData.province_id;
+        $('#native_provcityarea').province_city_area(province_id,city_id,area_id);
+        $('#native_provcityarea select').prop('disabled', 'disabled');
     });
     $("#name").bind('blur',function(){
        var name = $(this).val();
@@ -341,12 +360,12 @@
         var identity = $("#identity").val();
         paramObj.identity = identity;
         paramObj.age = $("#age").val();
-        if(!auntExists){
+//        if(!auntExists){
             paramObj.native_prov= $('#native_provcityarea .prov-select').val();
             paramObj.native_city= $('#native_provcityarea .city-select').val();
             paramObj.native_area= $('#native_provcityarea .area-select').val();
             paramObj.native_address = $('#native_addr').val();
-        }
+//        }
         if($('#nationality').val()){
             paramObj.nationality = $('#nationality').val();
         }
@@ -409,5 +428,6 @@
         parent.document.getElementById("rightContent").setAttribute("src", "aunt.html");
     });
     $('.prov-city-area').province_city_area();
+    $('#native_provcityarea select').prop('disabled', 'disabled');
 </script>
 </html>

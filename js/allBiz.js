@@ -16,6 +16,7 @@ document.write('<link rel="stylesheet" href="css/dropzone.css">');
 document.write('<script src="js/jquery-2.0.2.js"></script>');
 document.write('<script src="node_modules/underscore/underscore.js"></script>');
 document.write('<script src="js/bootstrap.min.js"></script>');
+document.write('<script src="js/lodash.min.js"></script>');
 document.write('<script src="js/Chart.js"></script>');
 document.write('<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>');
 document.write('<script src="js/sco.message.js"></script>');
