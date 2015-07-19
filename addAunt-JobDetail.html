@@ -226,7 +226,7 @@
 //                $.scojs_message('添加成功', $.scojs_message.TYPE_OK);
                 var retObj = JSON.parse(ret);
                 if (retObj.code == '0') {
-                    parent.document.getElementById("rightContent").setAttribute("src", "addAunt-Certificate.html?employee_id="+employId);
+                    parent.document.getElementById("rightContent").setAttribute("src", "addAunt-Certificate.html?employee_id="+employId + "&isUpdate=" + auntExists);
                 } else if (retObj.code == '12064') {
                     alert('本门店已经添加过此阿姨')
                 } else {
