@@ -139,7 +139,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="name"><span class="enter-need">*</span>阿姨姓名：</label>
-                                <input type="text" class="form-control form-control-1x" id="name" required>
+                                <input type="text" class="form-control form-control-1x" maxlength="10" id="name" required>
 
                                 <div class="form-group" id="sex" required="true">
                                     <label><span class="enter-need">*</span>性别：</label>
@@ -293,6 +293,19 @@
 </body>
 
 <script type="text/javascript">
+    $("#identity").bind('blur',function(){
+        var identity = $(this).val();
+        var id_pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/i;
+        if(!id_pattern.test(identity)){
+            $.scojs_message('请输入正确的身份证号码', $.scojs_message.TYPE_ERROR);
+        }
+    });
+    $("#name").bind('blur',function(){
+       var name = $(this).val();
+        if($.trim(name).length === 0){
+            $.scojs_message('请输入长度在10字符以内的姓名', $.scojs_message.TYPE_ERROR);
+        }
+    });
     $('#message_trigger_ok').on('click', function (e) {
 
         e.preventDefault();
@@ -301,7 +314,8 @@
         paramObj.name = $("#name").val();
         paramObj.sex = $("#sex input:checked").val();
         paramObj.phone = $("#phone").val();
-        paramObj.identity = $("#identity").val();
+        var identity = $("#identity").val();
+        paramObj.identity = identity;
         paramObj.age = $("#age").val();
         if(!auntExists){
             paramObj.native_prov= $('#native_provcityarea .prov-select').val();
