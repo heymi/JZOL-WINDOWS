@@ -143,12 +143,12 @@
                                 <input type="text" class="form-control form-control-1x" maxlength="10" id="name" required>
 
                                 <div class="form-group" id="sex" required="true">
-                                    <label><span class="enter-need">*</span>性别：</label>
+                                    <label>性别：</label>
                                     <label class="radio">
-                                        <input type="radio" name="gender" id="male" value="1"> 男
+                                        <input type="radio" disabled name="gender" id="male" value="1"> 男
                                     </label>
                                     <label class="radio">
-                                        <input type="radio" name="gender" id="female" value="0" checked> 女
+                                        <input type="radio" disabled name="gender" id="female" value="0" checked> 女
                                     </label>
                                 </div>
                             </div>
@@ -165,8 +165,8 @@
                             <div class="form-group">
                                 <label for=""><span class="enter-need">*</span>联系电话：</label>
                                 <input type="text" class="form-control form-control-2x" id="phone">
-                                <label for="age"><span class="enter-need">*</span>年龄：</label>
-                                <input type="text" class="form-control form-control-1x" id="age">
+                                <label for="age">年龄：</label>
+                                <input type="text" readonly class="form-control form-control-1x" id="age">
                             </div>
                             <div class="form-group" id="native_section">
                                 <label for="native_prov"><span class="enter-need">*</span>籍贯：</label>
@@ -308,6 +308,21 @@
         if(!id_pattern.test(identity)){
             $.scojs_message('请输入正确的身份证号码', $.scojs_message.TYPE_ERROR);
         }
+        if (parseInt(identity.substr(16, 1),10) % 2 == 1) {
+            $('#male').prop('checked',true);
+        } else {
+            $('#female').prop('checked',true);
+        }
+        //获取年龄
+        var myDate = new Date();
+        var month = myDate.getMonth() + 1;
+        var day = myDate.getDate();
+
+        var age = myDate.getFullYear() - identity.substring(6, 10) - 1;
+        if (identity.substring(10, 12) < month || identity.substring(10, 12) == month && identity.substring(12, 14) <= day) {
+            age++;
+        }
+        $('#age').val(age);
     });
     $("#name").bind('blur',function(){
        var name = $(this).val();
