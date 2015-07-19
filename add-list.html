@@ -237,7 +237,7 @@
 							      </div>
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-							        <button type="button" class="btn btn-primary">放弃</button>
+							        <button type="button" class="btn btn-primary" id="cancel_add">放弃</button>
 							      </div>
 							    </div>
 							  </div>
@@ -328,6 +328,9 @@
 		format: 'yyyy/mm/dd',
 	    autoclose: true,
 		minView: 2
+	});
+	$('#cancel_add').on('click', function(){
+		parent.document.getElementById("rightContent").setAttribute("src", "list-local.html");
 	});
 	$('.prov-city-area').province_city_area();
 </script>
