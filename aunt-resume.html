@@ -81,7 +81,7 @@
                 var service_range = getMultiValue('service_range',retObj.data.dynamic.service_range,paramMap);
                 $('#service_range').text(service_range || '暂无');
 
-                $('#remard').text(retObj.data.dynamic.remard || '暂无');
+                $('#remard').text(retObj.data.dynamic.remark || '暂无');
             }
         })
     })
@@ -97,7 +97,7 @@
             </div>
 
 
-            <div class="header-action float-right">
+            <div class="header-action float-right" style="display: none">
                 <button type="button" class="btn-blue mgl10 fr" onClick="location.href='aunt-list.html'">阿姨历史订单
                 </button>
             </div>
@@ -278,7 +278,7 @@
 
                 <div class="title-box clearfix"> <!-- 浮动清除 -->
                     <div class="line">
-                        <h4 class="b resume-title titles">备注</h4>
+                        <h4 class="b resume-title titles">特别说明</h4>
                     </div>
                     <div class="resume-note mgt20 mgl10">
                         <p id="remard"></p>
