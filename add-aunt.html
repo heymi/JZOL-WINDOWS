@@ -74,6 +74,7 @@
                     $("#stature").val(retObj.data.static.stature || '');
                     $("#body").val(retObj.data.static.body || '');
                     $("#identity").val(retObj.data.static.identity);
+                    $("#marriage").val(retObj.data.static.marriage);
                     $("#family").val(retObj.data.static.family);
                     $("#content").val(retObj.data.static.content);
                     $('#career').val(retObj.data.static.career);
@@ -176,6 +177,14 @@
                                 <label for="native_prov"><span class="enter-need">*</span>现居地址：</label>
                                 <div class="prov-city-area" id="living_provcityarea"></div>
                                 <input type="text" class="form-control" id="living_addr">
+                            </div>
+                            <div class="form-group">
+                                <label for="marriage">婚姻状况：</label>
+                                <select class="form-control" id="marriage">
+                                    <option value="1">已婚</option>
+                                    <option value="0">未婚</option>
+                                    <option value="－1">离异</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="">工作经验：</label>
@@ -323,7 +332,6 @@
             paramObj.native_area= $('#native_provcityarea .area-select').val();
             paramObj.native_address = $('#native_addr').val();
         }
-        paramObj.marriage = "1";
         if($('#nationality').val()){
             paramObj.nationality = $('#nationality').val();
         }
@@ -339,6 +347,7 @@
  		paramObj.living_city= $('#living_provcityarea .city-select').val();
  		paramObj.living_area= $('#living_provcityarea .area-select').val();
         paramObj.living_address = $('#living_addr').val();
+        paramObj.marriage = $('#marriage').val();
         if($('#career').val()){
             paramObj.career = $('#career').val();
         }

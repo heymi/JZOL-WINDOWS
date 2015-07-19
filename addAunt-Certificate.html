@@ -73,7 +73,10 @@
                 }
             })
         }
-
+        $('#prev_step').on('click', function(){
+            var employId = getQueryString('employee_id');
+            parent.document.getElementById("rightContent").setAttribute("src", "addAunt-JobDetail.html?employeeId="+employId);
+        });
         $('#message_trigger_ok').on('click', function(){
             var employeeId = getQueryString("employee_id");
             window.location.href = "aunt-resume.html?employeeId=" + employeeId;
@@ -260,6 +263,7 @@
 
 						      </div>
         <div class="form-footer float-right">
+            <button type="button" class="btn-none" id="prev_step" data-dismiss="modal">上一步</button>
             <button id="message_trigger_ok" type="button" class="btn-green-big" data-loading-text="上传图片中，请稍候...">保存</button>
         </div>
     </div>

@@ -164,7 +164,7 @@
 
 						      </div>
         <div class="form-footer float-right">
-            <button type="button" class="btn-none" data-dismiss="modal">放弃</button>
+            <button type="button" class="btn-none" id="prev_step" data-dismiss="modal">上一步</button>
 
             <button id="message_trigger_ok" type="button" class="btn-green-big">下一步</button>
         </div>
@@ -188,11 +188,15 @@
         }
         ;
     }
+    $('#prev_step').on('click', function(){
+        var employId = getQueryString('employeeId');
+        parent.document.getElementById("rightContent").setAttribute("src", "add-aunt.html?employeeId="+employId);
+    });
     $('#message_trigger_ok').on('click', function (e) {
         e.preventDefault();
 //        $.scojs_message('添加成功', $.scojs_message.TYPE_OK);
 //        pageScroll();
-        var employId = getQueryString('employeeId')
+        var employId = getQueryString('employeeId');
         var paramObj = {};
         paramObj.status = getMultiSelectValue('status');
         paramObj.employee_id = employId;
