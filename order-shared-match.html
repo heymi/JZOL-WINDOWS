@@ -312,7 +312,11 @@ jQuery(document).ready(function(){
                       parent.document.getElementById("rightContent").setAttribute("src", "list-shared.html");
                     },1e3);
                 } else{
-					$.scojs_message(errorCode['code_' + retObj.code], $.scojs_message.TYPE_ERROR);
+					if(retObj.code == 8062){
+						$.scojs_message('您已推荐过阿姨，不可重复操作', $.scojs_message.TYPE_ERROR);
+					}else{
+						$.scojs_message(errorCode['code_' + retObj.code], $.scojs_message.TYPE_ERROR);
+					}
 				}
             },
             error: function (ret) {
