@@ -1,75 +1,45 @@
 <html>
 <header>
     <script src="js/allBiz.js"></script>
-    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
-    <link href="js/bootgrid/jquery.bootgrid.css" rel="stylesheet"/>
-	<script src="js/bootstrap-datetimepicker.js"></script>
-	<script src="js/bootgrid/jquery.bootgrid.js"></script>
-    <script src="js/bootgrid/jquery.bootgrid.fa.js"></script>
-	<script src="js/paramMap.js"></script>
-    <script>
-        var auntData = {};
-		function getBiddingDetail(id,callback){
-			$.ajax({
-				url: 'http://api.jiazhengol.com/DemandsBiddings/detail',
-				type: 'POST',
-				data: {
-                    id: id
-                },
-				success: function (ret) {
-					var retObj = JSON.parse(ret);
-					return callback(retObj.data);
-				}
-			})
-		}
-        function getAuntDetail(id,callback){
-			var paramData = {employee_id: id};
-
-			$.ajax({
-				url: 'http://api.jiazhengol.com/employee/detail',
-				type: 'POST',
-				data: paramData,
-				success: function (ret) {
-					var retObj = JSON.parse(ret);
-					return callback(retObj.data.static);
-				}
-			})
-		}
-	</script>
+    <link href="js/libs/bootgrid/jquery.bootgrid.css" rel="stylesheet"/>
+    <script src="js/libs/bootgrid/jquery.bootgrid.js"></script>
+    <script src="js/libs/bootgrid/jquery.bootgrid.fa.js"></script>
+    <script src="js/data/paramMap.js"></script>
+    <script src="js/files/order-shared-select.js"></script>
 </header>
 <body>
 
 <div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
-            <div class="content-wrapper">
+    <div class="content-wrapper">
 
-                <!-- 面包屑导航样式开始 -->
-                <div class="content-header-inner clearfix">
-                    <div class="bread-nav float-left">
-                        <ol class="breadcrumb">
-                            <li><a href="list-local.html">订单管理</a></li>
-                            <li><a href="list-shared.html">我分享的</a></li>
-                            <li class="active"><strong>推荐的阿姨</strong></li>
-                        </ol>
-                    </div>
+        <!-- 面包屑导航样式开始 -->
+        <div class="content-header-inner clearfix">
+            <div class="bread-nav float-left">
+                <ol class="breadcrumb">
+                    <li><a href="list-local.html">订单管理</a></li>
+                    <li><a href="list-shared.html">我分享的</a></li>
+                    <li class="active"><strong>推荐的阿姨</strong></li>
+                </ol>
+            </div>
 
-                    <div class="header-action float-right">
-                        <!--
-                        <button type="button" class="btn-blue mgl7 fr" data-toggle="modal" data-target="#myModal">新增订单</button>
+            <div class="header-action float-right">
+                <!--
+                <button type="button" class="btn-blue mgl7 fr" data-toggle="modal" data-target="#myModal">新增订单</button>
 -->
-                        <div class="input-group float-right">
-                            <i class="fa fa-search"></i>
-                            <input type="text" class="search-from form-control" placeholder="搜索订单">
-                        </div>
-
-                    </div>
-
+                <div class="input-group float-right">
+                    <i class="fa fa-search"></i>
+                    <input type="text" class="search-from form-control" placeholder="搜索订单">
                 </div>
-                <!-- 面包屑导航样式结束 -->
-                <!-- 匹配列表开始 -->
 
-                <div class="tab-content">
-			<div class="normal-table match_table">
-			<table id="dataGrid" class="table table-condensed table-hover table-striped" data-selection="true"
+            </div>
+
+        </div>
+        <!-- 面包屑导航样式结束 -->
+        <!-- 匹配列表开始 -->
+
+        <div class="tab-content">
+            <div class="normal-table match_table">
+                <table id="dataGrid" class="table table-condensed table-hover table-striped" data-selection="true"
                        data-multi-select="true" data-row-select="true" data-keep-selection="true">
                     <thead>
                     <tr>
@@ -90,83 +60,89 @@
                     <tbody>
                     </tbody>
                 </table>
-				</div>
-		</div>
-                <!-- 匹配列表结束 -->
             </div>
-            <!-- content-wrapper over -->
-
-
         </div>
-        <!-- 订单管理结束 -->
-
-
-        <div class="content4 hide">
-
-        </div>
+        <!-- 匹配列表结束 -->
     </div>
-    <!-- end container -->
-    </div><!-- end content-inner -->
+    <!-- content-wrapper over -->
+
+
+</div>
+<!-- 订单管理结束 -->
+
+
+<div class="content4 hide">
+
+</div>
+</div>
+<!-- end container -->
+</div><!-- end content-inner -->
 </section>
 
 <div class="modal fade" id="sendingAunt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			  <div class="modal-dialog">
-			    <div class="modal-content clearfix">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title" id="myModalLabel">派工</h4>
-			      </div>
-			      <div class="modal-body">
-      			    <div class="form-content sendingform">
+    <div class="modal-dialog">
+        <div class="modal-content clearfix">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">派工</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-content sendingform">
 
 
-									<form class="form-inline">
+                    <form class="form-inline">
 
-										<div class="form-group">
-										     <label for="">试工时间：</label>
-												<input id="trial_time" type="text" class="form-control form-control-2x datetimepicker" value="">
+                        <div class="form-group">
+                            <label for="">试工时间：</label>
+                            <input id="trial_time" type="text" class="form-control form-control-2x datetimepicker"
+                                   value="">
 
-										</div>
-										<div class="form-group">
+                        </div>
+                        <div class="form-group">
 
-											<label for="">试工几天：</label>
-												<input id="trial_day" type="text" class="form-control form-control-2x" value="" >
-									    </div>
-										<div class="form-group">
+                            <label for="">试工几天：</label>
+                            <input id="trial_day" type="text" class="form-control form-control-2x" value="">
+                        </div>
+                        <div class="form-group">
 
-											<label for="">阿姨姓名：</label>
-												<input id="employee_id" type="hidden">
-												<span id="employee_name"></span>
-									    </div>
-									  <div class="form-group">
-											<label for="">联系电话：</label>
-                                            <input id="employee_tel" type="text" class="form-control form-control-2x" value="" >
-									    </div>
-										 <div class="form-group">
-											<label for="">雇主中介费：</label>
-												<input id="employer_money" type="text" class="form-control form-control-2x " value="" > 元
-									    </div>
-									     <div class="form-group">
-											<label for="">阿姨中介费：</label>
-												<input id="employee_money" type="text" class="form-control form-control-2x " value="" > 元
-									    </div>
-									     <div class="form-group">
-											<label for="">阿姨薪资：</label>
-												<input id="employee_end_pay_money" type="text" class="form-control form-control-2x " value="" > 元
-												<select id="employee_end_pay_types" class="form-control"><option value="0">月</option><option value="1">小时</option></select>
-									    </div>
-																				</form>
+                            <label for="">阿姨姓名：</label>
+                            <input id="employee_id" type="hidden">
+                            <span id="employee_name"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="">联系电话：</label>
+                            <input id="employee_tel" type="text" class="form-control form-control-2x" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="">雇主中介费：</label>
+                            <input id="employer_money" type="text" class="form-control form-control-2x " value=""> 元
+                        </div>
+                        <div class="form-group">
+                            <label for="">阿姨中介费：</label>
+                            <input id="employee_money" type="text" class="form-control form-control-2x " value=""> 元
+                        </div>
+                        <div class="form-group">
+                            <label for="">阿姨薪资：</label>
+                            <input id="employee_end_pay_money" type="text" class="form-control form-control-2x "
+                                   value=""> 元
+                            <select id="employee_end_pay_types" class="form-control">
+                                <option value="0">月</option>
+                                <option value="1">小时</option>
+                            </select>
+                        </div>
+                    </form>
 
-						      </div>
-						     </div>
+                </div>
+            </div>
 
-					      <div class="modal-footer clearfix">
-					        <button type="button" class="btn-none" data-dismiss="modal">取消</button>
-					        <button type="button" class="btn-green" id="dispath_aunt">确认</button>
-					      </div>
-					    </div>
-					</div>
-					</div>
+            <div class="modal-footer clearfix">
+                <button type="button" class="btn-none" data-dismiss="modal">取消</button>
+                <button type="button" class="btn-green" id="dispath_aunt">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Modal recommend popover -->
 <div class="modal fade" id="contactAunt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -206,216 +182,5 @@
         </div>
     </div>
 </div>
-<script>
-	$(function () {
-				function init() {
-					var demand_id = getQueryString('orderId');
-					$("#dataGrid").bootgrid({
-								ajax: true,
-								post: {
-                                    demand_id: demand_id
-                                },
-								url: "http://api.jiazhengol.com/DemandsBiddings/list",
-								responseHandler: function (res) {
-									var retResult = {};
-									retResult["rows"] = res.data.list;
-									retResult["rowCount"] = res.data.list.length;
-									retResult["total"] = res.data.pager.count;
-									retResult["current"] = parseInt(res.data.pager.page);
-									return retResult;
-								},
-								formatters: {
-									"status": function (column, row) {
-										return paramMap.status[row.status]
-									},
-									"employee_qualification": function (column, row) {
-										return paramMap.qualification[row.employee_qualification]
-									},
-									"employee_service_range": function (column, row) {
-										return paramMap.getCodeValue('service_range', row.employee_service_range)
-									},
-									"operations": function (column, row) {
-                                        if(row.status === 1){
-                                            return "审核不通过"
-                                        }else if(row.status === 2){
-                                            return "已录用"
-                                        }else{
-                                            return "<button class=\"btn-grey-danger\" id='no_suit' data-id=\""+row.id+"\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"点击会删除此阿姨的信息，并且对方公司可再次推荐其他阿姨\">不合适</button><!--<button class=\"btn-white-small button-slide-menu\" type=\"button\">查看简历</button>--><button class=\"btn-green-small open-modal\" type=\"button\" data-toggle=\"modal\" data-id=\""+row.id+"\" data-target=\"#contactAunt\">联系</button>";
-                                        }
-									},
-									"update_time": function (column, row) {
-										return getLocalTime(row.update_time)
-									},
-                                    "remark": function(column, row){
-                                        return "<span title='"+row.remark+"'>"+row.remark+"</span>";
-                                    },
-                                    "employee_native_prov": function(column, row){
-                                        return $.province_city_area(row.employee_native_prov);
-                                    }
-								},
-								rowCount: [10, 12, 18],
-								labels: {
-									infos: "",
-									search: "搜索阿姨",
-									noResults: '没有记录'
-								},
-								padding: 100,
-								templates: {
-									header: "",
-									search: ""
-								},
-								css: {
-									search: "shopSearchField search"
-								}
-							}
-					).on("loaded.rs.jquery.bootgrid", function (e) {
-                                $('[data-toggle="tooltip"]').tooltip({
-                                    container: 'body'
-                                });
-						$('.button-slide-menu').on("click", function () {
-							$(".slide-menu").toggleClass("slide-menu-show");
-							$(".fog-hover").toggleClass("fog");
-							$('.slide-menu iframe').attr('src','aunt-resume.html?employeeId=56');
-						});
-						$(".fog-hover").on("click", function () {
-							$(".slide-menu").toggleClass("slide-menu-show");
-							$(".fog-hover").toggleClass("fog");
-						});
-						$('.open-modal').on('click', function (e) {
-							e.preventDefault();
-							getBiddingDetail($(this).attr('data-id'),function(data){
-                                auntData.id = data.employee_id;
-                                auntData.name = data.employee_name;
-
-								$('#contact_employee_name').text(data.employee_name);
-								$('#contact_proposer_name').text(data.proposer_name);
-								$('#contact_employee_native_address').text(data.employee_native_address);
-								$('#contact_bidder_name').text(data.bidder_name);
-								$('#contact_bidder_phone').text(data.bidder_phone);
-								$('#contact_content').text(data.content);
-                                $('#go_to_work').attr('data-id',data.id);
-                                $('#go_to_work').attr('data-eid',data.employee_id);
-								$('#contactAunt').modal('show');
-							});
-							return false;
-						});
-                        $('#no_suit').on('click', function(e){
-                            e.preventDefault();
-                            var id = $(this).attr('data-id');
-                            $.ajax({
-                                url: "http://api.jiazhengol.com/DemandsBiddings/nosuit",
-                                type: 'POST',
-                                data: {
-                                    id: id
-                                },
-                                success: function (ret) {
-                                    var retObj = JSON.parse(ret);
-                                    if (retObj.code == '0') {
-                                        $.scojs_message('操作成功', $.scojs_message.TYPE_OK);
-                                        setTimeout(function(){
-                                          window.location.reload();
-                                        },1e3);
-                                    } else{
-                                        $.scojs_message(errorCode['code_' + retObj.code], $.scojs_message.TYPE_ERROR);
-                                    }
-                                },
-                                error: function (ret) {
-                                    $.scojs_message('操作失败', $.scojs_message.TYPE_ERROR)
-                                }
-                            });
-                            return false;
-                        });
-					});
-				}
-
-				init();
-			}
-	);
-</script>
 </body>
-
-
-<script type="text/javascript">
-    jQuery(document).ready(function () {
-
-        $(".button-slide-menu").on("click", function () {
-            $(".slide-menu").toggleClass("slide-menu-show");
-            $(".fog-hover").toggleClass("fog");
-        });
-        $(".fog-hover").on("click", function () {
-            $(".slide-menu").toggleClass("slide-menu-show");
-            $(".fog-hover").toggleClass("fog");
-        });
-    });
-
-    $('#go_to_work').on('click', function(e){
-        e.preventDefault();
-		var id = $(this).attr('data-id');
-		var eid = $(this).attr('data-eid');
-		$.ajax({
-            url: "http://api.jiazhengol.com/DemandsBiddings/suit",
-            type: 'POST',
-            data: {
-                id: id
-            },
-            success: function (ret) {
-                var retObj = JSON.parse(ret);
-                if (retObj.code == '0') {
-                    $.scojs_message('操作成功', $.scojs_message.TYPE_OK);
-                    $('#contactAunt').modal('hide');
-                    $('#employee_id').val(auntData.id);
-                    $('#employee_name').text(auntData.name);
-                    $('#sendingAunt').modal('show');
-                } else{
-					$.scojs_message(errorCode['code_' + retObj.code], $.scojs_message.TYPE_ERROR);
-				}
-            },
-            error: function (ret) {
-                $.scojs_message('操作失败', $.scojs_message.TYPE_ERROR);
-            }
-        });
-    });
-    $('#dispath_aunt').on('click', function(e){
-		e.preventDefault();
-		var paramObj = {};
-		paramObj.id = getQueryString('orderId');
-		paramObj.employee_id = $('#employee_id').val();
-		paramObj.employee_name = $('#employee_name').text();
-		paramObj.employee_tel = $('#employee_tel').val();
-		paramObj.employee_money = $('#employee_money').val();
-		paramObj.employer_money = $('#employer_money').val();
-		paramObj.employee_end_pay_money = $('#employee_end_pay_money').val();
-		paramObj.employee_end_pay_types = $('#employee_end_pay_types').val();
-		paramObj.trial_time = $('#trial_time').val() ? new Date($('#trial_time').val()).getTime()/1000 : 0;
-		paramObj.trial_day = $('#trial_day').val();
-		$.ajax({
-            url: "http://api.jiazhengol.com/demands/dispath",
-            type: 'POST',
-            data: paramObj,
-            success: function (ret) {
-                var retObj = JSON.parse(ret);
-                if (retObj.code == '0') {
-                    $.scojs_message('派送成功', $.scojs_message.TYPE_OK);
-                    setTimeout(function(){
-                      parent.document.getElementById("rightContent").setAttribute("src", "order-setup.html?orderId="+getQueryString('orderId'));
-						$('#sendingAunt').modal('hide');
-                    },1e3);
-                } else{
-					$.scojs_message(errorCode['code_' + retObj.code], $.scojs_message.TYPE_ERROR);
-				}
-            },
-            error: function (ret) {
-                $.scojs_message('派送失败', $.scojs_message.TYPE_ERROR)
-            }
-        });
-	});
-
-    $('.datetimepicker').datetimepicker({
-			format: 'yyyy/mm/dd',
-         autoclose: true,
-         minView: 2
-        });
-
-
-</script>
 </html>

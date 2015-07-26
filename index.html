@@ -7,48 +7,7 @@
     <meta name="viewport" content="initial-scale = 1, user-scalable = no">
     <title>家政在线管理系统</title>
     <script src="js/allBiz.js"></script>
-    <script src="js/Chart.js"></script>
-    <script src="js/test/testCallServer.js"></script>
-    <script src="./js/test/testEmployee.js"></script>
-    <script src="./js/test/testShop.js"></script>
-    <script src="./js/test/testShopUser.js"></script>
-    <script src="./js/test/testStatsShopBill.js"></script>
-    <script src="./js/test/testCertificate.js"></script>
-    <script src="./js/test/testContract.js"></script>
-    <script src="./js/test/testEmployer.js"></script>
-    <script>
-        function iFrameHeight() {
-            var ifm = document.getElementById("rightContent");
-            var subWeb = document.frames ? document.frames["rightContent"].document : ifm.contentDocument;
-            if (ifm != null && subWeb != null) {
-                ifm.height = subWeb.body.scrollHeight;
-            }
-        }
-        //test
-        function dyniframesize(down) {
-            var pTar = null;
-            if (document.getElementById) {
-                pTar = document.getElementById(down);
-            }
-            else {
-                eval('pTar = ' + down + ';');
-            }
-            if (pTar && !window.opera) {
-//begin resizing iframe
-                pTar.style.display = "block"
-                if (pTar.contentDocument && pTar.contentDocument.body.offsetHeight) {
-//ns6 syntax
-                    pTar.height = pTar.contentDocument.body.offsetHeight + 20;
-                    pTar.width = pTar.contentDocument.body.scrollWidth + 20;
-                }
-                else if (pTar.Document && pTar.Document.body.scrollHeight) {
-//ie5+ syntax
-                    pTar.height = pTar.Document.body.scrollHeight;
-                    pTar.width = pTar.Document.body.scrollWidth;
-                }
-            }
-        }
-    </script>
+    <script src="js/menubar.js"></script>
 </head>
 <body style="overflow-y: hidden;background: #f2f2f2;">
 <div id="header" class="red_nav navbar-fixed-top" role="navigation"><!-- 导航栏开始 -->
@@ -57,7 +16,7 @@
         <div class="nav-search" style="display: none;"><!-- 搜索开始 -->
             <form class="nav-search navbar-form navbar-left" role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="搜索订单和阿姨(该版暂不支持)">
+                    <input type="text" class="form-control">
                     <img src="img/icon_search.png" width="16px" height="16px">
                 </div>
                 <button type="submit" class="btn btn-default">搜索</button>
@@ -66,17 +25,17 @@
         <!-- 搜索结束 -->
         <div class="navigation-bar"><!-- 导航栏右侧开始 -->
             <ul>
-            <!--
-                <li class="notification">
-                    <div class="dropdown notification-container">
-                        <a id="dLabel" href="http://example.com" data-toggle="dropdown" aria-haspopup="true"
-                           role="button" aria-expanded="false"><img src="img/icon_bell.png" width="20px"
-                                                                    height="20px"><span>通知</span></a>
-                </li>
-                <!--<li><a id="shop_detail">&lt;!&ndash; <img src="img/icon_head.png">&ndash;&gt;<span>虹桥家政 | 张富贵</span></a>-->
+                <!--
+                    <li class="notification">
+                        <div class="dropdown notification-container">
+                            <a id="dLabel" href="http://example.com" data-toggle="dropdown" aria-haspopup="true"
+                               role="button" aria-expanded="false"><img src="img/icon_bell.png" width="20px"
+                                                                        height="20px"><span>通知</span></a>
+                    </li>
+                    <!--<li><a id="shop_detail">&lt;!&ndash; <img src="img/icon_head.png">&ndash;&gt;<span>虹桥家政 | 张富贵</span></a>-->
                 </li>
                 <li><a id="logout" href="javascript:;"><span>退出</span></a>
-                <!--<li onclick="testEmployerDel()">Test</li>-->
+                    <!--<li onclick="testEmployerDel()">Test</li>-->
                 </li>
             </ul>
         </div>
@@ -125,103 +84,6 @@
 </section>
 
 
-<script>
-    $(function () {
-        $("#rightContent").attr("src", "./indexContent.html");
-        $("#menuUl li").addClass("menuLi")
-    });
-
-    $("#menuUl li").click(function (e) {
-        $("#menuUl .selected").removeClass("selected");
-        $(this).addClass("selected");
-    })
-    $(".shop").click(function (e) {
-        $("#rightContent").attr("src", "./shop.html");
-    });
-
-    $(".list").click(function (e) {
-        $("#rightContent").attr("src", "./list-local.html");
-    });
-    $(".aunt").click(function (e) {
-        $("#rightContent").attr("src", "./aunt.html");
-    });
-    $(".client").click(function (e) {
-        $("#rightContent").attr("src", "./client.html");
-    });
-    $(".account").click(function (e) {
-        $("#rightContent").attr("src", "./change-password.html");
-    });
-
-    $(".notificationBtn").click(function (e) {
-        $("#rightContent").attr("src", "./notification.html");
-    })
-    $("#orderFinishedLink").click(function (e) {
-        $("#rightContent").attr("src", "./order-finish.html");
-    })
-    $("#orderSharedLink").click(function (e) {
-        $("#rightContent").attr("src", "./order-shared-select.html");
-    })
-
-    $(function () {
-        $('[data-toggle="popover"]').popover()
-    });
-
-    $('#myTab a').click(function (e) {
-        e.preventDefault()
-        $(this).tab('show')
-    })
-
-    $(function () {
-        $(".dropdown-menu").on("click", "[data-stopPropagation]", function (e) {
-            e.stopPropagation();
-        })
-    });
-
-    var gui = require('nw.gui');
-
-    // Setup and hide extraneous menu items for Mac Menu
-    if (process.platform === "darwin") {
-        var mb = new gui.Menu({type: 'menubar'});
-        mb.createMacBuiltin('FuHui', {
-            hideEdit: false,
-            hideWindow: false
-        });
-        gui.Window.get().menu = mb;
-    }
-</script>
-<script>
-    $(function () {
-        $.ajax({
-            url: 'http://api.jiazhengol.com/user/getFiles',
-            type: 'POST',
-            success : function (ret) {
-                window.PROVCITYAREA = JSON.parse(ret).data;
-            }
-        });
-        var windowHeight = $(window).height();
-        var headerHeight = $('#header').height();
-        $('#rightContent').height(windowHeight - headerHeight - 48);
-        $(window).resize(function(){
-            var windowHeight = $(window).height();
-            var headerHeight = $('#header').height();
-           $('#rightContent').height(windowHeight - headerHeight - 48);
-        });
-
-        $('#shop_detail').on('click', function(){
-            $("#rightContent").attr("src", "./profile.html");
-        });
-
-        //登出
-        $('#logout').on('click', function(){
-            $.ajax({
-                url: 'http://api.jiazhengol.com/user/loginOut',
-                type: 'POST',
-                success: function (ret) {
-                    window.location.href = "login.html";
-                }
-            });
-        });
-    });
-</script>
+<script src="js/files/index.js"></script>
 </body>
 </html>

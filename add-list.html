@@ -1,337 +1,266 @@
 <html>
 <header>
-	<script src="js/allBiz.js"></script>
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
-	<script src="js/bootstrap-datetimepicker.js"></script>
+    <script src="js/allBiz.js"></script>
+    <script src="js/files/add-list.js"></script>
 </header>
 <body>
 
 <div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
-				<div class="content-wrapper">
-					<div class="content-header-inner">
-					<div class="bread-nav float-left">
-						<ol class="breadcrumb">
-							<li><a href="list-local.html">订单管理</a></li>
-							<li><a href="list-local.html">本地订单</a></li>
-	 						<li class="active"><strong>新增订单</strong></li>
-						</ol>
-					</div>
-
-					
-
-					
-				</div>
-						  <div class="form-dialog">
-						    <div class="form-content clearfix">
-						      
-   							<div class="form-body">
-   								<div class="modal-body-wrapper">
-									<form class="form-inline">
-										<h5 class="form-title">雇主资料</h5>
-										<div class="form-group">
-										    <label for="employer_name"><span class="enter-need">*</span>雇主姓名：</label>
-										    <input type="text" class="form-control" id="employer_name">
-										</div>
-										<div class="form-group" style="display:none">
-										    <label for="employer_identity" class="text-indent-1"><span class="enter-need">*</span>身份证：</label>
-										    <input type="text" class="form-control" id="employer_identity">
-										</div>
-										<div class="form-group" id="employer_sex">
-										   <label for="employer_sex" class="text-indent"><span class="enter-need">*</span>性别：</label>
-										   <label class="radio">
-											  <input type="radio" name="employer_sex" value="1"> 先生
-											</label>
-											<label class="radio">
-											  <input type="radio" checked name="employer_sex" value="0"> 女士
-											</label>
-										</div>
-										<div class="form-group">
-										    <label for="employer_phone"><span class="enter-need">*</span>手机号码：</label>
-										    <input type="text" class="form-control" id="employer_phone">
-										   
-										</div>
-
-										<div class="form-group">
-										    <label for=""><span class="enter-need">*</span>服务地址：</label>
-										   <div class="prov-city-area"></div>
-										    <input type="text" class="form-control" id="service_address">
-										</div>
-									
-									  <div class="form-group">
-									    <label for="remark" class="text-indent">备注：</label>
-									    <textarea class="form-control" id="remark"></textarea>
-									    
-									  </div>
-									</form>
-									<form class="form-inline">
-										<h5 class="form-title">工作内容</h5>
-										<div class="form-group">
-										    <label for="exampleInputEmail1" class="text-indent"><span class="enter-need">*</span>工种：</label>
-										    <div class="add-list checkbox" id="type">
-												<label>
-													<input type="radio" name="order_type" value="1"> 临时工
-												</label>
-												<label>
-													<input type="radio" name="order_type" value="2"> 长期工
-												</label>
-												<!--<label>-->
-													<!--<input type="radio" name="order_type" value="3"> 保姆-->
-												<!--</label>-->
-												<label>
-													<input type="radio" name="order_type" value="4"> 育儿嫂
-												</label>
-												<label>
-													<input type="radio" name="order_type" value="5"> 疾病护理
-												</label>
-												<label>
-													<input type="radio" name="order_type" value="6"> 老人护理
-												</label>
-												<label>
-													<input type="radio" name="order_type" value="7"> 月嫂
-												</label>
-												<label>
-													<input type="radio" name="order_type" value="8"> 早教
-												</label>
-												<label>
-													<input type="radio" name="order_type" value="9"> 催乳师
-												</label>
-											</div>
-										</div>
-										<div class="form-group">
-										    <label for="" class="text-indent"><span class="enter-need">*</span>类别：</label>
-										    <div class="radio-group" id="in_home">
-												<label class="radio">
-													<input type="radio" name="name_in_home" value="1"> 住家
-												</label>
-												<label class="radio">
-													<input type="radio" name="name_in_home" value="0"> 不住家
-												</label>
-											</div>
-										</div>
-										
-									
-									    <div class="form-group">
-										    <label for="trial_time">试工时间：</label>
-												<input type="text" class="form-control datetimepicker" value="" id="trial_time">
-									    </div>
-
-										<div class="form-group">
-										    <label>工作时间：</label>
-												<input type="text" class="form-control datepicker" value="" id="work_start_time">
-												<span class="input-span">到</span>
-												<input type="text" class="form-control datepicker" value="" id="work_end_time">
-									    </div>
-									    
-									    <div class="form-group">
-										    <label for="working_day" class="text-indent-1">工作日：</label>
-										    <div class="add-list checkbox" id="working_day">
-												<label>
-													<input type="checkbox" value="1"> 周一
-												</label>
-												<label>
-													<input type="checkbox" value="2"> 周二
-												</label>
-												<label>
-													<input type="checkbox" value="3"> 周三
-												</label>
-												<label>
-													<input type="checkbox" value="4"> 周四
-												</label>
-												<label>
-													<input type="checkbox" value="5"> 周五
-												</label>
-												<label>
-													<input type="checkbox" value="6"> 周六
-												</label>
-												<label>
-													<input type="checkbox" value="0"> 周日
-												</label>
-											</div>
-										</div>
-										<div class="form-group">
-									    <label for="">工作内容：</label>
-									   <textarea class="form-control" id="content"></textarea>
-									  </div>
-									</form>
-									<form class="form-inline">
-										<h5 class="form-title">阿姨要求</h5>
-										<div class="form-group">
-										    <label for="exampleInputEmail1" class="text-indent">年龄：</label>
-										    <input type="text" class="form-control input-small" id="employee_age_lower"><span class="input-span">到</span>
-										    <input type="text" class="form-control input-small" id="employee_age_upper"><span class="input-span">岁</span>
-										
-										</div>
-										<div class="form-group">
-										    
-										 <label for="" class="text-indent">经验：</label>
-										    <input type="text" class="form-control input-small" id="employee_experience">年
-										</div>
-										 <div class="form-group">
-										    <label for="" class="text-indent">学历：</label>
-										    <div class="radio-group" id="employee_education">
-												<label class="radio">
-													<input type="radio" name="employee_education" value="1">
-													小学
-												</label>
-												<label class="radio">
-													<input type="radio" name="employee_education" value="2">
-													初中
-												</label>
-												<label class="radio">
-													<input type="radio" name="employee_education" value="3">
-													高中
-												</label>
-												<label class="radio">
-													<input type="radio" name="employee_education" value="4">
-													大专
-												</label>
-												<label class="radio">
-													<input type="radio" name="employee_education" value="5">
-													本科
-												</label>
-												<label class="radio">
-													<input type="radio" name="employee_education" value="6">
-													其他
-												</label>
-											</div>
-										</div>
-
-										<div class="form-group">
-										    
-										    <label for="" class="text-indent">薪资：</label>
-										   <input type="text" class="form-control input-small" id="employee_pay_lower"><span class="input-span">到</span>
-										    <input type="text" class="form-control input-small" id="employee_pay_upper"><span class="input-span">元</span>
-										    <select class="form-control" placehold="年" id="employee_pay_types"><option value="0">月</option><option value="1">小时</option></select>
-										</div>
-									
-									  <div class="form-group">
-									    <label for="">详细要求：</label>
-									   <textarea class="form-control" id="requirements"></textarea>
-									  </div>
-									</form>
-						      </div>
-						     </div>
-
- <div class="form-info fl">
-						      		<p>注：<span class="enter-need">*</span>为必填项</p>
-
-						      </div>
-						       <div class="form-footer float-right">
-						      
-						      	<button type="button" class="btn-none" data-toggle="modal" data-target=".bs-example-modal-sm">放弃</button>
-						        <button id="message_trigger_ok" type="button" class="btn-green-big">保存</button>
-						       
-						      </div>
-						    </div>
-						  <!-- Modal -->
-							<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-							  <div class="modal-dialog modal-sm">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							        <h4 class="modal-title" id="myModalLabel">放弃添加</h4>
-							      </div>
-							      <div class="modal-body">
-							        您确定放弃当前添加？
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-							        <button type="button" class="btn btn-primary" id="cancel_add">放弃</button>
-							      </div>
-							    </div>
-							  </div>
-							</div>
-					</div>	
-			</div><!-- container end -->
-		</div>
-	</section>
+    <div class="content-wrapper">
+        <div class="content-header-inner">
+            <div class="bread-nav float-left">
+                <ol class="breadcrumb">
+                    <li><a href="list-local.html">订单管理</a></li>
+                    <li><a href="list-local.html">本地订单</a></li>
+                    <li class="active"><strong>新增订单</strong></li>
+                </ol>
+            </div>
 
 
+        </div>
+        <div class="form-dialog">
+            <div class="form-content clearfix">
+
+                <div class="form-body">
+                    <div class="modal-body-wrapper">
+                        <form class="form-inline">
+                            <h5 class="form-title">雇主资料</h5>
+
+                            <div class="form-group">
+                                <label for="employer_name"><span class="enter-need">*</span>雇主姓名：</label>
+                                <input type="text" class="form-control" id="employer_name">
+                            </div>
+                            <div class="form-group" style="display:none">
+                                <label for="employer_identity" class="text-indent-1"><span class="enter-need">*</span>身份证：</label>
+                                <input type="text" class="form-control" id="employer_identity">
+                            </div>
+                            <div class="form-group" id="employer_sex">
+                                <label for="employer_sex" class="text-indent"><span
+                                        class="enter-need">*</span>性别：</label>
+                                <label class="radio">
+                                    <input type="radio" name="employer_sex" value="1"> 先生
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" checked name="employer_sex" value="0"> 女士
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label for="employer_phone"><span class="enter-need">*</span>手机号码：</label>
+                                <input type="text" class="form-control" id="employer_phone">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for=""><span class="enter-need">*</span>服务地址：</label>
+
+                                <div class="prov-city-area"></div>
+                                <input type="text" class="form-control" id="service_address">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="remark" class="text-indent">备注：</label>
+                                <textarea class="form-control" id="remark"></textarea>
+
+                            </div>
+                        </form>
+                        <form class="form-inline">
+                            <h5 class="form-title">工作内容</h5>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="text-indent"><span class="enter-need">*</span>工种：</label>
+
+                                <div class="add-list checkbox" id="type">
+                                    <label>
+                                        <input type="radio" name="order_type" value="1"> 临时工
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="order_type" value="2"> 长期工
+                                    </label>
+                                    <!--<label>-->
+                                    <!--<input type="radio" name="order_type" value="3"> 保姆-->
+                                    <!--</label>-->
+                                    <label>
+                                        <input type="radio" name="order_type" value="4"> 育儿嫂
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="order_type" value="5"> 疾病护理
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="order_type" value="6"> 老人护理
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="order_type" value="7"> 月嫂
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="order_type" value="8"> 早教
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="order_type" value="9"> 催乳师
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="text-indent"><span class="enter-need">*</span>类别：</label>
+
+                                <div class="radio-group" id="in_home">
+                                    <label class="radio">
+                                        <input type="radio" name="name_in_home" value="1"> 住家
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="name_in_home" value="0"> 不住家
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="trial_time">试工时间：</label>
+                                <input type="text" class="form-control datetimepicker" value="" id="trial_time">
+                            </div>
+
+                            <div class="form-group">
+                                <label>工作时间：</label>
+                                <input type="text" class="form-control datepicker" value="" id="work_start_time">
+                                <span class="input-span">到</span>
+                                <input type="text" class="form-control datepicker" value="" id="work_end_time">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="working_day" class="text-indent-1">工作日：</label>
+
+                                <div class="add-list checkbox" id="working_day">
+                                    <label>
+                                        <input type="checkbox" value="1"> 周一
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" value="2"> 周二
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" value="3"> 周三
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" value="4"> 周四
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" value="5"> 周五
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" value="6"> 周六
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" value="0"> 周日
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">工作内容：</label>
+                                <textarea class="form-control" id="content"></textarea>
+                            </div>
+                        </form>
+                        <form class="form-inline">
+                            <h5 class="form-title">阿姨要求</h5>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="text-indent">年龄：</label>
+                                <input type="text" class="form-control input-small" id="employee_age_lower"><span
+                                    class="input-span">到</span>
+                                <input type="text" class="form-control input-small" id="employee_age_upper"><span
+                                    class="input-span">岁</span>
+
+                            </div>
+                            <div class="form-group">
+
+                                <label for="" class="text-indent">经验：</label>
+                                <input type="text" class="form-control input-small" id="employee_experience">年
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="text-indent">学历：</label>
+
+                                <div class="radio-group" id="employee_education">
+                                    <label class="radio">
+                                        <input type="radio" name="employee_education" value="1">
+                                        小学
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="employee_education" value="2">
+                                        初中
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="employee_education" value="3">
+                                        高中
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="employee_education" value="4">
+                                        大专
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="employee_education" value="5">
+                                        本科
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="employee_education" value="6">
+                                        其他
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <label for="" class="text-indent">薪资：</label>
+                                <input type="text" class="form-control input-small" id="employee_pay_lower"><span
+                                    class="input-span">到</span>
+                                <input type="text" class="form-control input-small" id="employee_pay_upper"><span
+                                    class="input-span">元</span>
+                                <select class="form-control" placehold="年" id="employee_pay_types">
+                                    <option value="0">月</option>
+                                    <option value="1">小时</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">详细要求：</label>
+                                <textarea class="form-control" id="requirements"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="form-info fl">
+                    <p>注：<span class="enter-need">*</span>为必填项</p>
+
+                </div>
+                <div class="form-footer float-right">
+
+                    <button type="button" class="btn-none" data-toggle="modal" data-target=".bs-example-modal-sm">放弃
+                    </button>
+                    <button id="message_trigger_ok" type="button" class="btn-green-big">保存</button>
+
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">放弃添加</h4>
+                        </div>
+                        <div class="modal-body">
+                            您确定放弃当前添加？
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary" id="cancel_add">放弃</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container end -->
+</div>
+</section>
 </body>
-<script type="text/javascript">
-	$('#message_trigger_ok').on('click', function (e) {
-        e.preventDefault();
-        var paramData = {};
-        paramData.source = 1;
-        paramData.phone = $('#employer_phone').val();
-        paramData.name = $('#employer_name').val();
-        // paramData.identity = $('#employer_identity').val();
-        paramData.sex = $('#employer_sex input:checked').val();
-        paramData.service_prov = $('.prov-select').val();
-        paramData.service_city = $('.city-select').val();
-        paramData.service_area = $('.area-select').val();
-        paramData.service_address = $('#service_address').val();
-		if($('#remark').val()){
-			paramData.remark = $('#remark').val();
-		}
-		if($('#content').val()){
-			paramData.content = $('#content').val();
-		}
-		paramData.type = $('#type input:checked').val();
-		paramData.in_home = $('#in_home input:checked').val();
-		paramData.trial_time = $('#trial_time').val() ? new Date($('#trial_time').val()).getTime()/1000 : 0;
-		paramData.work_start_time = $('#work_start_time').val() ? new Date($('#work_start_time').val()).getTime()/1000 : 0;
-		paramData.work_end_time = $('#work_end_time').val() ? new Date($('#work_end_time').val()).getTime()/1000 : 0;
-		if($('#working_day input:checked').length){
-			paramData.working_day = getMultiSelectValue('working_day');
-		}
-		if($('#employee_age_lower').val()){
-			paramData.employee_age_lower = $('#employee_age_lower').val();
-		}
-		if($('#employee_age_upper').val()){
-			paramData.employee_age_upper = $('#employee_age_upper').val();
-		}
-		if($('#employee_experience').val()){
-			paramData.employee_experience = $('#employee_experience').val();
-		}
-		if($('#employee_education input:checked').length){
-			paramData.employee_education = getMultiSelectValue('employee_education');
-		}
-		if($('#employee_pay_lower').val()){
-			paramData.employee_pay_lower = $('#employee_pay_lower').val();
-		}
-		if($('#employee_pay_upper').val()){
-			paramData.employee_pay_upper = $('#employee_pay_upper').val();
-		}
-		if($('#employee_pay_types').val()){
-			paramData.employee_pay_types = $('#employee_pay_types').val();
-		}
-		if($('#requirements').val()){
-			paramData.requirements = $('#requirements').val();
-		}
-        $.ajax({
-            url: 'http://api.jiazhengol.com/demands/add',
-            data: paramData,
-            method: 'POST',
-            success: function (ret) {
-                var retObj = JSON.parse(ret);
-                if (retObj.code == '0') {
-                    $.scojs_message('添加成功', $.scojs_message.TYPE_OK);
-                    setTimeout(function(){
-                      parent.document.getElementById("rightContent").setAttribute("src", "list-local.html");
-                    },1e3);
-                }else{
-                    $.scojs_message(errorCode['code_' + retObj.code], $.scojs_message.TYPE_ERROR);
-                }
-            },
-            error: function (ret) {
-				$.scojs_message('添加失败', $.scojs_message.TYPE_ERROR);
-            }
-        })
-    });
-   $('.datetimepicker').datetimepicker({
-		format: 'yyyy/mm/dd hh:ii',
-	    autoclose: true
-	});
-	$('.datepicker').datetimepicker({
-		format: 'yyyy/mm/dd',
-	    autoclose: true,
-		minView: 2
-	});
-	$('#cancel_add').on('click', function(){
-		parent.document.getElementById("rightContent").setAttribute("src", "list-local.html");
-	});
-	$('.prov-city-area').province_city_area();
-</script>
 </html>

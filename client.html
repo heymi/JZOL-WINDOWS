@@ -1,22 +1,11 @@
 <html>
 <header>
     <script src="js/allBiz.js"></script>
-    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
-    <link href="js/bootgrid/jquery.bootgrid.css" rel="stylesheet"/>
-    <script src="js/bootstrap-datetimepicker.js"></script>
-    <script src="js/bootgrid/jquery.bootgrid.js"></script>
-    <script src="js/bootgrid/jquery.bootgrid.fa.js"></script>
-    <script src="js/moderniz.2.8.1.js"></script>
-    <script>
-        var client_paramMap = {
-            source: {
-                0: '未选择',
-                1: '本地',
-                2: '网络',
-                3: '家政在线'
-            }
-        }
-    </script>
+    <link href="js/libs/bootgrid/jquery.bootgrid.css" rel="stylesheet"/>
+    <script src="js/libs/bootgrid/jquery.bootgrid.js"></script>
+    <script src="js/libs/bootgrid/jquery.bootgrid.fa.js"></script>
+    <script src="js/data/client_paramMap.js"></script>
+    <script src="js/files/client.js"></script>
 </header>
 <body>
 
@@ -71,7 +60,8 @@
 
         </div>
         <!-- end tab-centent -->
-        <div id="confirmDeleteModal" class="modal fade modal-del" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        <div id="confirmDeleteModal" class="modal fade modal-del" tabindex="-1" role="dialog"
+             aria-labelledby="mySmallModalLabel"
              aria-hidden="true">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
@@ -94,110 +84,5 @@
     <!-- end shop -->
 </div>
 </section>
-<script>
-    $(function () {
-                function init() {
-                    $("#dataGrid").bootgrid({
-                                ajax: true,
-                                ajaxSettings: {
-                                    method: "GET",
-                                    cache: false
-                                },
-                                url: function(){
-                                    var searchPhrase = $("#dataGrid").bootgrid("getSearchPhrase");
-                                    if(searchPhrase.length){
-                                        return "http://api.jiazhengol.com/employer/list";
-                                    }else{
-                                        return "http://api.jiazhengol.com/employer/list";
-                                    }
-                                },
-                                responseHandler: function (res) {
-                                    if(res.code === -1){
-                                        $.scojs_message('登录失效，请退出后请重新登录！', $.scojs_message.TYPE_ERROR);
-                                      }
-                                    var retResult = {
-                                        "current": 1,
-                                        "rows": []
-                                    }
-                                    retResult["rows"] = res.data.list;
-                                    retResult["rowCount"] = res.data.list.length;
-                                    retResult["total"] = res.data.pager.count;
-                                    retResult["current"] = res.data.pager.page;
-                                    return retResult;
-                                },
-                                formatters: {
-                                    "operations": function (column, row) {
-//                                        return "<a href=\"client-info.html?clientId="+ row.id + "\">" +  + "</a>";
-                                        return "<button type=\"button\" class=\"btn-green-small\" onClick=\"location.href='client-info.html?employerId=" + row.eid + "'\">查看资料</button>";
-                                    },
-                                    "source": function (column, row) {
-                                        return client_paramMap.source[row.source]
-                                    },
-                                    "content": function(column, row){
-                                        return "<span title='"+row.content+"'>"+row.content+"</span>";
-                                    }
-                                },
-                                rowCount: [10, 12, 18],
-                                labels: {
-                                    infos: "",
-                                    search: "搜索雇主",
-                                    noResults: '没有记录'
-                                },
-                                padding: 100,
-                                templates: {
-                                    header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}} shopGridHeader\">" +
-                                    "<div class=\"row\">" +
-                                    "<div class=\"col-sm-12 actionBar shopActionBar\">" +
-                                    "<button type=\"button\" class=\"btn-blue mgl7 fr\" onClick=\"location.href='add-client.html'\">新增雇主</button>" +
-                                    "<p class=\"{{css.search}}\"></p>" +
-//                    "<p class=\"{{css.actions}}\"></p>" +
-                                    "</div>" +
-                                    "</div>" +
-                                    "</div>",
-                                    search: ""
-                                },
-                                css: {
-                                    search: "shopSearchField search"
-//                    actions : "shopActionField"
-                                }
-                            }
-                    ).on("selected.rs.jquery.bootgrid", function (e) {
-                            });
-
-                }
-
-                init();
-
-                $("#confirmDelete").on("click", function () {
-                    var removdeIdsArr = $("#dataGrid").bootgrid("getSelectedRows");
-                    var removedIdsStr = '';
-                    if (!removdeIdsArr || removdeIdsArr.length == 0) {
-                        $('#confirmDeleteModal').modal('hide');
-                        return;
-                    }
-                    removedIdsStr = removdeIdsArr.join(',');
-                    $.ajax({
-                        url : 'http://api.jiazhengol.com/employer/del?isdel=1&eid=' + removedIdsStr,
-                        type : 'GET',
-//                        type : 'POST',
-                        data : {},
-                        success : function (ret) {
-                            $('#confirmDeleteModal').modal('hide');
-                            $("#dataGrid").bootgrid("remove");
-                        },
-                        error : function(ret) {
-                            alert('内部错误')
-                        }
-                    })
-
-                });
-            }
-    );
-</script>
 </body>
-<script type="text/javascript">
-
-    $('#myTab li:first').tab('show') // Select first tab
-
-</script>
 </html>

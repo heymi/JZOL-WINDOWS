@@ -295,7 +295,7 @@ a{
 	background-size: 20px 20px;
 }
 .menu ul li.shop.selected{
-	background:url(../img/icon_shop_hover.png) no-repeat 34px 14px;
+	background:#f7f7f7 url(../img/icon_shop_hover.png) no-repeat 34px 14px;
 	background-size: 20px 20px;
 }
 .menu ul li.list{
@@ -303,7 +303,7 @@ a{
 	background-size: 20px 20px;
 }
 .menu ul li.list.selected{
-	background:url(../img/icon_list_hover.png) no-repeat 34px 14px;
+	background:#f7f7f7 url(../img/icon_list_hover.png) no-repeat 34px 14px;
 	background-size: 20px 20px;
 }
 .menu ul li.aunt{
@@ -311,7 +311,7 @@ a{
 	background-size: 20px 20px;
 }
 .menu ul li.aunt.selected{
-	background:url(../img/icon_aunt_hover.png) no-repeat 34px 14px;
+	background:#f7f7f7 url(../img/icon_aunt_hover.png) no-repeat 34px 14px;
 	background-size: 20px 20px;
 }
 .menu ul li.client{
@@ -319,7 +319,7 @@ a{
 	background-size: 20px 20px;
 }
 .menu ul li.client.selected{
-	background:url(../img/icon_client_hover.png) no-repeat 34px 14px;
+	background:#f7f7f7 url(../img/icon_client_hover.png) no-repeat 34px 14px;
 	background-size: 20px 20px;
 }
 .menu ul li.data{
@@ -327,7 +327,7 @@ a{
 	background-size: 20px 20px;
 }
 .menu ul li.data.selected{
-	background:url(../img/icon_data_hover.png) no-repeat 34px 14px;
+	background:#f7f7f7 url(../img/icon_data_hover.png) no-repeat 34px 14px;
 	background-size: 20px 20px;
 }
 .menu ul li.communication{
@@ -335,7 +335,7 @@ a{
 	background-size: 20px 20px;
 }
 .menu ul li.communication.selected{
-	background:url(../img/icon_communication_hover.png) no-repeat 34px 14px;
+	background:#f7f7f7 url(../img/icon_communication_hover.png) no-repeat 34px 14px;
 	background-size: 20px 20px;
 }
 .menu ul li.account{
@@ -343,7 +343,7 @@ a{
 	background-size: 20px 20px;
 }
 .menu ul li.account.selected{
-	background:url(../img/icon_account_hover.png) no-repeat 34px 14px;
+	background:#f7f7f7 url(../img/icon_account_hover.png) no-repeat 34px 14px;
 	background-size: 20px 20px;
 }
 .menu ul li img{

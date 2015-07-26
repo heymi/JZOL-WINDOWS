@@ -1,8 +1,8 @@
 <html>
 <header>
     <script src="js/allBiz.js"></script>
-    <script src="js/sco.message.js"></script>
-    <script src="js/paramMap.js"></script>
+    <script src="js/libs/sco.message.js"></script>
+    <script src="js/data/paramMap.js"></script>
 </header>
 <body>
 
@@ -10,265 +10,103 @@
     <div class="home content-wrapper"><!-- 首页开始 -->
 
 
-<div class="row clearfix">
-<div class="dash-box col-xs-6" id="order_list_wrap"><!-- 首页订单动态开始 -->
-    <h3 class="mgb15"><center><strong>订单动态</strong></center></h3>
-    <div class="table-responsive">
-                <table class="table table-hover">
-                   <thead>
-                <tr>
-                  <th>阿姨</th>
-                  <th>雇主</th>
-                  <th>服务类型</th>
-                  <th>状态</th>
-                </tr>
-              </thead>
-              <tbody id="order_list">
-                <tr>
-                  <td><strong>马秋菊</strong></td>
-                  <td>李楠</td>
-                  <td>营养师</td>
-                  <td>
-                      <button type="button" class="btn-red-small" onclick="location.href='add-contract.html'">签订合同</button>
-                  </td>
-
-                </tr>
-
-                   <tr>
-                  <td><strong>陈晓洁</strong></td>
-                  <td>王大宝</td>
-                  <td>月嫂</td>
-                  <td>
-                       <button type="button" class="btn-yellow-small" onclick="location.href='order-setup.html'">正在试工</button>
-                      </td>
-                </tr>
-
-                <tr>
-                  <td><strong>李阿静</strong></td>
-                  <td>毕飞</td>
-                  <td>保姆</td>
-                  <td>
-                       <button type="button" class="btn-green-small">服务中...</button>
-                      </td>
-                </tr>
-
-                     <tr>
-                  <td><strong>陈晓洁</strong></td>
-                  <td>王大宝</td>
-                  <td>月嫂</td>
-                  <td>
-                       <button type="button" class="btn-green-small">服务中...</button>
-                      </td>
-                </tr>
-
-
-
-                </tbody>
-                </table>
-                <div class="btn-more mgt15"><center><button type="button" class="btn btn-info" id="click_for_more">查看更多...</button></center></div>
-              </div>
-  </div><!-- 首页订单动态结束 -->
-  <div class="dash-box col-xs-6"><!-- 首页公告牌开始 -->
-    <div class="board span12">
-<h3 class="mgb15"><center><strong>系统公告</strong></center></h3>
-                        <ol>
-                            <li><a href="http://www.jiazhengol.com/#section-wrapper" target="_blank">家政在线新版网站上线</a><span class="date">6-29 12:00</span></li>
-                            <li><a target="_blank" id="testLi">家政在线管理系统使用说明下载</a><span class="date">6-29 15:00</span></li>
-                            <!--<li><a href="http://www.jiazhengol.com/download/%E4%BA%A7%E5%93%81%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E-%E5%85%AC%E6%B5%8B%E7%89%88.rar" target="_blank" id="testLi">家政在线管理系统使用说明下载</a><span class="date">6-29 15:00</span></li>-->
-                        </ol>
-                                        <div style="display: none" class="btn-more mgt15"><center><button type="button" class="btn btn-info" onClick="location.href='all-boards.html'">查看所有公告...</button></center></div>
-
+        <div class="row clearfix">
+            <div class="dash-box col-xs-6" id="order_list_wrap"><!-- 首页订单动态开始 -->
+                <h3 class="mgb15">
+                    <center><strong>订单动态</strong></center>
+                </h3>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>阿姨</th>
+                            <th>雇主</th>
+                            <th>服务类型</th>
+                            <th>状态</th>
+                        </tr>
+                        </thead>
+                        <tbody id="order_list">
+                        </tbody>
+                    </table>
+                    <div class="btn-more mgt15">
+                        <center>
+                            <button type="button" class="btn btn-info" id="click_for_more">查看更多...</button>
+                        </center>
                     </div>
-  </div><!-- 首页公告牌结束 -->
-</div>
+                </div>
+            </div>
+            <!-- 首页订单动态结束 -->
+            <div class="dash-box col-xs-6"><!-- 首页公告牌开始 -->
+                <div class="board span12">
+                    <h3 class="mgb15">
+                        <center><strong>系统公告</strong></center>
+                    </h3>
+                    <ol>
+                        <li><a href="http://www.jiazhengol.com/#section-wrapper" target="_blank">家政在线新版网站上线</a><span
+                                class="date">6-29 12:00</span></li>
+                        <li><a target="_blank" id="download-manual">家政在线管理系统使用说明下载</a><span
+                                class="date">6-29 15:00</span></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- 首页公告牌结束 -->
+        </div>
 
-<div class="row clearfix">
-    <div class="col-xs-6 mgt10">
-    <center><b>门店负责人</b></center>
-        <div class="box-data no-padding fl">
-                     <h3 class="mgb15"></h3>
+        <div class="row clearfix">
+            <div class="col-xs-6 mgt10">
+                <center><b>门店负责人</b></center>
+                <div class="box-data no-padding fl">
+                    <h3 class="mgb15"></h3>
                     <ul>
-                      <li>门店负责人：刘佳</li>
-                      <li>联系电话：185 2138 8141</li>
-                      <li>运营状况：<span class="fontgreen">正常</span></li>
+                        <li>门店负责人：刘佳</li>
+                        <li>联系电话：185 2138 8141</li>
+                        <li>运营状况：<span class="fontgreen">正常</span></li>
 
                     </ul>
-        </div>
-        <div class="box-data no-padding fl">
-                     <h3 class="mgb15"></h3>
+                </div>
+                <div class="box-data no-padding fl">
+                    <h3 class="mgb15"></h3>
                     <ul>
-                      <li>门店负责人：蔡路</li>
-                      <li>联系电话：138 1738 6034</li>
-                     <li>运营状况：<span class="fontgreen">正常</span></li>
+                        <li>门店负责人：蔡路</li>
+                        <li>联系电话：138 1738 6034</li>
+                        <li>运营状况：<span class="fontgreen">正常</span></li>
                     </ul>
-        </div>
-        <div class="box-data no-padding fl">
-                     <h3 class="mgb15"></h3>
+                </div>
+                <div class="box-data no-padding fl">
+                    <h3 class="mgb15"></h3>
                     <ul>
-                      <li>门店负责人：刘连松</li>
-                      <li>联系电话：139 1717 4031</li>
-                      <li>运营状况：<span class="fontgreen">正常</span></li>
+                        <li>门店负责人：刘连松</li>
+                        <li>联系电话：139 1717 4031</li>
+                        <li>运营状况：<span class="fontgreen">正常</span></li>
                     </ul>
-        </div>
-        <div class="box-data no-padding fl">
-                     <h3 class="mgb15"></h3>
+                </div>
+                <div class="box-data no-padding fl">
+                    <h3 class="mgb15"></h3>
                     <ul>
-                      <li>门店负责人：刘昊神</li>
-                      <li>联系电话：159 2117 6624</li>
-                     <li>运营状况：<span class="fontgreen">正常</span></li>
+                        <li>门店负责人：刘昊神</li>
+                        <li>联系电话：159 2117 6624</li>
+                        <li>运营状况：<span class="fontgreen">正常</span></li>
                     </ul>
+                </div>
+            </div>
+            <div class="col-xs-6 mgt10">
+                <center><b>帮助与反馈</b></center>
+                <div class="box-data no-padding">
+                    <h3 class="mgb15"></h3>
+                    <ul>
+                        <li>官方QQ群：261955909</li>
+                        <li>客服电话：400-888-1898</li>
+                        <li>当前版本：1.0测试版</li>
+                        <!--<button class="btn-white-small mgt10">提交意见反馈</button>-->
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-xs-6 mgt10">
-    <center><b>帮助与反馈</b></center>
-        <div class="box-data no-padding">
-                     <h3 class="mgb15"></h3>
-                    <ul>
-                      <li>官方QQ群：261955909</li>
-                      <li>客服电话：400-888-1898</li>
-                      <li>当前版本：1.0测试版</li>
-                      <!--<button class="btn-white-small mgt10">提交意见反馈</button>-->
-                    </ul>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
-                </div><!-- 首页结束 -->
+    <!-- 首页结束 -->
 </div>
 <!-- container end -->
 
-<script>
-    var list_paramMap = {
-        source: {
-            0: '未选择',
-            1: '本地',
-            2: '网络',
-            3: '家政在线'
-        },
-        type: {
-            1: '临时钟点工',
-            2: '长期钟点工',
-            3: '保姆',
-            4: '育儿嫂',
-            5: '疾病护理',
-            6: '老人护理',
-            7: '月嫂',
-            8: '早教',
-            9: '催乳师'
-        },
-        status: {
-            0: '待处理',
-            1: '试工中',
-            2: '服务中',
-            3: '已完成',
-            4: '试工失败',
-            5: '需求终止',
-            6: '已取消'
-        }
-    };
-    $(function(){
-        $.get('http://api.jiazhengol.com/demands/list', function(data){
-            var listdata = JSON.parse(data).data.list;
-            var str = ''
-            $.each(listdata, function(index, value){
-                if(index > 3) return false;
-                var status = value.bill_status || value.status;
-                var link_button;
-                switch (status){
-                    case 0:
-                        link_button =  "order-wait.html?orderId=" + value.id;
-                        break;
-                    case 1:
-                        link_button =  "order-setup.html?orderId=" + value.id;
-                        break;
-                    case 3:
-                        link_button =  "order-finish.html?orderId=" + value.id;
-                        break;
-                    case 5:
-                        link_button =  "order-abend.html?orderId=" + value.id;
-                        break;
-                    case 6:
-                        link_button =  "order-canceled.html?orderId=" + value.id;
-                        break;
-                    default :
-                        link_button =  "order-service.html?orderId=" + value.id;
-                }
-                str += "<tr>\
-                  <td><strong>" + (value.employee_name || '未指派') + "</strong></td>\
-                  <td>" + value.employer_name + "</td>\
-                  <td>" + paramMap.service_range[value.type] + "</td>\
-                  <td><button data-url='"+link_button+"' type=\"button\" class=\"btn-green-small click-button\">" + list_paramMap.status[value.status] + "</button></td>\
-                </tr>";
-            });
-            $('#order_list').html(str);
-        });
-        $('#click_for_more').on('click', function(){
-           window.location.href = 'list-local.html';
-            $(parent.document).find("#menuUl .selected").removeClass("selected");
-            $(parent.document).find("#menuUl li").eq(2).addClass("selected");
-        });
-        $('#order_list_wrap').delegate('.click-button','click', function(){
-            var url = $(this).attr('data-url');
-            window.location.href = url;
-            $(parent.document).find("#menuUl .selected").removeClass("selected");
-            $(parent.document).find("#menuUl li").eq(2).addClass("selected");
-        });
-    });
-
-    var pieData = [
-        {
-            value: 300,
-            color: "#F7464A",
-            highlight: "#FF5A5E",
-            label: "保姆"
-        },
-        {
-            value: 50,
-            color: "#46BFBD",
-            highlight: "#5AD3D1",
-            label: "月嫂"
-        },
-        {
-            value: 100,
-            color: "#FDB45C",
-            highlight: "#FFC870",
-            label: "奶妈"
-        },
-        {
-            value: 40,
-            color: "#949FB1",
-            highlight: "#A8B3C5",
-            label: "营养师"
-        },
-        {
-            value: 120,
-            color: "#4D5360",
-            highlight: "#616774",
-            label: "钟点工"
-        }
-
-    ];
- window.onload = function(){
-        var ctx = document.getElementById("chart-area").getContext("2d");
-        window.myPie = new Chart(ctx).Pie(pieData);
-      };
-//    window.onload = function () {
-//        var ctx = document.getElementById("chart-area").getContext("2d");
-//        window.myPie = new Chart(ctx).Pie(pieData);
-//    };
-
-    $(function () {
-        $('#testLi').click(function() {
-            window.location.href = "http://www.jiazhengol.com/download/%E4%BA%A7%E5%93%81%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E-%E5%85%AC%E6%B5%8B%E7%89%88.rar";
-        })
-    })
-
-</script>
-  <script src="js/Chart.js"></script>
+<script src="js/files/indexContent.js"></script>
 </body>
 </html>

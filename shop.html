@@ -1,25 +1,10 @@
 <html>
 <header>
     <script src="js/allBiz.js"></script>
-    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
-    <link href="js/bootgrid/jquery.bootgrid.css" rel="stylesheet"/>
-    <script src="js/bootstrap-datetimepicker.js"></script>
-    <script src="js/bootgrid/jquery.bootgrid.js"></script>
-    <script src="js/bootgrid/jquery.bootgrid.fa.js"></script>
-    <script>
-        var shop_paramMap = {
-            type: {
-                1: '连锁',
-                2: '加盟'
-            },
-            status: {
-                0: '审核中',
-                1: '审核未通过',
-                2: '审核通过',
-                3: '申请删除中'
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="js/libs/bootgrid/jquery.bootgrid.css"/>
+    <script src="js/libs/bootgrid/jquery.bootgrid.js"></script>
+    <script src="js/libs/bootgrid/jquery.bootgrid.fa.js"></script>
+    <script src="js/files/shop.js"></script>
 </header>
 <body>
 
@@ -101,103 +86,5 @@
     <!-- 内容表格结束 -->
 </div>
 <!-- 面包屑导航样式结束 -->
-
-
-<script>
-    $(function () {
-                function init() {
-                    $("#dataGrid").bootgrid({
-                                ajax: true,
-//                post: function ()
-//                {
-//                    /* To accumulate custom parameter with the request object */
-//                    return {
-//                        id: "b0df282a-0d67-40e5-8558-c9e93b7befed"
-//                    };
-//                },
-                                url: function(){
-                                    var searchPhrase = $("#dataGrid").bootgrid("getSearchPhrase");
-                                    if(searchPhrase.length){
-                                        return "http://api.jiazhengol.com/Shop/list";
-                                    }else{
-                                        return "http://api.jiazhengol.com/Shop/list";
-                                    }
-                                },
-                                responseHandler: function (res) {
-                                    if(res.code === -1){
-                                        $.scojs_message('登录失效，请退出后请重新登录！', $.scojs_message.TYPE_ERROR);
-                                      }
-                                    var retResult = {};
-                                    retResult["rows"] = res.data.list;
-                                    retResult["rowCount"] = res.data.list.length;
-                                    retResult["total"] = res.data.pager.count;
-                                    retResult["current"] = parseInt(res.data.pager.page);
-                                    return retResult;
-                                },
-                                formatters: {
-                                    "link": function (column, row) {
-                                        return "<a href=\"#\">" + column.id + ": " + row.id + "</a>";
-                                    },
-                                    "type": function (column, row) {
-                                        return shop_paramMap.type[row.status]
-                                    },
-                                    "status": function (column, row) {
-                                        return shop_paramMap.status[row.status]
-                                    },
-                                    "business" : function (column, row) {
-                                        return paramMap.service_range[row.status]
-                                    }
-                                },
-                                rowCount: [10, 12, 18],
-                                labels: {
-                                    infos: "",
-                                    search: "搜索门店",
-                                    noResults: '没有记录'
-                                },
-                                padding: 100,
-                                templates: {
-                                    header: "",
-                                    search: ""
-                                },
-                                css: {
-                                    search: "shopSearchField search"
-//                    actions : "shopActionField"
-                                }
-                            }
-                    )
-                }
-
-                init();
-
-                $("#confirmDelete").on("click", function () {
-                    var removdeIdsArr = $("#dataGrid").bootgrid("getSelectedRows");
-
-                    var removedIdsStr = '';
-                    if (!removdeIdsArr || removdeIdsArr.length == 0) {
-                        return;
-                    }
-                    removedIdsStr = removdeIdsArr.join(',');
-                    $.ajax({
-                        url: 'http://api.jiazhengol.com/Shop/del',
-                        type: 'POST',
-                        data: {id : removedIdsStr},
-                        success: function (ret) {
-                            $('#confirmDeleteModal').modal('hide');
-                            $("#dataGrid").bootgrid("remove");
-                        },
-                        error: function (ret) {
-                            $('#confirmDeleteModal').modal('hide');
-                            alert('内部错误')
-                        }
-                    })
-
-                });
-            }
-    );
-</script>
 </body>
-
-<script type="text/javascript">
-    $('#myTab li:first').tab('show') // Select first tab
-</script>
 </html>

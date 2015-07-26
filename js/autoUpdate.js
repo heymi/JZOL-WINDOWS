@@ -35,15 +35,21 @@ var oriFileName;
 
 if(!copyPath){
     request.get(url.resolve(pkg.manifestUrl, '/version/'+ pkg.version));
-    document.getElementById('version').innerHTML = 'current version ' + pkg.version;
+    var version_dom = document.getElementById('version');
+    if(version_dom){
+        version_dom.innerHTML = 'current version ' + pkg.version;
+    }
     newVersionCheckIntervalId = setInterval(function(){
         if(!d && !tryingForNewVersion) {
             tryingForNewVersion = true; //lock
             upd.checkNewVersion(versionChecked);
         }
-    }, 500);
+    }, 60e3);
 } else {
-    document.getElementById('version').innerHTML = 'copying app';
+    var version_dom = document.getElementById('version');
+    if(version_dom){
+        version_dom.innerHTML = 'copying app';
+    }
     upd.install(copyPath, newAppInstalled);
 
     function newAppInstalled(err){

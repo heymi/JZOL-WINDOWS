@@ -1,16 +1,14 @@
 <html>
 <header>
     <script src="js/allBiz.js"></script>
-    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
-    <script src="js/bootstrap-datetimepicker.js"></script>
-    <script src="js/paramMap.js"></script>
-    <link rel="stylesheet" href="js/utils/uploadPhoto.css">
-    <script src="js/utils/uploadPhoto.js"></script>
+    <script src="js/data/paramMap.js"></script>
+    <script src="js/files/aunt-resume.js"></script>
     <style>
-        body{
+        body {
             -webkit-user-select: none;
         }
-        dd,p,span{
+
+        dd, p, span {
             -webkit-user-select: auto;
         }
     </style>
@@ -18,73 +16,7 @@
 <body>
 <script>
 
-    var imgUrl = "http://images.jiazhengol.com/";
-    $(function () {
-        var employeeId = getQueryString('employeeId');
-        var paramData = {employee_id: employeeId};
 
-        $.ajax({
-            url: 'http://api.jiazhengol.com/employee/detail',
-            type: 'POST',
-            data: paramData,
-            success: function (ret) {
-                var retObj = JSON.parse(ret);
-                var dataDynamic = retObj.data.dynamic;
-                var dataStatic = retObj.data.static;
-
-                //基本信息
-                var header_desc_str = $.province_city_area(retObj.data.static.native_prov,retObj.data.static.native_city,retObj.data.static.native_area) + '人。';
-                if(retObj.data.static.career){
-                    header_desc_str += '年工作经验。';
-                }
-                $('#header-desc').text(header_desc_str);
-                if(retObj.data.static.career){
-                    $('#career').text(retObj.data.static.career + '年');
-                }else{
-                    $('#career').hide().prev().hide();
-                }
-                $('#aunt_native').text($.province_city_area(retObj.data.static.native_prov,retObj.data.static.native_city,retObj.data.static.native_area));
-                $('#aunt_living').text($.province_city_area(retObj.data.static.living_prov,retObj.data.static.living_city,retObj.data.static.living_area,retObj.data.static.living_address));
-                $("#identity").text(retObj.data.static.identity);
-                $(".aunt-name").text(retObj.data.static.name);
-                $("#sex").text(paramMap.sex[retObj.data.static.sex]);
-                $("#qualification").text(paramMap.qualification[retObj.data.static.qualification]);
-                $("#phone").text(retObj.data.static.phone);
-                $("#age").text(retObj.data.static.age);
-                $("#identity").text(retObj.data.static.identity);
-                $('#marriage').text(paramMap.marriage[retObj.data.static.marriage])
-                var aunt_addr = retObj.data.static.living_address;
-                $('#addr').attr('href','http://map.baidu.com/?l=&s=s%26wd%3D'+ aunt_addr).text(aunt_addr);
-                $('#expected_salary').text(retObj.data.static.expect_salary ? retObj.data.static.expect_salary + '/月' : '无');
-                $('#arrival_time').text(dataDynamic.arrival_time || '暂无');
-                $('#zodiac_sign').text(paramMap.zodiac_sign[dataStatic.zodiac_sign]);
-                $('#constellation').text(paramMap.constellation[dataStatic.constellation]);
-
-                if(dataDynamic.service_prov && dataDynamic.service_city){
-                    $('#service_addr').text($.province_city_area(dataDynamic.service_prov, dataDynamic.service_city));
-                }
-                if(retObj.data.upload[1]){
-                    $('#aunt_avatar').attr('src', imgUrl + retObj.data.upload[1].dir_name  + '/' + retObj.data.upload[1].image_l);
-                }
-                _.each(retObj.data.upload, function (rec) {
-                    if (rec.type == 'identity' || rec.type == 'identityHander') {
-                        document.getElementById(rec.type + "ImgDiv").innerHTML = '<img id="' + rec.type + 'Img" src="' + imgUrl + rec.dir_name + '/' + rec.image_l + '">';
-                    } else {
-                        var imgSrc = imgUrl + rec.dir_name + '/' + rec.image_l;
-                        var formLastChild = $('#certFormId:last-child');
-                        var newArea = createPhotoDisplayDiv4Resume(rec.type, imgSrc)
-                        formLastChild.append(newArea);
-                    }
-                })
-
-                //工作信息
-                var service_range = getMultiValue('service_range',retObj.data.dynamic.service_range,paramMap);
-                $('#service_range').text(service_range || '暂无');
-
-                $('#remard').text(retObj.data.dynamic.remark || '暂无');
-            }
-        })
-    })
 </script>
 <div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
     <div class="content-wrapper">
@@ -96,11 +28,6 @@
                 </ol>
             </div>
 
-
-            <div class="header-action float-right" style="display: none">
-                <button type="button" class="btn-blue mgl10 fr" onClick="location.href='aunt-list.html'">阿姨历史订单
-                </button>
-            </div>
         </div>
         <div class="aunt-content ">
             <div class="personal-cv">
@@ -265,7 +192,8 @@
                         </div>
                         <div class="fl col-xs-6 col-md-3" id="identityHanderDiv">
                             <div id="identityHanderImgDiv" class="img-wrap">
-                                <img id="'identityHanderImg" width=100 height=100 border=0 src='img/jiazhengol.jpg' align="生活照">
+                                <img id="'identityHanderImg" width=100 height=100 border=0 src='img/jiazhengol.jpg'
+                                     align="生活照">
                             </div>
                             <center>生活照</center>
                         </div>
@@ -285,7 +213,8 @@
                     </div>
                 </div>
                 <!-- title-box end -->
-                <button type="button" class="btn-yellow mgl20 fr" onClick="location.href='add-aunt.html?employeeId='+getQueryString('employeeId')"><i
+                <button type="button" class="btn-yellow mgl20 fr"
+                        onClick="location.href='add-aunt.html?employeeId='+getQueryString('employeeId')"><i
                         class="fa fa-pencil pl19"></i> 编辑简历
                 </button>
 
@@ -298,11 +227,5 @@
     <!-- container end -->
 </div>
 </section>
-
 </body>
-<script type="text/javascript">
-    $('#datetimepicker').datetimepicker({
-        format: 'yyyy-mm-dd hh:ii'
-    });
-</script>
 </html>

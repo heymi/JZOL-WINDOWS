@@ -1,140 +1,123 @@
 <html>
 <header>
-	<script src="js/allBiz.js"></script>
-	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
-	<script src="js/bootstrap-datetimepicker.js"></script>
+    <script src="js/allBiz.js"></script>
 </header>
 <body>
 
 <div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
-				<div class="content-wrapper">
-					<div class="content-header-inner">
-					<div class="bread-nav float-left">
-						<ol class="breadcrumb">
-							<li><a href="account.html">账号管理</a></li>
-	 						<li class="active"><strong>李阿静的信息</strong></li>
-						</ol>
-					</div>				
-				</div>
-					<div class="form-dialog">
-						<div class="form-content">     
-   							<div class="form-body">
-   								<div class="modal-body-wrapper">
-									<form class="form-inline">
-										<h5 class="form-title">员工资料</h5>
-										<div class="form-group">
-										    <label for="exampleInputEmail1">员工姓名：</label>
-										    李阿静
-										 
-										</div>
-										<div class="form-group">
-										   <label for="exampleInputPassword1" class="text-indent">性别：</label>
-										   先生
-										</div>
-										<div class="form-group">
-										    <label for="">手机号码：</label>
-										    18242094002
-										   
-										</div>
-										
-										<div class="form-group">
-										    <label for="">家庭住址：</label>
-										  上海市杨浦区五角场大学路212号
-										</div>
-										<div class="form-group">
-										    <label for="">身份证号：</label>
-										    32081019904230412
-										</div>
-									  
-									</form>
-								
+    <div class="content-wrapper">
+        <div class="content-header-inner">
+            <div class="bread-nav float-left">
+                <ol class="breadcrumb">
+                    <li><a href="account.html">账号管理</a></li>
+                    <li class="active"><strong>李阿静的信息</strong></li>
+                </ol>
+            </div>
+        </div>
+        <div class="form-dialog">
+            <div class="form-content">
+                <div class="form-body">
+                    <div class="modal-body-wrapper">
+                        <form class="form-inline">
+                            <h5 class="form-title">员工资料</h5>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">员工姓名：</label>
+                                李阿静
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1" class="text-indent">性别：</label>
+                                先生
+                            </div>
+                            <div class="form-group">
+                                <label for="">手机号码：</label>
+                                18242094002
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">家庭住址：</label>
+                                上海市杨浦区五角场大学路212号
+                            </div>
+                            <div class="form-group">
+                                <label for="">身份证号：</label>
+                                32081019904230412
+                            </div>
+
+                        </form>
 
 
-							
-	<form class="form-inline">
-	<h5 class="form-title">登录信息</h5>
-<fieldset disabled>
-	<div class="form-group">
-      <label for="disabledTextInput">登录帐号：</label>
-      <input type="text" id="disabledTextInput" class="form-control" placeholder="Gaykenajing">
+                        <form class="form-inline">
+                            <h5 class="form-title">登录信息</h5>
+                            <fieldset disabled>
+                                <div class="form-group">
+                                    <label for="disabledTextInput">登录帐号：</label>
+                                    <input type="text" id="disabledTextInput" class="form-control"
+                                           placeholder="Gaykenajing">
+                                </div>
+                            </fieldset>
+                            <label for="disabledTextInput">重置密码：</label>
+                            <button type="button" class="btn-grey-danger mgt20">重置该用户的密码为123456</button>
+
+                        </form>
+
+
+                        <form class="form-inline">
+                            <h5 class="form-title">用户组</h5>
+
+                            <div class="form-group">
+                                <label for="exampleInputPassword1" class="text-indent">级别：</label>
+                                <label class="radio">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"
+                                           checked> 业务员
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option2"
+                                           disabled> 店长
+                                </label>
+                            </div>
+
+                        </form>
+
+
+                    </div>
+                </div>
+
+
+                <div class="form-footer">
+
+                    <button type="button" class="btn-none btn btn-default" onClick="location.href='#'"><i
+                            class="fa fa-pencil pl19"></i><span class="pl10">修改信息</span></button>
+
+
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">放弃添加</h4>
+                        </div>
+                        <div class="modal-body">
+                            您确定放弃当前添加？
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary">放弃</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-				</fieldset>
-				<label for="disabledTextInput">重置密码：</label>
-	<button type="button" class="btn-grey-danger mgt20">重置该用户的密码为123456</button>
-
-	</form>
-
-
-	<form class="form-inline">
-						<h5 class="form-title">用户组</h5>
-									  <div class="form-group">
-										   <label for="exampleInputPassword1" class="text-indent">级别：</label>
-										   <label class="radio">
-											  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked> 业务员
-											</label>
-											<label class="radio">
-											  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option2" disabled> 店长
-											</label>
-										</div>
-
-									</form>
-
-
-
-
-						      </div>
-						     </div>
-
-
-						      <div class="form-footer">
-						      
-						      	<button type="button" class="btn-none btn btn-default" onClick="location.href='#'"><i class="fa fa-pencil pl19"></i><span class="pl10">修改信息</span></button>
-						        
-						       
-						      </div>
-						    </div>
-						    
-						<!-- Modal -->
-							<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-							  <div class="modal-dialog modal-sm">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							        <h4 class="modal-title" id="myModalLabel">放弃添加</h4>
-							      </div>
-							      <div class="modal-body">
-							        您确定放弃当前添加？
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-							        <button type="button" class="btn btn-primary">放弃</button>
-							      </div>
-							    </div>
-							  </div>
-							</div>
-					</div>	
-			</div><!-- container end -->
-		</div>
-	</section>
-
-	<script src="js/jquery-2.0.2.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/bootstrap-datetimepicker.js"></script>
-	<script src="js/sco.message.js"></script>
-	<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>
+    <!-- container end -->
+</div>
+</section>
 </body>
-<script type="text/javascript"> 
-	$('#message_trigger_ok').on('click', function(e) {
-    e.preventDefault();
-    $.scojs_message('添加成功', $.scojs_message.TYPE_OK);
-  });
-  $('#message_trigger_err').on('click', function(e) {
-    e.preventDefault();
-    $.scojs_message('添加失败', $.scojs_message.TYPE_ERROR);
-    });
-   $('#datetimepicker').datetimepicker({
-   	autoclose: true,
-    format: 'yyyy-mm-dd'
-});
-</script>  
 </html>

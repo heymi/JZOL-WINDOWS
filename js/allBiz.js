@@ -13,25 +13,23 @@ document.write('<link rel="stylesheet" href="css/kit.css">');
 document.write('<link rel="stylesheet" href="css/style.css">');
 document.write('<link rel="stylesheet" href="css/sco.message.css">');
 document.write('<link rel="stylesheet" href="css/dropzone.css">');
-document.write('<script src="js/jquery-2.0.2.js"></script>');
+document.write('<script src="js/libs/jquery-2.0.2.js"></script>');
 document.write('<script src="node_modules/underscore/underscore.js"></script>');
-document.write('<script src="js/bootstrap.min.js"></script>');
-document.write('<script src="js/lodash.min.js"></script>');
-document.write('<script src="js/Chart.js"></script>');
-document.write('<script src="js/jquery.bootstrap-autohidingnavbar.js"></script>');
-document.write('<script src="js/sco.message.js"></script>');
-document.write('<script src="js/commonUtils.js"></script>');
-document.write('<script src="js/errorCode.js"></script>');
-document.write('<script src="js/utils/provinceCity.js"></script>');
-document.write('<script src="js/date.format.js"></script>');
-document.write('<script src="js/prov_city_area.js"></script>');
-document.write('<script src="js/store.js"></script>');
+document.write('<script src="js/libs/bootstrap.min.js"></script>');
+document.write('<script src="js/libs/lodash.min.js"></script>');
+document.write('<script src="js/libs/Chart.js"></script>');
+document.write('<script src="js/libs/jquery.bootstrap-autohidingnavbar.js"></script>');
+document.write('<script src="js/libs/sco.message.js"></script>');
+document.write('<script src="js/utils/commonUtils.js"></script>');
+document.write('<script src="js/data/errorCode.js"></script>');
+document.write('<script src="js/libs/date.format.js"></script>');
+document.write('<script src="js/config.js"></script>'); //配置文件
+document.write('<script src="js/utils/prov_city_area.js"></script>');
+document.write('<script src="js/libs/store.js"></script>');
 document.write('<script src="js/init.js"></script>');
 document.write('<script src="js/autoUpdate.js"></script>');
-
-
-document.write('<script src="js/paramMap.js"></script>');
+document.write('<script src="js/data/paramMap.js"></script>');
 
 //date picker
 document.write('<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">');
-document.write('<script src="js/bootstrap-datetimepicker.js"></script>');
+document.write('<script src="js/libs/bootstrap-datetimepicker.js"></script>');

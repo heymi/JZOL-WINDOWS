@@ -1,58 +1,41 @@
-
 <html>
 <header>
-	<script src="js/allBiz.js"></script>
-	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
-	<link href="js/bootgrid/jquery.bootgrid.css" rel="stylesheet"/>
-	<script src="js/bootstrap-datetimepicker.js"></script>
-	<script src="js/bootgrid/jquery.bootgrid.js"></script>
-    <script src="js/bootgrid/jquery.bootgrid.fa.js"></script>
-	<script src="js/paramMap.js"></script>
-	<script>
-		function getAuntDetail(id,callback){
-			var paramData = {employee_id: id};
-
-			$.ajax({
-				url: 'http://api.jiazhengol.com/employee/detail',
-				type: 'POST',
-				data: paramData,
-				success: function (ret) {
-					var retObj = JSON.parse(ret);
-					return callback(retObj.data.static);
-				}
-			})
-		}
-	</script>
+    <script src="js/allBiz.js"></script>
+    <link href="js/libs/bootgrid/jquery.bootgrid.css" rel="stylesheet"/>
+    <script src="js/libs/bootgrid/jquery.bootgrid.js"></script>
+    <script src="js/libs/bootgrid/jquery.bootgrid.fa.js"></script>
+    <script src="js/data/paramMap.js"></script>
+    <script src="js/files/order-match.js"></script>
 </header>
 <body>
 
 <div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
-				<div class="content-wrapper">
+    <div class="content-wrapper">
 
-					<!-- 面包屑导航样式开始 -->
-					<div class="content-header-inner clearfix">
-						<div class="bread-nav float-left">
-							<ol class="breadcrumb">
-								<li><a href="list-local.html">订单管理</a></li>
-		 						<li><a href="list-shared.html">本地订单</a></li>
-		 						<li class="active"><strong>符合的阿姨</strong></li>
-							</ol>
-						</div>
+        <!-- 面包屑导航样式开始 -->
+        <div class="content-header-inner clearfix">
+            <div class="bread-nav float-left">
+                <ol class="breadcrumb">
+                    <li><a href="list-local.html">订单管理</a></li>
+                    <li><a href="list-shared.html">本地订单</a></li>
+                    <li class="active"><strong>符合的阿姨</strong></li>
+                </ol>
+            </div>
 
-					<!--<div class="header-action float-right">-->
-						<!--<button type="button" class="btn-blue mgl7 fr" data-toggle="modal" data-target="#shareList">分享订单</button>-->
-						<!--<button type="button" class="btn-grey mgl7 fr" data-toggle="modal" data-target="#myModal">全部阿姨</button>-->
-							<!--</div>-->
+            <!--<div class="header-action float-right">-->
+            <!--<button type="button" class="btn-blue mgl7 fr" data-toggle="modal" data-target="#shareList">分享订单</button>-->
+            <!--<button type="button" class="btn-grey mgl7 fr" data-toggle="modal" data-target="#myModal">全部阿姨</button>-->
+            <!--</div>-->
 
-						</div>
-						<!-- 面包屑导航样式结束 -->
-		<!-- 匹配列表开始 -->
-	<!-- <h4>匹配到26位阿姨</h4> -->
-	<div class="tab-content">
+        </div>
+        <!-- 面包屑导航样式结束 -->
+        <!-- 匹配列表开始 -->
+        <!-- <h4>匹配到26位阿姨</h4> -->
+        <div class="tab-content">
 
             <div class="normal-table match_table">
 
-				<table id="dataGrid" class="table table-condensed table-hover table-striped" data-selection="true"
+                <table id="dataGrid" class="table table-condensed table-hover table-striped" data-selection="true"
                        data-multi-select="true" data-row-select="true" data-keep-selection="true">
                     <thead>
                     <tr>
@@ -74,364 +57,159 @@
                     <tbody>
                     </tbody>
                 </table>
-				<div class="slide-menu slide-menu-style">
-					<iframe width="100%" frameborder="0"
-							style='background-color: #FFF;height:100%; min-height: 800px; min-height: 800px;'
-							id="rightContent2"
-							src="">
-					</iframe>
-									<!--<div class="item-container">-->
-
-<!--<div class="cv-mini-summary cv-summary mgb40 clearfix "> &lt;!&ndash; 浮动清除 &ndash;&gt;-->
-						<!--<img src="img/avatar.jpg" alt="avata" width="90" height="90" class="mgt5 fl">-->
-						<!--<div class="fr cv-mini cv-descriptions mgt5 fl">-->
-							<!--<h3>刘亦菲</h3>-->
-							<!--<p class="gray f14">山东日照人，拥有 <mark>2 年月嫂从业经验</mark>，普通话标准、懂初级英语，擅长做东北菜。</p>-->
-						<!--</div>-->
-
-					<!--</div> &lt;!&ndash; cv-summary &ndash;&gt;-->
-
-
-
-<!--<div class="title-box clearfix"> &lt;!&ndash; 浮动清除 &ndash;&gt;-->
-					<!--<div class="line-mini line">-->
-						<!--<h3 class="b titles titles-mini">基础简历</h3>-->
-					<!--</div>-->
-							<!--<dl class="dl-horizontal-mini dl-horizontal f16 fl">-->
-  								<!--<dt class="gray">姓名：</dt>-->
-  								<!--<dd>耿莉娟</dd>-->
-  								<!--<dt class="gray">性别：</dt>-->
-  								<!--<dd>女</dd>-->
-  								<!--<dt class="gray">籍贯：</dt>-->
-  								<!--<dd>山东烟台</dd>-->
-  								<!--<dt class="gray">学历：</dt>-->
-  								<!--<dd >大专</dd>-->
-							<!--</dl>-->
-
-							<!--<dl class="dl-horizontal-mini dl-horizontal f16 fl">-->
-  								<!--<dt class="gray">年龄：</dt>-->
-  								<!--<dd>40</dd>-->
-  								<!--<dt class="gray">属相：</dt>-->
-  								<!--<dd>猪</dd>-->
-  								<!--<dt class="gray">星座：</dt>-->
-  								<!--<dd>天秤座</dd>-->
-  								<!--<dt class="gray">婚姻状况：</dt>-->
-  								<!--<dd >已婚</dd>-->
-							<!--</dl>-->
-
-							<!--<dl class="dl-horizontal-mini dl-horizontal f16 fl">-->
-  								<!--<dt class="gray">求职意向：</dt>-->
-  								<!--<dd>月嫂/保姆</dd>-->
-  								<!--<dt class="gray">期望薪水：</dt>-->
-  								<!--<dd>7-8000/月</dd>-->
-  								<!--<dt class="gray">任职日期：</dt>-->
-  								<!--<dd>即日</dd>-->
-  								<!--<p><a href="#" title="查看详细资料" class="fontblue"><u>查看详细资料 &gt;</u></a></p>-->
-							<!--</dl>-->
-
-					<!--</div>&lt;!&ndash; title-box end &ndash;&gt;-->
-
-								<!--&lt;!&ndash; 从业经历开始 &ndash;&gt;-->
-								<!--<div class="title-box clearfix"> &lt;!&ndash; 浮动清除 &ndash;&gt;-->
-									<!--<div class="line-mini line">-->
-										<!--<h3 class="b titles titles-mini">从业经历</h3>-->
-								<!--</div>-->
-
-								<!--<div class="timeline-mini timeline">-->
-								    	<!--<div class="event-wrap-mini event-wrap">-->
-								      			<!--<h3>老阿姨家政公司<img src="img/cp_logo_1.png" alt="avata" width="36" height="36"></h3>-->
-
-								      			<!--<div class="event-box title-box clearfix"> &lt;!&ndash; 浮动清除 &ndash;&gt;-->
-									<!--<ul class="list-inline">-->
-								 						 <!--<li>职务一：<span>老人看护</span></li>-->
-								 						 <!--<li>服务地点：<span>静安区达安花园</span></li>-->
-								 						 <!--<li>薪资：<span>3000元/月</span></li>-->
-													<!--</ul>-->
-													<!--<ul class="list-inline">-->
-								 						 <!--<li>职务二：<span>月嫂</span></li>-->
-								 						 <!--<li>服务地点：<span>长宁区心族公寓</span></li>-->
-								 						 <!--<li>薪资：<span>4200元/月</span></li>-->
-													<!--</ul>-->
-													<!--</div>&lt;!&ndash; event-box end &ndash;&gt;-->
-								      	<!--</div>  &lt;!&ndash; event-wrap end &ndash;&gt;-->
-
-								    	<!--<div class="event-wrap-mini event-wrap">-->
-								      			<!--<h3>洁家家政公司<img src="img/cp_logo_2.png" alt="avata" width="36" height="36"></h3>-->
-
-								      			<!--<div class="event-box title-box clearfix"> &lt;!&ndash; 浮动清除 &ndash;&gt;-->
-													<!--<ul class="list-inline">-->
-								 						 <!--<li>职务一：<span>老人看护</span></li>-->
-								 						 <!--<li>服务地点：<span>静安区达安花园</span></li>-->
-								 						 <!--<li>薪资：<span>3000元/月</span></li>-->
-													<!--</ul>-->
-												<!--</div>&lt;!&ndash; event-box end &ndash;&gt;-->
-
-								      	<!--</div>  &lt;!&ndash; event-wrap end &ndash;&gt;-->
-
-								      	<!--</div>-->
-
-								 <!--</div>-->
-								 <!--&lt;!&ndash; 从业经历结束 &ndash;&gt;-->
+                <div class="slide-menu slide-menu-style">
+                    <iframe width="100%" frameborder="0"
+                            style='background-color: #FFF;height:100%; min-height: 800px; min-height: 800px;'
+                            id="rightContent2"
+                            src="">
+                    </iframe>
+                </div>
+                <div class="fog-hover"></div>
+                <!-- 右侧页遮罩层 -->
+                <!-- Modal -->
+                <div class="modal fade" id="sendingAunt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content clearfix">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">派工</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-content sendingform">
 
 
-										<!--<div class="b-group clearfix">-->
+                                    <form class="form-inline">
 
-										<!--<button class="btn-white button-slide-menu fl"><i class="fa fa-refresh"></i> 重新选择</button>-->
-										<!--<button type="button" class="btn-blue-big btn-position btn btn-primary btn-lg fl" data-toggle="modal" data-target="#sendingAunt">-->
-										  <!--<i class="fa fa-thumbs-o-up"></i> 派送此阿姨-->
-										<!--</button>-->
+                                        <div class="form-group">
+                                            <label for="">试工时间：</label>
+                                            <input id="trial_time" type="text"
+                                                   class="form-control form-control-2x datetimepicker" value="">
 
-										<!--</div>-->
+                                        </div>
+                                        <div class="form-group">
 
+                                            <label for="">试工几天：</label>
+                                            <input id="trial_day" type="text" class="form-control form-control-2x"
+                                                   value="">
+                                        </div>
+                                        <div class="form-group">
 
-									<!--</div>-->
-								</div>
-							<div class="fog-hover"></div> <!-- 右侧页遮罩层 -->
-							<!-- Modal -->
-				<div class="modal fade" id="sendingAunt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			  <div class="modal-dialog">
-			    <div class="modal-content clearfix">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title" id="myModalLabel">派工</h4>
-			      </div>
-			      <div class="modal-body">
-      			    <div class="form-content sendingform">
+                                            <label for="">阿姨姓名：</label>
+                                            <input id="employee_id" type="hidden">
+                                            <span id="employee_name"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">联系电话：</label>
+                                            <span id="employee_tel"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">雇主中介费：</label>
+                                            <input id="employer_money" type="text" class="form-control form-control-2x "
+                                                   value=""> 元
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">阿姨中介费：</label>
+                                            <input id="employee_money" type="text" class="form-control form-control-2x "
+                                                   value=""> 元
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">阿姨薪资：</label>
+                                            <input id="employee_end_pay_money" type="text"
+                                                   class="form-control form-control-2x " value=""> 元
+                                            <select id="employee_end_pay_types" class="form-control">
+                                                <option value="0">月</option>
+                                                <option value="1">小时</option>
+                                            </select>
+                                        </div>
+                                    </form>
 
+                                </div>
+                            </div>
 
-									<form class="form-inline">
+                            <div class="modal-footer clearfix">
+                                <button type="button" class="btn-none" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn-green" id="dispath_aunt">确认</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="shareList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content clearfix">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">分享设置</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-content">
 
-										<div class="form-group">
-										     <label for="">试工时间：</label>
-												<input id="trial_time" type="text" class="form-control form-control-2x datetimepicker" value="">
+                                    <div class="form-body">
+                                        <div class="modal-body-wrapper">
+                                            <form class="">
 
-										</div>
-										<div class="form-group">
+                                                <div class="form-group">
+                                                    <label for="">分享时间：</label>
+                                                    <input type="text"
+                                                           class="form-control form-control-2x datetimepicker" value=""><span
+                                                        class="input-span">到</span>
+                                                    <input type="text"
+                                                           class="form-control form-control-2x datetimepicker">
 
-											<label for="">试工几天：</label>
-												<input id="trial_day" type="text" class="form-control form-control-2x" value="" >
-									    </div>
-										<div class="form-group">
+                                                </div>
 
-											<label for="">阿姨姓名：</label>
-												<input id="employee_id" type="hidden">
-												<span id="employee_name"></span>
-									    </div>
-									  <div class="form-group">
-											<label for="">联系电话：</label>
-										  <span id="employee_tel"></span>
-									    </div>
-										 <div class="form-group">
-											<label for="">雇主中介费：</label>
-												<input id="employer_money" type="text" class="form-control form-control-2x " value="" > 元
-									    </div>
-									     <div class="form-group">
-											<label for="">阿姨中介费：</label>
-												<input id="employee_money" type="text" class="form-control form-control-2x " value="" > 元
-									    </div>
-									     <div class="form-group">
-											<label for="">阿姨薪资：</label>
-												<input id="employee_end_pay_money" type="text" class="form-control form-control-2x " value="" > 元
-												<select id="employee_end_pay_types" class="form-control"><option value="0">月</option><option value="1">小时</option></select>
-									    </div>
-																				</form>
+                                                <div class="form-group">
+                                                    <label for="">分享范围：</label>
+                                                    <!-- Small button group -->
+                                                    <select class="form-control form-control-1x
+												">
+                                                        <option value="">所有门店</option>
+                                                    </select>
 
-						      </div>
-						     </div>
+                                                </div>
 
-					      <div class="modal-footer clearfix">
-					        <button type="button" class="btn-none" data-dismiss="modal">取消</button>
-					        <button type="button" class="btn-green" id="dispath_aunt">确认</button>
-					      </div>
-					    </div>
-					</div>
-					</div>
-			<div class="modal fade" id="shareList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			  <div class="modal-dialog">
-			    <div class="modal-content clearfix">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title" id="myModalLabel">分享设置</h4>
-			      </div>
-			      <div class="modal-body">
-      			    <div class="form-content">
-
-   							<div class="form-body">
-   								<div class="modal-body-wrapper">
-									<form class="">
-
-									<div class="form-group">
-										     <label for="">分享时间：</label>
-												<input type="text" class="form-control form-control-2x datetimepicker" value=""><span class="input-span">到</span>
-												<input type="text" class="form-control form-control-2x datetimepicker">
-
-										</div>
-
-										<div class="form-group">
-										    <label for="">分享范围：</label>
-										    <!-- Small button group -->
-												<select class="form-control form-control-1x
-												"><option value="">所有门店</option></select>
-
-										</div>
-
-<div class="form-group">
-										     <label class="laber-pading">负责人：</label>
-												<input type="text" class="form-control form-control-2x" value="">
+                                                <div class="form-group">
+                                                    <label class="laber-pading">负责人：</label>
+                                                    <input type="text" class="form-control form-control-2x" value="">
 
 
-										</div>
+                                                </div>
 
-										<div class="form-group">
-										     <label for="">联系电话：</label>
-												<input type="text" class="form-control form-control-2x" value="">
-
-
-										</div>
-
-									</form>
+                                                <div class="form-group">
+                                                    <label for="">联系电话：</label>
+                                                    <input type="text" class="form-control form-control-2x" value="">
 
 
+                                                </div>
 
-						      </div>
-						     </div>
-						    </div>
-      </div>
-					      <div class="popover-modal-footer modal-footer clearfix">
-					        <button type="button" class="btn-none" data-dismiss="modal">取消</button>
-					        <button type="button" class="btn-green" onClick="location.href='list-shared.html'">确认分享</button>
-					      </div>
-					    </div>
-					</div>
-					</div>
-		</div>
-		</div>
-		<!-- 匹配列表结束 -->
-			</div>
-			<!-- content-wrapper over -->
+                                            </form>
 
 
-					</div>
-					<!-- 订单管理结束 -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="popover-modal-footer modal-footer clearfix">
+                                <button type="button" class="btn-none" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn-green" onClick="location.href='list-shared.html'">
+                                    确认分享
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 匹配列表结束 -->
+    </div>
+    <!-- content-wrapper over -->
+</div>
+<!-- 订单管理结束 -->
 
-			</div><!-- end container -->
-		</div><!-- end content-inner -->
-<script>
-	$(function () {
-				function init() {
-					var postData = store('match_aunt');
-					$("#dataGrid").bootgrid({
-								ajax: true,
-								post: postData,
-								url: "http://api.jiazhengol.com/employee/list",
-								responseHandler: function (res) {
-									var retResult = {};
-									retResult["rows"] = res.data.list;
-									retResult["rowCount"] = res.data.list.length;
-									retResult["total"] = res.data.pager.count;
-									retResult["current"] = parseInt(res.data.pager.page);
-									return retResult;
-								},
-								formatters: {
-									"status": function (column, row) {
-										return paramMap.status[row.status]
-									},
-									"qualification": function (column, row) {
-										return paramMap.qualification[row.qualification]
-									},
-									"service_range": function (column, row) {
-										return paramMap.getCodeValue('service_range', row.service_range)
-									},
-									"operations": function (column, row) {
-										return "<!--<button class=\"btn-white-small button-slide-menu\" type=\"button\">查看简历</button>--><button class=\"btn-green-small open-modal\" type=\"button\" data-toggle=\"modal\" data-id=\""+row.id+"\" data-target=\"#sendingAunt\">派送</button>";
-									},
-									"update_time": function (column, row) {
-										return getLocalTime(row.update_time)
-									},
-									"native_prov": function(column, row){
-                                        return $.province_city_area(row.native_prov);
-                                    }
-								},
-								rowCount: [10, 12, 18],
-								labels: {
-									infos: "",
-									search: "搜索阿姨",
-									noResults: '没有记录'
-								},
-								padding: 100,
-								templates: {
-									header: "",
-									search: ""
-								},
-								css: {
-									search: "shopSearchField search"
-								}
-							}
-					).on("loaded.rs.jquery.bootgrid", function (e) {
-						$('.button-slide-menu').on("click", function () {
-							$(".slide-menu").toggleClass("slide-menu-show");
-							$(".fog-hover").toggleClass("fog");
-							$('.slide-menu iframe').attr('src','aunt-resume.html?employeeId=56');
-						});
-						$(".fog-hover").on("click", function () {
-							$(".slide-menu").toggleClass("slide-menu-show");
-							$(".fog-hover").toggleClass("fog");
-						});
-						$('.open-modal').on('click', function (e) {
-							e.preventDefault();
-							getAuntDetail($(this).attr('data-id'),function(data){
-								$('#employee_id').val(data.id);
-								$('#employee_tel').text(data.phone);
-								$('#employee_name').text(data.name);
-								$('#sendingAunt').modal('show');
-							});
-							return false;
-						});
-					});
-				}
-
-				init();
-			}
-	);
-	$('.datetimepicker').datetimepicker({
-			format: 'yyyy/mm/dd',
-	    autoclose: true,
-		minView: 2
-        });
-	$('#dispath_aunt').on('click', function(e){
-		e.preventDefault();
-		var paramObj = {};
-		paramObj.id = getQueryString('demandId');
-		paramObj.employee_id = $('#employee_id').val();
-		paramObj.employee_name = $('#employee_name').text();
-		paramObj.employee_tel = $('#employee_tel').text();
-		paramObj.employee_money = $('#employee_money').val();
-		paramObj.employer_money = $('#employer_money').val();
-		paramObj.employee_end_pay_money = $('#employee_end_pay_money').val();
-		paramObj.employee_end_pay_types = $('#employee_end_pay_types').val();
-		paramObj.trial_time = $('#trial_time').val() ? new Date($('#trial_time').val()).getTime()/1000 : 0;
-		paramObj.trial_day = $('#trial_day').val();
-		$.ajax({
-            url: "http://api.jiazhengol.com/demands/dispath",
-            type: 'POST',
-            data: paramObj,
-            success: function (ret) {
-                var retObj = JSON.parse(ret);
-                if (retObj.code == '0') {
-                    $.scojs_message('派送成功', $.scojs_message.TYPE_OK);
-                    setTimeout(function(){
-                      parent.document.getElementById("rightContent").setAttribute("src", "order-setup.html?orderId="+getQueryString('demandId'));
-						$('#sendingAunt').modal('hide');
-                    },1e3);
-                } else{
-					$.scojs_message(errorCode['code_' + retObj.code], $.scojs_message.TYPE_ERROR);
-				}
-            },
-            error: function (ret) {
-                $.scojs_message('派送失败', $.scojs_message.TYPE_ERROR)
-            }
-        });
-	})
-</script>
+</div><!-- end container -->
+</div><!-- end content-inner -->
 </body>
 </html>

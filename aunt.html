@@ -1,18 +1,16 @@
 <html>
 <header>
     <script src="js/allBiz.js"></script>
-    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
-    <link href="js/bootgrid/jquery.bootgrid.css" rel="stylesheet"/>
-    <script src="js/bootstrap-datetimepicker.js"></script>
-    <script src="js/bootgrid/jquery.bootgrid.js"></script>
-    <script src="js/bootgrid/jquery.bootgrid.fa.js"></script>
-    <script src="js/paramMap.js"></script>
+    <link href="js/libs/bootgrid/jquery.bootgrid.css" rel="stylesheet"/>
+    <script src="js/libs/bootgrid/jquery.bootgrid.js"></script>
+    <script src="js/libs/bootgrid/jquery.bootgrid.fa.js"></script>
+    <script src="js/data/paramMap.js"></script>
+    <script src="js/files/aunt.js"></script>
 </header>
 <body>
 
 <div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
     <div class="content-wrapper">
-
         <!-- 面包屑导航样式开始 -->
         <div class="content-header-inner clearfix">
             <div class="bread-nav float-left">
@@ -76,140 +74,13 @@
                 </div>
             </div>
         </div>
-
         <!-- 面包屑导航样式结束 -->
-
-
     </div>
     <!-- end tab-centent -->
-
 </div>
 <!-- end shop -->
 </div>
 </div>
 </section>
-
-<script>
-    $(function () {
-                function init() {
-                    $("#dataGrid").bootgrid({
-                                ajax: true,
-//                                ajaxSettings : {
-//                                    method: "POST",
-//                                    dataType : 'json'
-//                                },
-//                post: function ()
-//                {
-//                    /* To accumulate custom parameter with the request object */
-//                    return {
-//                        id: "b0df282a-0d67-40e5-8558-c9e93b7befed"
-//                    };
-//                },
-                                url: "http://api.jiazhengol.com/employee/list",
-                                responseHandler: function (res) {
-                                    if(res.code === -1){
-                                        $.scojs_message('登录失效，请退出后请重新登录！', $.scojs_message.TYPE_ERROR);
-                                      }
-                                    var retResult = {};
-                                    retResult["rows"] = res.data.list;
-                                    retResult["rowCount"] = res.data.list.length;
-                                    retResult["total"] = res.data.pager.count;
-                                    retResult["current"] = parseInt(res.data.pager.page);
-                                    return retResult;
-                                },
-                                formatters: {
-                                    "status": function (column, row) {
-                                        return paramMap.status[row.status]
-                                    },
-                                    "sex": function (column, row) {
-                                        return paramMap.sex[row.sex]
-                                    },
-                                    "qualification": function (column, row) {
-                                        return paramMap.qualification[row.qualification]
-                                    },
-                                    "service_range": function (column, row) {
-                                        return paramMap.getCodeValue('service_range', row.service_range)
-                                    },
-                                    "operations": function (column, row) {
-                                        return "<button class=\"btn-green-small\"  onClick=\"location.href='aunt-resume.html?employeeId=" + row.id + "'\">简历</button>";
-                                    },
-                                    "update_time" : function (column, row) {
-                                        return getLocalTime(row.update_time)
-                                    },
-                                    "native_prov": function(column, row){
-                                        return $.province_city_area(row.native_prov);
-                                    }
-                                },
-                                rowCount: [10, 12, 18],
-                                labels: {
-                                    infos: "",
-                                    search: "搜索阿姨",
-                                    noResults: '没有记录'
-                                },
-                                padding: 100,
-                                templates: {
-                                    header: "<div id=\"{{ctx.id}}\" class=\"{{css.header}} shopGridHeader\">" +
-                                    "<div class=\"row\">" +
-                                    "<div class=\"col-sm-12 actionBar shopActionBar\">" +
-                                    "<button type=\"button\" class=\"btn-blue mgl7 fr\" onClick=\"location.href='add-aunt.html'\">新增阿姨</button>" +
-                                    "<p class=\"{{css.search}}\"></p>" +
-//                    "<p class=\"{{css.actions}}\"></p>" +
-                                    "</div>" +
-                                    "</div>" +
-                                    "</div>",
-                                    search: ""
-                                },
-                                css: {
-                                    search: "shopSearchField search"
-//                    actions : "shopActionField"
-                                }
-                            }
-                    )
-                }
-
-                init();
-
-                $("#confirmDelete").on("click", function () {
-                    var removdeIdsArr = $("#dataGrid").bootgrid("getSelectedRows");
-
-                    var removedIdsStr = '';
-                    if (!removdeIdsArr || removdeIdsArr.length == 0) {
-                        return;
-                    }
-                    removedIdsStr = removdeIdsArr.join(',');
-                    $.ajax({
-                        url: 'http://api.jiazhengol.com/employeeShop/del',
-                        type: 'POST',
-                        data: {employee_id : removedIdsStr},
-                        success: function (ret) {
-                            $('#confirmDeleteModal').modal('hide');
-                            $("#dataGrid").bootgrid("remove");
-                        },
-                        error: function (ret) {
-                            $('#confirmDeleteModal').modal('hide');
-                            alert('内部错误')
-                        }
-                    })
-
-                });
-            }
-    )
-    ;
-</script>
-
 </body>
-<script type="text/javascript">
-    jQuery(document).ready(function () {
-        $(".button-slide-menu").on("click", function () {
-            $(".slide-menu").toggleClass("slide-menu-show");
-            $(".fog-hover").toggleClass("fog");
-        });
-        $(".fog-hover").on("click", function () {
-            $(".slide-menu").toggleClass("slide-menu-show");
-            $(".fog-hover").toggleClass("fog");
-        });
-    });
-    $('#myTab li:first').tab('show') // Select first tab
-
-</script>
 </html>

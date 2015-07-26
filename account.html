@@ -1,171 +1,157 @@
 <html>
 <header>
     <script src="js/allBiz.js"></script>
-    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
-    <script src="js/bootstrap-datetimepicker.js"></script>
 </header>
 <body>
 
 <div class="container clearfix"><!-- 右侧开始 -->
-            <div class="content-wrapper">
+    <div class="content-wrapper">
 
-                <!-- 面包屑导航样式开始 -->
-                <div class="content-header-inner clearfix">
-                    <div class="bread-nav float-left">
-                        <ol class="breadcrumb">
-                            <li><a href="client.html">账号管理</a></li>
-                            <li class="active"><strong>全部账号</strong></li>
-                        </ol>
-                    </div>
+        <!-- 面包屑导航样式开始 -->
+        <div class="content-header-inner clearfix">
+            <div class="bread-nav float-left">
+                <ol class="breadcrumb">
+                    <li><a href="client.html">账号管理</a></li>
+                    <li class="active"><strong>全部账号</strong></li>
+                </ol>
+            </div>
 
-                    <div class="header-action float-right">
-                        <button type="button" class="btn-blue mgl7 fr" onClick="location.href='add-account.html'">新增账号
-                        </button>
-                        <button type="button" class="btn-grey mgl7 fr" data-toggle="modal" data-target="#groupAccess">
-                            用户组权限对比
-                        </button>
-
-                    </div>
-                </div>
-
-
-                <div class="tab-content clearfix">
-                    <div class="normal-table">
-                        <!-- 内容表格开始 -->
-                        <table class="table-striped table-hover">
-                            <thead>
-                            <tr>
-                                <th class="select-th"><input type="checkbox" value="1" name=""/></th>
-                                <th class="name-th">姓名</th>
-                                <th>用户名</th>
-                                <th>用户组</th>
-                                <th>联系电话</th>
-                                <th class="address-th">操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td><input type="checkbox" value="1" name=""/></td>
-                                <td><strong>李阿静</strong></td>
-                                <td>Gaykenajingli</td>
-                                <td>业务员</td>
-                                <td>18242346680</td>
-                                <td>
-                                    <button type="button" class="btn-green-small"
-                                            onClick="location.href='account-somebody-info.html'">查看详情
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" value="1" name=""/></td>
-                                <td><strong>毕飞</strong></td>
-                                <td>Maybe</td>
-                                <td>业务员</td>
-                                <td>18378768976</td>
-                                <td>
-                                    <button type="button" class="btn-green-small"
-                                            onClick="location.href='#'">查看详情
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" value="1" name=""/></td>
-                                <td><strong>沈小洁</strong></td>
-                                <td>Shenxiaojie</td>
-                                <td><strong>店长</strong></td>
-                                <td>18242346680</td>
-                                <td>
-                                    <button type="button" class="btn-green-small"
-                                            onClick="location.href='#'">查看详情
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" value="1" name=""/></td>
-                                <td><strong>金锴</strong></td>
-                                <td>Jinkai</td>
-                                <td><strong>门店老板</strong></td>
-                                <td>18242346680</td>
-                                <td>
-                                    <button type="button" class="btn-green-small"
-                                            onClick="location.href='#'">查看详情
-                                    </button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-
-                        <div style="display:inline">
-                            <button type="button" class="btn-grey-danger" style="margin:20px 0;" data-toggle="modal" data-target=".modal-del">删除</button>
-                        </div>
-                        <!--
-                                                <div class="page">
-                                                    <ul class="pagination">
-                                                         <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                                                    <li><a href="#">2</a></li>
-                                                        <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                                    </ul>
-                                            </div>
-                        -->
-
-                    </div>
-                </div>
-
-
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="popover-modal modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title">添加门店</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form class="form-inline">
-
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">门店老师</label>
-                                        <input type="text" class="form-control" id="InputName" placeholder="输入姓名">
-                                        <label for="exampleInputPassword1">联系电话</label>
-                                        <input type="text" class="form-control" id="InputNumber" placeholder="手机号">
-                                    </div>
-                                </form>
-                                <form>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">门店老师</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">联系电话</label>
-                                        <input type="number" class="form-control" id="exampleInputPassword1"
-                                               placeholder="Password">
-                                    </div>
-                                </form>
-                            </div>
-
-
-                            <div class="modal-footer fr">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                <button class="btn-green">保存</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end modal-->
+            <div class="header-action float-right">
+                <button type="button" class="btn-blue mgl7 fr" onClick="location.href='add-account.html'">新增账号
+                </button>
+                <button type="button" class="btn-grey mgl7 fr" data-toggle="modal" data-target="#groupAccess">
+                    用户组权限对比
+                </button>
 
             </div>
-            <!-- end tab-centent -->
-
         </div>
-        <!-- end shop -->
+
+
+        <div class="tab-content clearfix">
+            <div class="normal-table">
+                <!-- 内容表格开始 -->
+                <table class="table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th class="select-th"><input type="checkbox" value="1" name=""/></th>
+                        <th class="name-th">姓名</th>
+                        <th>用户名</th>
+                        <th>用户组</th>
+                        <th>联系电话</th>
+                        <th class="address-th">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><input type="checkbox" value="1" name=""/></td>
+                        <td><strong>李阿静</strong></td>
+                        <td>Gaykenajingli</td>
+                        <td>业务员</td>
+                        <td>18242346680</td>
+                        <td>
+                            <button type="button" class="btn-green-small"
+                                    onClick="location.href='account-somebody-info.html'">查看详情
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value="1" name=""/></td>
+                        <td><strong>毕飞</strong></td>
+                        <td>Maybe</td>
+                        <td>业务员</td>
+                        <td>18378768976</td>
+                        <td>
+                            <button type="button" class="btn-green-small"
+                                    onClick="location.href='#'">查看详情
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value="1" name=""/></td>
+                        <td><strong>沈小洁</strong></td>
+                        <td>Shenxiaojie</td>
+                        <td><strong>店长</strong></td>
+                        <td>18242346680</td>
+                        <td>
+                            <button type="button" class="btn-green-small"
+                                    onClick="location.href='#'">查看详情
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value="1" name=""/></td>
+                        <td><strong>金锴</strong></td>
+                        <td>Jinkai</td>
+                        <td><strong>门店老板</strong></td>
+                        <td>18242346680</td>
+                        <td>
+                            <button type="button" class="btn-green-small"
+                                    onClick="location.href='#'">查看详情
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div style="display:inline">
+                    <button type="button" class="btn-grey-danger" style="margin:20px 0;" data-toggle="modal"
+                            data-target=".modal-del">删除
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="popover-modal modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">添加门店</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-inline">
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">门店老师</label>
+                                <input type="text" class="form-control" id="InputName" placeholder="输入姓名">
+                                <label for="exampleInputPassword1">联系电话</label>
+                                <input type="text" class="form-control" id="InputNumber" placeholder="手机号">
+                            </div>
+                        </form>
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">门店老师</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">联系电话</label>
+                                <input type="number" class="form-control" id="exampleInputPassword1"
+                                       placeholder="Password">
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div class="modal-footer fr">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button class="btn-green">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end modal-->
+
     </div>
-    </div>
+    <!-- end tab-centent -->
+
+</div>
+<!-- end shop -->
+</div>
+</div>
 </section>
 
 <!-- Modal recommend popover -->
@@ -262,31 +248,27 @@
             <div class="popover-modal-footer modal-footer">
                 <button type="button" class="btn-blue btn btn-primary" data-dismiss="modal"> 关闭窗口</button>
             </div>
-<div class="modal fade modal-del" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                              <div class="modal-dialog modal-sm">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">删除订单？</h4>
-                                  </div>
-                                  <div class="modal-body">
-                                    您确定删除当前选择的订单？
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="button" class="btn btn-primary">删除</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+            <div class="modal fade modal-del" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">删除订单？</h4>
+                        </div>
+                        <div class="modal-body">
+                            您确定删除当前选择的订单？
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary">删除</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 </body>
-<script type="text/javascript">
-
-    $('#myTab li:first').tab('show') // Select first tab
-
-</script>
 </html>

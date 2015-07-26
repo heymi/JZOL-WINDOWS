@@ -1,136 +1,95 @@
 <html>
 <header>
-	<script src="js/allBiz.js"></script>
-	<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
-	<script src="js/bootstrap-datetimepicker.js"></script>
+    <script src="js/allBiz.js"></script>
+    <script src="js/files/client-info.js"></script>
 </header>
 <body>
-
-<script>
-    $(function () {
-        var employerId = getQueryString('employerId');
-        var paramData = {eid: employerId};
-        $.ajax({
-            url: 'http://api.jiazhengol.com/employer/detail',
-            type: 'GET',
-            data: paramData,
-            success: function (ret) {
-                var retObj = JSON.parse(ret);
-				var data = retObj.data.list;
-                $("#username").text(retObj.data.list.username);
-                $("#client_sex").text(retObj.data.list.sex === '0' ? '保密' : retObj.data.list.sex === '1' ? '先生' : '女士');
-                $("#phone").text(retObj.data.list.phone || "暂无");
-                $("#tell").text(retObj.data.list.tell || "暂无");
-                $("#identity").text(retObj.data.list.identity || "暂无");
-                $("#family").text(retObj.data.list.family == '0' ? "暂无" : retObj.data.list.family);
-                $("#client_content").text(retObj.data.list.content == '0' ? "暂无" : retObj.data.list.content);
-                $("#specfic_requirement").text(retObj.data.list.specfic_requirement == '0' ? "暂无" : retObj.data.list.specfic_requirement);
-                $("#remark").text(retObj.data.list.remark == '0' ? "暂无" : retObj.data.list.remark);
-                $("#addr").text($.province_city_area(data.prov,data.city,data.area,data.addr) || "暂无");
-            }
-        })
-    })
-</script>
-
 <div class="container" style="background-color: #FFF"><!-- 右侧开始 -->
-				<div class="content-wrapper">
-					<div class="content-header-inner">
-					<div class="bread-nav float-left">
-						<ol class="breadcrumb">
-							<li><a href="client.html">雇主管理</a></li>
-	 						<li class="active"><strong>雇主详情</strong></li>
-						</ol>
-					</div>				
-				</div>
-					<div class="form-dialog">
-						<div class="form-content clearfix">     
-   							<div class="form-body">
-   								<div class="modal-body-wrapper">
-									<form class="form-inline">
-										<h5 class="form-title">雇主资料</h5>
-										<div class="form-group">
-										    <label for="exampleInputEmail1">雇主姓名：</label>
-										    <span id="username"></span>
-										 
-										</div>
-										<div class="form-group">
-										   <label for="exampleInputPassword1" class="text-indent">性别：</label>
-										   <span id="client_sex"></span>
-										</div>
-										<div class="form-group">
-										    <label for="">手机号码：</label>
-										    <span id="phone"></span>
-										   
-										</div>
-										<div class="form-group">
-										   
-										   <label for="exampleInputPassword1">固定电话：</label>
-										    <span id="tell"></span>
-										</div>
-										<div class="form-group">
-										    <label for="">服务地址：</label>
-										  <span id="addr"></span>
-										</div>
-										<div class="form-group">
-										    <label for="">身份证号：</label>
-										    <span id="identity"></span>
-										</div>
-									  
-									</form>
-									<form class="form-inline">
-										<h5 class="form-title">工作内容</h5>
-									<div class="form-group">
-									    <label for="">家庭情况：</label>
-									    <span id="family"></span>
-									  </div>
-										<div class="form-group">
-									    <label for="">服务需求：</label>
-									    <span id="specfic_requirement"></span>
-									  </div>
-										<div class="form-group">
-									    <label for="">需求详情：</label>
-									    <span id="client_content"></span>
-									  </div>
-										<div class="form-group">
-									    <label for="remark" class="text-indent">备注：</label>
-									    <span id="remark"></span>
-									  </div>
+    <div class="content-wrapper">
+        <div class="content-header-inner">
+            <div class="bread-nav float-left">
+                <ol class="breadcrumb">
+                    <li><a href="client.html">雇主管理</a></li>
+                    <li class="active"><strong>雇主详情</strong></li>
+                </ol>
+            </div>
+        </div>
+        <div class="form-dialog">
+            <div class="form-content clearfix">
+                <div class="form-body">
+                    <div class="modal-body-wrapper">
+                        <form class="form-inline">
+                            <h5 class="form-title">雇主资料</h5>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">雇主姓名：</label>
+                                <span id="username"></span>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1" class="text-indent">性别：</label>
+                                <span id="client_sex"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="">手机号码：</label>
+                                <span id="phone"></span>
+
+                            </div>
+                            <div class="form-group">
+
+                                <label for="exampleInputPassword1">固定电话：</label>
+                                <span id="tell"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="">服务地址：</label>
+                                <span id="addr"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="">身份证号：</label>
+                                <span id="identity"></span>
+                            </div>
+
+                        </form>
+                        <form class="form-inline">
+                            <h5 class="form-title">工作内容</h5>
+
+                            <div class="form-group">
+                                <label for="">家庭情况：</label>
+                                <span id="family"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="">服务需求：</label>
+                                <span id="specfic_requirement"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="">需求详情：</label>
+                                <span id="client_content"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="remark" class="text-indent">备注：</label>
+                                <span id="remark"></span>
+                            </div>
 
 
-									</form>
-						      </div>
-						     </div>
+                        </form>
+                    </div>
+                </div>
 
 
-						      <div class="form-footer float-right">
-						      
-						      	<button type="button" class="btn-none client-edit">修改</button>
-						        
-						       
-						      </div>
-						    </div>
-						    
-						<!-- Modal -->
-					</div>	
-			</div><!-- container end -->
-		</div>
-	</section>
+                <div class="form-footer float-right">
+
+                    <button type="button" class="btn-none client-edit">修改</button>
+
+
+                </div>
+            </div>
+
+            <!-- Modal -->
+        </div>
+    </div>
+    <!-- container end -->
+</div>
+</section>
 
 </body>
-<script type="text/javascript"> 
-	$('#message_trigger_ok').on('click', function(e) {
-    e.preventDefault();
-    $.scojs_message('添加成功', $.scojs_message.TYPE_OK);
-  });
-  $('#message_trigger_err').on('click', function(e) {
-    e.preventDefault();
-    $.scojs_message('添加失败', $.scojs_message.TYPE_ERROR);
-    });
-   $('#datetimepicker').datetimepicker({
-    format: 'yyyy-mm-dd hh:ii'
-});
-
-	var employerId = getQueryString('employerId');
-	$('.client-edit').attr('onclick','window.location.href="client-edit.html?employerId='+employerId+'"');
-</script>  
 </html>
