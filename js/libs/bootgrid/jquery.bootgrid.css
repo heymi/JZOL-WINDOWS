@@ -36,8 +36,9 @@
 .bootgrid-footer .pagination {
   /*margin: 0  !important;*/
   /*margin-right: 20px;*/
-  position: fixed;
-  right: 20px;
+  position: absolute;
+  right: -100%;
+  margin-right: 15px;
 }
 .bootgrid-header .actionBar,
 .bootgrid-footer .infoBar {
